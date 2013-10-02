@@ -3,6 +3,7 @@ package ch.luethi.skylinesclient;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +32,12 @@ public class MainActivity extends Activity {
 			Intent settingsActivity = new Intent(this, SettingsActivity.class);
 			startActivity(settingsActivity);
 			return false;
-			
+
+		case R.id.action_about:
+			Intent aboutActivity = new Intent(this, AboutActivity.class);
+			startActivity(aboutActivity);
+			return false;
+
 		case R.id.action_exit:
 			finish();
 

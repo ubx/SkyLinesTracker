@@ -10,5 +10,7 @@
     <string name="empty"></string>
     <string name="pref_live_tracking_title">Live Tracking</string>
     <string name="pref_system_settings_title">System Settings</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="about_text">About SkyLines Client ...</string>
 
 </resources>
