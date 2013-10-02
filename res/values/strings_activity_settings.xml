@@ -1,0 +1,37 @@
+<resources>
+
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+
+    <!-- Tracking settings -->
+    <string name="pref_tracking_key">Key</string>
+    <string name="pref_default_tracking_key"></string>
+    <string name="pref_tracking_interval">Interval</string>
+
+    <string-array name="pref_tracking_interval_list_titles">
+        <item>2 Seconds</item>
+        <item>5 Seconds</item>
+        <item>10 Seconds</item>
+        <item>20 Seconds</item>
+        <item>30 Seconds</item>
+        <item>1 Minute</item>
+    </string-array>
+    <string-array name="pref_tracking_interval_list_values">
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>60</item>
+    </string-array>
+    
+    <string name="pref_title_autostart_tracking">Auto Start Tracking</string>
+    <string name="pref_description_title_autostart_tracking">Enable Auto Start Tracking on Phone Boot Complete</string>
+    
+    <string name="pref_title_sms_config">SMS Configureation</string>
+    <string name="pref_description_title_sms_config">Enable configuration through receiving SMS</string>
+
+
+</resources>
