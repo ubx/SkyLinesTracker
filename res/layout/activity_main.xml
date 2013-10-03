@@ -9,7 +9,7 @@
     tools:context=".MainActivity" >
 
     <CheckBox
-        android:id="@+id/checLiveTracking"
+        android:id="@+id/checkLiveTracking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
@@ -21,8 +21,8 @@
         android:id="@+id/statusLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/checLiveTracking"
-        android:layout_below="@+id/checLiveTracking"
+        android:layout_alignLeft="@+id/checkLiveTracking"
+        android:layout_below="@+id/checkLiveTracking"
         android:text="@string/status" />
 
     <TextView
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/statusLabel"
         android:layout_alignBottom="@+id/statusLabel"
-        android:layout_alignRight="@+id/checLiveTracking"
+        android:layout_alignRight="@+id/checkLiveTracking"
         android:text="@string/empty" />
 
 </RelativeLayout>
