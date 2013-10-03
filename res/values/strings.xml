@@ -12,5 +12,6 @@
     <string name="pref_system_settings_title">System Settings</string>
     <string name="title_activity_about">AboutActivity</string>
     <string name="about_text">About SkyLines Client ...</string>
-
+    <string name="version_name_label">Version</string>
+    
 </resources>
