@@ -22,6 +22,7 @@ public class PositionService extends Service implements LocationListener {
     private SkyLinesTrackingWriter skyLinesTrackingWriter = null;
     private LocationManager locationManager;
     private SendThread sendThread;
+    private SkyLinesPrefs prefs;
 
 
     @Override
@@ -29,6 +30,7 @@ public class PositionService extends Service implements LocationListener {
         super.onCreate();    //To change body of overridden methods use File | Settings | File Templates.
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         sendThread = new SendThread();
+        prefs = new SkyLinesPrefs(this);
     }
 
     @Override
@@ -120,7 +122,7 @@ public class PositionService extends Service implements LocationListener {
                 ip_address = "78.47.50.46";
             }
             try {
-                skyLinesTrackingWriter = new SkyLinesTrackingWriter(1, 1, ip_address); // ToDo -- get params
+                skyLinesTrackingWriter = new SkyLinesTrackingWriter(prefs.getTrackingKey(), prefs.getTrackingInterval(), ip_address);
                 Toast.makeText(this, "PositionService Started with  ip address " + ip_address, Toast.LENGTH_LONG).show();
             } catch (SocketException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
