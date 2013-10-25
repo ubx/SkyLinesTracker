@@ -21,12 +21,14 @@ public class PositionService extends Service implements LocationListener {
 
     private SkyLinesTrackingWriter skyLinesTrackingWriter = null;
     private LocationManager locationManager;
+    private SendThread sendThread;
 
 
     @Override
     public void onCreate() {
         super.onCreate();    //To change body of overridden methods use File | Settings | File Templates.
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        sendThread = new SendThread();
     }
 
     @Override
@@ -56,9 +58,9 @@ public class PositionService extends Service implements LocationListener {
         // The emulator will falsely claim 0 for the first point reported -
         // skip it
         if (location.getLatitude() != 0.0) {
-            new Thread(new SendThread(location)).start();
+            sendThread.setLocation(location);
+            new Thread(sendThread).start();
         }
-
     }
 
 
@@ -81,7 +83,7 @@ public class PositionService extends Service implements LocationListener {
 
         private Location location;
 
-        SendThread(Location _location) {
+        public void setLocation(Location _location) {
             location = _location;
         }
 
