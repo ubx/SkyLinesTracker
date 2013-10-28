@@ -18,5 +18,6 @@
     </style>
     <string name="on">ON</string>
     <string name="off">OFF</string>
+    <string name="resume">RESUME</string>
 
 </resources>

@@ -123,10 +123,10 @@ public class PositionService extends Service implements LocationListener {
         if (skyLinesTrackingWriter == null) {
             String ip_address;
             if (isEmulator()) {
-                //ip_address = "10.20.11.27";
-                ip_address = "192.168.1.44";
+                ip_address = "10.20.11.27";
+                //ip_address = "192.168.1.44";
             } else {
-                //ip_address = "78.47.50.46";
+                //ip_address = "78.47.50.46";  // the real one
                 ip_address = "192.168.1.44";   // ToDo - this is only for testing
             }
             try {

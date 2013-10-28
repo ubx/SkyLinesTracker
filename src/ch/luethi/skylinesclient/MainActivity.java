@@ -1,6 +1,8 @@
 package ch.luethi.skylinesclient;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +16,9 @@ public class MainActivity extends Activity {
 
     private static final String TAG = "Activity";
     private static Intent positionService;
+    private TextView statusText;
+    private CheckBox checkLiveTracking;
+
 
     @Override
     protected void onDestroy() {
@@ -25,9 +30,18 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         positionService = new Intent(this, PositionService.class);
         setContentView(R.layout.activity_main);
+        statusText = (TextView) findViewById(R.id.statusText);
+        checkLiveTracking = (CheckBox) findViewById(R.id.checkLiveTracking);
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (isPositionServiceRunning()) {
+            checkLiveTracking.setChecked(true);
+            statusText.setText(R.string.resume);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,16 +73,23 @@ public class MainActivity extends Activity {
 
     public void startStopTracking(View view) {
         CheckBox cb = (CheckBox) view;
-        TextView st = (TextView) findViewById(R.id.statusText);
         if (cb.isChecked()) {
-            Log.d(TAG, "ON");
             startService(positionService);
-            st.setText(R.string.on);
+            statusText.setText(R.string.on);
         } else {
-            Log.d(TAG, "OFF");
             stopService(positionService);
-            st.setText(R.string.off);
+            statusText.setText(R.string.off);
         }
+    }
+
+    private boolean isPositionServiceRunning() {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (PositionService.class.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
