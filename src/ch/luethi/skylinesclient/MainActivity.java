@@ -13,16 +13,24 @@ import android.util.Log;
 public class MainActivity extends Activity {
 
     private static final String TAG = "Activity";
+    private static Intent positionService;
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        positionService = new Intent(this, PositionService.class);
         setContentView(R.layout.activity_main);
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -41,6 +49,7 @@ public class MainActivity extends Activity {
                 return false;
 
             case R.id.action_exit:
+                stopService(positionService);
                 finish();
 
             default:
@@ -53,11 +62,11 @@ public class MainActivity extends Activity {
         TextView st = (TextView) findViewById(R.id.statusText);
         if (cb.isChecked()) {
             Log.d(TAG, "ON");
-            startService(new Intent(this, PositionService.class));
+            startService(positionService);
             st.setText(R.string.on);
         } else {
             Log.d(TAG, "OFF");
-            stopService(new Intent(this, PositionService.class));
+            stopService(positionService);
             st.setText(R.string.off);
         }
     }
