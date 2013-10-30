@@ -18,9 +18,6 @@ public class MainActivity extends Activity {
     private static Intent positionService;
     private TextView statusText;
     private CheckBox checkLiveTracking;
-    private SkyLinesPrefs prefs;
-    private int oldTrackingInterval;
-    private long oldTrackingKey;
 
 
     @Override
@@ -35,21 +32,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);
         checkLiveTracking = (CheckBox) findViewById(R.id.checkLiveTracking);
-        prefs = new SkyLinesPrefs(this);
-        oldTrackingInterval = prefs.getTrackingInterval();
-        oldTrackingKey = prefs.getTrackingKey();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         if (isPositionServiceRunning()) {
-            if (oldTrackingInterval != prefs.getTrackingInterval() || oldTrackingKey != prefs.getTrackingKey()) {
-                oldTrackingInterval = prefs.getTrackingInterval();
-                oldTrackingKey = prefs.getTrackingKey();
-                stopService(positionService);
-                startService(positionService);
-            }
             checkLiveTracking.setChecked(true);
             statusText.setText(R.string.resume);
         }
@@ -65,8 +53,6 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                oldTrackingInterval = prefs.getTrackingInterval();
-                oldTrackingKey = prefs.getTrackingKey();
                 Intent settingsActivity = new Intent(this, SettingsActivity.class);
                 startActivity(settingsActivity);
                 return false;
