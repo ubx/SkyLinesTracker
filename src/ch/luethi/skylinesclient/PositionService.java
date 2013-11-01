@@ -20,12 +20,11 @@ import java.text.DecimalFormat;
 public class PositionService extends Service implements LocationListener {
 
     private SkyLinesTrackingWriter skyLinesTrackingWriter = null;
-    private int numPos = 0;
     private LocationManager locationManager;
     private SendThread sendThread;
     private SkyLinesPrefs prefs;
     private static final String TAG = "POS";
-    private int fixCount = 0;
+    private int posCount = 0;
     private DecimalFormat dfLat = new DecimalFormat("##.####");
     private DecimalFormat dfLon = new DecimalFormat("###.####");
     private DecimalFormat dfAlt = new DecimalFormat("#####");
@@ -40,7 +39,7 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this);
         return START_STICKY;
     }
 
@@ -126,7 +125,7 @@ public class PositionService extends Service implements LocationListener {
                 ip_address = "192.168.1.44";   // ToDo - this is only for testing
             }
             try {
-                skyLinesTrackingWriter = new SkyLinesTrackingWriter(prefs.getTrackingKey(), prefs.getTrackingInterval(), ip_address);
+                skyLinesTrackingWriter = new SkyLinesTrackingWriter(prefs.getTrackingKey(), ip_address);
             } catch (SocketException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             } catch (UnknownHostException e) {
@@ -138,7 +137,7 @@ public class PositionService extends Service implements LocationListener {
 
     private void sendPositionStatus() {
         Intent intent = new Intent(MainActivity.BROADCAST_STATUS);
-        intent.putExtra(MainActivity.MESSAGE_POS_STATUS, ++fixCount);
+        intent.putExtra(MainActivity.MESSAGE_POS_STATUS, ++posCount);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 }

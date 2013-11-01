@@ -34,6 +34,7 @@ import java.net.UnknownHostException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
+
 import android.os.SystemClock;
 import android.util.Log;
 
@@ -74,7 +75,7 @@ class CRC16CCITT {
     };
 
     static short update(byte octet, short crc) {
-        return (short)((crc << 8) ^ table[((crc >> 8) ^ octet) & 0xff]);
+        return (short) ((crc << 8) ^ table[((crc >> 8) ^ octet) & 0xff]);
     }
 
     static short update(byte[] data, short crc) {
@@ -89,7 +90,7 @@ class CRC16CCITT {
  * Writes tracks to the SkyLines server.
  *
  * @author Max Kellermann <max@duempel.org>
- * @see http://git.xcsoar.org/cgit/master/xcsoar.git/tree/src/Tracking/SkyLines/Protocol.hpp
+ * @see "http://git.xcsoar.org/cgit/master/xcsoar.git/tree/src/Tracking/SkyLines/Protocol.hpp"
  */
 public class SkyLinesTrackingWriter implements PositionWriter {
     private static final int MAGIC = 0x5df4b67b;
@@ -104,7 +105,6 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     private static final int FLAG_ENL = 0x40;
 
     private long key;
-    private int intervalMS;
 
     private DatagramSocket socket;
     private SocketAddress serverAddress;
@@ -120,15 +120,13 @@ public class SkyLinesTrackingWriter implements PositionWriter {
      * @param _key the SkyLines live tracking key
      * @throws Exception
      */
-    public SkyLinesTrackingWriter(long _key, int _intervalS, String _ip_address)
+    public SkyLinesTrackingWriter(long _key, String _ip_address)
             throws SocketException, UnknownHostException {
 
         key = _key;
-        intervalMS = _intervalS * 1000;
 
         socket = new DatagramSocket();
 
-		/* TODO: hard-coded IP address */
         InetAddress serverIP = InetAddress.getByName(_ip_address);
         serverAddress = new InetSocketAddress(serverIP, 5597);
     }
@@ -142,14 +140,14 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     }
 
     private void calculateCRC(byte[] data) {
-        short crc = CRC16CCITT.update(data, (short)0);
-        data[4] = (byte)(crc >> 8);
-        data[5] = (byte)crc;
+        short crc = CRC16CCITT.update(data, (short) 0);
+        data[4] = (byte) (crc >> 8);
+        data[5] = (byte) crc;
     }
 
     private void writeAngle(DataOutputStream dos, double value)
             throws IOException {
-        dos.writeInt((int)(value * 1000000));
+        dos.writeInt((int) (value * 1000000));
     }
 
     private void writeGeoPoint(DataOutputStream dos,
@@ -164,7 +162,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
                           int altitude, int track, int groundSpeed)
             throws IOException {
         writeHeader(dos, TYPE_FIX);
-        dos.writeInt(FLAG_LOCATION|FLAG_TRACK|FLAG_GROUND_SPEED|
+        dos.writeInt(FLAG_LOCATION | FLAG_TRACK | FLAG_GROUND_SPEED |
                 FLAG_ALTITUDE);
         dos.writeInt(time);
         writeGeoPoint(dos, latitude, longitude);
@@ -187,7 +185,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
                 track, groundSpeed);
 
         byte[] data = baos.toByteArray();
-        assert(data.length == 48);
+        assert (data.length == 48);
 
         calculateCRC(data);
 
@@ -195,7 +193,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
             datagram = new DatagramPacket(data, data.length,
                     serverAddress);
         else
-			/* reuse old object to reduce GC pressure */
+            /* reuse old object to reduce GC pressure */
             datagram.setData(data);
 
         socket.send(datagram);
@@ -208,23 +206,20 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     @Override
     public void emitPosition(long time, double latitude, double longitude,
                              float altitude, int bearing,
-                             float groundSpeed, float []accel,
+                             float groundSpeed, float[] accel,
                              float vspd) {
         try {
-            long now = SystemClock.elapsedRealtime();
-            if (now >= nextUpdateTime) {
-                calendar.setTimeInMillis(time);
-                int second_of_day =
-                        calendar.get(Calendar.HOUR_OF_DAY) * 3600
-                                + calendar.get(Calendar.MINUTE) * 60
-                                + calendar.get(Calendar.SECOND);
-                int ms_of_day = second_of_day * 1000
-                        + calendar.get(Calendar.MILLISECOND);
-                sendFix(ms_of_day, latitude, longitude,
-                        (int)altitude, bearing,
-                        (int)(groundSpeed / 3.6));
-                nextUpdateTime = now + intervalMS;
-            }
+            calendar.setTimeInMillis(time);
+            int second_of_day =
+                    calendar.get(Calendar.HOUR_OF_DAY) * 3600
+                            + calendar.get(Calendar.MINUTE) * 60
+                            + calendar.get(Calendar.SECOND);
+            int ms_of_day = second_of_day * 1000
+                    + calendar.get(Calendar.MILLISECOND);
+            sendFix(ms_of_day, latitude, longitude,
+                    (int) altitude, bearing,
+                    (int) (groundSpeed / 3.6));
+
         } catch (IOException ex) {
             Log.e("SkyLines", "Error", ex);
         }
