@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);
         checkLiveTracking = (CheckBox) findViewById(R.id.checkLiveTracking);
-        msgPosSent = ". " + getResources().getString(R.string.msg_pos_sent);
+        msgPosSent = " " + getResources().getString(R.string.msg_pos_sent);
         LocalBroadcastManager.getInstance(this).registerReceiver(onPositionStatusChange, brFilter);
     }
 
