@@ -32,5 +32,8 @@ public class SkyLinesPrefs {
         return new BigInteger(val, 16).longValue();
     }
 
+    public boolean isAutostartTracking() {
+        return prefs.getBoolean("autostart_tracking", false);
+    }
 
 }

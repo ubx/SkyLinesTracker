@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import com.geeksville.location.SkyLinesTrackingWriter;
 
 import java.net.SocketException;
@@ -39,6 +40,7 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(TAG, "onStartCommand");
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this);
         return START_STICKY;
     }
@@ -118,8 +120,8 @@ public class PositionService extends Service implements LocationListener {
         if (skyLinesTrackingWriter == null) {
             String ip_address;
             if (isEmulator()) {
-                ip_address = "10.20.11.27";
-                //ip_address = "192.168.1.44";
+                //ip_address = "10.20.11.27";
+                ip_address = "192.168.1.44";
             } else {
                 ip_address = "78.47.50.46";  // the real one
                 //ip_address = "192.168.1.44";   // ToDo - this is only for testing
