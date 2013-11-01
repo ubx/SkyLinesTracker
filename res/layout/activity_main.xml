@@ -31,7 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/statusLabel"
         android:layout_alignBottom="@+id/statusLabel"
-        android:layout_alignRight="@+id/checkLiveTracking"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/statusLabel"
         android:text="@string/empty" />
 
 </RelativeLayout>

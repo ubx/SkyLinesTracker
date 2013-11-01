@@ -9,10 +9,9 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.widget.Toast;
+import android.support.v4.content.LocalBroadcastManager;
 import com.geeksville.location.SkyLinesTrackingWriter;
 
-import java.io.IOException;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.text.DecimalFormat;
@@ -25,6 +24,8 @@ public class PositionService extends Service implements LocationListener {
     private LocationManager locationManager;
     private SendThread sendThread;
     private SkyLinesPrefs prefs;
+    private static final String TAG = "POS";
+    private int fixCount = 0;
     private DecimalFormat dfLat = new DecimalFormat("##.####");
     private DecimalFormat dfLon = new DecimalFormat("###.####");
     private DecimalFormat dfAlt = new DecimalFormat("#####");
@@ -57,17 +58,12 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-//        Toast.makeText(this, "PositionService, numPos " + numPos++ + " lat=" + dfLat.format(location.getLatitude()) + " log=" + dfLon.format(location.getLongitude())
-//                + " alt=" + dfAlt.format(location.getAltitude()), Toast.LENGTH_LONG).show();
-
-
-        // The emulator will falsely claim 0 for the first point reported -
-        // skip it
         if (location.getLatitude() != 0.0) {
             //Toast.makeText(this, "PositionService, numPos " + numPos++ + " lat=" + dfLat.format(location.getLatitude()) + " log=" + dfLon.format(location.getLongitude())
             //        + " alt=" + dfAlt.format(location.getAltitude()), Toast.LENGTH_LONG).show();
             sendThread.setLocation(location);
             new Thread(sendThread).start();
+            sendPositionStatus();
         }
     }
 
@@ -131,7 +127,6 @@ public class PositionService extends Service implements LocationListener {
             }
             try {
                 skyLinesTrackingWriter = new SkyLinesTrackingWriter(prefs.getTrackingKey(), prefs.getTrackingInterval(), ip_address);
-                Toast.makeText(this, "PositionService Started with  ip address " + ip_address, Toast.LENGTH_SHORT).show();
             } catch (SocketException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             } catch (UnknownHostException e) {
@@ -139,5 +134,11 @@ public class PositionService extends Service implements LocationListener {
             }
         }
         return skyLinesTrackingWriter;
+    }
+
+    private void sendPositionStatus() {
+        Intent intent = new Intent(MainActivity.BROADCAST_STATUS);
+        intent.putExtra(MainActivity.MESSAGE_POS_STATUS, ++fixCount);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 }

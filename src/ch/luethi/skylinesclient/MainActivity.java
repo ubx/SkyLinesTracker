@@ -2,9 +2,12 @@ package ch.luethi.skylinesclient;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,11 +17,15 @@ import android.util.Log;
 
 public class MainActivity extends Activity {
 
-    private static final String TAG = "Activity";
+    public static final String BROADCAST_STATUS =  "SKYLINESCLIENT_BROADCAST_STATUS";
+    public static final String MESSAGE_POS_STATUS = "MESSAGE_POS_STATUS";
+
+    private static final String TAG = "MAIN";
     private static Intent positionService;
     private TextView statusText;
     private CheckBox checkLiveTracking;
-
+    private IntentFilter brFilter = new IntentFilter(BROADCAST_STATUS);
+    private String msgPosSent;
 
     @Override
     protected void onDestroy() {
@@ -32,6 +39,14 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);
         checkLiveTracking = (CheckBox) findViewById(R.id.checkLiveTracking);
+        msgPosSent = ". " + getResources().getString(R.string.msg_pos_sent);
+        LocalBroadcastManager.getInstance(this).registerReceiver(onPositionStatusChange, brFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(onPositionStatusChange);
     }
 
     @Override
@@ -40,6 +55,8 @@ public class MainActivity extends Activity {
         if (isPositionServiceRunning()) {
             checkLiveTracking.setChecked(true);
             statusText.setText(R.string.resume);
+            LocalBroadcastManager.getInstance(this).registerReceiver(onPositionStatusChange, brFilter);
+
         }
     }
 
@@ -81,6 +98,15 @@ public class MainActivity extends Activity {
             statusText.setText(R.string.off);
         }
     }
+
+    private BroadcastReceiver onPositionStatusChange = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int cnt = intent.getIntExtra(MESSAGE_POS_STATUS, 0);
+            statusText.setText(cnt + msgPosSent);
+        }
+    };
 
     private boolean isPositionServiceRunning() {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
