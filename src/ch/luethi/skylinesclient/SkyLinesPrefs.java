@@ -6,15 +6,13 @@ import android.preference.PreferenceManager;
 
 import java.math.BigInteger;
 
-/**
- * Created with IntelliJ IDEA.
- * User: andreas
- * Date: 25.10.13
- * Time: 14:47
- * To change this template use File | Settings | File Templates.
- */
+
 public class SkyLinesPrefs {
 
+    public static final String TRACKING_KEY = "tracking_key";
+    public static final String TRACKING_INTERVAL = "tracking_interval";
+    public static final String AUTOSTART_TRACKING = "autostart_tracking";
+    public static final String SMS_CONFIG = "sms_config";
     SharedPreferences prefs;
 
     public SkyLinesPrefs(Context c) {
@@ -23,17 +21,37 @@ public class SkyLinesPrefs {
     }
 
     public int getTrackingInterval() {
-        String val = prefs.getString("tracking_interval", "5");
+        String val = prefs.getString(TRACKING_INTERVAL, "5");
         return Integer.parseInt(val);
     }
 
+    public void setTrackingInterval(String interval) {
+        prefs.edit().putString(TRACKING_INTERVAL, interval).commit();
+    }
+
     public long getTrackingKey() {
-        String val = prefs.getString("tracking_key", "0");
+        String val = prefs.getString(TRACKING_KEY, "0");
         return new BigInteger(val, 16).longValue();
     }
 
+    public void setTrackingKey(String key) {
+        prefs.edit().putString(TRACKING_KEY, key).commit();
+    }
+
     public boolean isAutostartTracking() {
-        return prefs.getBoolean("autostart_tracking", false);
+        return prefs.getBoolean(AUTOSTART_TRACKING, false);
+    }
+
+    public void setAutostartTracking(boolean val) {
+        prefs.edit().putBoolean(AUTOSTART_TRACKING, val).commit();
+    }
+
+    public boolean isSmsConfig() {
+        return prefs.getBoolean(SMS_CONFIG, false);
+    }
+
+    public void setSmsConfig(boolean val) {
+        prefs.edit().putBoolean(SMS_CONFIG, val).commit();
     }
 
 }
