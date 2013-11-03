@@ -16,8 +16,5 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    <string name="on">ON</string>
-    <string name="off">OFF</string>
-    <string name="resume">RESUME</string>
 
 </resources>
