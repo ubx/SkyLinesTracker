@@ -31,12 +31,12 @@ public class SmsReceiver extends BroadcastReceiver {
                     sms += "\n";
                 }
                 Log.d(TAG, "onReceive, parse sms: " + sms);
-                parsSms(prefs, smsBody);
+                parsSms(context, prefs, smsBody);
             }
         }
     }
 
-    private void parsSms(SkyLinesPrefs prefs, String smsBody) {
+    private void parsSms(Context context, SkyLinesPrefs prefs, String smsBody) {
         String params[] = smsBody.toUpperCase().split(" ");
         if (params.length > 1 && params[0].equals("SLC")) {
             for (int i = 1; i < params.length; i++) {
@@ -50,6 +50,13 @@ public class SmsReceiver extends BroadcastReceiver {
                         prefs.setAutostartTracking(kv[1].equals("ON"));
                     } else if (kv[0].equals("SMS")) {
                         prefs.setSmsConfig(kv[1].equals("ON"));
+                    } else if (kv[0].equals("LIFE")) {
+                        Intent positionService = new Intent(context, PositionService.class);
+                        if (kv[1].equals("ON")) {
+                            context.startService(positionService);
+                        } else if (kv[1].equals("OFF")) {
+                            context.stopService(positionService);
+                        }
                     }
                 }
             }
