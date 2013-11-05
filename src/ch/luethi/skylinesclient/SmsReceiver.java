@@ -42,7 +42,7 @@ public class SmsReceiver extends BroadcastReceiver {
                         prefs.setAutostartTracking(kv[1].equals("ON"));
                     } else if (kv[0].equals("SMS")) {
                         prefs.setSmsConfig(kv[1].equals("ON"));
-                    } else if (kv[0].equals("LIFE")) {
+                    } else if (kv[0].equals("LIVE")) {
                         Intent positionService = new Intent(context, PositionService.class);
                         if (kv[1].equals("ON")) {
                             context.startService(positionService);
