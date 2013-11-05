@@ -18,20 +18,12 @@ public class SmsReceiver extends BroadcastReceiver {
         if (prefs.isSmsConfig()) {
             Bundle bundle = intent.getExtras();
             if (bundle != null) {
-                String sms = "";
-                String smsBody = "";
                 Object[] pdus = (Object[]) bundle.get("pdus");
                 SmsMessage[] msgs = new SmsMessage[pdus.length];
                 for (int i = 0; i < msgs.length; i++) {
                     msgs[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
-                    sms += "SMS from " + msgs[i].getOriginatingAddress();
-                    sms += " :";
-                    sms += msgs[i].getMessageBody().toString();
-                    smsBody = msgs[i].getMessageBody().toString();
-                    sms += "\n";
+                    parsSms(context, prefs, msgs[i].getMessageBody().toString());
                 }
-                Log.d(TAG, "onReceive, parse sms: " + sms);
-                parsSms(context, prefs, smsBody);
             }
         }
     }
