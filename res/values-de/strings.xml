@@ -2,21 +2,21 @@
 <resources>
 
     <string name="app_name">SkyLines Client</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Einstellungen</string>
     <string name="action_about">Über</string>
-    <string name="action_exit">Exit</string>
+    <string name="action_exit">Beenden</string>
     <string name="status">Status:</string>
     <string name="live_tracking">Live Tracking</string>
-    <string name="empty">--</string>
+    <string name="empty">Aus</string>
     <string name="pref_live_tracking_title">Live Tracking</string>
-    <string name="pref_system_settings_title">System Settings</string>
-    <string name="title_activity_about">AboutActivity</string>
-    <string name="about_text">About SkyLines Client</string>
+    <string name="pref_system_settings_title">System Einstellungen</string>
+    <string name="title_activity_about">Über SkyLines Client</string>
+    <string name="about_text">Über SkyLines Client</string>
     <string name="version_name_label">Version</string>
-    <string name="not_available">not available</string>
-    <string name="msg_pos_sent">pos sent</string>
-    <string name="on">ON</string>
-    <string name="off">OFF</string>
-    <string name="resume">RESUME</string>
+    <string name="not_available">nicht vorhanden</string>
+    <string name="msg_pos_sent">Positionen gesendet</string>
+    <string name="on">Warten auf GPS</string>
+    <string name="off">Aus</string>
+    <string name="resume"></string>
 
 </resources>
