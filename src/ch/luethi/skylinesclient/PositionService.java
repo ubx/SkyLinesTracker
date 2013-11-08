@@ -6,42 +6,37 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.IBinder;
+import android.os.*;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import com.geeksville.location.SkyLinesTrackingWriter;
 
 import java.net.SocketException;
 import java.net.UnknownHostException;
-import java.text.DecimalFormat;
 
 
 public class PositionService extends Service implements LocationListener {
 
     private SkyLinesTrackingWriter skyLinesTrackingWriter = null;
     private LocationManager locationManager;
-    private SendThread sendThread;
     private SkyLinesPrefs prefs;
     private static final String TAG = "POS";
     private int posCount = 0;
-    private DecimalFormat dfLat = new DecimalFormat("##.####");
-    private DecimalFormat dfLon = new DecimalFormat("###.####");
-    private DecimalFormat dfAlt = new DecimalFormat("#####");
+
+    private HandlerThread senderThread = new HandlerThread("SenderThread");
 
 
     @Override
     public void onCreate() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        sendThread = new SendThread();
         prefs = new SkyLinesPrefs(this);
+        senderThread.start();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand");
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this, senderThread.getLooper());
         return START_STICKY;
     }
 
@@ -49,6 +44,7 @@ public class PositionService extends Service implements LocationListener {
     public void onDestroy() {
         locationManager.removeUpdates(this);
         skyLinesTrackingWriter = null;
+        senderThread.getLooper().quit();
         stopSelf();
     }
 
@@ -60,10 +56,18 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         if (location.getLatitude() != 0.0) {
-            //Toast.makeText(this, "PositionService, numPos " + numPos++ + " lat=" + dfLat.format(location.getLatitude()) + " log=" + dfLon.format(location.getLongitude())
-            //        + " alt=" + dfAlt.format(location.getAltitude()), Toast.LENGTH_LONG).show();
-            sendThread.setLocation(location);
-            new Thread(sendThread).start();
+            double lat = location.getLatitude();
+            double longitude = location.getLongitude();
+            float kmPerHr = location.hasSpeed() ? (float) (location.getSpeed() * 3.6) : Float.NaN;
+            // convert m/sec to km/hr
+
+            float[] accelVals = null;
+            float vspd = Float.NaN;
+            Log.d(TAG, "onLocationChanged, before emitPosition");
+            getOrCreateSkyLinesTrackingWriter().emitPosition(location.getTime(), lat, longitude,
+                    location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
+                    (int) location.getBearing(), kmPerHr, accelVals, vspd);
+            Log.d(TAG, "onLocationChanged, after emitPosition");
             sendPositionStatus();
         }
     }
@@ -84,33 +88,6 @@ public class PositionService extends Service implements LocationListener {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    private class SendThread implements Runnable {
-
-        private Location location;
-
-        public void setLocation(Location _location) {
-            location = _location;
-        }
-
-        @Override
-        public void run() {
-            try {
-                double lat = location.getLatitude();
-                double longitude = location.getLongitude();
-                float kmPerHr = location.hasSpeed() ? (float) (location.getSpeed() * 3.6) : Float.NaN;
-                // convert m/sec to km/hr
-
-                float[] accelVals = null;
-                float vspd = Float.NaN;
-                getOrCreateSkyLinesTrackingWriter().emitPosition(location.getTime(), lat, longitude,
-                        location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
-                        (int) location.getBearing(), kmPerHr, accelVals, vspd);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
 
     private boolean isEmulator() {
         return Build.MANUFACTURER.equals("unknown");
@@ -120,11 +97,10 @@ public class PositionService extends Service implements LocationListener {
         if (skyLinesTrackingWriter == null) {
             String ip_address;
             if (isEmulator()) {
-                //ip_address = "10.20.11.27";
-                ip_address = "192.168.1.44";
+                ip_address = "10.20.11.27";
             } else {
                 //ip_address = "78.47.50.46";  // the real one
-                ip_address = "192.168.1.44";   // ToDo - this is only for testing
+                ip_address = "luethi.dyndns.org";   // ToDo - this is only for testing
             }
             try {
                 skyLinesTrackingWriter = new SkyLinesTrackingWriter(prefs.getTrackingKey(), ip_address);
