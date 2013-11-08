@@ -15,8 +15,6 @@ import com.geeksville.location.SkyLinesTrackingWriter;
 
 import java.net.SocketException;
 import java.net.UnknownHostException;
-import java.text.DecimalFormat;
-
 
 public class PositionService extends Service implements LocationListener {
 
@@ -26,9 +24,6 @@ public class PositionService extends Service implements LocationListener {
     private SkyLinesPrefs prefs;
     private static final String TAG = "POS";
     private int posCount = 0;
-    private DecimalFormat dfLat = new DecimalFormat("##.####");
-    private DecimalFormat dfLon = new DecimalFormat("###.####");
-    private DecimalFormat dfAlt = new DecimalFormat("#####");
 
 
     @Override
@@ -60,8 +55,6 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         if (location.getLatitude() != 0.0) {
-            //Toast.makeText(this, "PositionService, numPos " + numPos++ + " lat=" + dfLat.format(location.getLatitude()) + " log=" + dfLon.format(location.getLongitude())
-            //        + " alt=" + dfAlt.format(location.getAltitude()), Toast.LENGTH_LONG).show();
             sendThread.setLocation(location);
             new Thread(sendThread).start();
             sendPositionStatus();
@@ -120,11 +113,10 @@ public class PositionService extends Service implements LocationListener {
         if (skyLinesTrackingWriter == null) {
             String ip_address;
             if (isEmulator()) {
-                //ip_address = "10.20.11.27";
                 ip_address = "192.168.1.44";
             } else {
                 //ip_address = "78.47.50.46";  // the real one
-                ip_address = "192.168.1.44";   // ToDo - this is only for testing
+                ip_address = "luethi.dyndns.org";   // ToDo - this is only for testing
             }
             try {
                 skyLinesTrackingWriter = new SkyLinesTrackingWriter(prefs.getTrackingKey(), ip_address);
