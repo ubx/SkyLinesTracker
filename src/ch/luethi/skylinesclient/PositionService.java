@@ -59,9 +59,8 @@ public class PositionService extends Service implements LocationListener {
         if (location.getLatitude() != 0.0) {
             double lat = location.getLatitude();
             double longitude = location.getLongitude();
-            float kmPerHr = location.hasSpeed() ? (float) (location.getSpeed() * 3.6) : Float.NaN;
             // convert m/sec to km/hr
-
+            float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
             float[] accelVals = null;
             float vspd = Float.NaN;
             Log.d(TAG, "onLocationChanged, before emitPosition");
@@ -76,17 +75,14 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public void onStatusChanged(String s, int i, Bundle bundle) {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public void onProviderEnabled(String s) {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public void onProviderDisabled(String s) {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 
 
