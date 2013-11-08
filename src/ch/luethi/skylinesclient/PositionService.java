@@ -23,19 +23,20 @@ public class PositionService extends Service implements LocationListener {
     private static final String TAG = "POS";
     private int posCount = 0;
 
-    private HandlerThread senderThread = new HandlerThread("SenderThread");
+    private HandlerThread senderThread;
 
 
     @Override
     public void onCreate() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         prefs = new SkyLinesPrefs(this);
-        senderThread.start();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand");
+        senderThread = new HandlerThread("SenderThread");
+        senderThread.start();
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this, senderThread.getLooper());
         return START_STICKY;
     }
