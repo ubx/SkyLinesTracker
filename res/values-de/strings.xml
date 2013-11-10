@@ -17,6 +17,6 @@
     <string name="msg_pos_sent">Positionen gesendet</string>
     <string name="on">Warten auf GPS</string>
     <string name="off">Aus</string>
-    <string name="resume"></string>
+    <string name="resume">Warten auf GPS</string>
 
 </resources>

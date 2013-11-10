@@ -15,8 +15,8 @@
     <string name="version_name_label">Version</string>
     <string name="not_available">not available</string>
     <string name="msg_pos_sent">pos sent</string>
-    <string name="on">ON</string>
+    <string name="on">Wait for GPS</string>
     <string name="off">OFF</string>
-    <string name="resume">RESUME</string>
+    <string name="resume">Wait for GPS</string>
 
 </resources>
