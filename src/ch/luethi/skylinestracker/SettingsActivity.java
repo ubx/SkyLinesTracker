@@ -1,4 +1,4 @@
-package ch.luethi.skylinesclient;
+package ch.luethi.skylinestracker;
 
 import android.annotation.TargetApi;
 import android.content.Context;

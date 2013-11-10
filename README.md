@@ -1,3 +1,3 @@
-# SkyLinesClient
+# SkyLines Tracker for Android
 
 Work in progress...

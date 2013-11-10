@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="apk" name="SkyLinesClient">
-    <output-path>$PROJECT_DIR$/out/artifacts/SkyLinesClient</output-path>
+  <artifact type="apk" name="SkyLinesTracker">
+    <output-path>$PROJECT_DIR$/out/artifacts/SkyLinesTracker</output-path>
     <properties id="android-properties">
       <options>
         <option name="includeSystemProGuardCfgFile" value="true" />
@@ -8,8 +8,8 @@
         <option name="proGuardCfgFileUrl" value="file://$PROJECT_DIR$/proguard-project.txt" />
       </options>
     </properties>
-    <root id="archive" name="SkyLinesClient.apk">
-      <element id="android-final-package" facet="SkyLinesClient/android/Android" />
+    <root id="archive" name="SkyLinesTracker.apk">
+      <element id="android-final-package" facet="SkyLinesTracker/android/Android" />
     </root>
   </artifact>
 </component>

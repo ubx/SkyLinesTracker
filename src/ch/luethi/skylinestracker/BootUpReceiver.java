@@ -1,4 +1,4 @@
-package ch.luethi.skylinesclient;
+package ch.luethi.skylinestracker;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

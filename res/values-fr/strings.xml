@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SkyLines Client</string>
+    <string name="app_name">SkyLines Tracker</string>
     <string name="action_settings">Paramètres</string>
     <string name="action_about">A propos</string>
     <string name="action_exit">Sortir</string>
@@ -11,7 +11,7 @@
     <string name="pref_live_tracking_title">Live Tracking</string>
     <string name="pref_system_settings_title">Paramètres system </string>
     <string name="title_activity_about">AboutActivity</string>
-    <string name="about_text">About SkyLines Client</string>
+    <string name="about_text">About SkyLines Tracker</string>
     <string name="version_name_label">Version</string>
     <string name="not_available">not available</string>
     <string name="msg_pos_sent">pos sent</string>

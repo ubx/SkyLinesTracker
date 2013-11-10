@@ -1,4 +1,4 @@
-package ch.luethi.skylinesclient;
+package ch.luethi.skylinestracker;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -13,11 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.util.Log;
 
 public class MainActivity extends Activity {
 
-    public static final String BROADCAST_STATUS =  "SKYLINESCLIENT_BROADCAST_STATUS";
+    public static final String BROADCAST_STATUS =  "SKYLINESTRACKER_BROADCAST_STATUS";
     public static final String MESSAGE_POS_STATUS = "MESSAGE_POS_STATUS";
 
     private static final String TAG = "MAIN";

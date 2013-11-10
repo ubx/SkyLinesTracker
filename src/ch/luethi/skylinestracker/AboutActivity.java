@@ -1,4 +1,4 @@
-package ch.luethi.skylinesclient;
+package ch.luethi.skylinestracker;
 
 import android.app.Activity;
 import android.content.pm.PackageManager.NameNotFoundException;

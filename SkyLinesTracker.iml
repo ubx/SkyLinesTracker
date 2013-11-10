@@ -3,7 +3,7 @@
   <component name="FacetManager">
     <facet type="android" name="Android">
       <configuration>
-        <option name="APK_PATH" value="/bin/SkyLinesClient.apk" />
+        <option name="APK_PATH" value="/bin/SkyLinesTracker.apk" />
       </configuration>
     </facet>
   </component>
