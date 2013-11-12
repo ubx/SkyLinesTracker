@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    public static final String BROADCAST_STATUS =  "SKYLINESTRACKER_BROADCAST_STATUS";
+    public static final String BROADCAST_STATUS = "SKYLINESTRACKER_BROADCAST_STATUS";
     public static final String MESSAGE_POS_STATUS = "MESSAGE_POS_STATUS";
 
     private static final String TAG = "MAIN";
@@ -90,9 +90,11 @@ public class MainActivity extends Activity {
     public void startStopTracking(View view) {
         CheckBox cb = (CheckBox) view;
         if (cb.isChecked()) {
+            LocalBroadcastManager.getInstance(this).registerReceiver(onPositionStatusChange, brFilter);
             startService(positionService);
             statusText.setText(R.string.on);
         } else {
+            LocalBroadcastManager.getInstance(this).unregisterReceiver(onPositionStatusChange);
             stopService(positionService);
             statusText.setText(R.string.off);
         }
