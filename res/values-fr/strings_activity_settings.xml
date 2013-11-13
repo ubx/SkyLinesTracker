@@ -1,19 +1,19 @@
 <resources>
 
-    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_settings">Paramètres</string>
 
     <!-- Tracking settings -->
-    <string name="pref_tracking_key">Key</string>
+    <string name="pref_tracking_key">Clé</string>
     <string name="pref_default_tracking_key"> </string>
-    <string name="pref_tracking_interval">Interval</string>
+    <string name="pref_tracking_interval">Intervalle</string>
 
     <string-array name="pref_tracking_interval_list_titles">
-        <item>2 Seconds</item>
-        <item>5 Seconds</item>
-        <item>10 Seconds</item>
-        <item>20 Seconds</item>
-        <item>30 Seconds</item>
-        <item>1 Minute</item>
+        <item>2 secondes</item>
+        <item>5 secondes</item>
+        <item>10 secondes</item>
+        <item>20 secondes</item>
+        <item>30 secondes</item>
+        <item>1 minute</item>
     </string-array>
     <string-array name="pref_tracking_interval_list_values">
         <item>2</item>
@@ -24,11 +24,11 @@
         <item>60</item>
     </string-array>
     
-    <string name="pref_title_autostart_tracking">Auto Start Tracking</string>
-    <string name="pref_description_title_autostart_tracking">Enable auto start tracking on phone boot complete</string>
+    <string name="pref_title_autostart_tracking">Démarrage automatique du tracker</string>
+    <string name="pref_description_title_autostart_tracking">Activer le tracker automatique au démarrage complet de téléphone</string>
     
-    <string name="pref_title_sms_config">SMS Configuration</string>
-    <string name="pref_description_title_sms_config">Enable configuration through receiving SMS</string>
+    <string name="pref_title_sms_config">Configuration SMS</string>
+    <string name="pref_description_title_sms_config">Activer la configuration par la réception de SMS</string>
 
 
 </resources>
