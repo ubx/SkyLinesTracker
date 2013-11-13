@@ -104,7 +104,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     private static final int FLAG_VARIO = 0x20;
     private static final int FLAG_ENL = 0x40;
 
-    private long key;
+    private final long key;
 
     private DatagramSocket socket;
     private SocketAddress serverAddress;
@@ -112,7 +112,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
 
     private long nextUpdateTime = SystemClock.elapsedRealtime();
 
-    private Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
+    private final Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 
     /**
      * Constructor

@@ -25,13 +25,13 @@ import android.preference.PreferenceManager;
 import java.math.BigInteger;
 
 
-public class SkyLinesPrefs {
+class SkyLinesPrefs {
 
-    public static final String TRACKING_KEY = "tracking_key";
-    public static final String TRACKING_INTERVAL = "tracking_interval";
-    public static final String AUTOSTART_TRACKING = "autostart_tracking";
-    public static final String SMS_CONFIG = "sms_config";
-    SharedPreferences prefs;
+    private static final String TRACKING_KEY = "tracking_key";
+    private static final String TRACKING_INTERVAL = "tracking_interval";
+    private static final String AUTOSTART_TRACKING = "autostart_tracking";
+    private static final String SMS_CONFIG = "sms_config";
+    private final SharedPreferences prefs;
 
     public SkyLinesPrefs(Context c) {
 

@@ -102,7 +102,7 @@ public class SettingsActivity extends PreferenceActivity {
 	/**
 	 * A preference value change listener that updates the preference's summary to reflect its new value.
 	 */
-	private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
+	private static final Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
 		@Override
 		public boolean onPreferenceChange(Preference preference, Object value) {
 			String stringValue = value.toString();
@@ -146,7 +146,7 @@ public class SettingsActivity extends PreferenceActivity {
 	 * This fragment shows general preferences only. It is used when the activity is showing a two-pane settings UI.
 	 */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-	public static class TrackingPreferenceFragment extends PreferenceFragment {
+    private static class TrackingPreferenceFragment extends PreferenceFragment {
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);

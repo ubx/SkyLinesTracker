@@ -37,17 +37,11 @@ public class MainActivity extends Activity {
     public static final String BROADCAST_STATUS = "SKYLINESTRACKER_BROADCAST_STATUS";
     public static final String MESSAGE_POS_STATUS = "MESSAGE_POS_STATUS";
 
-    private static final String TAG = "MAIN";
     private static Intent positionService;
     private TextView statusText;
     private CheckBox checkLiveTracking;
-    private IntentFilter brFilter = new IntentFilter(BROADCAST_STATUS);
+    private final IntentFilter brFilter = new IntentFilter(BROADCAST_STATUS);
     private String msgPosSent;
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,7 +112,7 @@ public class MainActivity extends Activity {
         }
     }
 
-    private BroadcastReceiver onPositionStatusChange = new BroadcastReceiver() {
+    private final BroadcastReceiver onPositionStatusChange = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
