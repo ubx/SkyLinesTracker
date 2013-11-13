@@ -30,7 +30,7 @@ public class SmsReceiver extends BroadcastReceiver {
 
     private void parsSms(Context context, SkyLinesPrefs prefs, String smsBody) {
         String params[] = smsBody.toUpperCase().split(" ");
-        if (params.length > 1 && params[0].equals("SLC")) {
+        if (params.length > 1 && params[0].equals("SLT")) {
             for (int i = 1; i < params.length; i++) {
                 String kv[] = params[i].split("=");
                 if (kv.length == 2) {
