@@ -34,7 +34,6 @@ public class AboutActivity extends Activity {
 		try {
 			versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
 		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		TextView tvVersionName = (TextView) findViewById(R.id.version_name);
