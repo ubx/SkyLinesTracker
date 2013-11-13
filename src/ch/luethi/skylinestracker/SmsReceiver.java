@@ -23,7 +23,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
-import android.util.Log;
 
 public class SmsReceiver extends BroadcastReceiver {
 
@@ -31,7 +30,6 @@ public class SmsReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d(TAG, "onReceive");
         SkyLinesPrefs prefs = new SkyLinesPrefs(context);
         if (prefs.isSmsConfig()) {
             Bundle bundle = intent.getExtras();

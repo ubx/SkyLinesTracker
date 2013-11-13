@@ -26,7 +26,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.*;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 import com.geeksville.location.SkyLinesTrackingWriter;
 
 import java.net.SocketException;
@@ -52,7 +51,6 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "onStartCommand");
         senderThread = new HandlerThread("SenderThread");
         senderThread.start();
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this, senderThread.getLooper());
@@ -81,11 +79,9 @@ public class PositionService extends Service implements LocationListener {
             float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
             float[] accelVals = null;
             float vspd = Float.NaN;
-            Log.d(TAG, "onLocationChanged, before emitPosition");
             getOrCreateSkyLinesTrackingWriter().emitPosition(location.getTime(), lat, longitude,
                     location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
                     (int) location.getBearing(), kmPerHr, accelVals, vspd);
-            Log.d(TAG, "onLocationChanged, after emitPosition");
             sendPositionStatus();
         }
     }
