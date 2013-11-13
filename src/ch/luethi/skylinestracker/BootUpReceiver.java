@@ -1,5 +1,5 @@
 /*
- * SkyLines Tracker is a location tracking client for the SkyLines <www.skylines-project.org>.
+ * SkyLines Tracker is a location tracking client for the SkyLines platform <www.skylines-project.org>.
  * Copyright (C) 2013  Andreas Lüthi
  *
  * This program is free software: you can redistribute it and/or modify
