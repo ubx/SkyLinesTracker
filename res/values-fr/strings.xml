@@ -4,7 +4,7 @@
     <string name="app_name">SkyLines Tracker</string>
     <string name="action_settings">Paramètres</string>
     <string name="action_about">A propos</string>
-    <string name="action_exit">Sortir</string>
+    <string name="action_exit">Quitter</string>
     <string name="status">Statut:</string>
     <string name="live_tracking">Live Tracking</string>
     <string name="empty">On</string>
