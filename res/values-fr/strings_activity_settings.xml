@@ -24,7 +24,7 @@
         <item>60</item>
     </string-array>
     
-    <string name="pref_title_autostart_tracking">Démarrage automatique du tracker</string>
+    <string name="pref_title_autostart_tracking">Démarrage automatique</string>
     <string name="pref_description_title_autostart_tracking">Activer le tracker automatique au démarrage complet de téléphone</string>
     
     <string name="pref_title_sms_config">Configuration SMS</string>
