@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.net.ConnectivityManager;
 import android.os.*;
 import android.support.v4.content.LocalBroadcastManager;
@@ -74,8 +75,9 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        if (location.getLatitude() != 0.0) {
-            if (isOnline()) {
+        if (isOnline()) {
+            if (location.getLatitude() != 0.0) {
+
                 double lat = location.getLatitude();
                 double longitude = location.getLongitude();
                 // convert m/sec to km/hr
@@ -86,15 +88,18 @@ public class PositionService extends Service implements LocationListener {
                         location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
                         (int) location.getBearing(), kmPerHr, accelVals, vspd);
                 sendPositionStatus();
-            } else {
-                sendConnectionStatus();
             }
+        } else {
+            sendConnectionStatus();
         }
     }
 
 
     @Override
     public void onStatusChanged(String s, int i, Bundle bundle) {
+        if (i != LocationProvider.AVAILABLE) {
+            sendPositionWaitStatus();
+        }
     }
 
     @Override
@@ -103,6 +108,7 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public void onProviderDisabled(String s) {
+        sendPositionWaitStatus();
     }
 
 
@@ -136,11 +142,18 @@ public class PositionService extends Service implements LocationListener {
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 
+    private void sendPositionWaitStatus() {
+        Intent intent = new Intent(MainActivity.BROADCAST_STATUS);
+        intent.putExtra(MainActivity.MESSAGE_POS_WAIT_STATUS, 0);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+    }
+
     private void sendConnectionStatus() {
         Intent intent = new Intent(MainActivity.BROADCAST_STATUS);
         intent.putExtra(MainActivity.MESSAGE_CON_STATUS, 0);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
+
 
     public boolean isOnline() {
         return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();

@@ -36,6 +36,7 @@ public class MainActivity extends Activity {
 
     public static final String BROADCAST_STATUS = "SKYLINESTRACKER_BROADCAST_STATUS";
     public static final String MESSAGE_POS_STATUS = "MESSAGE_POS_STATUS";
+    public static final String MESSAGE_POS_WAIT_STATUS = "MESSAGE_POS_WAIT_STATUS";
     public static final String MESSAGE_CON_STATUS = "MESSAGE_CON_STATUS";
 
     private static Intent positionService;
@@ -44,6 +45,7 @@ public class MainActivity extends Activity {
     private final IntentFilter brFilter = new IntentFilter(BROADCAST_STATUS);
     private String msgPosSent;
     private String msgNoInet;
+    private String msgWaitGps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +54,9 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);
         checkLiveTracking = (CheckBox) findViewById(R.id.checkLiveTracking);
-        msgPosSent = getResources().getString(R.string.msg_pos_sent);
+        msgPosSent = " " + getResources().getString(R.string.msg_pos_sent);
         msgNoInet = getResources().getString(R.string.msg_no_inet);
+        msgWaitGps = getResources().getString(R.string.resume);
         LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
     }
 
@@ -124,6 +127,8 @@ public class MainActivity extends Activity {
                 statusText.setText(cnt + msgPosSent);
             } else if (intent.hasExtra(MESSAGE_CON_STATUS)) {
                 statusText.setText(msgNoInet);
+            } else if (intent.hasExtra(MESSAGE_POS_WAIT_STATUS)) {
+                statusText.setText(msgWaitGps);
             }
         }
     };
