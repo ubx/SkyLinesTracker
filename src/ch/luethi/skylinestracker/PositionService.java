@@ -111,7 +111,7 @@ public class PositionService extends Service implements LocationListener {
                 ip_address = "10.20.11.27";
             } else {
                 //ip_address = "78.47.50.46";  // the real one
-                ip_address = "luethi.dyndns.org";   // ToDo - this is only for testing
+                ip_address = "85.1.17.153";   // ToDo - this is only for testing
             }
             try {
                 skyLinesTrackingWriter = new SkyLinesTrackingWriter(prefs.getTrackingKey(), ip_address);
