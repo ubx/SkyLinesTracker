@@ -36,12 +36,14 @@ public class MainActivity extends Activity {
 
     public static final String BROADCAST_STATUS = "SKYLINESTRACKER_BROADCAST_STATUS";
     public static final String MESSAGE_POS_STATUS = "MESSAGE_POS_STATUS";
+    public static final String MESSAGE_CON_STATUS = "MESSAGE_CON_STATUS";
 
     private static Intent positionService;
     private TextView statusText;
     private CheckBox checkLiveTracking;
     private final IntentFilter brFilter = new IntentFilter(BROADCAST_STATUS);
     private String msgPosSent;
+    private String msgNoInet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +52,15 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);
         checkLiveTracking = (CheckBox) findViewById(R.id.checkLiveTracking);
-        msgPosSent = " " + getResources().getString(R.string.msg_pos_sent);
-        LocalBroadcastManager.getInstance(this).registerReceiver(onPositionStatusChange, brFilter);
+        msgPosSent = getResources().getString(R.string.msg_pos_sent);
+        msgNoInet = getResources().getString(R.string.msg_no_inet);
+        LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(onPositionStatusChange);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(onStatusChange);
     }
 
     @Override
@@ -66,7 +69,7 @@ public class MainActivity extends Activity {
         if (isPositionServiceRunning()) {
             checkLiveTracking.setChecked(true);
             statusText.setText(R.string.resume);
-            LocalBroadcastManager.getInstance(this).registerReceiver(onPositionStatusChange, brFilter);
+            LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
 
         }
     }
@@ -102,24 +105,29 @@ public class MainActivity extends Activity {
     public void startStopTracking(View view) {
         CheckBox cb = (CheckBox) view;
         if (cb.isChecked()) {
-            LocalBroadcastManager.getInstance(this).registerReceiver(onPositionStatusChange, brFilter);
+            LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
             startService(positionService);
             statusText.setText(R.string.on);
         } else {
-            LocalBroadcastManager.getInstance(this).unregisterReceiver(onPositionStatusChange);
+            LocalBroadcastManager.getInstance(this).unregisterReceiver(onStatusChange);
             stopService(positionService);
             statusText.setText(R.string.off);
         }
     }
 
-    private final BroadcastReceiver onPositionStatusChange = new BroadcastReceiver() {
+    private final BroadcastReceiver onStatusChange = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            int cnt = intent.getIntExtra(MESSAGE_POS_STATUS, 0);
-            statusText.setText(cnt + msgPosSent);
+            if (intent.hasExtra(MESSAGE_POS_STATUS)) {
+                int cnt = intent.getIntExtra(MESSAGE_POS_STATUS, 0);
+                statusText.setText(cnt + msgPosSent);
+            } else if (intent.hasExtra(MESSAGE_CON_STATUS)) {
+                statusText.setText(msgNoInet);
+            }
         }
     };
+
 
     private boolean isPositionServiceRunning() {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);

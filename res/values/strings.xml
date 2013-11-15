@@ -18,5 +18,6 @@
     <string name="on">Waiting for GPS</string>
     <string name="off">Off</string>
     <string name="resume">Waiting for GPS</string>
+    <string name="msg_no_inet">No internet connection</string>
 
 </resources>

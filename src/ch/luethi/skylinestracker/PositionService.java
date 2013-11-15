@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
 import android.os.*;
 import android.support.v4.content.LocalBroadcastManager;
 import com.geeksville.location.SkyLinesTrackingWriter;
@@ -37,15 +38,16 @@ public class PositionService extends Service implements LocationListener {
     private SkyLinesTrackingWriter skyLinesTrackingWriter = null;
     private LocationManager locationManager;
     private SkyLinesPrefs prefs;
-    private static final String TAG = "POS";
     private int posCount = 0;
 
     private HandlerThread senderThread;
+    private ConnectivityManager connectivityManager;
 
 
     @Override
     public void onCreate() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         prefs = new SkyLinesPrefs(this);
     }
 
@@ -73,16 +75,20 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         if (location.getLatitude() != 0.0) {
-            double lat = location.getLatitude();
-            double longitude = location.getLongitude();
-            // convert m/sec to km/hr
-            float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
-            float[] accelVals = null;
-            float vspd = Float.NaN;
-            getOrCreateSkyLinesTrackingWriter().emitPosition(location.getTime(), lat, longitude,
-                    location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
-                    (int) location.getBearing(), kmPerHr, accelVals, vspd);
-            sendPositionStatus();
+            if (isOnline()) {
+                double lat = location.getLatitude();
+                double longitude = location.getLongitude();
+                // convert m/sec to km/hr
+                float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
+                float[] accelVals = null;
+                float vspd = Float.NaN;
+                getOrCreateSkyLinesTrackingWriter().emitPosition(location.getTime(), lat, longitude,
+                        location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
+                        (int) location.getBearing(), kmPerHr, accelVals, vspd);
+                sendPositionStatus();
+            } else {
+                sendConnectionStatus();
+            }
         }
     }
 
@@ -128,5 +134,15 @@ public class PositionService extends Service implements LocationListener {
         Intent intent = new Intent(MainActivity.BROADCAST_STATUS);
         intent.putExtra(MainActivity.MESSAGE_POS_STATUS, ++posCount);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+    }
+
+    private void sendConnectionStatus() {
+        Intent intent = new Intent(MainActivity.BROADCAST_STATUS);
+        intent.putExtra(MainActivity.MESSAGE_CON_STATUS, 0);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+    }
+
+    public boolean isOnline() {
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
     }
 }
