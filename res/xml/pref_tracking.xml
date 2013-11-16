@@ -6,7 +6,8 @@
         <EditTextPreference
             android:capitalize="words"
             android:defaultValue="@string/pref_default_tracking_key"
-            android:inputType="textCapWords"
+            android:digits="0123456789ABCDEF"
+            android:inputType="textCapCharacters"
             android:key="tracking_key"
             android:maxLines="1"
             android:selectAllOnFocus="true"
