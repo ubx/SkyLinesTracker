@@ -38,6 +38,7 @@ public class MainActivity extends Activity {
     public static final String MESSAGE_POS_STATUS = "MESSAGE_POS_STATUS";
     public static final String MESSAGE_POS_WAIT_STATUS = "MESSAGE_POS_WAIT_STATUS";
     public static final String MESSAGE_CON_STATUS = "MESSAGE_CON_STATUS";
+    public static final String IPADDRESS = "ipaddress";
 
     private static Intent positionService;
     private TextView statusText;
@@ -47,10 +48,14 @@ public class MainActivity extends Activity {
     private String msgNoInet;
     private String msgWaitGps;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         positionService = new Intent(this, PositionService.class);
+        if (getIntent().hasExtra(IPADDRESS)) {
+            positionService.putExtras(getIntent().getExtras());
+        }
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);
         checkLiveTracking = (CheckBox) findViewById(R.id.checkLiveTracking);

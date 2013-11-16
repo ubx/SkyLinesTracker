@@ -28,6 +28,7 @@ import android.location.LocationProvider;
 import android.net.ConnectivityManager;
 import android.os.*;
 import android.support.v4.content.LocalBroadcastManager;
+import android.widget.Toast;
 import com.geeksville.location.SkyLinesTrackingWriter;
 
 import java.net.SocketException;
@@ -40,10 +41,9 @@ public class PositionService extends Service implements LocationListener {
     private LocationManager locationManager;
     private SkyLinesPrefs prefs;
     private int posCount = 0;
-
     private HandlerThread senderThread;
     private ConnectivityManager connectivityManager;
-
+    private String ipAddress = "78.47.50.46";  // the real Live Tracking server
 
     @Override
     public void onCreate() {
@@ -54,6 +54,11 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        skyLinesTrackingWriter = null;
+        if (intent.hasExtra(MainActivity.IPADDRESS)) {
+            ipAddress = intent.getStringExtra(MainActivity.IPADDRESS);
+        }
+        Toast.makeText(this, "Ip=" + ipAddress, Toast.LENGTH_LONG).show();    // ToDo -- for test only?
         senderThread = new HandlerThread("SenderThread");
         senderThread.start();
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this, senderThread.getLooper());
@@ -112,21 +117,10 @@ public class PositionService extends Service implements LocationListener {
     }
 
 
-    private boolean isEmulator() {
-        return Build.MANUFACTURER.equals("unknown");
-    }
-
     private SkyLinesTrackingWriter getOrCreateSkyLinesTrackingWriter() {
         if (skyLinesTrackingWriter == null) {
-            String ip_address;
-            if (isEmulator()) {
-                ip_address = "10.20.11.27";
-            } else {
-                //ip_address = "78.47.50.46";  // the real one
-                ip_address = "85.1.17.153";   // ToDo - this is only for testing
-            }
             try {
-                skyLinesTrackingWriter = new SkyLinesTrackingWriter(prefs.getTrackingKey(), ip_address);
+                skyLinesTrackingWriter = new SkyLinesTrackingWriter(prefs.getTrackingKey(), ipAddress);
             } catch (SocketException e) {
                 e.printStackTrace();
             } catch (UnknownHostException e) {
