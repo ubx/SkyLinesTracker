@@ -43,7 +43,8 @@ public class PositionService extends Service implements LocationListener {
     private int posCount = 0;
     private HandlerThread senderThread;
     private ConnectivityManager connectivityManager;
-    private String ipAddress = "78.47.50.46";  // the real Live Tracking server
+    //private String ipAddress = "78.47.50.46";  // the real Live Tracking server
+    private String ipAddress = "85.1.17.153";
 
     @Override
     public void onCreate() {
