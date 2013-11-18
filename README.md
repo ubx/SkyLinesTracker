@@ -1,6 +1,6 @@
 # SkyLines Tracker for Android
 
-SkyLines Tracker for Android is a location tracking client for the
+SkyLines Tracker for Android is a tracking client for the
 [SkyLines](http://skylines.xcsoar.org/) platform.
 
 ## Getting the source
