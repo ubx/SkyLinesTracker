@@ -149,7 +149,7 @@ public class PositionService extends Service implements LocationListener {
     }
 
 
-    public boolean isOnline() {
+    private boolean isOnline() {
         return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
     }
 }
