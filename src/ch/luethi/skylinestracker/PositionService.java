@@ -56,7 +56,8 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         skyLinesTrackingWriter = null;
-        if (intent.hasExtra(MainActivity.IPADDRESS)) {
+        // intent may be null, see onStartCommand documentation.
+        if (intent != null && intent.hasExtra(MainActivity.IPADDRESS)) {
             ipAddress = intent.getStringExtra(MainActivity.IPADDRESS);
         }
         Toast.makeText(this, "Ip=" + ipAddress, Toast.LENGTH_LONG).show();    // ToDo -- for test only?
