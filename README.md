@@ -30,4 +30,4 @@ For more information, please refer to the [git documentation](http://git-scm.com
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-You can find the full license text in the [LICENSE](LICENSE) file.
+You can find the full license text in the [LICENSE](LICENSE.md) file.
