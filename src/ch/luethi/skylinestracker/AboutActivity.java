@@ -30,7 +30,6 @@ public class AboutActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-
         String versionName = getString(R.string.not_available);
         try {
             versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
@@ -40,10 +39,8 @@ public class AboutActivity extends Activity {
         TextView tvVersionName = (TextView) findViewById(R.id.version_name);
         tvVersionName.setText(versionName);
 
-        SkyLinesPrefs prefs = new SkyLinesPrefs(this);
         TextView ipAddress = (TextView) findViewById(R.id.ip_address);
-        ipAddress.setText(prefs.getIpAddress());
-
+        ipAddress.setText(new SkyLinesPrefs(this).getIpAddress());
     }
 
 }
