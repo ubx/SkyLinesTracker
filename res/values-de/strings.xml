@@ -12,12 +12,13 @@
     <string name="pref_system_settings_title">System Einstellungen</string>
     <string name="title_activity_about">Über</string>
     <string name="about_text">SkyLines Tracker</string>
-    <string name="version_name_label">Version</string>
+    <string name="version_name_label">Version:</string>
     <string name="not_available">nicht vorhanden</string>
     <string name="msg_pos_sent">Positionen gesendet</string>
     <string name="on">Warten auf GPS</string>
     <string name="off">Aus</string>
     <string name="resume">Warten auf GPS</string>
     <string name="msg_no_inet">Keine Internetverbindung</string>
+    <string name="ip_address_label">Server ip:</string>
 
 </resources>

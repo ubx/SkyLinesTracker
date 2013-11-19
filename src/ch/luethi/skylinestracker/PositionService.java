@@ -43,8 +43,7 @@ public class PositionService extends Service implements LocationListener {
     private int posCount = 0;
     private HandlerThread senderThread;
     private ConnectivityManager connectivityManager;
-    //private String ipAddress = "78.47.50.46";  // the real Live Tracking server
-    private String ipAddress = "85.1.17.153";
+    private String ipAddress;
 
     @Override
     public void onCreate() {
@@ -56,11 +55,7 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         skyLinesTrackingWriter = null;
-        // intent may be null, see onStartCommand documentation.
-        if (intent != null && intent.hasExtra(MainActivity.IPADDRESS)) {
-            ipAddress = intent.getStringExtra(MainActivity.IPADDRESS);
-        }
-        Toast.makeText(this, "Ip=" + ipAddress, Toast.LENGTH_LONG).show();    // ToDo -- for test only?
+        ipAddress = prefs.getIpAddress();
         senderThread = new HandlerThread("SenderThread");
         senderThread.start();
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this, senderThread.getLooper());

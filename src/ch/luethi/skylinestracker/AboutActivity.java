@@ -25,20 +25,25 @@ import android.widget.TextView;
 
 public class AboutActivity extends Activity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_about);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_about);
 
-		String versionName = getString(R.string.not_available);
-		try {
-			versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
-		TextView tvVersionName = (TextView) findViewById(R.id.version_name);
-		tvVersionName.setText(versionName);
 
-	}
+        String versionName = getString(R.string.not_available);
+        try {
+            versionName = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        TextView tvVersionName = (TextView) findViewById(R.id.version_name);
+        tvVersionName.setText(versionName);
+
+        SkyLinesPrefs prefs = new SkyLinesPrefs(this);
+        TextView ipAddress = (TextView) findViewById(R.id.ip_address);
+        ipAddress.setText(prefs.getIpAddress());
+
+    }
 
 }

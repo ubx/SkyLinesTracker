@@ -31,4 +31,21 @@
             android:layout_marginLeft="16dp"
             android:layout_toRightOf="@+id/text_version"/>
 
+    <TextView
+            android:id="@+id/text_ip_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/text_about"
+            android:layout_below="@+id/version_name"
+            android:text="@string/ip_address_label"/>
+
+    <TextView
+            android:id="@+id/ip_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/version_name"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/text_ip_address"/>
+
+
 </RelativeLayout>
