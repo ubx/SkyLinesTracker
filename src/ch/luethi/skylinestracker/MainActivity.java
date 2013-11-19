@@ -53,6 +53,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        BugSenseHandler.sendDataOverWiFiOnly();
         BugSenseHandler.initAndStartSession(this, "a9b9af2d");
         positionService = new Intent(this, PositionService.class);
         if (getIntent().hasExtra(IPADDRESS)) {
