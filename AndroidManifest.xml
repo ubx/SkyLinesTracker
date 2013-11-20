@@ -1,63 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="ch.luethi.skylinestracker"
-          android:versionCode="1"
-          android:versionName="0.9.14">
+    package="ch.luethi.skylinestracker"
+    android:versionCode="1"
+    android:versionName="1.0">
 
     <uses-sdk
-            android:minSdkVersion="9"
-            android:targetSdkVersion="19"/>
+        android:minSdkVersion="9"
+        android:targetSdkVersion="19" />
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 
     <application
-            android:allowBackup="true"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme">
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
         <activity
-                android:name="ch.luethi.skylinestracker.MainActivity"
-                android:label="@string/app_name">
+            android:name="ch.luethi.skylinestracker.MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-                android:name="ch.luethi.skylinestracker.SettingsActivity"
-                android:label="@string/title_activity_settings">
-        </activity>
+            android:name="ch.luethi.skylinestracker.SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
         <activity
-                android:name="ch.luethi.skylinestracker.AboutActivity"
-                android:label="@string/title_activity_about">
-        </activity>
+            android:name="ch.luethi.skylinestracker.AboutActivity"
+            android:label="@string/title_activity_about"></activity>
 
         <service
-                android:enabled="true"
-                android:name=".PositionService"/>
+            android:enabled="true"
+            android:name=".PositionService" />
 
         <receiver
-                android:enabled="true"
-                android:name=".BootUpReceiver"
-                android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            android:enabled="true"
+            android:name=".BootUpReceiver"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
         <receiver
-                android:enabled="true"
-                android:exported="true"
-                android:name=".SmsReceiver">
+            android:enabled="true"
+            android:exported="true"
+            android:name=".SmsReceiver">
             <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
