@@ -5,7 +5,7 @@ SkyLines Tracker for Android is a tracking client for the
 
 ## Getting the source
 
-The *SkyLines* source code is managed with [git](http://www.git-scm.com/).
+The *SkyLines Tracker* source code is managed with [git](http://www.git-scm.com/).
 It can be downloaded with the following command:
 
     $ git clone git://github.com/ubx/SkyLinesTracker.git
