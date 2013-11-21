@@ -54,6 +54,9 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        if (intent == null)   {
+            // ToDo -- service restarted by os, reread posCount.
+        }
         skyLinesTrackingWriter = null;
         ipAddress = prefs.getIpAddress();
         senderThread = new HandlerThread("SenderThread");
