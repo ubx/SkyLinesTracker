@@ -57,7 +57,9 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent != null) {
+        if (intent == null) {
+            Toast.makeText(this, "Server Restart", Toast.LENGTH_LONG).show();
+        } else {
             app.posCount = 0;
         }
         skyLinesTrackingWriter = null;
