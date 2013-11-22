@@ -81,12 +81,4 @@ class SkyLinesPrefs {
     public String getIpAddress() {
         return prefs.getString(IP_ADDRESS, DEF_IP_ADDRESS);
     }
-
-    public int getPosCount() {
-        return prefs.getInt(POSCOUNT, 0);
-    }
-
-    public void setPosCount(int val) {
-        prefs.edit().putInt(POSCOUNT, val).commit();
-    }
 }
