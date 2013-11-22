@@ -28,6 +28,7 @@ import android.location.LocationProvider;
 import android.net.ConnectivityManager;
 import android.os.*;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.widget.Toast;
 import com.geeksville.location.SkyLinesTrackingWriter;
 
@@ -54,8 +55,10 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent == null)   {
-            // ToDo -- service restarted by os, reread posCount.
+        if (intent == null) {
+            // service restarted by os
+            posCount = prefs.getPosCount();
+            Log.d("XXXX", "OS-restart PositionService, posCount=" + posCount);
         }
         skyLinesTrackingWriter = null;
         ipAddress = prefs.getIpAddress();
@@ -67,6 +70,7 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public void onDestroy() {
+        Log.d("XXXX", "onDestroy, posCount=" + posCount);
         locationManager.removeUpdates(this);
         skyLinesTrackingWriter = null;
         senderThread.getLooper().quit();
@@ -134,6 +138,7 @@ public class PositionService extends Service implements LocationListener {
         Intent intent = new Intent(MainActivity.BROADCAST_STATUS);
         intent.putExtra(MainActivity.MESSAGE_POS_STATUS, ++posCount);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+        prefs.setPosCount(posCount); // ToDo -- how much does this cost?
     }
 
     private void sendPositionWaitStatus() {
