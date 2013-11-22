@@ -57,10 +57,7 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent == null) {
-            // service restarted by os
-            Log.d("XXXX", "OS-restart PositionService, posCount=" + app.posCount);
-        } else {
+        if (intent != null) {
             app.posCount = 0;
         }
         skyLinesTrackingWriter = null;
@@ -140,7 +137,6 @@ public class PositionService extends Service implements LocationListener {
         Intent intent = new Intent(MainActivity.BROADCAST_STATUS);
         intent.putExtra(MainActivity.MESSAGE_POS_STATUS, ++app.posCount);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
-        //prefs.setPosCount(app.posCount); // ToDo -- how much does this cost?
     }
 
     private void sendPositionWaitStatus() {

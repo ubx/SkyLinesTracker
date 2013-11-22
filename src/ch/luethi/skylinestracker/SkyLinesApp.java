@@ -14,7 +14,7 @@ public class SkyLinesApp extends Application {
         SkyLinesPrefs prefs = new SkyLinesPrefs(this);
         prefs.setPosCount(posCount);
         Log.d("XXXX", "SkyLinesApp, stopService, posCount=" + posCount);
-        return super.stopService(name);    //To change body of overridden methods use File | Settings | File Templates.
+        return super.stopService(name);
     }
 
     @Override
