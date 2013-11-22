@@ -41,24 +41,27 @@ public class PositionService extends Service implements LocationListener {
     private SkyLinesTrackingWriter skyLinesTrackingWriter = null;
     private LocationManager locationManager;
     private SkyLinesPrefs prefs;
-    private int posCount = 0;
     private HandlerThread senderThread;
     private ConnectivityManager connectivityManager;
     private String ipAddress;
+
+    private SkyLinesApp app;
 
     @Override
     public void onCreate() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         prefs = new SkyLinesPrefs(this);
+        app = ((SkyLinesApp) getApplicationContext());
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent == null) {
             // service restarted by os
-            posCount = prefs.getPosCount();
-            Log.d("XXXX", "OS-restart PositionService, posCount=" + posCount);
+            Log.d("XXXX", "OS-restart PositionService, posCount=" + app.posCount);
+        } else {
+            app.posCount = 0;
         }
         skyLinesTrackingWriter = null;
         ipAddress = prefs.getIpAddress();
@@ -70,7 +73,6 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public void onDestroy() {
-        Log.d("XXXX", "onDestroy, posCount=" + posCount);
         locationManager.removeUpdates(this);
         skyLinesTrackingWriter = null;
         senderThread.getLooper().quit();
@@ -136,9 +138,9 @@ public class PositionService extends Service implements LocationListener {
 
     private void sendPositionStatus() {
         Intent intent = new Intent(MainActivity.BROADCAST_STATUS);
-        intent.putExtra(MainActivity.MESSAGE_POS_STATUS, ++posCount);
+        intent.putExtra(MainActivity.MESSAGE_POS_STATUS, ++app.posCount);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
-        prefs.setPosCount(posCount); // ToDo -- how much does this cost?
+        //prefs.setPosCount(app.posCount); // ToDo -- how much does this cost?
     }
 
     private void sendPositionWaitStatus() {

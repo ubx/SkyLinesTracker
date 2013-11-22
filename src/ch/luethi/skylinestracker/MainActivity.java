@@ -47,6 +47,7 @@ public class MainActivity extends Activity {
     private String msgPosSent;
     private String msgNoInet;
     private String msgWaitGps;
+    private SkyLinesApp app;
 
 
     @Override
@@ -62,6 +63,7 @@ public class MainActivity extends Activity {
         msgNoInet = getResources().getString(R.string.msg_no_inet);
         msgWaitGps = getResources().getString(R.string.resume);
         LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
+        app = ((SkyLinesApp) getApplicationContext());
     }
 
     @Override
