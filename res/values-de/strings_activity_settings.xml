@@ -25,9 +25,9 @@
     </string-array>
     
     <string name="pref_title_autostart_tracking">Auto Start Tracking</string>
-    <string name="pref_description_title_autostart_tracking">Erlaube automatisches starten des Trackers bei Telefonstart</string>
+    <string name="pref_description_title_autostart_tracking">Start das Tracking bei Telefonstart</string>
     
     <string name="pref_title_sms_config">SMS Einstellungen</string>
-    <string name="pref_description_title_sms_config">Erlaube einstellen durch empfang von SMS</string>
+    <string name="pref_description_title_sms_config">Konfiguration per SMS zulassen</string>
 
 </resources>
