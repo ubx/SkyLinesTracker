@@ -33,12 +33,19 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import com.bugsense.trace.BugSenseHandler;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends Activity {
 
     public static final String BROADCAST_STATUS = "SKYLINESTRACKER_BROADCAST_STATUS";
-    public static final String MESSAGE_POS_STATUS = "MESSAGE_POS_STATUS";
-    public static final String MESSAGE_POS_WAIT_STATUS = "MESSAGE_POS_WAIT_STATUS";
-    public static final String MESSAGE_CON_STATUS = "MESSAGE_CON_STATUS";
+    public static final String MESSAGE_STATUS_TYPE = "MESSAGE_STATUS_TYPE";
+    public static final int MESSAGE_POS_STATUS = 0;
+    public static final int MESSAGE_POS_WAIT_STATUS = 1;
+    public static final int MESSAGE_CON_STATUS = 2;
+
+    private static final DecimalFormat dfLat = new DecimalFormat("##.#####");
+    private static final DecimalFormat dfLon = new DecimalFormat("###.#####");
+
 
     private static Intent positionService;
     private TextView statusText;
@@ -55,6 +62,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         BugSenseHandler.sendDataOverWiFiOnly();
         BugSenseHandler.initAndStartSession(this, "a9b9af2d");
+        app = ((SkyLinesApp) getApplicationContext());
         positionService = new Intent(this, PositionService.class);
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);
@@ -68,11 +76,13 @@ public class MainActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
+        app.guiActive = false;
         LocalBroadcastManager.getInstance(this).unregisterReceiver(onStatusChange);
     }
 
     @Override
     protected void onResume() {
+        app.guiActive = true;
         super.onResume();
         if (isPositionServiceRunning()) {
             checkLiveTracking.setChecked(true);
@@ -127,13 +137,17 @@ public class MainActivity extends Activity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (intent.hasExtra(MESSAGE_POS_STATUS)) {
-                int cnt = intent.getIntExtra(MESSAGE_POS_STATUS, 0);
-                statusText.setText(cnt + msgPosSent);
-            } else if (intent.hasExtra(MESSAGE_CON_STATUS)) {
-                statusText.setText(msgNoInet);
-            } else if (intent.hasExtra(MESSAGE_POS_WAIT_STATUS)) {
-                statusText.setText(msgWaitGps);
+            int statusType = intent.getIntExtra(MESSAGE_STATUS_TYPE, 99);
+            switch (statusType) {
+                case MESSAGE_POS_STATUS:
+                    statusText.setText(msgPosSent + " " + dfLon.format(app.lastLon) + " " + dfLat.format(app.lastLat));
+                    break;
+                case MESSAGE_CON_STATUS:
+                    statusText.setText(msgNoInet);
+                    break;
+                case MESSAGE_POS_WAIT_STATUS:
+                    statusText.setText(msgWaitGps);
+                    break;
             }
         }
     };

@@ -45,7 +45,9 @@ public class PositionService extends Service implements LocationListener {
     private ConnectivityManager connectivityManager;
     private String ipAddress;
 
-    private SkyLinesApp app;
+    private static SkyLinesApp app;
+    private static Intent intentPosStatus, intentWaitStatus, intentConStatus;
+
 
     @Override
     public void onCreate() {
@@ -53,15 +55,16 @@ public class PositionService extends Service implements LocationListener {
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         prefs = new SkyLinesPrefs(this);
         app = ((SkyLinesApp) getApplicationContext());
+        intentPosStatus = new Intent(MainActivity.BROADCAST_STATUS);
+        intentPosStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_POS_STATUS);
+        intentWaitStatus = new Intent(MainActivity.BROADCAST_STATUS);
+        intentWaitStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_POS_WAIT_STATUS);
+        intentConStatus = new Intent(MainActivity.BROADCAST_STATUS);
+        intentConStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_CON_STATUS);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent == null) {
-            Toast.makeText(this, "Server Restart", Toast.LENGTH_LONG).show();
-        } else {
-            app.posCount = 0;
-        }
         skyLinesTrackingWriter = null;
         ipAddress = prefs.getIpAddress();
         senderThread = new HandlerThread("SenderThread");
@@ -87,20 +90,22 @@ public class PositionService extends Service implements LocationListener {
     public void onLocationChanged(Location location) {
         if (isOnline()) {
             if (location.getLatitude() != 0.0) {
-
-                double lat = location.getLatitude();
-                double longitude = location.getLongitude();
+                app.lastLat = location.getLatitude();
+                app.lastLon = location.getLongitude();
                 // convert m/sec to km/hr
                 float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
                 float[] accelVals = null;
                 float vspd = Float.NaN;
-                getOrCreateSkyLinesTrackingWriter().emitPosition(location.getTime(), lat, longitude,
+                getOrCreateSkyLinesTrackingWriter().emitPosition(location.getTime(), app.lastLat, app.lastLon,
                         location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
                         (int) location.getBearing(), kmPerHr, accelVals, vspd);
-                sendPositionStatus();
+                if (app.guiActive) {
+                    sendPositionStatus();
+                }
             }
         } else {
-            sendConnectionStatus();
+            if (app.guiActive)
+                sendConnectionStatus();
         }
     }
 
@@ -118,7 +123,8 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public void onProviderDisabled(String s) {
-        sendPositionWaitStatus();
+        if (app.guiActive)
+            sendPositionWaitStatus();
     }
 
 
@@ -136,21 +142,15 @@ public class PositionService extends Service implements LocationListener {
     }
 
     private void sendPositionStatus() {
-        Intent intent = new Intent(MainActivity.BROADCAST_STATUS);
-        intent.putExtra(MainActivity.MESSAGE_POS_STATUS, ++app.posCount);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intentPosStatus);
     }
 
     private void sendPositionWaitStatus() {
-        Intent intent = new Intent(MainActivity.BROADCAST_STATUS);
-        intent.putExtra(MainActivity.MESSAGE_POS_WAIT_STATUS, 0);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intentWaitStatus);
     }
 
     private void sendConnectionStatus() {
-        Intent intent = new Intent(MainActivity.BROADCAST_STATUS);
-        intent.putExtra(MainActivity.MESSAGE_CON_STATUS, 0);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(intentConStatus);
     }
 
 

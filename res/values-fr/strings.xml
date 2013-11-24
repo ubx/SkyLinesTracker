@@ -13,8 +13,8 @@
     <string name="title_activity_about">A propos</string>
     <string name="about_text">SkyLines Tracker</string>
     <string name="version_name_label">Version:</string>
-    <string name="not_available">pas disponible</string>
-    <string name="msg_pos_sent">positions envoyées</string>
+    <string name="not_available">Pas disponible</string>
+    <string name="msg_pos_sent">Dernier fix</string>
     <string name="on">En attente du GPS</string>
     <string name="off">Off</string>
     <string name="resume">En attente du GPS</string>

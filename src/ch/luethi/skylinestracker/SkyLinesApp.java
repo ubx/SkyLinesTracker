@@ -22,6 +22,6 @@ import android.app.Application;
 
 public class SkyLinesApp extends Application {
 
-    public int posCount;
-
+    public boolean guiActive;
+    public double lastLat, lastLon;
 }
