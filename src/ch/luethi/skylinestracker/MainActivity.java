@@ -43,8 +43,8 @@ public class MainActivity extends Activity {
     public static final int MESSAGE_POS_WAIT_STATUS = 1;
     public static final int MESSAGE_CON_STATUS = 2;
 
-    private static final DecimalFormat dfLat = new DecimalFormat("##.#####");
-    private static final DecimalFormat dfLon = new DecimalFormat("###.#####");
+    private static final DecimalFormat dfLat = new DecimalFormat("##.00000");
+    private static final DecimalFormat dfLon = new DecimalFormat("###.00000");
 
 
     private static Intent positionService;
