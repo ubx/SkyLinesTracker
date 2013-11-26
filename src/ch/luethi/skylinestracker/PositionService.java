@@ -50,10 +50,8 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public void onCreate() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         prefs = new SkyLinesPrefs(this);
         app = ((SkyLinesApp) getApplicationContext());
-        initConnectionStatus(connectivityManager);
         intentPosStatus = new Intent(MainActivity.BROADCAST_STATUS);
         intentPosStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_POS_STATUS);
         intentWaitStatus = new Intent(MainActivity.BROADCAST_STATUS);
@@ -66,6 +64,7 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         skyLinesTrackingWriter = null;
+        initConnectionStatus();
         ipAddress = prefs.getIpAddress();
         senderThread = new HandlerThread("SenderThread");
         senderThread.start();
@@ -158,7 +157,8 @@ public class PositionService extends Service implements LocationListener {
         return app.online;
     }
 
-    private void initConnectionStatus(ConnectivityManager connectivityManager) {
+    private void initConnectionStatus() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         app.online = activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
