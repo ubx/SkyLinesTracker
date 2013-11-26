@@ -26,10 +26,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.*;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
-import android.widget.Toast;
 import com.geeksville.location.SkyLinesTrackingWriter;
 
 import java.net.SocketException;
@@ -42,7 +41,6 @@ public class PositionService extends Service implements LocationListener {
     private LocationManager locationManager;
     private SkyLinesPrefs prefs;
     private HandlerThread senderThread;
-    private ConnectivityManager connectivityManager;
     private String ipAddress;
 
     private static SkyLinesApp app;
@@ -52,7 +50,6 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public void onCreate() {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         prefs = new SkyLinesPrefs(this);
         app = ((SkyLinesApp) getApplicationContext());
         intentPosStatus = new Intent(MainActivity.BROADCAST_STATUS);
@@ -63,9 +60,11 @@ public class PositionService extends Service implements LocationListener {
         intentConStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_CON_STATUS);
     }
 
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         skyLinesTrackingWriter = null;
+        initConnectionStatus();
         ipAddress = prefs.getIpAddress();
         senderThread = new HandlerThread("SenderThread");
         senderThread.start();
@@ -88,8 +87,8 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        if (isOnline()) {
-            if (location.getLatitude() != 0.0) {
+        if (location.getLatitude() != 0.0) {
+            if (isOnline()) {
                 app.lastLat = location.getLatitude();
                 app.lastLon = location.getLongitude();
                 // convert m/sec to km/hr
@@ -102,10 +101,10 @@ public class PositionService extends Service implements LocationListener {
                 if (app.guiActive) {
                     sendPositionStatus();
                 }
+            } else {
+                if (app.guiActive)
+                    sendConnectionStatus();
             }
-        } else {
-            if (app.guiActive)
-                sendConnectionStatus();
         }
     }
 
@@ -155,6 +154,13 @@ public class PositionService extends Service implements LocationListener {
 
 
     private boolean isOnline() {
-        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
+        return app.online;
     }
+
+    private void initConnectionStatus() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        app.online = activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
 }

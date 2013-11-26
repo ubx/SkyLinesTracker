@@ -18,11 +18,21 @@
 
 package ch.luethi.skylinestracker;
 
-import android.app.Application;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
-public class SkyLinesApp extends Application {
+public class ConnectionUpdateReceiver extends BroadcastReceiver {
 
-    public boolean online;
-    public boolean guiActive;
-    public double lastLat, lastLon;
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        SkyLinesApp app = ((SkyLinesApp) context.getApplicationContext());
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        app.online = activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
 }
+
+
