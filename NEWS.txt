@@ -1,2 +1,6 @@
+Version 1.0.1 - not yet released
+* upgrade to bugsense 3.6
+
+
 Version 1.0 - 27-nov-2013
 * initial release
