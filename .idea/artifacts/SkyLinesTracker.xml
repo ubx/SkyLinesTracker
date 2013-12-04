@@ -3,9 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/SkyLinesTracker</output-path>
     <properties id="android-properties">
       <options>
-        <option name="includeSystemProGuardCfgFile" value="true" />
         <option name="keyStoreUrl" value="file://" />
-        <option name="proGuardCfgFileUrl" value="file://$PROJECT_DIR$/proguard-project.txt" />
       </options>
     </properties>
     <root id="archive" name="SkyLinesTracker.apk">
