@@ -1,7 +1,7 @@
 # SkyLines Tracker for Android
 
 SkyLines Tracker for Android is a tracking client for the
-[SkyLines](https://wwww.skylines-project.org) platform.
+[SkyLines](https://www.skylines-project.org) platform.
 
 You can get the latest APK here: [Download](https://www.dropbox.com/s/1dkhvwm6xp9ahey/SkyLinesTracker.apk) or
 from [Google play](https://play.google.com/store/apps/details?id=ch.luethi.skylinestracker)
