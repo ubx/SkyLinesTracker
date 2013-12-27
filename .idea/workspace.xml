@@ -109,7 +109,7 @@
       <file leaf-file-name="workspace.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="191" column="14" selection-start="9070" selection-end="9070" vertical-scroll-proportion="0.3043478" vertical-offset="3009" max-vertical-offset="9911">
+            <state line="193" column="14" selection-start="9168" selection-end="9168" vertical-scroll-proportion="0.3043478" vertical-offset="3043" max-vertical-offset="9945">
               <folding />
             </state>
           </provider>
@@ -443,6 +443,11 @@
       <created>1388159229712</created>
       <updated>1388159229712</updated>
     </task>
+    <task id="LOCAL-00001" summary="Enable project with IntelliJ.">
+      <created>1388160669468</created>
+      <updated>1388160669468</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -488,6 +493,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Enable project with IntelliJ." />
+    <option name="LAST_COMMIT_MESSAGE" value="Enable project with IntelliJ." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -569,7 +576,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="191" column="14" selection-start="9070" selection-end="9070" vertical-scroll-proportion="0.3043478" vertical-offset="3009" max-vertical-offset="9911">
+        <state line="193" column="14" selection-start="9168" selection-end="9168" vertical-scroll-proportion="0.3043478" vertical-offset="3043" max-vertical-offset="9945">
           <folding />
         </state>
       </provider>
