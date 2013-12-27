@@ -4,6 +4,7 @@
     <properties id="android-properties">
       <options>
         <option name="keyStoreUrl" value="file://" />
+        <option name="signingMode" value="DEBUG" />
       </options>
     </properties>
     <root id="archive" name="SkyLinesTracker.apk">
