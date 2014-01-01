@@ -55,7 +55,12 @@ class SkyLinesPrefs {
 
     public long getTrackingKey() {
         String val = prefs.getString(TRACKING_KEY, "0");
-        return new BigInteger(val, 16).longValue();
+        long ret = 0;
+        try {
+            ret = new BigInteger(val, 16).longValue();
+        } catch (NumberFormatException e) {
+        }
+        return ret;
     }
 
     public void setTrackingKey(String key) {
