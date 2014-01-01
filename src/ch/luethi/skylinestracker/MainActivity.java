@@ -39,6 +39,7 @@ public class MainActivity extends Activity {
 
     public static final String BROADCAST_STATUS = "SKYLINESTRACKER_BROADCAST_STATUS";
     public static final String MESSAGE_STATUS_TYPE = "MESSAGE_STATUS_TYPE";
+    public static final String ISTESTING = "ISTESTING";
     public static final int MESSAGE_POS_STATUS = 0;
     public static final int MESSAGE_POS_WAIT_STATUS = 1;
     public static final int MESSAGE_CON_STATUS = 2;
@@ -60,8 +61,10 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BugSenseHandler.sendDataOverWiFiOnly();
-        BugSenseHandler.initAndStartSession(this, "a9b9af2d");
+        if (!getIntent().hasExtra(ISTESTING)) {
+            BugSenseHandler.sendDataOverWiFiOnly();
+            BugSenseHandler.initAndStartSession(this, "a9b9af2d");
+        }
         app = ((SkyLinesApp) getApplicationContext());
         positionService = new Intent(this, PositionService.class);
         setContentView(R.layout.activity_main);

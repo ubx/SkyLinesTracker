@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="4" />
+  </component>
   <component name="AndroidLayouts">
     <shared>
       <config />
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cbe53da3-b8e0-4557-a28a-314122f05e7e" name="Default" comment="Enable select AVM&#10;">
+    <list default="true" id="cbe53da3-b8e0-4557-a28a-314122f05e7e" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Testing/Testing.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_core_1_3.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_11.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/robolectric_2_2_jar_with_dependencies.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/MainActivity.java" afterPath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SkyLinesTracker.iml" afterPath="$PROJECT_DIR$/SkyLinesTracker.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SkyLinesTracker.iws" />
@@ -67,10 +77,24 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
-    <favorites_list name="SkyLinesTracker" />
+    <favorites_list name="SkyLinesTracker">
+      <favorite_root url="file://$PROJECT_DIR$/Testing/libs/junit-4.11.jar" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+    </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="MainActivityTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="39" column="38" selection-start="1202" selection-end="1202" vertical-scroll-proportion="1.3076923" vertical-offset="0" max-vertical-offset="765">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -84,6 +108,10 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/Testing/src/xx.java" />
+        <option value="$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTestTest.java" />
+        <option value="$PROJECT_DIR$/src/ch/luethi/skylinestracker/MainActivity.java" />
+        <option value="$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java" />
       </list>
     </option>
   </component>
@@ -92,6 +120,25 @@
     <option name="y" value="-8" />
     <option name="width" value="1616" />
     <option name="height" value="916" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>WrongPackageStatement</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -124,16 +171,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SkyLinesTracker" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -149,6 +186,14 @@
         </subPane>
       </pane>
       <pane id="Scope">
+        <subPane subId="Tests">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
         <subPane subId="Production">
           <PATH>
             <PATH_ELEMENT USER_OBJECT="Root">
@@ -163,23 +208,53 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="SkyLinesTracker">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SkyLinesTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SkyLinesTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="SkyLinesTracker">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SkyLinesTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT=".idea">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SkyLinesTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SkyLinesTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Testing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SkyLinesTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SkyLinesTracker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -201,6 +276,23 @@
     <property name="FullScreen" value="false" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
+    <property name="dynamic.classpath" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ch.luethi.skylinestracker" />
+    </key>
   </component>
   <component name="RunManager" selected="Android Application.SkylinesTracker (default)">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin" singleton="true">
@@ -237,19 +329,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -275,6 +354,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -356,8 +448,32 @@
         </option>
       </method>
     </configuration>
-    <list size="1">
+    <configuration default="false" name="Tests" type="JUnit" factoryName="JUnit">
+      <module name="Testing" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="PACKAGE_NAME" value="ch.luethi.skylinestracker" />
+      <option name="MAIN_CLASS_NAME" value="ch.luethi.skylinestracker.MainActivityTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <dir value="$PROJECT_DIR$/Testing/src" />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Android Application.SkylinesTracker (default)" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.Tests" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -400,7 +516,11 @@
       <created>1388160854389</created>
       <updated>1388160854389</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Enable project with IntelliJ.">
+      <created>1388402957799</created>
+      <updated>1388402957799</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -408,7 +528,7 @@
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32528588" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3227446" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -416,9 +536,9 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282636" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32655653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924837" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -431,7 +551,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924837" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39898348" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -446,9 +566,9 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Enable project with IntelliJ." />
     <MESSAGE value="Enable project with IntelliJ.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enable project with IntelliJ.&#10;" />
+    <MESSAGE value="Enable project with IntelliJ." />
+    <option name="LAST_COMMIT_MESSAGE" value="Enable project with IntelliJ." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -458,6 +578,153 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="61" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="765">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/luethi/skylinestracker/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="39" selection-start="832" selection-end="832" vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="2975">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="22" selection-start="724" selection-end="724" vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="88" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="88" selection-start="662" selection-end="662" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="12" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="12" selection-start="747" selection-end="747" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="4" selection-start="739" selection-end="739" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="29" selection-start="903" selection-end="903" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="64" selection-start="663" selection-end="663" vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="7" selection-start="533" selection-end="533" vertical-scroll-proportion="0.0" vertical-offset="122" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="80" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="73" selection-start="766" selection-end="766" vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="16" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="54" selection-start="1076" selection-end="1076" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="16" selection-start="324" selection-end="324" vertical-scroll-proportion="0.0" vertical-offset="3" max-vertical-offset="2210">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/luethi/skylinestracker/SkyLinesPrefs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="20" selection-start="2174" selection-end="2174" vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="1190" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SkyLinesTracker.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493" />
@@ -472,9 +739,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="224" column="37" selection-start="10270" selection-end="10270" vertical-scroll-proportion="0.0" vertical-offset="3808" max-vertical-offset="11645">
-          <folding />
-        </state>
+        <state line="224" column="37" selection-start="10270" selection-end="10270" vertical-scroll-proportion="0.0" vertical-offset="3808" max-vertical-offset="11645" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/luethi/skylinestracker/MainActivity.java">
@@ -502,19 +767,9 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="795" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/luethi/skylinestracker/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="12" selection-start="4353" selection-end="4353" vertical-scroll-proportion="0.0" vertical-offset="1197" max-vertical-offset="2329" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/luethi/skylinestracker/SettingsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="141" column="20" selection-start="5884" selection-end="5884" vertical-scroll-proportion="0.40276036" vertical-offset="2076" max-vertical-offset="2873" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/luethi/skylinestracker/SkyLinesPrefs.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="69" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
@@ -526,14 +781,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="224" column="37" selection-start="10270" selection-end="10270" vertical-scroll-proportion="0.0" vertical-offset="3808" max-vertical-offset="11645">
-          <folding />
-        </state>
+        <state line="224" column="37" selection-start="10270" selection-end="10270" vertical-scroll-proportion="0.0" vertical-offset="3808" max-vertical-offset="11645" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SkyLinesTracker.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="504" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/luethi/skylinestracker/SkyLinesPrefs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="32" selection-start="806" selection-end="830" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190" />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/Testing/libs/junit-4.11.jar!/org/junit/Test.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="35" selection-start="589" selection-end="589" vertical-scroll-proportion="0.5345912" vertical-offset="0" max-vertical-offset="477" />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/android-sdks/platforms/android-18/android.jar!/junit/runner/BaseTestRunner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="119" selection-end="119" vertical-scroll-proportion="0.10159363" vertical-offset="0" max-vertical-offset="1343" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/luethi/skylinestracker/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="39" selection-start="832" selection-end="832" vertical-scroll-proportion="-0.5418327" vertical-offset="306" max-vertical-offset="2380">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="38" selection-start="1202" selection-end="1202" vertical-scroll-proportion="1.3076923" vertical-offset="0" max-vertical-offset="765">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
@@ -555,7 +839,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Android</last-edited>
+          <last-edited>Android (SkyLinesTracker)|Android</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -603,7 +887,18 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>android-support-v4</last-edited>
+          <last-edited>hamcrest-core-1.3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
