@@ -25,6 +25,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -126,6 +127,11 @@ public class MainActivity extends Activity {
     public void startStopTracking(View view) {
         CheckBox cb = (CheckBox) view;
         if (cb.isChecked()) {
+            String provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
+            if (!provider.contains("gps")) {
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            }
             LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
             startService(positionService);
             statusText.setText(R.string.on);

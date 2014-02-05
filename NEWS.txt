@@ -1,3 +1,6 @@
+Version 1.0.2 - net yet released
+* prompt user to enable GPS (#2)
+
 Version 1.0.1 - 08-jan-2014
 * support for Android 2.1
 * fix Invalid BigInteger (#1)
