@@ -1,4 +1,4 @@
-Version 1.0.2 - net yet released
+Version 1.0.2 - 07-feb-2014
 * prompt user to enable GPS (#2)
 
 Version 1.0.1 - 08-jan-2014
