@@ -76,7 +76,10 @@ public class PositionService extends Service implements LocationListener {
     public void onDestroy() {
         locationManager.removeUpdates(this);
         skyLinesTrackingWriter = null;
-        senderThread.getLooper().quit();
+        Looper looper = senderThread.getLooper();
+        if (looper != null) {
+            looper.quit();
+        }
         stopSelf();
     }
 

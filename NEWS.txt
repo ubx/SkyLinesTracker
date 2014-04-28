@@ -1,3 +1,6 @@
+Version 1.0.3 - not jet released
+* fix NPE on stop Looper (#4)
+
 Version 1.0.2 - 07-feb-2014
 * prompt user to enable GPS (#2)
 
