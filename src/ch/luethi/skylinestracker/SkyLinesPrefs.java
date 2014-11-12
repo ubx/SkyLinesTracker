@@ -33,7 +33,7 @@ class SkyLinesPrefs {
     private static final String SMS_CONFIG = "sms_config";
     private static final String IP_ADDRESS = "ip_address";
     private static final String POSCOUNT = "poscount";
-    private static final String DEF_IP_ADDRESS = "78.47.50.46";   // default is the real Live Tracking server
+    private static final String DEF_IP_ADDRESS = "95.128.34.172";   // default is the real Live Tracking server
 
     private final SharedPreferences prefs;
 
