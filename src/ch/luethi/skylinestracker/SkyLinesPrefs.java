@@ -67,11 +67,11 @@ class SkyLinesPrefs {
         prefs.edit().putString(TRACKING_KEY, key).commit();
     }
 
-    public boolean isAutostartTracking() {
+    public boolean isAutoStartTracking() {
         return prefs.getBoolean(AUTOSTART_TRACKING, false);
     }
 
-    public void setAutostartTracking(boolean val) {
+    public void setAutoStartTracking(boolean val) {
         prefs.edit().putBoolean(AUTOSTART_TRACKING, val).commit();
     }
 

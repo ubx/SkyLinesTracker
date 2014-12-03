@@ -32,17 +32,17 @@ public class SkyLinesPrefsTest {
 
     @Test
     public void testDefAutoStartTracking() {
-        assertThat("Wrong default Auto Start Tracking", pref.isAutostartTracking(), equalTo(false));
+        assertThat("Wrong default Auto Start Tracking", pref.isAutoStartTracking(), equalTo(false));
     }
 
     @Test
     public void testSetAutoStartTracking() {
-        pref.setAutostartTracking(true);
-        assertThat("Wrong set Auto Start Tracking", pref.isAutostartTracking(), equalTo(true));
-        pref.setAutostartTracking(false);
-        assertThat("Wrong set Auto Start Tracking", pref.isAutostartTracking(), equalTo(false));
-        pref.setAutostartTracking(true);
-        assertThat("Wrong set Auto Start Tracking", pref.isAutostartTracking(), equalTo(true));
+        pref.setAutoStartTracking(true);
+        assertThat("Wrong set Auto Start Tracking", pref.isAutoStartTracking(), equalTo(true));
+        pref.setAutoStartTracking(false);
+        assertThat("Wrong set Auto Start Tracking", pref.isAutoStartTracking(), equalTo(false));
+        pref.setAutoStartTracking(true);
+        assertThat("Wrong set Auto Start Tracking", pref.isAutoStartTracking(), equalTo(true));
     }
 
     @Test

@@ -53,7 +53,7 @@ public class SmsReceiver extends BroadcastReceiver {
                     } else if (kv[0].equals("INT")) {
                         prefs.setTrackingInterval(kv[1]);
                     } else if (kv[0].equals("AUTO")) {
-                        prefs.setAutostartTracking(kv[1].equals("ON"));
+                        prefs.setAutoStartTracking(kv[1].equals("ON"));
                     } else if (kv[0].equals("SMS")) {
                         prefs.setSmsConfig(kv[1].equals("ON"));
                     } else if (kv[0].equals("LIVE")) {

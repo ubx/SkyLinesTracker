@@ -29,7 +29,7 @@ public class BootUpReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         SkyLinesPrefs prefs = new SkyLinesPrefs(context);
-        if (prefs.isAutostartTracking()) {
+        if (prefs.isAutoStartTracking()) {
             Intent positionService = new Intent(context, PositionService.class);
             context.startService(positionService);
         }
