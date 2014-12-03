@@ -11,7 +11,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(emulateSdk=18)
+@Config(emulateSdk = 18)
 
 public class SkyLinesPrefsTest {
 
@@ -28,6 +28,42 @@ public class SkyLinesPrefsTest {
         pref.setTrackingKey("123ABCD");
         long key = pref.getTrackingKey();
         assertThat("Key not correct stored", Long.toHexString(key).toUpperCase(), equalTo("123ABCD"));
+    }
+
+    @Test
+    public void testDefAutoStartTracking() {
+        assertThat("Wrong default Auto Start Tracking", pref.isAutostartTracking(), equalTo(false));
+    }
+
+    @Test
+    public void testSetAutoStartTracking() {
+        pref.setAutostartTracking(true);
+        assertThat("Wrong set Auto Start Tracking", pref.isAutostartTracking(), equalTo(true));
+        pref.setAutostartTracking(false);
+        assertThat("Wrong set Auto Start Tracking", pref.isAutostartTracking(), equalTo(false));
+        pref.setAutostartTracking(true);
+        assertThat("Wrong set Auto Start Tracking", pref.isAutostartTracking(), equalTo(true));
+    }
+
+    @Test
+    public void testDefSmsConfig() {
+        assertThat("Wrong default SMS Config", pref.isSmsConfig(), equalTo(false));
+    }
+
+    @Test
+    public void testSmsConfig() {
+        pref.setSmsConfig(true);
+        assertThat("Wrong set SMS Config", pref.isSmsConfig(), equalTo(true));
+        pref.setSmsConfig(false);
+        assertThat("Wrong set SMS Config", pref.isSmsConfig(), equalTo(false));
+        pref.setSmsConfig(true);
+        assertThat("Wrong set SMS Config", pref.isSmsConfig(), equalTo(true));
+    }
+
+    @Test
+    public void testDefIpAddress() {
+        String ipAddress = pref.getIpAddress();
+        assertThat("Wrong default ip address", ipAddress, equalTo("95.128.34.172"));
     }
 
     @Test
