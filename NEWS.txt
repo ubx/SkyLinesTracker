@@ -2,7 +2,8 @@ Version 1.0.3 - not yet released
 * fix NPE on stop Looper (#4)
 * prepare for Android 5
 * minor GUI cosmetic changes
-* updated SkyLines server IP
+* updated SkyLines server IP (#6)
+* more unit test
 
 Version 1.0.2 - 07-feb-2014
 * prompt user to enable GPS (#2)
