@@ -1,9 +1,28 @@
+/*
+ * SkyLines Tracker is a location tracking client for the SkyLines platform <www.skylines-project.org>.
+ * Copyright (C) 2013  Andreas Lüthi
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package ch.luethi.skylinestracker;
 
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.telephony.PhoneNumberUtils;
+import android.widget.CheckBox;
 import com.android.internal.telephony.EncodeException;
 import com.android.internal.telephony.GsmAlphabet;
 import org.junit.Before;
@@ -21,6 +40,9 @@ import java.util.GregorianCalendar;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.robolectric.Robolectric.application;
+import static org.robolectric.Robolectric.buildActivity;
 
 
 @RunWith(RobolectricTestRunner.class)
@@ -28,12 +50,18 @@ import static org.junit.Assert.assertThat;
 
 public class SmsReceiverTest {
 
-    SkyLinesPrefs pref;
-    Context context;
-    SmsReceiver smsReceiver;
+    private MainActivity mainActivity;
+    private SkyLinesPrefs pref;
+    private Context context;
+    private SmsReceiver smsReceiver;
+    private ActivityManager activityManager;
 
     @Before
     public void setUp() {
+        activityManager = (ActivityManager) Robolectric.application.getSystemService(Context.ACTIVITY_SERVICE);
+        Intent intent = new Intent(application, MainActivity.class);
+        intent.putExtra(MainActivity.ISTESTING, true);
+        mainActivity = buildActivity(MainActivity.class).withIntent(intent).create().get();
         pref = new SkyLinesPrefs(Robolectric.application.getApplicationContext());
         context = Robolectric.application.getApplicationContext();
         smsReceiver = new SmsReceiver();
@@ -41,39 +69,52 @@ public class SmsReceiverTest {
 
     @Test
     public void testSendSmsConfigurationKey() {
-        assertThat("Wrong initial Key after smsReceiver configuration not allowed", pref.isAutoStartTracking(), equalTo(false));
-        pref.setTrackingKey("1234");
-        pref.setSmsConfig(false);
+        setPreferences(123, 2, false, false);
         smsReceiver.onReceive(context, createSms("09000000000", "SLT Key=AB7411"));
-        assertThat("Wrong Key after smsReceiver configuration not allowed", Long.toHexString(pref.getTrackingKey()).toUpperCase(), equalTo("1234"));
-        pref.setSmsConfig(true);
+        assertTrue("Config changed although smsReceiver configuration not allowed", comparePreferences(123, 2, false, false));
+        setPreferences(3456, 2, false, true);
         smsReceiver.onReceive(context, createSms("09000000000", "SLT Key=AB7411"));
-        assertThat("Wrong Key after smsReceiver setting", Long.toHexString(pref.getTrackingKey()).toUpperCase(), equalTo("AB7411"));
+        assertTrue("Wrong Key after smsReceiver setting", comparePreferences(0xAB7411, 2, false, true));
         smsReceiver.onReceive(context, createSms("09000000000", "SLT Key=F6518"));
-        assertThat("Wrong Key after smsReceiver setting", Long.toHexString(pref.getTrackingKey()).toUpperCase(), equalTo("F6518"));
+        assertTrue("Wrong Key after smsReceiver setting", comparePreferences(0xF6518, 2, false, true));
     }
 
     @Test
     public void testSendSmsConfigurationKeyNoHex() {
-        pref.setSmsConfig(true);
-        smsReceiver.onReceive(context, createSms("09000000000", "SLT Key=ABD3"));
-        assertThat("Wrong Key after smsReceiver setting", Long.toHexString(pref.getTrackingKey()).toUpperCase(), equalTo("ABD3"));
+        setPreferences(234375, 2, false, true);
         smsReceiver.onReceive(context, createSms("09000000000", "SLT Key=123W"));
-        assertThat("Wrong Key after smsReceiver setting", Long.toHexString(pref.getTrackingKey()).toUpperCase(), equalTo("0"));
+        assertTrue("Wrong Key after no hexadecimal Kex  smsReceiver setting", comparePreferences(0, 2, false, true));
     }
 
     @Test
     public void testSendSmsConfigurationAuto() {
-        assertThat("Wrong initial Auto Start Tracking", pref.isAutoStartTracking(), equalTo(false));
-        Intent intent = createSms("09000000000", "SLT Auto=On");
-        pref.setSmsConfig(false);
-        smsReceiver.onReceive(context, intent);
-        assertThat("Wrong Auto Start Tracking after smsReceiver configuration not allowed", pref.isAutoStartTracking(), equalTo(false));
-        pref.setSmsConfig(true);
-        smsReceiver.onReceive(context, intent);
-        assertThat("Wrong Auto Start Tracking after smsReceiver setting", pref.isAutoStartTracking(), equalTo(true));
-        smsReceiver.onReceive(context, createSms("09000000000", "SLT Auto=Off"));
-        assertThat("Wrong Auto Start Tracking after smsReceiver setting", pref.isAutoStartTracking(), equalTo(false));
+        setPreferences(54326, 2, true, true);
+        smsReceiver.onReceive(context, createSms("09000000000", "SLT sms=Off"));
+        assertTrue("Wrong Sms state after smsReceiver setting", comparePreferences(54326, 2, true, false));
+        smsReceiver.onReceive(context, createSms("09000000000", "SLT Auto=On"));
+        assertTrue("Wrong Sms state after smsReceiver setting", comparePreferences(54326, 2, true, false));
+    }
+
+
+    @Test
+    public void testSendSmsConfigurationLiveTracking() {
+        CheckBox cb = (CheckBox) mainActivity.findViewById(R.id.checkLiveTracking);
+        setPreferences(12345, 2, true, true);
+        smsReceiver.onReceive(context, createSms("09000000000", "SLT Live=On"));
+        assertThat("Live checkbox should be checked", smsReceiver.getPositionServiceRunning(), equalTo(true));
+        smsReceiver.onReceive(context, createSms("09000000000", "SLT Live=Off"));
+        assertThat("Live checkbox should be unchecked", smsReceiver.getPositionServiceRunning(), equalTo(false));
+    }
+
+    private void setPreferences(long key, int interval, boolean autoStart, boolean smsConfig) {
+        pref.setTrackingKey(Long.toHexString(key));
+        pref.setTrackingInterval(String.valueOf(interval));
+        pref.setAutoStartTracking(autoStart);
+        pref.setSmsConfig(smsConfig);
+    }
+
+    private boolean comparePreferences(long key, int interval, boolean autoStart, boolean smsConfig) {
+        return (pref.getTrackingKey() == key & pref.getTrackingInterval() == interval & pref.isAutoStartTracking() == autoStart & pref.isSmsConfig() == smsConfig);
     }
 
     private static Intent createSms(String sender, String body) {
@@ -129,4 +170,14 @@ public class SmsReceiverTest {
     private static byte reverseByte(byte b) {
         return (byte) ((b & 0xF0) >> 4 | (b & 0x0F) << 4);
     }
+
+    private boolean isPositionServiceRunning() {
+        for (ActivityManager.RunningServiceInfo service : activityManager.getRunningServices(Integer.MAX_VALUE)) {
+            if (PositionService.class.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

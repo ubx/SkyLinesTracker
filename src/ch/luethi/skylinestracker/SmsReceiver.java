@@ -1,21 +1,3 @@
-/*
- * SkyLines Tracker is a location tracking client for the SkyLines platform <www.skylines-project.org>.
- * Copyright (C) 2013  Andreas Lüthi
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 package ch.luethi.skylinestracker;
 
 import android.content.BroadcastReceiver;
@@ -43,6 +25,7 @@ public class SmsReceiver extends BroadcastReceiver {
     }
 
     private void parsSms(Context context, SkyLinesPrefs prefs, String smsBody) {
+        positionServiceRunning = null;
         String params[] = smsBody.toUpperCase().split(" ");
         if (params.length > 1 && params[0].equals("SLT")) {
             for (int i = 1; i < params.length; i++) {
@@ -60,12 +43,23 @@ public class SmsReceiver extends BroadcastReceiver {
                         Intent positionService = new Intent(context, PositionService.class);
                         if (kv[1].equals("ON")) {
                             context.startService(positionService);
+                            positionServiceRunning = true;
                         } else if (kv[1].equals("OFF")) {
                             context.stopService(positionService);
+                            positionServiceRunning = false;
                         }
                     }
                 }
             }
         }
+    }
+
+    /**
+     * Todo -- this code is for unit tests only, fins a better solution!
+     */
+    private Boolean positionServiceRunning = null;
+
+    public Boolean getPositionServiceRunning() {
+        return positionServiceRunning;
     }
 }
