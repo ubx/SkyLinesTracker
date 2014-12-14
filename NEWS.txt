@@ -1,4 +1,4 @@
-Version 1.0.3 - not yet released
+Version 1.0.3 - 14-dec-2014
 * fix NPE on stop Looper (#4)
 * prepare for Android 5
 * minor GUI cosmetic changes
