@@ -27,11 +27,13 @@ import java.math.BigInteger;
 
 class SkyLinesPrefs {
 
-    private static final String TRACKING_KEY = "tracking_key";
-    private static final String TRACKING_INTERVAL = "tracking_interval";
+    public static final String TRACKING_KEY = "tracking_key";
+    public static final String TRACKING_INTERVAL = "tracking_interval";
+    public static final String IP_ADDRESS = "ip_address";
+
     private static final String AUTOSTART_TRACKING = "autostart_tracking";
     private static final String SMS_CONFIG = "sms_config";
-    private static final String IP_ADDRESS = "ip_address";
+
     private static final String DEF_IP_ADDRESS = "95.128.34.172";   // default is the real Live Tracking server
 
     private final SharedPreferences prefs;

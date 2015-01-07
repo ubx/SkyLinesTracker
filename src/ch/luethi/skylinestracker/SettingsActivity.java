@@ -72,8 +72,9 @@ public class SettingsActivity extends PreferenceActivity {
 		// Bind the summaries of EditText/List/Dialog/Ringtone preferences to
 		// their values. When their values change, their summaries are updated
 		// to reflect the new value, per the Android Design guidelines.
-		bindPreferenceSummaryToValue(findPreference("tracking_key"));
-		bindPreferenceSummaryToValue(findPreference("tracking_interval"));
+		bindPreferenceSummaryToValue(findPreference(SkyLinesPrefs.TRACKING_KEY));
+        bindPreferenceSummaryToValue(findPreference(SkyLinesPrefs.TRACKING_INTERVAL));
+        bindPreferenceSummaryToValue(findPreference(SkyLinesPrefs.IP_ADDRESS));
 	}
 
 	/** {@inheritDoc} */

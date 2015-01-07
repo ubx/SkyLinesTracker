@@ -37,6 +37,14 @@
             android:key="sms_config"
             android:summary="@string/pref_description_title_sms_config"
             android:title="@string/pref_title_sms_config" />
+        <ListPreference
+                android:defaultValue="skylines.xcsoar.org"
+                android:entries="@array/pref_ip_address_list_titles"
+                android:entryValues="@array/pref_ip_address_list_values"
+                android:key="ip_address"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/ip_address" />
     </PreferenceCategory>
 
 </PreferenceScreen>

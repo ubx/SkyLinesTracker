@@ -1,5 +1,6 @@
-Version 1.0.5 - not yet released
+Version 1.1.0 - not yet released
 * cleanup unused code
+* make server ip address modifiable #8
 
 Version 1.0.4 - 07-jan-2015
 * fix ip address problem (#7)
