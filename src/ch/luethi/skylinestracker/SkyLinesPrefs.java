@@ -32,16 +32,13 @@ class SkyLinesPrefs {
     private static final String AUTOSTART_TRACKING = "autostart_tracking";
     private static final String SMS_CONFIG = "sms_config";
     private static final String IP_ADDRESS = "ip_address";
-    private static final String POSCOUNT = "poscount";
     private static final String DEF_IP_ADDRESS = "95.128.34.172";   // default is the real Live Tracking server
 
     private final SharedPreferences prefs;
 
     public SkyLinesPrefs(Context c) {
         prefs = PreferenceManager.getDefaultSharedPreferences(c);
-        if (!prefs.contains(IP_ADDRESS)) {
-            prefs.edit().putString(IP_ADDRESS, DEF_IP_ADDRESS).commit();
-        }
+        setIpAddress(DEF_IP_ADDRESS);
     }
 
     public int getTrackingInterval() {
@@ -86,4 +83,9 @@ class SkyLinesPrefs {
     public String getIpAddress() {
         return prefs.getString(IP_ADDRESS, DEF_IP_ADDRESS);
     }
+
+    public void  setIpAddress(String ipAddress) {
+        prefs.edit().putString(IP_ADDRESS, ipAddress).commit();
+    }
+
 }

@@ -1,3 +1,6 @@
+Version 1.0.4 - 07-jan-2015
+* fix ip address problem (#7)
+
 Version 1.0.3 - 14-dec-2014
 * fix NPE on stop Looper (#4)
 * prepare for Android 5

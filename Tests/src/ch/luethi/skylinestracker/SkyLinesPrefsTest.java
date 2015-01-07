@@ -73,5 +73,13 @@ public class SkyLinesPrefsTest {
         assertThat("None hex key shout return 0 long value", 0, equalTo(0));
     }
 
+    @Test
+    public void testIssue_7() {
+        pref.setIpAddress("1.2.3.4")  ;
+        assertThat("Wrong default ip address",  pref.getIpAddress(), equalTo("1.2.3.4"));
+        pref.setIpAddress("95.128.34.172")  ;
+        assertThat("Wrong default ip address",  pref.getIpAddress(), equalTo("95.128.34.172"));
+    }
+
 
 }
