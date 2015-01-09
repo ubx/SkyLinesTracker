@@ -21,7 +21,7 @@
     <string name="msg_no_inet">No internet connection</string>
     <string name="ip_address_label">Server ip:</string>
     <string name="ip_address">Server address</string>
-    <string name="ip_address_dns">skylines.xcsoar.org</string>
+    <string name="ip_address_dns">skylines.aero</string>
     <string name="ip_address_fix">95.128.34.172</string>
 
 </resources>
