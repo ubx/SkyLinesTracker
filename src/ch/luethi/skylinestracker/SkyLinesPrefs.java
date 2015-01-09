@@ -20,6 +20,7 @@ package ch.luethi.skylinestracker;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.preference.PreferenceManager;
 
 import java.math.BigInteger;
@@ -34,13 +35,10 @@ class SkyLinesPrefs {
     private static final String AUTOSTART_TRACKING = "autostart_tracking";
     private static final String SMS_CONFIG = "sms_config";
 
-    private static final String DEF_IP_ADDRESS = "95.128.34.172";   // default is the real Live Tracking server
-
     private final SharedPreferences prefs;
 
     public SkyLinesPrefs(Context c) {
         prefs = PreferenceManager.getDefaultSharedPreferences(c);
-        setIpAddress(DEF_IP_ADDRESS);
     }
 
     public int getTrackingInterval() {
@@ -83,7 +81,11 @@ class SkyLinesPrefs {
     }
 
     public String getIpAddress() {
-        return prefs.getString(IP_ADDRESS, DEF_IP_ADDRESS);
+        return prefs.getString(IP_ADDRESS, "");
+    }
+
+    public String getIpAddress(String def) {
+        return prefs.getString(IP_ADDRESS, def);
     }
 
     public void  setIpAddress(String ipAddress) {

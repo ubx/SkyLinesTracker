@@ -68,6 +68,10 @@ public class MainActivity extends Activity {
         }
         app = ((SkyLinesApp) getApplicationContext());
         positionService = new Intent(this, PositionService.class);
+
+        SkyLinesPrefs prefs = new SkyLinesPrefs(this);
+        prefs.setIpAddress(prefs.getIpAddress(getResources().getString(R.string.ip_address_dns)));
+
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);
         checkLiveTracking = (CheckBox) findViewById(R.id.checkLiveTracking);

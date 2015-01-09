@@ -62,8 +62,14 @@ public class SkyLinesPrefsTest {
 
     @Test
     public void testDefIpAddress() {
+        String ipAddress = pref.getIpAddress("1.2.3.4");
+        assertThat("Wrong default ip address", ipAddress, equalTo("1.2.3.4"));
+    }
+
+    @Test
+    public void testDefIpAddressDef() {
         String ipAddress = pref.getIpAddress();
-        assertThat("Wrong default ip address", ipAddress, equalTo("95.128.34.172"));
+        assertThat("Wrong default ip address", ipAddress, equalTo(""));
     }
 
     @Test

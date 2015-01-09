@@ -20,6 +20,8 @@
     <string name="resume">Warten auf GPS</string>
     <string name="msg_no_inet">Keine Internetverbindung</string>
     <string name="ip_address_label">Server ip:</string>
-    <string name="ip_address">Server ip address</string>
+    <string name="ip_address">Server Adresse</string>
+    <string name="ip_address_dns">skylines.xcsoar.org</string>
+    <string name="ip_address_fix">95.128.34.172</string>
 
 </resources>
