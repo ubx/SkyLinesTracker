@@ -3,14 +3,14 @@
 
     <string name="app_name">SkyLines Tracker</string>
     <string name="action_settings">Paramètres</string>
-    <string name="action_about">A propos</string>
+    <string name="action_about">À propos</string>
     <string name="action_exit">Quitter</string>
     <string name="status">Statut:</string>
     <string name="live_tracking">Live Tracking</string>
     <string name="empty">On</string>
     <string name="pref_live_tracking_title">Live Tracking</string>
     <string name="pref_system_settings_title">Paramètres système</string>
-    <string name="title_activity_about">A propos</string>
+    <string name="title_activity_about">À propos</string>
     <string name="about_text">SkyLines Tracker</string>
     <string name="version_name_label">Version:</string>
     <string name="not_available">Pas disponible</string>

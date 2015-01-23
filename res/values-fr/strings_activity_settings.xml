@@ -25,7 +25,7 @@
     </string-array>
     
     <string name="pref_title_autostart_tracking">Démarrage automatique</string>
-    <string name="pref_description_title_autostart_tracking">Activer le tracker automatique au démarrage complet du téléphone</string>
+    <string name="pref_description_title_autostart_tracking">Activer le traqueur automatique au démarrage complet du téléphone</string>
     
     <string name="pref_title_sms_config">Configuration par SMS</string>
     <string name="pref_description_title_sms_config">Activer la configuration par réception de SMS</string>
