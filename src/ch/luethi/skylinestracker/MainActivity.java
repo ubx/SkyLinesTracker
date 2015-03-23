@@ -32,8 +32,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import com.bugsense.trace.BugSenseHandler;
-
+import com.splunk.mint.Mint;
 import java.text.DecimalFormat;
 
 public class MainActivity extends Activity {
@@ -63,8 +62,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (!getIntent().hasExtra(ISTESTING)) {
-            BugSenseHandler.sendDataOverWiFiOnly();
-            BugSenseHandler.initAndStartSession(this, "a9b9af2d");
+            Mint.setFlushOnlyOverWiFi(true);
+            Mint.initAndStartSession(this, "a9b9af2d");
         }
         app = ((SkyLinesApp) getApplicationContext());
         positionService = new Intent(this, PositionService.class);

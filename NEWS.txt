@@ -1,4 +1,5 @@
 Version 1.1.0 - not yet released
+* migrate to splunk mint 4.1
 * cleanup unused code
 * make server ip address modifiable (#8)
 * improve localizations (#9)
