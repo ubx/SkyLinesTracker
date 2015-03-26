@@ -20,6 +20,6 @@
     <string name="resume">En attente du GPS</string>
     <string name="msg_no_inet">Pas de connexion Internet</string>
     <string name="ip_address_label">Serveur ip:</string>
-    <string name="ip_address">Serveur adresse</string>
+    <string name="ip_address">Serveur adresse résolution</string>
 
 </resources>

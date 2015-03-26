@@ -20,6 +20,6 @@
     <string name="resume">Warten auf GPS</string>
     <string name="msg_no_inet">Keine Internetverbindung</string>
     <string name="ip_address_label">Server ip:</string>
-    <string name="ip_address">Server Adresse</string>
+    <string name="ip_address">Server Adressauflösungs</string>
 
 </resources>
