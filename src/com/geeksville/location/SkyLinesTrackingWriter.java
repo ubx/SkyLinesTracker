@@ -110,15 +110,12 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     private SocketAddress serverAddress;
     private DatagramPacket datagram;
 
-    private long nextUpdateTime = SystemClock.elapsedRealtime();
-
     private final Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 
     /**
      * Constructor
      *
      * @param _key the SkyLines live tracking key
-     * @throws Exception
      */
     public SkyLinesTrackingWriter(long _key, String _ip_address)
             throws SocketException, UnknownHostException {
