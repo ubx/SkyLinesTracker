@@ -37,6 +37,7 @@ import java.util.TimeZone;
 
 import android.os.SystemClock;
 import android.util.Log;
+import ch.luethi.skylinestracker.BuildConfig;
 
 class CRC16CCITT {
     private static final int[] table = new int[]{
@@ -182,7 +183,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
                 track, groundSpeed);
 
         byte[] data = baos.toByteArray();
-        assert (data.length == 48);
+        if(BuildConfig.DEBUG && !(data.length == 48)) throw new RuntimeException();
 
         calculateCRC(data);
 
