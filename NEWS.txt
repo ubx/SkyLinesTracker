@@ -1,6 +1,7 @@
 Version 1.1.0 - not yet released
+* update target SDK version 22
 * some text changes
-* migrate to splunk mint 4.1
+* migrate to splunk mint 4.2
 * cleanup unused code
 * make server ip address modifiable (#8)
 * improve localizations (#9)
