@@ -43,7 +43,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
     </list>
-    <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="not yet released" comment="Update android target ro 22, update mint to 4.2.">
+    <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="not yet released" comment="Update to robolectric 2.4.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SkyLinesTracker.iws" />
@@ -233,7 +233,8 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="471" />
+    <option name="x" value="207" />
+    <option name="y" value="12" />
     <option name="width" value="1848" />
     <option name="height" value="1416" />
   </component>
@@ -1461,7 +1462,7 @@
       <workItem from="1429686642801" duration="232000" />
       <workItem from="1429687053037" duration="560000" />
       <workItem from="1429692851672" duration="5269000" />
-      <workItem from="1429863142094" duration="4260000" />
+      <workItem from="1429863142094" duration="4959000" />
     </task>
     <task id="LOCAL-00001" summary="Enable project with IntelliJ.">
       <created>1388160669468</created>
@@ -1736,7 +1737,13 @@
       <option name="project" value="LOCAL" />
       <updated>1429697486926</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Update to robolectric 2.4.">
+      <created>1429878480786</created>
+      <option name="number" value="00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1429878480786</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <option name="createBranch" value="false" />
     <option name="commitChanges" value="false" />
     <servers>
@@ -1758,7 +1765,7 @@
     </servers>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198180000" />
+    <option name="totallyTimeSpent" value="198879000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1781,7 +1788,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="471" y="0" width="1848" height="1416" extended-state="0" />
+    <frame x="207" y="12" width="1848" height="1416" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1867,7 +1874,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Minor GUI cosmetic changes" />
     <MESSAGE value="Ignore IntelliJ files" />
     <MESSAGE value="Issue 6: updated SkyLines server IP" />
     <MESSAGE value="Add more unit test for preferences" />
@@ -1892,7 +1898,8 @@
     <MESSAGE value="Update android target." />
     <MESSAGE value="Remove unused library." />
     <MESSAGE value="Update android target ro 22, update mint to 4.2." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update android target ro 22, update mint to 4.2." />
+    <MESSAGE value="Update to robolectric 2.4." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update to robolectric 2.4." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
