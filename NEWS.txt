@@ -1,4 +1,4 @@
-Version 1.1.0 - not yet released
+Version 1.1.0 - 25-mai-2015
 * update target SDK version 22
 * some text changes
 * migrate to splunk mint 4.2
