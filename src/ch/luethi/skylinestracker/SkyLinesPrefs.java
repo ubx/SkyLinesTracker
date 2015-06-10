@@ -31,6 +31,7 @@ class SkyLinesPrefs {
     public static final String TRACKING_KEY = "tracking_key";
     public static final String TRACKING_INTERVAL = "tracking_interval";
     public static final String IP_ADDRESS = "ip_address";
+    public static final String DESTINATION_DEVICE = "destination_device";
 
     private static final String AUTOSTART_TRACKING = "autostart_tracking";
     private static final String SMS_CONFIG = "sms_config";

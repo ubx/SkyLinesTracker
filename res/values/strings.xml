@@ -23,5 +23,9 @@
     <string name="ip_address">Server address resolution</string>
     <string name="ip_address_dns" translatable="false">skylines.aero</string>
     <string name="ip_address_fix" translatable="false">95.128.34.172</string>
+    <string name="destination_device">Destination Device</string>
+    <string name="device_gsm"  translatable="false">gsm</string>
+    <string name="device_rockblock"  translatable="false">rockblock</string>
+
 
 </resources>

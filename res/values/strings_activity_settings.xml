@@ -39,4 +39,13 @@
         <item>@string/ip_address_fix</item>
     </string-array>
 
+    <string-array name="pref_device_list_titles">
+        <item>Moblie Data (Telefon)</item>
+        <item>RockBLOCK (via Bluetooth)</item>
+    </string-array>
+    <string-array name="pref_device_list_values">
+        <item>@string/device_gsm</item>
+        <item>@string/device_rockblock</item>
+    </string-array>
+
 </resources>

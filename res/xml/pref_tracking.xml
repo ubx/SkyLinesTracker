@@ -45,6 +45,14 @@
                 android:negativeButtonText="@null"
                 android:positiveButtonText="@null"
                 android:title="@string/ip_address" />
+        <ListPreference
+                android:defaultValue="gsm"
+                android:entries="@array/pref_device_list_titles"
+                android:entryValues="@array/pref_device_list_values"
+                android:key="destination_device"
+                android:negativeButtonText="@null"
+                android:positiveButtonText="@null"
+                android:title="@string/destination_device" />
     </PreferenceCategory>
 
 </PreferenceScreen>
