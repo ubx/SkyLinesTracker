@@ -203,11 +203,13 @@ public class SkyLinesTrackingWriter implements PositionWriter {
                 while (!stack.empty() & (ms--) > 0) {
                     datagram.setData(stack.pop());
                     socket.send(datagram);
+                    Log.i("SkyLines","fix de-queued");
                 }
             }
         } else {
             if (stack.size() < MAX_QUEUED) {
                 stack.push(data);
+                Log.i("SkyLines","fix queued");
             }
         }
     }
