@@ -33,6 +33,7 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Stack;
 import java.util.TimeZone;
 
 import android.util.Log;
@@ -109,6 +110,8 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     private DatagramSocket socket;
     private SocketAddress serverAddress;
     private DatagramPacket datagram;
+    private Stack<byte[]> stack = new Stack<byte[]>();
+
 
     private final Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 
@@ -186,14 +189,24 @@ public class SkyLinesTrackingWriter implements PositionWriter {
 
         calculateCRC(data);
 
-        if (datagram == null)
-            datagram = new DatagramPacket(data, data.length,
-                    serverAddress);
-        else
+        if (socket.isConnected()) {
+            if (datagram == null)
+                datagram = new DatagramPacket(data, data.length, serverAddress);
+            else {
             /* reuse old object to reduce GC pressure */
-            datagram.setData(data);
-
-        socket.send(datagram);
+                datagram.setData(data);
+                socket.send(datagram);
+                // send queued data
+                while (!stack.empty()) {
+                    datagram.setData(stack.pop());
+                    socket.send(datagram);
+                }
+            }
+        } else {
+            if (stack.size() < 1024) {
+                stack.push(data);
+            }
+        }
     }
 
     @Override
