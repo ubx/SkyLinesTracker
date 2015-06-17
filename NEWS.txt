@@ -1,3 +1,6 @@
+Version 1.2.0 - not yet released
+* queue fix if phone is not connected
+
 Version 1.1.0 - 25-mai-2015
 * update target SDK version 22
 * some text changes
