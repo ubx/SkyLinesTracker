@@ -104,6 +104,8 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     private static final int FLAG_ALTITUDE = 0x10;
     private static final int FLAG_VARIO = 0x20;
     private static final int FLAG_ENL = 0x40;
+    private static final int MAX_QUEUED = 1024;
+    private static final int MAX_QUEUED_SEND = 16;
 
     private final long key;
 
@@ -197,13 +199,14 @@ public class SkyLinesTrackingWriter implements PositionWriter {
                 datagram.setData(data);
                 socket.send(datagram);
                 // send queued data
-                while (!stack.empty()) {
+                int ms = MAX_QUEUED_SEND;
+                while (!stack.empty() & (ms--) > 0) {
                     datagram.setData(stack.pop());
                     socket.send(datagram);
                 }
             }
         } else {
-            if (stack.size() < 1024) {
+            if (stack.size() < MAX_QUEUED) {
                 stack.push(data);
             }
         }
