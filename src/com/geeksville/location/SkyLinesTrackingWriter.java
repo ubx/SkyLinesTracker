@@ -192,13 +192,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
             /* reuse old object to reduce GC pressure */
                 datagram.setData(data);
                 socket.send(datagram);
-                // send queued data
-                int ms = MAX_QUEUED_SEND;
-                while (!stack.empty() & (ms--) > 0) {
-                    datagram.setData(stack.pop());
-                    socket.send(datagram);
-                    Log.i("SkyLines","fix de-queued");
-                }
+                dequeAndSendFix();
             }
         } else {
             if (stack.size() > MAX_QUEUED) {
@@ -207,6 +201,15 @@ public class SkyLinesTrackingWriter implements PositionWriter {
             }
             stack.push(data);
             Log.i("SkyLines", "fix queued");
+        }
+    }
+
+    public void dequeAndSendFix() throws IOException {
+        int ms = MAX_QUEUED_SEND;
+        while (!stack.empty() & (ms--) > 0) {
+            datagram.setData(stack.pop());
+            socket.send(datagram);
+            Log.i("SkyLines", "fix de-queued");
         }
     }
 
