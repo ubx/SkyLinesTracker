@@ -91,22 +91,21 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         if (location.getLatitude() != 0.0) {
-            if (isOnline()) {
-                app.lastLat = location.getLatitude();
-                app.lastLon = location.getLongitude();
-                // convert m/sec to km/hr
-                float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
-                float[] accelVals = null;
-                float vspd = Float.NaN;
-                getOrCreateSkyLinesTrackingWriter().emitPosition(location.getTime(), app.lastLat, app.lastLon,
-                        location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
-                        (int) location.getBearing(), kmPerHr, accelVals, vspd);
-                if (app.guiActive) {
+            app.lastLat = location.getLatitude();
+            app.lastLon = location.getLongitude();
+            // convert m/sec to km/hr
+            float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
+            float[] accelVals = null;
+            float vspd = Float.NaN;
+            getOrCreateSkyLinesTrackingWriter().emitPosition(location.getTime(), app.lastLat, app.lastLon,
+                    location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
+                    (int) location.getBearing(), kmPerHr, accelVals, vspd);
+            if (app.guiActive) {
+                if (isOnline()) {
                     sendPositionStatus();
-                }
-            } else {
-                if (app.guiActive)
+                } else {
                     sendConnectionStatus();
+                }
             }
         }
     }
@@ -129,6 +128,9 @@ public class PositionService extends Service implements LocationListener {
             sendPositionWaitStatus();
     }
 
+    public static boolean isOnline() {
+        return app.online;
+    }
 
     private SkyLinesTrackingWriter getOrCreateSkyLinesTrackingWriter() {
         if (skyLinesTrackingWriter == null) {
@@ -153,11 +155,6 @@ public class PositionService extends Service implements LocationListener {
 
     private void sendConnectionStatus() {
         LocalBroadcastManager.getInstance(this).sendBroadcast(intentConStatus);
-    }
-
-
-    private boolean isOnline() {
-        return app.online;
     }
 
     private void initConnectionStatus() {

@@ -21,23 +21,18 @@ Copyright_License {
 
 package com.geeksville.location;
 
+import android.util.Log;
+import ch.luethi.skylinestracker.BuildConfig;
+import ch.luethi.skylinestracker.PositionService;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.DatagramSocket;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
-import java.net.SocketException;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Stack;
 import java.util.TimeZone;
-
-import android.util.Log;
-import ch.luethi.skylinestracker.BuildConfig;
 
 class CRC16CCITT {
     private static final int[] table = new int[]{
@@ -113,7 +108,6 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     private SocketAddress serverAddress;
     private DatagramPacket datagram;
     private Stack<byte[]> stack = new Stack<byte[]>();
-
 
     private final Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 
@@ -191,7 +185,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
 
         calculateCRC(data);
 
-        if (socket.isConnected()) {
+        if (PositionService.isOnline()) {
             if (datagram == null)
                 datagram = new DatagramPacket(data, data.length, serverAddress);
             else {
@@ -207,10 +201,12 @@ public class SkyLinesTrackingWriter implements PositionWriter {
                 }
             }
         } else {
-            if (stack.size() < MAX_QUEUED) {
-                stack.push(data);
-                Log.i("SkyLines","fix queued");
+            if (stack.size() > MAX_QUEUED) {
+                stack.removeElementAt(0); // remove oldest fix
+                Log.i("SkyLines", "fix removed");
             }
+            stack.push(data);
+            Log.i("SkyLines", "fix queued");
         }
     }
 
