@@ -18,14 +18,16 @@
 
 package ch.luethi.skylinestracker;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.*;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.IBinder;
 import android.util.Log;
 
 public class ConnectionUpdateReceiver extends BroadcastReceiver {
+
+    private PositionService posServer;
+    private boolean init = false;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -34,7 +36,32 @@ public class ConnectionUpdateReceiver extends BroadcastReceiver {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         app.online = activeNetworkInfo != null && activeNetworkInfo.isConnected();
         Log.i("SkyLines", "onReceive");
+
+        if (!init) {
+            Intent mIntent = new Intent(context, PositionService.class);
+            try {
+                context.bindService(mIntent, mConnection, context.BIND_AUTO_CREATE );
+            }  catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (posServer != null) {
+            posServer.broadcastReceiver();
+        }
     }
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+
+        public void onServiceDisconnected(ComponentName name) {
+            posServer = null;
+        }
+
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            PositionService.LocalBinder mLocalBinder = (PositionService.LocalBinder)service;
+            posServer = mLocalBinder.getServerInstance();
+        }
+    };
+
 }
 
 

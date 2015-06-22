@@ -205,11 +205,13 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     }
 
     public void dequeAndSendFix() throws IOException {
-        int ms = MAX_QUEUED_SEND;
-        while (!stack.empty() & (ms--) > 0) {
-            datagram.setData(stack.pop());
-            socket.send(datagram);
-            Log.i("SkyLines", "fix de-queued");
+        if (!stack.empty()) {
+            int ms = MAX_QUEUED_SEND;
+            while (!stack.empty() & (ms--) > 0) {
+                datagram.setData(stack.pop());
+                socket.send(datagram);
+                Log.i("SkyLines", "fix de-queued");
+            }
         }
     }
 

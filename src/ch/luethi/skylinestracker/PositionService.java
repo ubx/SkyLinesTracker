@@ -31,6 +31,7 @@ import android.os.*;
 import android.support.v4.content.LocalBroadcastManager;
 import com.geeksville.location.SkyLinesTrackingWriter;
 
+import java.io.IOException;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
@@ -83,10 +84,19 @@ public class PositionService extends Service implements LocationListener {
         stopSelf();
     }
 
+    IBinder mBinder = new LocalBinder();
+
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        return mBinder;
     }
+
+    public class LocalBinder extends Binder {
+        public PositionService getServerInstance() {
+            return PositionService.this;
+        }
+    }
+
 
     @Override
     public void onLocationChanged(Location location) {
@@ -130,6 +140,16 @@ public class PositionService extends Service implements LocationListener {
 
     public static boolean isOnline() {
         return app.online;
+    }
+
+    public void broadcastReceiver() {
+        if (skyLinesTrackingWriter != null){
+            try {
+                skyLinesTrackingWriter.dequeAndSendFix();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private SkyLinesTrackingWriter getOrCreateSkyLinesTrackingWriter() {
