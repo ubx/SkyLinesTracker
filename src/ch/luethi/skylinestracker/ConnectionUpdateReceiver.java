@@ -23,6 +23,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 public class ConnectionUpdateReceiver extends BroadcastReceiver {
 
@@ -36,31 +37,18 @@ public class ConnectionUpdateReceiver extends BroadcastReceiver {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         app.online = activeNetworkInfo != null && activeNetworkInfo.isConnected();
         Log.i("SkyLines", "onReceive");
+        Toast.makeText(context, "onReceive", Toast.LENGTH_LONG).show();
 
         if (!init) {
-            Intent mIntent = new Intent(context, PositionService.class);
-            try {
-                context.bindService(mIntent, mConnection, context.BIND_AUTO_CREATE );
-            }  catch (Exception e) {
-                e.printStackTrace();
+            IBinder binder = peekService(context, new Intent(context, PositionService.class));
+            if (binder != null) {
+                PositionService posServer = ((PositionService.LocalBinder) binder).getService();
+                if (posServer != null) {
+                    posServer.broadcastReceiver();
+                }
             }
         }
-        if (posServer != null) {
-            posServer.broadcastReceiver();
-        }
     }
-
-    private ServiceConnection mConnection = new ServiceConnection() {
-
-        public void onServiceDisconnected(ComponentName name) {
-            posServer = null;
-        }
-
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            PositionService.LocalBinder mLocalBinder = (PositionService.LocalBinder)service;
-            posServer = mLocalBinder.getServerInstance();
-        }
-    };
 
 }
 

@@ -95,6 +95,10 @@ public class PositionService extends Service implements LocationListener {
         public PositionService getServerInstance() {
             return PositionService.this;
         }
+
+        public PositionService getService() {
+            return this.getService();
+        }
     }
 
 
