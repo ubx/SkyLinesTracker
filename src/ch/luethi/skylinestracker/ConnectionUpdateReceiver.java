@@ -18,6 +18,7 @@
 
 package ch.luethi.skylinestracker;
 
+import android.app.ActivityManager;
 import android.content.*;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -28,7 +29,6 @@ import android.widget.Toast;
 public class ConnectionUpdateReceiver extends BroadcastReceiver {
 
     private PositionService posServer;
-    private boolean init = false;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -36,18 +36,15 @@ public class ConnectionUpdateReceiver extends BroadcastReceiver {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         app.online = activeNetworkInfo != null && activeNetworkInfo.isConnected();
-        Log.i("SkyLines", "onReceive");
-        Toast.makeText(context, "onReceive", Toast.LENGTH_LONG).show();
+        Log.i("SkyLines", "onReceive " + intent.getAction());
+        Toast.makeText(context, "onReceive " + intent.getAction(), Toast.LENGTH_LONG).show();
 
-        if (!init) {
-            IBinder binder = peekService(context, new Intent(context, PositionService.class));
-            if (binder != null) {
-                PositionService posServer = ((PositionService.LocalBinder) binder).getService();
-                if (posServer != null) {
-                    posServer.broadcastReceiver();
-                }
-            }
+        if (app.positionService != null)     {
+            app.positionService.broadcastReceiver();
+            Log.i("SkyLines", "onReceive -> broadcastReceiver");
+            Toast.makeText(context, "onReceive -> broadcastReceiver", Toast.LENGTH_LONG).show();
         }
+
     }
 
 }

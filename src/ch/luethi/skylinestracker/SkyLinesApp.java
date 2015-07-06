@@ -25,4 +25,5 @@ public class SkyLinesApp extends Application {
     public boolean online;
     public boolean guiActive;
     public double lastLat, lastLon;
+    public PositionService positionService = null;
 }

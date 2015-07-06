@@ -53,6 +53,7 @@ public class PositionService extends Service implements LocationListener {
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         prefs = new SkyLinesPrefs(this);
         app = ((SkyLinesApp) getApplicationContext());
+        app.positionService = this;
         intentPosStatus = new Intent(MainActivity.BROADCAST_STATUS);
         intentPosStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_POS_STATUS);
         intentWaitStatus = new Intent(MainActivity.BROADCAST_STATUS);
@@ -77,6 +78,7 @@ public class PositionService extends Service implements LocationListener {
     public void onDestroy() {
         locationManager.removeUpdates(this);
         skyLinesTrackingWriter = null;
+        app.positionService = null;
         Looper looper = senderThread.getLooper();
         if (looper != null) {
             looper.quit();
@@ -84,23 +86,10 @@ public class PositionService extends Service implements LocationListener {
         stopSelf();
     }
 
-    IBinder mBinder = new LocalBinder();
-
     @Override
     public IBinder onBind(Intent intent) {
-        return mBinder;
+        return  null;
     }
-
-    public class LocalBinder extends Binder {
-        public PositionService getServerInstance() {
-            return PositionService.this;
-        }
-
-        public PositionService getService() {
-            return this.getService();
-        }
-    }
-
 
     @Override
     public void onLocationChanged(Location location) {
