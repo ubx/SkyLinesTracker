@@ -88,11 +88,12 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public IBinder onBind(Intent intent) {
-        return  null;
+        return null;
     }
 
     @Override
     public void onLocationChanged(Location location) {
+        SkyLinesTrackingWriter skyLinesTrackingWriter = getOrCreateSkyLinesTrackingWriter();
         if (location.getLatitude() != 0.0) {
             app.lastLat = location.getLatitude();
             app.lastLon = location.getLongitude();
@@ -100,7 +101,7 @@ public class PositionService extends Service implements LocationListener {
             float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
             float[] accelVals = null;
             float vspd = Float.NaN;
-            getOrCreateSkyLinesTrackingWriter().emitPosition(location.getTime(), app.lastLat, app.lastLon,
+            skyLinesTrackingWriter.emitPosition(location.getTime(), app.lastLat, app.lastLon,
                     location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
                     (int) location.getBearing(), kmPerHr, accelVals, vspd);
             if (app.guiActive) {
@@ -110,6 +111,9 @@ public class PositionService extends Service implements LocationListener {
                     sendConnectionStatus();
                 }
             }
+        } else {
+            if (isOnline())
+                skyLinesTrackingWriter.dequeAndSendFix();
         }
     }
 
@@ -136,12 +140,8 @@ public class PositionService extends Service implements LocationListener {
     }
 
     public void broadcastReceiver() {
-        if (skyLinesTrackingWriter != null){
-            try {
-                skyLinesTrackingWriter.dequeAndSendFix();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (skyLinesTrackingWriter != null) {
+            skyLinesTrackingWriter.dequeAndSendFix();
         }
     }
 

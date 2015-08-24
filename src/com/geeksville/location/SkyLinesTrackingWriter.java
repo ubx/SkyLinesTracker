@@ -186,14 +186,8 @@ public class SkyLinesTrackingWriter implements PositionWriter {
         calculateCRC(data);
 
         if (PositionService.isOnline()) {
-            if (datagram == null)
-                datagram = new DatagramPacket(data, data.length, serverAddress);
-            else {
-            /* reuse old object to reduce GC pressure */
-                datagram.setData(data);
-                socket.send(datagram);
-                dequeAndSendFix();
-            }
+            sendDatagram(data);
+            dequeAndSendFix();
         } else {
             if (stack.size() > MAX_QUEUED) {
                 stack.removeElementAt(0); // remove oldest fix
@@ -204,14 +198,28 @@ public class SkyLinesTrackingWriter implements PositionWriter {
         }
     }
 
-    public void dequeAndSendFix() throws IOException {
+
+    public void dequeAndSendFix() {
         if (!stack.empty()) {
             int ms = MAX_QUEUED_SEND;
             while (!stack.empty() & (ms--) > 0) {
-                datagram.setData(stack.pop());
-                socket.send(datagram);
+                sendDatagram(stack.pop());
                 Log.i("SkyLines", "fix de-queued");
             }
+        }
+    }
+
+    private void sendDatagram(byte[] data) {
+        try {
+            if (datagram == null) {
+                datagram = new DatagramPacket(data, data.length, serverAddress);
+            } else {
+        /* reuse old object to reduce GC pressure */
+                datagram.setData(data);
+            }
+            socket.send(datagram);
+        } catch (IOException ex) {
+            // do nothing!!
         }
     }
 
