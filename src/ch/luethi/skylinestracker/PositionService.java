@@ -31,7 +31,6 @@ import android.os.*;
 import android.support.v4.content.LocalBroadcastManager;
 import com.geeksville.location.SkyLinesTrackingWriter;
 
-import java.io.IOException;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
