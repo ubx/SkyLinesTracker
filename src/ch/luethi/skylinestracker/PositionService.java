@@ -93,26 +93,28 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         SkyLinesTrackingWriter skyLinesTrackingWriter = getOrCreateSkyLinesTrackingWriter();
-        if (location.getLatitude() != 0.0) {
-            app.lastLat = location.getLatitude();
-            app.lastLon = location.getLongitude();
-            // convert m/sec to km/hr
-            float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
-            float[] accelVals = null;
-            float vspd = Float.NaN;
-            skyLinesTrackingWriter.emitPosition(location.getTime(), app.lastLat, app.lastLon,
-                    location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
-                    (int) location.getBearing(), kmPerHr, accelVals, vspd);
-            if (app.guiActive) {
-                if (isOnline()) {
-                    sendPositionStatus();
-                } else {
-                    sendConnectionStatus();
+        if (skyLinesTrackingWriter != null) {
+            if (location.getLatitude() != 0.0) {
+                app.lastLat = location.getLatitude();
+                app.lastLon = location.getLongitude();
+                // convert m/sec to km/hr
+                float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
+                float[] accelVals = null;
+                float vspd = Float.NaN;
+                skyLinesTrackingWriter.emitPosition(location.getTime(), app.lastLat, app.lastLon,
+                        location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
+                        (int) location.getBearing(), kmPerHr, accelVals, vspd);
+                if (app.guiActive) {
+                    if (isOnline()) {
+                        sendPositionStatus();
+                    } else {
+                        sendConnectionStatus();
+                    }
                 }
+            } else {
+                if (isOnline())
+                    skyLinesTrackingWriter.dequeAndSendFix();
             }
-        } else {
-            if (isOnline())
-                skyLinesTrackingWriter.dequeAndSendFix();
         }
     }
 
