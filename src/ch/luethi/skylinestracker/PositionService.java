@@ -93,7 +93,7 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         SkyLinesTrackingWriter skyLinesTrackingWriter = getOrCreateSkyLinesTrackingWriter();
-        if (skyLinesTrackingWriter != null) {
+        if (skyLinesTrackingWriter != null) { // fix NPE #11
             if (location.getLatitude() != 0.0) {
                 app.lastLat = location.getLatitude();
                 app.lastLon = location.getLongitude();
