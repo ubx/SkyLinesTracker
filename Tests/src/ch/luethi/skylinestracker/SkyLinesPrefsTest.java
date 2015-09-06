@@ -5,13 +5,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(emulateSdk = 18)
+@Config(sdk = 18)
 
 public class SkyLinesPrefsTest {
 
@@ -19,7 +20,7 @@ public class SkyLinesPrefsTest {
 
     @Before
     public void setUp() {
-        pref = new SkyLinesPrefs(Robolectric.application.getApplicationContext());
+        pref = new SkyLinesPrefs(RuntimeEnvironment.application.getApplicationContext());
     }
 
 

@@ -30,6 +30,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import java.io.ByteArrayOutputStream;
@@ -41,12 +42,12 @@ import java.util.GregorianCalendar;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-import static org.robolectric.Robolectric.application;
+import static org.robolectric.RuntimeEnvironment.application;
 import static org.robolectric.Robolectric.buildActivity;
 
 
 @RunWith(RobolectricTestRunner.class)
-@Config(emulateSdk = 18)
+@Config(sdk = 18)
 
 public class SmsReceiverTest {
 
@@ -58,12 +59,12 @@ public class SmsReceiverTest {
 
     @Before
     public void setUp() {
-        activityManager = (ActivityManager) Robolectric.application.getSystemService(Context.ACTIVITY_SERVICE);
+        activityManager = (ActivityManager) RuntimeEnvironment.application.getSystemService(Context.ACTIVITY_SERVICE);
         Intent intent = new Intent(application, MainActivity.class);
         intent.putExtra(MainActivity.ISTESTING, true);
         mainActivity = buildActivity(MainActivity.class).withIntent(intent).create().get();
-        pref = new SkyLinesPrefs(Robolectric.application.getApplicationContext());
-        context = Robolectric.application.getApplicationContext();
+        pref = new SkyLinesPrefs(RuntimeEnvironment.application.getApplicationContext());
+        context = RuntimeEnvironment.application.getApplicationContext();
         smsReceiver = new SmsReceiver();
     }
 
