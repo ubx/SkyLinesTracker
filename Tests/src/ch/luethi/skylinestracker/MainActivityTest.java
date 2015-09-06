@@ -14,7 +14,7 @@ import static org.robolectric.RuntimeEnvironment.application;
 import static org.robolectric.Robolectric.buildActivity;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk=18)
+@Config(sdk=21)
 
 public class MainActivityTest {
 
