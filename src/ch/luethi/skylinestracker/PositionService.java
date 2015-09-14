@@ -29,6 +29,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.*;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import com.geeksville.location.SkyLinesTrackingWriter;
 
 import java.net.SocketException;
@@ -46,6 +47,23 @@ public class PositionService extends Service implements LocationListener {
     private static SkyLinesApp app;
     private static Intent intentPosStatus, intentWaitStatus, intentConStatus;
 
+    private Handler delayHandler = new Handler();
+    private Runnable timerRunnable;
+
+
+    public PositionService() {
+        timerRunnable = new Runnable() {
+            @Override
+            public void run() {
+                Log.d("SkyLines", "timerRunnable, isOnline()=" + isOnline());
+                if (isOnline()) {
+                    new DequeueTask().execute();
+                }
+                startTimer();
+            }
+        };
+    }
+
 
     @Override
     public void onCreate() {
@@ -59,13 +77,14 @@ public class PositionService extends Service implements LocationListener {
         intentWaitStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_POS_WAIT_STATUS);
         intentConStatus = new Intent(MainActivity.BROADCAST_STATUS);
         intentConStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_CON_STATUS);
+        delayHandler = new Handler();
+
     }
 
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         skyLinesTrackingWriter = null;
-        initConnectionStatus();
         ipAddress = prefs.getIpAddress();
         senderThread = new HandlerThread("SenderThread");
         senderThread.start();
@@ -92,6 +111,7 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
+        stopTimer();
         SkyLinesTrackingWriter skyLinesTrackingWriter = getOrCreateSkyLinesTrackingWriter();
         if (skyLinesTrackingWriter != null) { // fix NPE #11
             if (location.getLatitude() != 0.0) {
@@ -116,6 +136,9 @@ public class PositionService extends Service implements LocationListener {
                     skyLinesTrackingWriter.dequeAndSendFix();
             }
         }
+        Log.d("SkyLines", "onLocationChanged, location=" + location.getTime());
+        Log.d("SkyLines", "onLocationChanged, isOnline()=" + isOnline());
+        startTimer();
     }
 
 
@@ -137,7 +160,12 @@ public class PositionService extends Service implements LocationListener {
     }
 
     public static boolean isOnline() {
-        return app.online;
+        NetworkInfo networkInfo = ((ConnectivityManager) app.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        if (networkInfo != null) {
+            return networkInfo.isConnected();
+        } else {
+            return false;
+        }
     }
 
     public void broadcastReceiver() {
@@ -171,10 +199,23 @@ public class PositionService extends Service implements LocationListener {
         LocalBroadcastManager.getInstance(this).sendBroadcast(intentConStatus);
     }
 
-    private void initConnectionStatus() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        app.online = activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    private void startTimer() {
+        delayHandler.postDelayed(timerRunnable, 2 * (prefs.getTrackingInterval() * 1000));
+    }
+
+    private void stopTimer() {
+        delayHandler.removeCallbacks(timerRunnable);
+    }
+
+    private class DequeueTask extends AsyncTask {
+
+        @Override
+        protected Object doInBackground(Object[] params) {
+            if (skyLinesTrackingWriter != null) {
+                skyLinesTrackingWriter.dequeAndSendFix();
+            }
+            return null;
+        }
     }
 
 }
