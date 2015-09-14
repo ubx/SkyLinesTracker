@@ -101,6 +101,7 @@ public class PositionService extends Service implements LocationListener {
         if (looper != null) {
             looper.quit();
         }
+        stopTimer();
         stopSelf();
     }
 
