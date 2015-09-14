@@ -191,10 +191,10 @@ public class SkyLinesTrackingWriter implements PositionWriter {
         } else {
             if (stack.size() > MAX_QUEUED) {
                 stack.removeElementAt(0); // remove oldest fix
-                Log.i("SkyLines", "fix removed");
+                Log.d("SkyLines", "fix removed");
             }
             stack.push(data);
-            Log.i("SkyLines", "fix queued");
+            Log.d("SkyLines", "fix queued");
         }
     }
 
@@ -204,7 +204,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
             int ms = MAX_QUEUED_SEND;
             while (!stack.empty() & (ms--) > 0) {
                 sendDatagram(stack.pop());
-                Log.i("SkyLines", "fix de-queued");
+                Log.d("SkyLines", "fix de-queued");
             }
         }
     }
