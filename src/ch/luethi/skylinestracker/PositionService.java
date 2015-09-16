@@ -78,7 +78,6 @@ public class PositionService extends Service implements LocationListener {
         intentConStatus = new Intent(MainActivity.BROADCAST_STATUS);
         intentConStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_CON_STATUS);
         delayHandler = new Handler();
-
     }
 
 
@@ -102,6 +101,7 @@ public class PositionService extends Service implements LocationListener {
             looper.quit();
         }
         stopTimer();
+        Log.d("SkyLines", "PositionService, onDestroy()");
         stopSelf();
     }
 
@@ -137,7 +137,6 @@ public class PositionService extends Service implements LocationListener {
                     skyLinesTrackingWriter.dequeAndSendFix();
             }
         }
-        Log.d("SkyLines", "onLocationChanged, location=" + location.getTime());
         Log.d("SkyLines", "onLocationChanged, isOnline()=" + isOnline());
         startTimer();
     }

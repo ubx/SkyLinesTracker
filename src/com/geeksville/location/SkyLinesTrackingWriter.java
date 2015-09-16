@@ -23,7 +23,9 @@ package com.geeksville.location;
 
 import android.util.Log;
 import ch.luethi.skylinestracker.BuildConfig;
+import ch.luethi.skylinestracker.FixQueue;
 import ch.luethi.skylinestracker.PositionService;
+import ch.luethi.skylinestracker.SkyLinesApp;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -107,7 +109,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     private DatagramSocket socket;
     private SocketAddress serverAddress;
     private DatagramPacket datagram;
-    private Stack<byte[]> stack = new Stack<byte[]>();
+    private FixQueue<byte[]> stack = SkyLinesApp.fixStack;
 
     private final Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 
@@ -191,10 +193,10 @@ public class SkyLinesTrackingWriter implements PositionWriter {
         } else {
             if (stack.size() > MAX_QUEUED) {
                 stack.removeElementAt(0); // remove oldest fix
-                Log.d("SkyLines", "fix removed");
+                Log.d("SkyLines", "fix removed(" + stack.size()+ ")");
             }
             stack.push(data);
-            Log.d("SkyLines", "fix queued");
+            Log.d("SkyLines", "fix queued(" + stack.size()+ ")");
         }
     }
 
@@ -204,7 +206,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
             int ms = MAX_QUEUED_SEND;
             while (!stack.empty() & (ms--) > 0) {
                 sendDatagram(stack.pop());
-                Log.d("SkyLines", "fix de-queued");
+                Log.d("SkyLines", "fix de-queued(" + stack.size()+ ")");
             }
         }
     }
