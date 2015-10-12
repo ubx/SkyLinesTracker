@@ -1,7 +1,3 @@
-__author__ = 'andreas'
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-import sys
 import telnetlib
 from time import sleep
 import random
@@ -31,15 +27,11 @@ tn.read_until("OK", 5)
 tn.write("gsm data unregistered\n")
 
 tn.write("geo fix {0} {1}\n".format(LNG_SRC, LAT_SRC))
-#tn.write("exit\n")
 
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
     lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-
-    #tn.read_until("OK", 5)
     tn.write("geo fix {0} {1}\n".format(lng, lat))
-    #tn.write("exit\n")
     sleep(1)
 
 tn.write("gsm data roaming\n")
@@ -47,10 +39,7 @@ tn.write("gsm data roaming\n")
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
     lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-
-    #tn.read_until("OK", 5)
     tn.write("geo fix {0} {1}\n".format(lng, lat))
-    #tn.write("exit\n")
     sleep(1)
 
 tn.write("gsm data unregistered\n")
@@ -58,10 +47,7 @@ tn.write("gsm data unregistered\n")
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
     lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-
-    #tn.read_until("OK", 5)
     tn.write("geo fix {0} {1}\n".format(lng, lat))
-    #tn.write("exit\n")
     sleep(1)
 
 tn.write("geo fix {0} {1}\n".format(LNG_DST, LAT_DST))
