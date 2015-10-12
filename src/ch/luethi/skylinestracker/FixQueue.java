@@ -64,7 +64,7 @@ public class FixQueue<E> extends Stack<E> {
         return super.isEmpty();
     }
 
-    public final void store() {
+    private final void store() {
         ObjectOutput out = null;
         try {
             out = new ObjectOutputStream(new BufferedOutputStream(ctx.openFileOutput("FixQueue.data", Context.MODE_PRIVATE)));

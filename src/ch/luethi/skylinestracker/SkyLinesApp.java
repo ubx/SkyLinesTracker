@@ -38,7 +38,7 @@ public class SkyLinesApp extends Application {
     public void onCreate() {
         super.onCreate();
         fixStack = new FixQueue<byte[]>(getApplicationContext()).load();
-        Log.d("SkyLines", "SkyLinesApp, onCreate()");
+        Log.d("SkyLines", "SkyLinesApp, onCreate(), fixStack.size()="+fixStack.size());
     }
 
 }
