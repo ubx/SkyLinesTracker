@@ -27,6 +27,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,6 +41,7 @@ public class MainActivity extends Activity {
     public static final String BROADCAST_STATUS = "SKYLINESTRACKER_BROADCAST_STATUS";
     public static final String MESSAGE_STATUS_TYPE = "MESSAGE_STATUS_TYPE";
     public static final String ISTESTING = "ISTESTING";
+    public static final String TESTING_IP = "TESTING_IP";
     public static final int MESSAGE_POS_STATUS = 0;
     public static final int MESSAGE_POS_WAIT_STATUS = 1;
     public static final int MESSAGE_CON_STATUS = 2;
@@ -61,15 +63,21 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!getIntent().hasExtra(ISTESTING)) {
+        SkyLinesPrefs prefs = new SkyLinesPrefs(this);
+        Log.d("SkyLines", "MainActivity, ISTESTING=" + getIntent().hasExtra(ISTESTING));
+        if (getIntent().hasExtra(ISTESTING)) {
+            if (getIntent().hasExtra(TESTING_IP)) {
+                prefs.setIpAddress(getIntent().getStringExtra(TESTING_IP));
+            } else {
+                prefs.setIpAddress("localhost");
+            }
+        } else {
+            prefs.setIpAddress(prefs.getIpAddress(getResources().getString(R.string.ip_address_dns)));
             Mint.setFlushOnlyOverWiFi(true);
             Mint.initAndStartSession(this, "a9b9af2d");
         }
         app = ((SkyLinesApp) getApplicationContext());
         positionService = new Intent(this, PositionService.class);
-
-        SkyLinesPrefs prefs = new SkyLinesPrefs(this);
-        prefs.setIpAddress(prefs.getIpAddress(getResources().getString(R.string.ip_address_dns)));
 
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);
