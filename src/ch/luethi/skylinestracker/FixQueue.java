@@ -90,10 +90,10 @@ public class FixQueue<E> extends Stack<E> {
             try {
                 fq = (FixQueue<E>) in.readObject();
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         } finally {
             if (in != null) {
                 try {
