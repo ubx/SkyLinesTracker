@@ -96,7 +96,7 @@ public class PositionService extends Service implements LocationListener {
         locationManager.removeUpdates(this);
         skyLinesTrackingWriter = null;
         app.positionService = null;
-        Looper looper = senderThread.getLooper();
+        Looper looper = senderThread == null ? null : senderThread.getLooper();
         if (looper != null) {
             looper.quit();
         }
