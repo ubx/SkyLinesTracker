@@ -14,5 +14,6 @@ adb -s emulator-5554 shell ps
 adb shell input keyevent 82
 export ip=$(hostname -I | awk '{print $1}')
 adb -s emulator-5554 shell am start -n ch.luethi.skylinestracker/ch.luethi.skylinestracker.MainActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -e ISTESTING true -e TESTING_IP ${ip}
-####python $TEST_DIR/integration.py
-echo 'pos={11,22,530} motion={20,120,3} turnrate=10 tzdiff=0' | nc ktrax-sim.kisstech.ch 48888 | nc localhost 5554
+java -jar $TEST_DIR/UDP-Receiver.jar &
+python $TEST_DIR/integration.py
+###echo 'pos={11,22,530} motion={20,120,3} turnrate=10 tzdiff=0' | nc ktrax-sim.kisstech.ch 48888 | nc localhost 5554

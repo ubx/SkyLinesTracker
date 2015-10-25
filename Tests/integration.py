@@ -31,7 +31,7 @@ tn.write("geo fix {0} {1}\n".format(LNG_SRC, LAT_SRC))
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
     lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-    tn.write("geo fix {0} {1}\n".format(lng, lat))
+    tn.write("geo fix {0} {1} 456\n".format(lng, lat))
     sleep(1)
 
 tn.write("gsm data roaming\n")
@@ -39,7 +39,7 @@ tn.write("gsm data roaming\n")
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
     lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-    tn.write("geo fix {0} {1}\n".format(lng, lat))
+    tn.write("geo fix {0} {1} 678\n".format(lng, lat))
     sleep(1)
 
 tn.write("gsm data unregistered\n")
@@ -47,7 +47,7 @@ tn.write("gsm data unregistered\n")
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
     lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-    tn.write("geo fix {0} {1}\n".format(lng, lat))
+    tn.write("geo fix {0} {1} 789\n".format(lng, lat))
     sleep(1)
 
 tn.write("geo fix {0} {1}\n".format(LNG_DST, LAT_DST))
