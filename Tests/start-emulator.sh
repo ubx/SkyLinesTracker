@@ -6,6 +6,7 @@ TEST_DIR="/home/andreas/IdeaProjects/SkyLinesTracker/Tests"
 #
 $EMULATOR_DIR/emulator -avd Device -netspeed full -netdelay none -no-boot-anim &
 adb -s emulator-5554 install -r $PROJECT_DIR/SkyLinesTracker.apk
+python preference_file.py 'ABC123' "5"  "false"  "true"  "192.168.1.43"
 adb push $TEST_DIR/ch.luethi.skylinestracker_preferences.xml data/data/ch.luethi.skylinestracker/shared_prefs/
 adb -s emulator-5554 shell ps
 
