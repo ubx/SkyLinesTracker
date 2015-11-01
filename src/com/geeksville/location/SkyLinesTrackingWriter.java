@@ -102,7 +102,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     private static final int FLAG_VARIO = 0x20;
     private static final int FLAG_ENL = 0x40;
     private static final int MAX_QUEUED = 1024;
-    private static final int MAX_QUEUED_SEND = 2000; // todo - temp
+    private static final int MAX_QUEUED_SEND = 20;
 
     private final long key;
 
@@ -205,9 +205,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
         if (!stack.empty()) {
             int ms = MAX_QUEUED_SEND;
             while (!stack.empty() & (ms--) > 0) {
-                //sendDatagram(stack.pop());
-                sendDatagram(stack.get(0)); // todo - temp
-                stack.removeElementAt(0);   // todo - temp
+                sendDatagram(stack.pop());
                 Log.d("SkyLines", "fix de-queued(" + stack.size()+ ")");
             }
         }
