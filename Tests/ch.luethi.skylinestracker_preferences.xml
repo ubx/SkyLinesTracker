@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map><string name="tracking_key">ABC123</string><string name="tracking_interval">5</string><boolean name="sms_config" value="false" /><boolean name="autostart_tracking" value="true" /><string name="ip_address">192.168.1.43</string></map>
+<map><string name="tracking_key">ABC123</string><string name="tracking_interval">2</string><boolean name="sms_config" value="false" /><boolean name="autostart_tracking" value="true" /><string name="ip_address">192.168.1.43</string></map>
