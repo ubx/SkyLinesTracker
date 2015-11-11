@@ -1,6 +1,4 @@
 import sys
-
-__author__ = 'andreas'
 import xml.etree.cElementTree as ET
 
 
