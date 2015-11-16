@@ -1,5 +1,6 @@
 import telnetlib
 from time import sleep
+import time
 import random
 
 HOST = "127.0.0.1"
@@ -11,6 +12,8 @@ LAT_DST = 53.5753200
 LNG_DST = 10.0153400
 SECONDS = 600
 
+key = "ABC098"
+
 LAT_MAX_STEP = ((max(LAT_DST, LAT_SRC) - min(LAT_DST, LAT_SRC)) / SECONDS) * 2
 LNG_MAX_STEP = ((max(LNG_DST, LNG_SRC) - min(LNG_DST, LNG_SRC)) / SECONDS) * 2
 
@@ -21,36 +24,54 @@ lat = LAT_SRC
 lng = LNG_SRC
 
 tn = telnetlib.Telnet(HOST, PORT, TIMEOUT)
-tn.set_debuglevel(9)
+tn.set_debuglevel(0)
 tn.read_until("OK", 5)
 
-tn.write("gsm data unregistered\n")
 
-tn.write("geo fix {0} {1}\n".format(LNG_SRC, LAT_SRC))
+def millies_of_day():
+    t = time.gmtime()
+    mils_of_dat = (t.tm_sec + (t.tm_min * 60) + (t.tm_hour * 3600)) * 1000
+    return mils_of_dat
+
+def write_geo(lng, lat, alt):
+    tn.write("geo fix {0} {1} {2}\n".format(lng, lat, alt))
+    print("{0},{1},{2},{3},{4}".format(millies_of_day(), key, lng, lat, alt))
+
+
+def write_gsm(mode):
+    tn.write('gsm data ' + mode + '\n')
+
+
+
+write_gsm("unregistered")
+
+write_geo(LNG_SRC, LAT_SRC, 123)
+
 
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
     lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-    tn.write("geo fix {0} {1} 456\n".format(lng, lat))
+    write_geo(lng, lat, 456)
     sleep(1)
 
-tn.write("gsm data roaming\n")
+write_geo("roaming")
 
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
     lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-    tn.write("geo fix {0} {1} 678\n".format(lng, lat))
+    write_geo(lng, lat, 567)
     sleep(1)
 
-tn.write("gsm data unregistered\n")
+write_geo("unregistered")
 
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
     lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-    tn.write("geo fix {0} {1} 789\n".format(lng, lat))
+    write_geo(lng, lat, 678)
     sleep(1)
 
-tn.write("geo fix {0} {1}\n".format(LNG_DST, LAT_DST))
+write_geo(LNG_DST, LAT_DST, 789)
+
 tn.write("exit\n")
 
 print tn.read_all()

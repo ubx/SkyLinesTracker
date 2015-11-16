@@ -23,4 +23,5 @@ def create(tracking_key, tracking_interval, sms_config, autostart_tracking, ip_a
 
 ##create("XXX", "5", "false", "false", "192.168.1.43")
 if __name__ == "__main__":
+    print sys.argv[1]
     create(sys.argv[1],sys.argv[2],sys.argv[3],sys.argv[4],sys.argv[5])
