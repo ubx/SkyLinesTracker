@@ -42,7 +42,6 @@ def write_gsm(mode):
     tn.write('gsm data ' + mode + '\n')
 
 
-
 write_gsm("unregistered")
 
 write_geo(LNG_SRC, LAT_SRC, 123)
@@ -54,7 +53,7 @@ for i in range(SECONDS):
     write_geo(lng, lat, 456)
     sleep(1)
 
-write_geo("roaming")
+write_gsm("roaming")
 
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
@@ -62,7 +61,7 @@ for i in range(SECONDS):
     write_geo(lng, lat, 567)
     sleep(1)
 
-write_geo("unregistered")
+write_gsm("unregistered")
 
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
