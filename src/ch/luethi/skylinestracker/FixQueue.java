@@ -23,25 +23,27 @@ import android.content.Context;
 import java.io.*;
 import java.util.Stack;
 
-public class FixQueue<E> extends Stack<E> {
+public class FixQueue<E> implements FixQueueIF<E> {
 
     private static transient Context ctx;
+    private Stack<E> stack;
 
     public FixQueue(Context ctx) {
         super();
         this.ctx = ctx;
+        stack = new Stack<E>();
     }
 
     @Override
     public synchronized E push(E object) {
-        E e = super.push(object);
+        E e = stack.push(object);
         store();
         return e;
     }
 
     @Override
     public synchronized E pop() {
-        E e = super.pop();
+        E e = stack.pop();
         if (isEmpty()) {
             store();
         }
@@ -50,18 +52,18 @@ public class FixQueue<E> extends Stack<E> {
 
     @Override
     public synchronized void removeElementAt(int location) {
-        super.removeElementAt(location);
+        stack.removeElementAt(location);
         store();
     }
 
     @Override
     public synchronized int size() {
-        return super.size();
+        return stack.size();
     }
 
     @Override
     public synchronized boolean isEmpty() {
-        return super.isEmpty();
+        return stack.isEmpty();
     }
 
     private final void store() {
@@ -82,6 +84,7 @@ public class FixQueue<E> extends Stack<E> {
         }
     }
 
+    @Override
     public final FixQueue<E> load() {
         ObjectInputStream in = null;
         FixQueue<E> fq = null;

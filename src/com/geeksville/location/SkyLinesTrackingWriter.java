@@ -22,10 +22,7 @@ Copyright_License {
 package com.geeksville.location;
 
 import android.util.Log;
-import ch.luethi.skylinestracker.BuildConfig;
-import ch.luethi.skylinestracker.FixQueue;
-import ch.luethi.skylinestracker.PositionService;
-import ch.luethi.skylinestracker.SkyLinesApp;
+import ch.luethi.skylinestracker.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -109,7 +106,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     private DatagramSocket socket;
     private SocketAddress serverAddress;
     private DatagramPacket datagram;
-    private FixQueue<byte[]> stack = SkyLinesApp.fixStack;
+    private FixQueueIF<byte[]> stack = SkyLinesApp.fixStack;
 
     private final Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 
@@ -202,9 +199,9 @@ public class SkyLinesTrackingWriter implements PositionWriter {
 
 
     public void dequeAndSendFix() {
-        if (!stack.empty()) {
+        if (!stack.isEmpty()) {
             int ms = MAX_QUEUED_SEND;
-            while (!stack.empty() & (ms--) > 0) {
+            while (!stack.isEmpty() & (ms--) > 0) {
                 sendDatagram(stack.pop());
                 Log.d("SkyLines", "fix de-queued(" + stack.size()+ ")");
             }

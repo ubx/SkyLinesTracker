@@ -34,6 +34,7 @@ class SkyLinesPrefs {
 
     private static final String AUTOSTART_TRACKING = "autostart_tracking";
     private static final String SMS_CONFIG = "sms_config";
+    private static final String QUEUE_FIXES = "queue_fixes";
 
     private final SharedPreferences prefs;
 
@@ -92,4 +93,11 @@ class SkyLinesPrefs {
         prefs.edit().putString(IP_ADDRESS, ipAddress).commit();
     }
 
+    public boolean isQueueFixes() {
+        return prefs.getBoolean(QUEUE_FIXES, false);
+    }
+
+    public void setQueueFixes(boolean val) {
+        prefs.edit().putBoolean(QUEUE_FIXES, val).commit();
+    }
 }

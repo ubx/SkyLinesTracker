@@ -18,36 +18,40 @@
 
 package ch.luethi.skylinestracker;
 
-import android.app.Application;
-import android.util.Log;
+import android.content.Context;
 
-import java.util.Stack;
+public class FixQueueNop<E>  implements FixQueueIF<E> {
 
-public class SkyLinesApp extends Application {
-
-    public boolean guiActive;
-    public double lastLat, lastLon;
-    public PositionService positionService = null;
-    public static FixQueueIF<byte[]> fixStack;
-
-    private SkyLinesPrefs prefs;
-
-
-    public SkyLinesApp() {
-        prefs = new SkyLinesPrefs(this);
-        Log.d("SkyLines", "Queue Fixes=" + prefs.isQueueFixes());
+    public FixQueueNop(Context ctx) {
     }
-
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        if (prefs.isQueueFixes()) {
-            fixStack = new FixQueue<byte[]>(getApplicationContext()).load();
-        } else {
-            fixStack = new FixQueueNop<byte[]>(getApplicationContext()).load();
-        }
-        Log.d("SkyLines", "SkyLinesApp, onCreate(), fixStack.size()="+fixStack.size());
+    public E push(E object) {
+        return null;
     }
 
+    @Override
+    public E pop() {
+        return null;
+    }
+
+    @Override
+    public void removeElementAt(int location) {
+
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return true;
+    }
+
+    @Override
+    public FixQueueIF<E> load() {
+        return this;
+    }
 }
