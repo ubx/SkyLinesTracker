@@ -2,6 +2,7 @@ import telnetlib
 from time import sleep
 import time
 import random
+import sys
 
 HOST = "127.0.0.1"
 PORT = 5554
@@ -10,9 +11,9 @@ LAT_SRC = 52.5243700
 LNG_SRC = 13.4105300
 LAT_DST = 53.5753200
 LNG_DST = 10.0153400
-SECONDS = 600
+SECONDS = 10
 
-key = "ABC098"
+KEY = sys.argv[-1]
 
 LAT_MAX_STEP = ((max(LAT_DST, LAT_SRC) - min(LAT_DST, LAT_SRC)) / SECONDS) * 2
 LNG_MAX_STEP = ((max(LNG_DST, LNG_SRC) - min(LNG_DST, LNG_SRC)) / SECONDS) * 2
@@ -27,7 +28,6 @@ tn = telnetlib.Telnet(HOST, PORT, TIMEOUT)
 tn.set_debuglevel(0)
 tn.read_until("OK", 5)
 
-
 def millies_of_day():
     t = time.gmtime()
     mils_of_dat = (t.tm_sec + (t.tm_min * 60) + (t.tm_hour * 3600)) * 1000
@@ -35,12 +35,16 @@ def millies_of_day():
 
 def write_geo(lng, lat, alt):
     tn.write("geo fix {0} {1} {2}\n".format(lng, lat, alt))
-    print("{0},{1},{2:.5f},{3:.5f},{4}".format(millies_of_day(), key, lng, lat, alt))
+    print("{0},{1},{2:.5f},{3:.5f},{4}".format(millies_of_day(), KEY, lng, lat, alt))
 
 
 def write_gsm(mode):
     tn.write('gsm data ' + mode + '\n')
 
+def write_sms(msg):
+    tn.write('sms send 1234 slt ' + msg + '\n')
+
+##write_sms("LIVE=ON")
 
 write_gsm("unregistered")
 
