@@ -23,7 +23,7 @@ import android.content.Context;
 import java.io.*;
 import java.util.Stack;
 
-public class FixQueue<E> implements FixQueueIF<E> {
+public class FixQueue<E> implements FixQueueIF<E>, Serializable {
 
     private static transient Context ctx;
     private Stack<E> stack;
