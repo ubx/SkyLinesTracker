@@ -36,7 +36,7 @@ public class FixQueueTest {
     @Test
     public void testPush() throws Exception {
         for (byte i = 0; i < MAX_DATA; i++) {
-            byte[]  pl = payload.clone();
+            byte[] pl = payload.clone();
             pl[0] = i;
             fixQueue.push(pl);
         }
@@ -46,29 +46,51 @@ public class FixQueueTest {
     @Test
     public void testPop() throws Exception {
         testPush();
-        for (int l = fixQueue.size() - 1; l >= 0; --l) {
-            byte[] plr = fixQueue.pop();
-            assertThat("Wrong data poped", Integer.valueOf(plr[0]), equalTo(l));
-        }
+        verifyQueue();
+        assertThat("Queue not empty", fixQueue.size(), equalTo(0));
     }
 
     @Test
     public void testRemoveElementAt() throws Exception {
-
+        testPush();
+        fixQueue.removeElementAt(47);
+        assertThat("Wrong number of elements in queue", fixQueue.size(), equalTo(MAX_DATA - 1));
+        fixQueue.removeElementAt(0);
+        assertThat("Wrong number of elements in queue", fixQueue.size(), equalTo(MAX_DATA - 2));
+        fixQueue.removeElementAt(fixQueue.size() - 1);
+        assertThat("Wrong number of elements in queue", fixQueue.size(), equalTo(MAX_DATA - 3));
     }
 
-    @Test
-    public void testSize() throws Exception {
-
-    }
-
-    @Test
-    public void testIsEmpty() throws Exception {
-
-    }
 
     @Test
     public void testLoad() throws Exception {
+        testPush();
+        fixQueue = new FixQueue<byte[]>(RuntimeEnvironment.application.getApplicationContext()).load();
+        assertThat("Wrong number of elements in queue", fixQueue.size(), equalTo(MAX_DATA));
+        verifyQueue();
+    }
 
+    @Test
+    public void testPushPerformance() throws Exception {
+        long startTime = System.currentTimeMillis();
+        for (byte i = 0; i < MAX_DATA; i++) {
+            byte[] pl = payload.clone();
+            pl[0] = i;
+            fixQueue.push(pl);
+        }
+        long estimatedTime = System.currentTimeMillis() - startTime;
+        printElapsed("Measure Push", estimatedTime);
+    }
+
+    private void printElapsed(String testName, long estimatedTime) {
+        System.out.println(testName+": elapsed=" + estimatedTime + "ms");
+    }
+
+
+    private void verifyQueue() {
+        for (int l = fixQueue.size() - 1; l >= 0; --l) {
+            byte[] plr = fixQueue.pop();
+            assertThat("Wrong data poped", Integer.valueOf(plr[0]), equalTo(l));
+        }
     }
 }
