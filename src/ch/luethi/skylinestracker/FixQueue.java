@@ -25,6 +25,7 @@ import java.util.Stack;
 
 public class FixQueue<E> implements FixQueueIF<E>, Serializable {
 
+    private static final String FIX_QUEUE_DATA_FILE = "FixQueue.data";
     private static transient Context ctx;
     private Stack<E> stack;
 
@@ -69,7 +70,7 @@ public class FixQueue<E> implements FixQueueIF<E>, Serializable {
     private final void store() {
         ObjectOutput out = null;
         try {
-            out = new ObjectOutputStream(new BufferedOutputStream(ctx.openFileOutput("FixQueue.data", Context.MODE_PRIVATE)));
+            out = new ObjectOutputStream(new BufferedOutputStream(ctx.openFileOutput(FIX_QUEUE_DATA_FILE, Context.MODE_PRIVATE)));
             out.writeObject(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -89,7 +90,7 @@ public class FixQueue<E> implements FixQueueIF<E>, Serializable {
         ObjectInputStream in = null;
         FixQueue<E> fq = null;
         try {
-            in = new ObjectInputStream(new BufferedInputStream(ctx.openFileInput(("FixQueue.data"))));
+            in = new ObjectInputStream(new BufferedInputStream(ctx.openFileInput(FIX_QUEUE_DATA_FILE)));
             try {
                 fq = (FixQueue<E>) in.readObject();
             } catch (ClassNotFoundException e) {
