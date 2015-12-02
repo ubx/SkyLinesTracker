@@ -16,7 +16,8 @@ import static org.junit.Assert.assertThat;
 
 public class FixQueueTest {
 
-    public static final int MAX_DATA = 100;
+    public static final int MAX_DATA = 120;
+    public static final int REMOVE_ELEMENT = MAX_DATA / 3;
     FixQueue<byte[]> fixQueue;
     byte[] payload;
 
@@ -53,7 +54,7 @@ public class FixQueueTest {
     @Test
     public void testRemoveElementAt() throws Exception {
         testPush();
-        fixQueue.removeElementAt(47);
+        fixQueue.removeElementAt(REMOVE_ELEMENT);
         assertThat("Wrong number of elements in queue", fixQueue.size(), equalTo(MAX_DATA - 1));
         fixQueue.removeElementAt(0);
         assertThat("Wrong number of elements in queue", fixQueue.size(), equalTo(MAX_DATA - 2));
@@ -82,8 +83,18 @@ public class FixQueueTest {
         printElapsed("Measure Push", estimatedTime);
     }
 
+    @Test
+    public void testLoadPerformance() throws Exception {
+        testPush();
+        long startTime = System.currentTimeMillis();
+        fixQueue = new FixQueue<byte[]>(RuntimeEnvironment.application.getApplicationContext()).load();
+        long estimatedTime = System.currentTimeMillis() - startTime;
+        printElapsed("Measure Load", estimatedTime);
+        verifyQueue();
+    }
+
     private void printElapsed(String testName, long estimatedTime) {
-        System.out.println(testName+": elapsed=" + estimatedTime + "ms");
+        System.out.println(testName + ": elapsed=" + estimatedTime + "ms");
     }
 
 
