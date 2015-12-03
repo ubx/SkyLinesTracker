@@ -16,7 +16,7 @@ import static org.junit.Assert.assertThat;
 
 public class FixQueueTest {
 
-    public static final int MAX_DATA = 120;
+    public static final int MAX_DATA = 130;
     public static final int REMOVE_ELEMENT = MAX_DATA / 3;
     FixQueue<byte[]> fixQueue;
     byte[] payload;
@@ -36,9 +36,9 @@ public class FixQueueTest {
 
     @Test
     public void testPush() throws Exception {
-        for (byte i = 0; i < MAX_DATA; i++) {
+        for (int i = 0; i < MAX_DATA; i++) {
             byte[] pl = payload.clone();
-            pl[0] = i;
+            pl[0] = (byte) i;
             fixQueue.push(pl);
         }
         assertThat("Wrong number of elements in queue", fixQueue.size(), equalTo(MAX_DATA));
@@ -74,9 +74,9 @@ public class FixQueueTest {
     @Test
     public void testPushPerformance() throws Exception {
         long startTime = System.currentTimeMillis();
-        for (byte i = 0; i < MAX_DATA; i++) {
+        for (int i = 0; i < MAX_DATA; i++) {
             byte[] pl = payload.clone();
-            pl[0] = i;
+            pl[0] = (byte) i;
             fixQueue.push(pl);
         }
         long estimatedTime = System.currentTimeMillis() - startTime;
@@ -101,7 +101,7 @@ public class FixQueueTest {
     private void verifyQueue() {
         for (int l = fixQueue.size() - 1; l >= 0; --l) {
             byte[] plr = fixQueue.pop();
-            assertThat("Wrong data poped", Integer.valueOf(plr[0]), equalTo(l));
+            assertThat("Wrong data poped", plr[0], equalTo((byte)l));
         }
     }
 }
