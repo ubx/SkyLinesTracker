@@ -148,8 +148,8 @@
       <file leaf-file-name="profiles_settings.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/copyright/profiles_settings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.04032258">
+              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -1437,13 +1437,7 @@
       <workItem from="1429687053037" duration="560000" />
       <workItem from="1429692851672" duration="5269000" />
       <workItem from="1429863142094" duration="4959000" />
-      <workItem from="1449323416211" duration="360000" />
-    </task>
-    <task id="LOCAL-00001" summary="Enable project with IntelliJ.">
-      <created>1388160669468</created>
-      <option name="number" value="00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1388160669468</updated>
+      <workItem from="1449323416211" duration="452000" />
     </task>
     <task id="LOCAL-00002" summary="Enable project with IntelliJ.">
       <created>1388160688385</created>
@@ -1736,7 +1730,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449323760088</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="X">
+      <created>1449323782893</created>
+      <option name="number" value="00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1449323782895</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <option name="createBranch" value="false" />
     <option name="commitChanges" value="false" />
     <servers>
@@ -1758,7 +1758,7 @@
     </servers>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199239000" />
+    <option name="totallyTimeSpent" value="199331000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2258,8 +2258,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/copyright/profiles_settings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.04032258">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
           <folding />
         </state>
       </provider>
