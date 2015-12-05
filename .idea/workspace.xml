@@ -1437,7 +1437,7 @@
       <workItem from="1429687053037" duration="560000" />
       <workItem from="1429692851672" duration="5269000" />
       <workItem from="1429863142094" duration="4959000" />
-      <workItem from="1449323416211" duration="339000" />
+      <workItem from="1449323416211" duration="360000" />
     </task>
     <task id="LOCAL-00001" summary="Enable project with IntelliJ.">
       <created>1388160669468</created>
@@ -1730,7 +1730,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449323749955</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="X">
+      <created>1449323760088</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1449323760088</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <option name="createBranch" value="false" />
     <option name="commitChanges" value="false" />
     <servers>
@@ -1752,7 +1758,7 @@
     </servers>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199218000" />
+    <option name="totallyTimeSpent" value="199239000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
