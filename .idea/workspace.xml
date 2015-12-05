@@ -33,8 +33,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="not yet released" comment="Update to robolectric 2.4.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+    <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="not yet released" comment="X">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SkyLinesTracker.iws" />
@@ -1438,7 +1437,7 @@
       <workItem from="1429687053037" duration="560000" />
       <workItem from="1429692851672" duration="5269000" />
       <workItem from="1429863142094" duration="4959000" />
-      <workItem from="1449323416211" duration="307000" />
+      <workItem from="1449323416211" duration="339000" />
     </task>
     <task id="LOCAL-00001" summary="Enable project with IntelliJ.">
       <created>1388160669468</created>
@@ -1725,7 +1724,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449323708883</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="X">
+      <created>1449323749955</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1449323749955</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <option name="createBranch" value="false" />
     <option name="commitChanges" value="false" />
     <servers>
@@ -1747,7 +1752,7 @@
     </servers>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199186000" />
+    <option name="totallyTimeSpent" value="199218000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1856,7 +1861,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Issue 6: updated SkyLines server IP" />
     <MESSAGE value="Add more unit test for preferences" />
     <MESSAGE value="Refactoring" />
     <MESSAGE value="Unit tests for sms configuration, part I" />
@@ -1881,7 +1885,8 @@
     <MESSAGE value="Update android target ro 22, update mint to 4.2." />
     <MESSAGE value="Update to robolectric 2.4." />
     <MESSAGE value="95, 128, 34, 172" />
-    <option name="LAST_COMMIT_MESSAGE" value="95, 128, 34, 172" />
+    <MESSAGE value="X" />
+    <option name="LAST_COMMIT_MESSAGE" value="X" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
