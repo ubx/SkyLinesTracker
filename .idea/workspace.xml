@@ -33,8 +33,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="not yet released" comment="X">
+    <list id="416ba20d-3a11-4ecd-8cb2-983e572e6c3b" name="Workspace" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="to-commit" comment="X">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Tests/Tests.iml" afterPath="$PROJECT_DIR$/Tests/Tests.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
     </list>
     <ignored path="SkyLinesTracker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,6 +46,7 @@
     <ignored path="C:/production/Testing/out/" />
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,11 +150,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="profiles_settings.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/copyright/profiles_settings.xml">
+      <file leaf-file-name="MainActivityTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/MainActivityTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.04032258">
-              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+              <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -784,6 +789,17 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="myFilePath" />
@@ -1316,6 +1332,8 @@
     <task active="true" id="Default" summary="Default task">
       <changelist id="" name="workspace" comment="" />
       <changelist id="c1883139-2d78-47d9-8c40-07a59dad7184" name="1.0.4" comment="" />
+      <changelist id="" name="New changelist" comment="" />
+      <changelist id="416ba20d-3a11-4ecd-8cb2-983e572e6c3b" name="Workspace" comment="" />
       <created>1388159229712</created>
       <option name="number" value="Default" />
       <updated>1416987771813</updated>
@@ -1437,13 +1455,7 @@
       <workItem from="1429687053037" duration="560000" />
       <workItem from="1429692851672" duration="5269000" />
       <workItem from="1429863142094" duration="4959000" />
-      <workItem from="1449323416211" duration="452000" />
-    </task>
-    <task id="LOCAL-00002" summary="Enable project with IntelliJ.">
-      <created>1388160688385</created>
-      <option name="number" value="00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1388160688385</updated>
+      <workItem from="1449323416211" duration="1333000" />
     </task>
     <task id="LOCAL-00003" summary="Enable project with IntelliJ.&#10;">
       <created>1388160854389</created>
@@ -1736,7 +1748,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449323782895</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="X">
+      <created>1449323879123</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1449323879123</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <option name="createBranch" value="false" />
     <option name="commitChanges" value="false" />
     <servers>
@@ -1758,7 +1776,7 @@
     </servers>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199331000" />
+    <option name="totallyTimeSpent" value="200212000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -2222,14 +2240,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/MainActivityTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/SmsReceiverTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2237,14 +2247,6 @@
           <folding>
             <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5498721">
-          <caret line="1945" column="49" selection-start-line="1945" selection-start-column="49" selection-end-line="1945" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2260,6 +2262,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.04032258">
           <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5739247">
+          <caret line="1945" column="12" selection-start-line="1945" selection-start-column="12" selection-end-line="1945" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/MainActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04032258">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
           <folding />
         </state>
       </provider>
@@ -2295,7 +2313,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Python 2.7.9 (C:\Python27\python.exe) interpreter library</last-edited>
+          <last-edited>Python 2.7.8 (/usr/bin/python2.7) interpreter library</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -2324,6 +2342,7 @@
             <option name="proportions">
               <list>
                 <option value="0.27733597" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -2331,7 +2350,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>org.robolectric:robolectric:2.4</last-edited>
+          <last-edited>android-support-v4</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
