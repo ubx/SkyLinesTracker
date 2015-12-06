@@ -12,11 +12,11 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(sdk = 21)
+@Config(sdk = 21, manifest=Config.NONE)
 
 public class FixQueueTest {
 
-    public static final int MAX_DATA = 130;
+    public static final int MAX_DATA = 1000;
     public static final int REMOVE_ELEMENT = MAX_DATA / 3;
     FixQueue<byte[]> fixQueue;
     byte[] payload;
@@ -36,17 +36,13 @@ public class FixQueueTest {
 
     @Test
     public void testPush() throws Exception {
-        for (int i = 0; i < MAX_DATA; i++) {
-            byte[] pl = payload.clone();
-            pl[0] = (byte) i;
-            fixQueue.push(pl);
-        }
+        doPush(MAX_DATA);
         assertThat("Wrong number of elements in queue", fixQueue.size(), equalTo(MAX_DATA));
     }
 
     @Test
     public void testPop() throws Exception {
-        testPush();
+        doPush(MAX_DATA);
         verifyQueue();
         assertThat("Queue not empty", fixQueue.size(), equalTo(0));
     }
@@ -72,27 +68,49 @@ public class FixQueueTest {
     }
 
     @Test
-    public void testPushPerformance() throws Exception {
+    public void testPushPerformance_1000() throws Exception {
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < MAX_DATA; i++) {
+        doPush(1000);
+        long estimatedTime = System.currentTimeMillis() - startTime;
+        printElapsed("Measure Push 1000", estimatedTime);
+    }
+
+    @Test
+    public void testPushPerformance_10000() throws Exception {
+        long startTime = System.currentTimeMillis();
+        doPush(10000);
+        long estimatedTime = System.currentTimeMillis() - startTime;
+        printElapsed("Measure Push 10000", estimatedTime);
+    }
+
+
+    @Test
+    public void testLoadPerformance_1000() throws Exception {
+        doPush(1000);
+        long startTime = System.currentTimeMillis();
+        fixQueue = new FixQueue<byte[]>(RuntimeEnvironment.application.getApplicationContext()).load();
+        long estimatedTime = System.currentTimeMillis() - startTime;
+        printElapsed("Measure Load 1000", estimatedTime);
+        verifyQueue();
+    }
+
+    @Test
+    public void testLoadPerformance_10000() throws Exception {
+        doPush(10000);
+        long startTime = System.currentTimeMillis();
+        fixQueue = new FixQueue<byte[]>(RuntimeEnvironment.application.getApplicationContext()).load();
+        long estimatedTime = System.currentTimeMillis() - startTime;
+        printElapsed("Measure Load 10000", estimatedTime);
+        verifyQueue();
+    }
+
+    private void doPush(int len) {
+        for (int i = 0; i < len; i++) {
             byte[] pl = payload.clone();
             pl[0] = (byte) i;
             fixQueue.push(pl);
         }
-        long estimatedTime = System.currentTimeMillis() - startTime;
-        printElapsed("Measure Push", estimatedTime);
     }
-
-    @Test
-    public void testLoadPerformance() throws Exception {
-        testPush();
-        long startTime = System.currentTimeMillis();
-        fixQueue = new FixQueue<byte[]>(RuntimeEnvironment.application.getApplicationContext()).load();
-        long estimatedTime = System.currentTimeMillis() - startTime;
-        printElapsed("Measure Load", estimatedTime);
-        verifyQueue();
-    }
-
     private void printElapsed(String testName, long estimatedTime) {
         System.out.println(testName + ": elapsed=" + estimatedTime + "ms");
     }
