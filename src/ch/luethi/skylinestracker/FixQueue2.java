@@ -15,30 +15,53 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package ch.luethi.skylinestracker;
 
-import android.app.Application;
-import android.util.Log;
+import android.content.Context;
+import org.pcollections.*;
 
-public class SkyLinesApp extends Application {
 
-    public boolean guiActive;
-    public double lastLat, lastLon;
-    public PositionService positionService = null;
-    public static FixQueueIF<byte[]> fixStack;
+public class FixQueue2<E> implements FixQueueIF<E> {
 
+    private static transient Context ctx;
+    private PStack<E> stack;
+
+
+    public FixQueue2(Context ctx) {
+        super();
+        this.ctx = ctx;
+        stack = ConsPStack.empty();;
+    }
     @Override
-    public void onCreate() {
-        super.onCreate();
-        SkyLinesPrefs prefs = new SkyLinesPrefs(this);
-        Log.d("SkyLines", "Queue Fixes=" + prefs.isQueueFixes());
-        if (prefs.isQueueFixes()) {
-            fixStack = new FixQueue2<byte[]>(getApplicationContext()).load();
-        } else {
-            fixStack = new FixQueueNop<byte[]>(getApplicationContext()).load();
-        }
-        Log.d("SkyLines", "SkyLinesApp, onCreate(), fixStack.size()="+fixStack.size());
+    public E push(E object) {
+        stack = stack.plus(object);
+        return object;
     }
 
+    @Override
+    public E pop() {
+        E e = stack.get(0);
+        stack = stack.minus(0);
+        return e;
+    }
+
+    @Override
+    public void removeElementAt(int location) {
+        stack = stack.minus(location);
+    }
+
+    @Override
+    public int size() {
+        return  stack.size();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
+
+    @Override
+    public FixQueueIF<E> load() {
+        return this;
+    }
 }
