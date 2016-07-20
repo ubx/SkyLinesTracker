@@ -34,7 +34,7 @@ public class SkyLinesApp extends Application {
         SkyLinesPrefs prefs = new SkyLinesPrefs(this);
         Log.d("SkyLines", "Queue Fixes=" + prefs.isQueueFixes());
         if (prefs.isQueueFixes()) {
-            fixStack = new FixQueue2<byte[]>(getApplicationContext()).load();
+            fixStack = new FixQueue<byte[]>(getApplicationContext()).load();
         } else {
             fixStack = new FixQueueNop<byte[]>(getApplicationContext()).load();
         }

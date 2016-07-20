@@ -15,99 +15,53 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package ch.luethi.skylinestracker;
 
 import android.content.Context;
+import org.pcollections.*;
 
-import java.io.*;
-import java.util.Stack;
 
-public class FixQueue<E> implements FixQueueIF<E>, Serializable {
+public class FixQueue<E> implements FixQueueIF<E> {
 
-    private static final String FIX_QUEUE_DATA_FILE = "FixQueue.data";
     private static transient Context ctx;
-    private Stack<E> stack;
+    private PStack<E> stack;
+
 
     public FixQueue(Context ctx) {
         super();
         this.ctx = ctx;
-        stack = new Stack<E>();
+        stack = ConsPStack.empty();;
+    }
+    @Override
+    public E push(E object) {
+        stack = stack.plus(object);
+        return object;
     }
 
     @Override
-    public synchronized E push(E object) {
-        E e = stack.push(object);
-        store();
+    public E pop() {
+        E e = stack.get(0);
+        stack = stack.minus(0);
         return e;
     }
 
     @Override
-    public synchronized E pop() {
-        E e = stack.pop();
-        if (isEmpty()) {
-            store();
-        }
-        return e;
+    public void removeElementAt(int location) {
+        stack = stack.minus(location);
     }
 
     @Override
-    public synchronized void removeElementAt(int location) {
-        stack.removeElementAt(location);
-        store();
+    public int size() {
+        return  stack.size();
     }
 
     @Override
-    public synchronized int size() {
-        return stack.size();
-    }
-
-    @Override
-    public synchronized boolean isEmpty() {
+    public boolean isEmpty() {
         return stack.isEmpty();
     }
 
-    private final void store() {
-        ObjectOutput out = null;
-        try {
-            out = new ObjectOutputStream(new BufferedOutputStream(ctx.openFileOutput(FIX_QUEUE_DATA_FILE, Context.MODE_PRIVATE)));
-            out.writeObject(this);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
     @Override
-    public final FixQueue<E> load() {
-        ObjectInputStream in = null;
-        FixQueue<E> fq = null;
-        try {
-            in = new ObjectInputStream(new BufferedInputStream(ctx.openFileInput(FIX_QUEUE_DATA_FILE)));
-            try {
-                fq = (FixQueue<E>) in.readObject();
-            } catch (ClassNotFoundException e) {
-                // e.printStackTrace();
-            }
-        } catch (IOException e) {
-            // e.printStackTrace();
-        } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return fq == null ? this : fq;
+    public FixQueueIF<E> load() {
+        return this;
     }
-
 }
