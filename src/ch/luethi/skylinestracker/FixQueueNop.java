@@ -20,28 +20,22 @@ package ch.luethi.skylinestracker;
 
 import android.content.Context;
 
-public class FixQueueNop<E>  implements FixQueueIF<E> {
+public class FixQueueNop  implements FixQueueIF {
 
     public FixQueueNop(Context ctx) {
     }
 
     @Override
-    public E push(E object) {
+    public  void  push(byte[] date) {
+    }
+
+    @Override
+    public byte[] pop() {
         return null;
     }
 
     @Override
-    public E pop() {
-        return null;
-    }
-
-    @Override
-    public void removeElementAt(int location) {
-
-    }
-
-    @Override
-    public int size() {
+    public long size() {
         return 0;
     }
 
@@ -51,7 +45,7 @@ public class FixQueueNop<E>  implements FixQueueIF<E> {
     }
 
     @Override
-    public FixQueueIF<E> load() {
+    public FixQueueIF load() {
         return this;
     }
 }

@@ -83,12 +83,13 @@ public class PositionService extends Service implements LocationListener {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        if (intent.getBooleanExtra("start", false)) {
-            //  todo -- create an empty stack
+        boolean init = intent.getBooleanExtra("init", false);
+        if (prefs.isQueueFixes()) {
+            app.fixStack = new FixQueue(getApplicationContext(), init).load();
         } else {
-            // todo -- load persitence stack
-            Log.d("SkyLines", "PositionService, onStartCommand(), android restart service");
+            app.fixStack = new FixQueueNop(getApplicationContext()).load();
         }
+        Log.d("SkyLines", "SkyLinesApp, onStartCommand(), fixStack.size()=" + app.fixStack.size() + ", init=" + init);
 
         skyLinesTrackingWriter = null;
         ipAddress = prefs.getIpAddress();

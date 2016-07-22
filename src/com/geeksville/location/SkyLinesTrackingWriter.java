@@ -22,7 +22,10 @@ Copyright_License {
 package com.geeksville.location;
 
 import android.util.Log;
-import ch.luethi.skylinestracker.*;
+import ch.luethi.skylinestracker.BuildConfig;
+import ch.luethi.skylinestracker.FixQueueIF;
+import ch.luethi.skylinestracker.PositionService;
+import ch.luethi.skylinestracker.SkyLinesApp;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -30,7 +33,6 @@ import java.io.IOException;
 import java.net.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Stack;
 import java.util.TimeZone;
 
 class CRC16CCITT {
@@ -106,7 +108,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     private DatagramSocket socket;
     private SocketAddress serverAddress;
     private DatagramPacket datagram;
-    private FixQueueIF<byte[]> stack = SkyLinesApp.fixStack;
+    private FixQueueIF stack = SkyLinesApp.fixStack;
 
     private final Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone("GMT"));
 
@@ -189,7 +191,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
             sendDatagram(data);
         } else {
             if (stack.size() > MAX_QUEUED) {
-                stack.removeElementAt(0); // remove oldest fix
+                // todo ??? stack.removeElementAt(0); // remove oldest fix
                 Log.d("SkyLines", "fix removed(" + stack.size()+ ")");
             }
             stack.push(data);

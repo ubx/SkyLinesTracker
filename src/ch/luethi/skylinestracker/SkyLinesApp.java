@@ -19,26 +19,17 @@
 package ch.luethi.skylinestracker;
 
 import android.app.Application;
-import android.util.Log;
 
 public class SkyLinesApp extends Application {
 
     public boolean guiActive;
     public double lastLat, lastLon;
     public PositionService positionService = null;
-    public static FixQueueIF<byte[]> fixStack;
+    public static FixQueueIF fixStack;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        SkyLinesPrefs prefs = new SkyLinesPrefs(this);
-        Log.d("SkyLines", "Queue Fixes=" + prefs.isQueueFixes());
-        if (prefs.isQueueFixes()) {
-            fixStack = new FixQueue<byte[]>(getApplicationContext()).load();
-        } else {
-            fixStack = new FixQueueNop<byte[]>(getApplicationContext()).load();
-        }
-        Log.d("SkyLines", "SkyLinesApp, onCreate(), fixStack.size()="+fixStack.size());
     }
 
 }

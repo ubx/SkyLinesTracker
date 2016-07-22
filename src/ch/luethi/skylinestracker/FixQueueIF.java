@@ -18,16 +18,14 @@
 
 package ch.luethi.skylinestracker;
 
-public interface FixQueueIF<E> {
-    E push(E object);
+public interface FixQueueIF {
+    void push(byte[] data);
 
-    E pop();
+    byte[] pop();
 
-    void removeElementAt(int location);
-
-    int size();
+    long size();
 
     boolean isEmpty();
 
-    FixQueueIF<E> load();
+    FixQueueIF load();
 }

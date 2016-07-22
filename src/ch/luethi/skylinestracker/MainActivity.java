@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
         }
         app = ((SkyLinesApp) getApplicationContext());
         positionService = new Intent(this, PositionService.class);
-        positionService.putExtra("start",true);
+        positionService.putExtra("init",true);
 
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);

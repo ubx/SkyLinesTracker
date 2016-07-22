@@ -18,50 +18,46 @@
 package ch.luethi.skylinestracker;
 
 import android.content.Context;
-import org.pcollections.*;
+import ch.luethi.ringbuffer.*;
 
 
-public class FixQueue<E> implements FixQueueIF<E> {
+public class FixQueue implements FixQueueIF {
 
-    private static transient Context ctx;
-    private PStack<E> stack;
+    private RingBuffer rb;
 
-
-    public FixQueue(Context ctx) {
+    public FixQueue(Context ctx, boolean init) {
         super();
-        this.ctx = ctx;
-        stack = ConsPStack.empty();;
-    }
-    @Override
-    public E push(E object) {
-        stack = stack.plus(object);
-        return object;
-    }
-
-    @Override
-    public E pop() {
-        E e = stack.get(0);
-        stack = stack.minus(0);
-        return e;
+        if (init) {
+            rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/ringbuffer.dat", 2000);
+            rb.setRecLen((byte) 48);
+        } else {
+            rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/ringbuffer.dat");
+        }
     }
 
     @Override
-    public void removeElementAt(int location) {
-        stack = stack.minus(location);
+    public void push(byte[] data) {
+        rb.push(data);
     }
 
     @Override
-    public int size() {
-        return  stack.size();
+    public byte[] pop() {
+        return rb.pop();
+    }
+
+
+    @Override
+    public long size() {
+        return  rb.getCount();
     }
 
     @Override
     public boolean isEmpty() {
-        return stack.isEmpty();
+        return rb.getCount()==0;
     }
 
     @Override
-    public FixQueueIF<E> load() {
+    public FixQueueIF load() {
         return this;
     }
 }
