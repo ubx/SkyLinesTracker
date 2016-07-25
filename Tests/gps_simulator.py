@@ -11,7 +11,7 @@ LAT_SRC = 52.5243700
 LNG_SRC = 13.4105300
 LAT_DST = 53.5753200
 LNG_DST = 10.0153400
-SECONDS = 10
+SECONDS = 60
 
 KEY = sys.argv[-1]
 
@@ -35,18 +35,25 @@ def millies_of_day():
 
 def write_geo(lng, lat, alt):
     tn.write("geo fix {0} {1} {2}\n".format(lng, lat, alt))
-    print("{0},{1},{2:.5f},{3:.5f},{4}".format(millies_of_day(), KEY, lng, lat, alt))
+    print("Sim: {0},{1},{2:.5f},{3:.5f},{4}".format(millies_of_day(), KEY, lng, lat, alt))
 
 
 def write_gsm(mode):
-    tn.write('gsm data ' + mode + '\n')
+    tn.write("gsm data " + mode + '\n')
+    print("Sim: gsm data " + mode + '\n')
+
 
 def write_sms(msg):
-    tn.write('sms send 1234 slt ' + msg + '\n')
+    tn.write("sms send 1234 slt " + msg + '\n')
+
+def auth():
+    tn.write("auth 1dzok1p9Lo5UaJ9M" + '\n')
 
 ##write_sms("LIVE=ON")
 
-write_gsm("unregistered")
+auth()
+
+write_gsm("off")
 
 write_geo(LNG_SRC, LAT_SRC, 123)
 
@@ -57,7 +64,7 @@ for i in range(SECONDS):
     write_geo(lng, lat, 456)
     sleep(1)
 
-write_gsm("roaming")
+write_gsm("on")
 
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
@@ -65,7 +72,7 @@ for i in range(SECONDS):
     write_geo(lng, lat, 567)
     sleep(1)
 
-write_gsm("unregistered")
+write_gsm("off")
 
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT

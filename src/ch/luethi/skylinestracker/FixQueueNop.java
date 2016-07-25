@@ -35,6 +35,11 @@ public class FixQueueNop  implements FixQueueIF {
     }
 
     @Override
+    public byte[][] pop(int cnt) {
+        return new byte[0][];
+    }
+
+    @Override
     public long size() {
         return 0;
     }

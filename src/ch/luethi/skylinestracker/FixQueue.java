@@ -23,17 +23,21 @@ import ch.luethi.ringbuffer.*;
 
 public class FixQueue implements FixQueueIF {
 
+    private static final String RINGBUFFER_DATA = "ringbuffer.dat";
+    private static final int INIT_CAPACITY = 2000;
+    private static final byte BUF_LEN = 48;
     private RingBuffer rb;
 
     public FixQueue(Context ctx, boolean init) {
         super();
         if (init) {
-            rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/ringbuffer.dat", 2000);
-            rb.setRecLen((byte) 48);
+            rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/" + RINGBUFFER_DATA, INIT_CAPACITY);
+            rb.setRecLen(BUF_LEN);
         } else {
-            rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/ringbuffer.dat");
+            rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/" + RINGBUFFER_DATA);
         }
     }
+
 
     @Override
     public void push(byte[] data) {
@@ -43,6 +47,11 @@ public class FixQueue implements FixQueueIF {
     @Override
     public byte[] pop() {
         return rb.pop();
+    }
+
+    @Override
+    public byte[][] pop(int num) {
+        return rb.peek(num);
     }
 
 

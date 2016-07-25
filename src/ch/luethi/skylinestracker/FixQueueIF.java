@@ -19,9 +19,12 @@
 package ch.luethi.skylinestracker;
 
 public interface FixQueueIF {
+
     void push(byte[] data);
 
     byte[] pop();
+
+    byte[][] pop(int cnt);
 
     long size();
 

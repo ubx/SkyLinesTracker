@@ -187,13 +187,9 @@ public class SkyLinesTrackingWriter implements PositionWriter {
         calculateCRC(data);
 
         if (PositionService.isOnline()) {
-            dequeAndSendFix(); // todo - temp
             sendDatagram(data);
+            dequeAndSendFix(); // todo - temp
         } else {
-            if (stack.size() > MAX_QUEUED) {
-                // todo ??? stack.removeElementAt(0); // remove oldest fix
-                Log.d("SkyLines", "fix removed(" + stack.size()+ ")");
-            }
             stack.push(data);
             Log.d("SkyLines", "fix queued(" + stack.size()+ ")");
         }
@@ -201,12 +197,10 @@ public class SkyLinesTrackingWriter implements PositionWriter {
 
 
     public void dequeAndSendFix() {
-        if (!stack.isEmpty()) {
-            int ms = MAX_QUEUED_SEND;
-            while (!stack.isEmpty() & (ms--) > 0) {
-                sendDatagram(stack.pop());
-                Log.d("SkyLines", "fix de-queued(" + stack.size()+ ")");
-            }
+        byte[][] dgs = stack.pop(MAX_QUEUED_SEND);
+        for (byte[] dg: dgs) {
+            sendDatagram(dg);
+            Log.d("SkyLines", "fix de-queued(" + stack.size()+ ")");
         }
     }
 
