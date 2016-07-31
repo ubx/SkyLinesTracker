@@ -51,7 +51,10 @@ public class FixQueue implements FixQueueIF {
 
     @Override
     public byte[][] pop(int num) {
-        return rb.peek(num);
+        // todo -- implement pop(num) ?
+        byte[][] ret = rb.peek(num);
+        rb.delete(num);
+        return ret;
     }
 
 
