@@ -35,6 +35,7 @@ public class FixQueue implements FixQueueIF {
             rb.setRecLen(BUF_LEN);
         } else {
             rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/" + RINGBUFFER_DATA);
+            rb.setRecLen(BUF_LEN); // todo - check for other solution!
         }
     }
 
