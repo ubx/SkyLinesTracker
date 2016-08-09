@@ -140,6 +140,7 @@ public class IntegrationTest {
             System.out.println("executing script " + scriptFile + " ...");
             p.waitFor();
             p.destroy();
+            p.waitFor();
         } catch (Exception e) {
             e.printStackTrace();
         }

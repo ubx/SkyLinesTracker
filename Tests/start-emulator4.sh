@@ -61,7 +61,7 @@ adb -s emulator-5554 shell am startservice ch.luethi.skylinestracker/.PositionSe
 adb -s emulator-5554 shell svc data enable
 
 
-sleep 4000
+sleep 3700
 pkill -f UDP-Receiver.jar
 pkill -f gps_simulator.py
 
