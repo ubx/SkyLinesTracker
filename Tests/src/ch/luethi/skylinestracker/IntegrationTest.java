@@ -4,7 +4,8 @@ import org.jetbrains.annotations.NotNull;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
+import java.io.*;
+import java.lang.reflect.Field;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -119,6 +120,8 @@ public class IntegrationTest {
 
     @Test
     public void test02() {
+        runScript("Tests/start-emulator4.sh");
+
         readOutFile("Tests/rcv-test-02.out", recsRcv, "Rcv: ", 14400000);
         readOutFile("Tests/sim-test-02.out", recsSim, "Sim: ", 0);
 
@@ -129,5 +132,17 @@ public class IntegrationTest {
         assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
     }
 
+    private void runScript(String scriptFile) {
+        ProcessBuilder pb = new ProcessBuilder(scriptFile);
+        pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
+        try {
+            Process p = pb.start();
+            System.out.println("executing script " + scriptFile + " ...");
+            p.waitFor();
+            p.destroy();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

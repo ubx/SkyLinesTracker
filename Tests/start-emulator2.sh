@@ -41,7 +41,7 @@ python gps_simulator.py 60 $KEY
 echo "### $(date +"%T") NO GPS simluation, reconnect Internet"
 adb -s emulator-5554 shell svc data enable
 
-sleep 600
+sleep 400
 
 echo "### $(date +"%T") Normal GPS simluation"
 adb -s emulator-5554 shell svc data enable
@@ -51,3 +51,4 @@ echo "#### $(date +"%T") Shuting down everting....................."
 pkill -f UDP-Receiver.jar
 adb -s emulator-5554 shell am force-stop ch.luethi.skylinestracker
 adb -s emulator-5554 emu kill
+sleep 10
