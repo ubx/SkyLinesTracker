@@ -24,19 +24,18 @@ import ch.luethi.ringbuffer.*;
 public class FixQueue implements FixQueueIF {
 
     private static final String RINGBUFFER_DATA = "ringbuffer.dat";
-    private static final int INIT_CAPACITY = 2000;
     private static final byte BUF_LEN = 48;
     private RingBuffer rb;
 
-    public FixQueue(Context ctx, boolean init) {
-        super();
-        if (init) {
-            rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/" + RINGBUFFER_DATA, INIT_CAPACITY);
-            rb.setRecLen(BUF_LEN);
-        } else {
-            rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/" + RINGBUFFER_DATA);
-            rb.setRecLen(BUF_LEN); // todo - check for other solution!
-        }
+    public FixQueue(Context ctx) {
+        rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/" + RINGBUFFER_DATA);
+        rb.setRecLen(BUF_LEN); // todo - check for other solution!
+
+    }
+
+    public FixQueue(Context ctx, int size) {
+        rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/" + RINGBUFFER_DATA, size);
+        rb.setRecLen(BUF_LEN);
     }
 
 
@@ -61,12 +60,12 @@ public class FixQueue implements FixQueueIF {
 
     @Override
     public long size() {
-        return  rb.getCount();
+        return rb.getCount();
     }
 
     @Override
     public boolean isEmpty() {
-        return rb.getCount()==0;
+        return rb.getCount() == 0;
     }
 
     @Override
