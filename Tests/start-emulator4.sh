@@ -43,7 +43,6 @@ trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
 
 adb -s emulator-5554 shell am start -W -n ch.luethi.skylinestracker/ch.luethi.skylinestracker.MainActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -e ISTESTING true -e TESTING_IP $IP
 
-sleep 10
 checkLiveTracking
 
 echo "### $(date +"%T") GPS simluation, with Internet connection"
@@ -60,7 +59,6 @@ adb -s emulator-5554 shell am stopservice ch.luethi.skylinestracker/.PositionSer
 adb -s emulator-5554 shell am startservice ch.luethi.skylinestracker/.PositionService
 adb -s emulator-5554 shell svc data enable
 
-
 sleep 3700
 pkill -f UDP-Receiver.jar
 pkill -f gps_simulator.py
@@ -68,3 +66,5 @@ pkill -f gps_simulator.py
 echo "#### $(date +"%T") Shuting down everting....................."
 adb -s emulator-5554 shell am force-stop ch.luethi.skylinestracker
 adb -s emulator-5554 emu kill
+pkill -f qemu-system-x86_64
+exit
