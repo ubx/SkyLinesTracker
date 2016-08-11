@@ -21,6 +21,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class IntegrationTest {
 
+    private static final String TESTS_SCRIPTS = "Tests/scripts/";
     Set<Rec> recsRcv = new HashSet<Rec>(200);
     Set<Rec> recsSim = new HashSet<Rec>(200);
 
@@ -119,11 +120,11 @@ public class IntegrationTest {
     }
 
     @Test
-    public void test02() {
-        runScript("Tests/start-emulator4.sh");
+    public void testQueue() {
+        runScript(TESTS_SCRIPTS + "integrationTest-queue.sh");
 
-        readOutFile("Tests/rcv-test-02.out", recsRcv, "Rcv: ", 14400000);
-        readOutFile("Tests/sim-test-02.out", recsSim, "Sim: ", 0);
+        readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 14400000);
+        readOutFile(TESTS_SCRIPTS + "sim-test-02.out", recsSim, "Sim: ", 0);
 
         System.out.println("recsSim=" + recsSim.size());
         System.out.println("recsRcv=" + recsRcv.size());
