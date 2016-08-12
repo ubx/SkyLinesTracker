@@ -87,51 +87,6 @@ public class IntegrationTest {
         return s2.size() <= 2 & !df;
     }
 
-    @Before
-    public void setUp() {
-        recsSim.clear();
-        recsRcv.clear();
-    }
-
-
-    @Test
-    public void test00() {
-        readOutFile("Tests/rcv-test-00.out", recsRcv, "Rcv: ", 14400000); // todo -- why this offset?
-        readOutFile("Tests/sim-test-00.out", recsSim, "Sim: ", 0);
-
-        System.out.println("recsSim=" + recsSim.size());
-        System.out.println("recsRcv=" + recsRcv.size());
-
-        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
-        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
-    }
-
-
-    @Test
-    public void test01() {
-        readOutFile("Tests/rcv-test-01.out", recsRcv, "Rcv: ", 14400000);
-        readOutFile("Tests/sim-test-01.out", recsSim, "Sim: ", 0);
-
-        System.out.println("recsSim=" + recsSim.size());
-        System.out.println("recsRcv=" + recsRcv.size());
-
-        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
-        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
-    }
-
-    @Test
-    public void testQueue() {
-        runScript(TESTS_SCRIPTS + "integrationTest-queue.sh");
-
-        readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 14400000);
-        readOutFile(TESTS_SCRIPTS + "sim-test-02.out", recsSim, "Sim: ", 0);
-
-        System.out.println("recsSim=" + recsSim.size());
-        System.out.println("recsRcv=" + recsRcv.size());
-
-        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
-        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
-    }
 
     private void runScript(String scriptFile) {
         ProcessBuilder pb = new ProcessBuilder(scriptFile);
@@ -144,5 +99,28 @@ public class IntegrationTest {
             e.printStackTrace();
         }
     }
+
+    @Before
+    public void setUp() {
+        recsSim.clear();
+        recsRcv.clear();
+    }
+
+
+
+    @Test
+    public void testQueue() {
+        runScript(TESTS_SCRIPTS + "integrationTest-queue.sh");
+
+        readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 14400000);  // todo -- why this offset?
+        readOutFile(TESTS_SCRIPTS + "sim-test-02.out", recsSim, "Sim: ", 0);
+
+        System.out.println("recsSim=" + recsSim.size());
+        System.out.println("recsRcv=" + recsRcv.size());
+
+        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
+        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+    }
+
 
 }
