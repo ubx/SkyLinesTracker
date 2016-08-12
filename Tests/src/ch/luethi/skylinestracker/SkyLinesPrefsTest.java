@@ -74,6 +74,19 @@ public class SkyLinesPrefsTest {
     }
 
     @Test
+    public void testQueueFixesMaxDef() {
+        int val = pref.getQueueFixesMax();
+        assertThat("Wrong default QueueFixesMax", val, equalTo(2000));
+    }
+
+    @Test
+    public void testQueueFixesMaxSet() {
+        pref.setQueueFixesMax(1234);
+        int val = pref.getQueueFixesMax();
+        assertThat("Wrong set QueueFixesMax", val, equalTo(1234));
+    }
+
+    @Test
     public void testIssue_1() {
         pref.setTrackingKey("NOHEX");
         long key = pref.getTrackingKey();
@@ -82,10 +95,10 @@ public class SkyLinesPrefsTest {
 
     @Test
     public void testIssue_7() {
-        pref.setIpAddress("1.2.3.4")  ;
-        assertThat("Wrong default ip address",  pref.getIpAddress(), equalTo("1.2.3.4"));
-        pref.setIpAddress("95.128.34.172")  ;
-        assertThat("Wrong default ip address",  pref.getIpAddress(), equalTo("95.128.34.172"));
+        pref.setIpAddress("1.2.3.4");
+        assertThat("Wrong default ip address", pref.getIpAddress(), equalTo("1.2.3.4"));
+        pref.setIpAddress("95.128.34.172");
+        assertThat("Wrong default ip address", pref.getIpAddress(), equalTo("95.128.34.172"));
     }
 
 
