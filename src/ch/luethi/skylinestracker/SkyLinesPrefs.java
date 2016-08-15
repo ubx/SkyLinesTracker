@@ -95,7 +95,7 @@ class SkyLinesPrefs {
     }
 
     public boolean isQueueFixes() {
-        return prefs.getBoolean(QUEUE_FIXES, false);
+        return prefs.getBoolean(QUEUE_FIXES, true);
     }
 
     public void setQueueFixes(boolean val) {
