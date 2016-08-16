@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.RecursiveAction;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.DoubleAccumulator;
 import java.util.stream.Stream;
 
@@ -98,6 +99,11 @@ public class IntegrationTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        try {
+            TimeUnit.SECONDS.sleep(20);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Before
@@ -109,10 +115,32 @@ public class IntegrationTest {
 
 
     @Test
+    public void testBasic() {
+        runScript(TESTS_SCRIPTS + "integrationTest-basic.sh");
+
+        readOutFile(TESTS_SCRIPTS + "rcv-test-00.out", recsRcv, "Rcv: ", 14400000);  // todo -- why this offset?
+        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
+        System.out.println("recsSim=" + recsSim.size());
+        System.out.println("recsRcv=" + recsRcv.size());
+        assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
+
+        recsRcv.clear();
+        readOutFile(TESTS_SCRIPTS + "rcv-test-01.out", recsRcv, "Rcv: ", 14400000);
+        System.out.println("recsRcv=" + recsRcv.size());
+        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
+        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+
+        recsRcv.clear();
+        readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 14400000);
+        System.out.println("recsRcv=" + recsRcv.size());
+        assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
+    }
+
+    @Test
     public void testQueue() {
         runScript(TESTS_SCRIPTS + "integrationTest-queue.sh");
 
-        readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 14400000);  // todo -- why this offset?
+        readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 14400000);
         readOutFile(TESTS_SCRIPTS + "sim-test-02.out", recsSim, "Sim: ", 0);
 
         System.out.println("recsSim=" + recsSim.size());
