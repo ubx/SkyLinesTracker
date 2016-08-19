@@ -21,10 +21,10 @@ python preference_file.py ${KEY} ${INT}  false  true ${IP} true 2048
 
 adb -s emulator-5554 push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
 adb -s emulator-5554 install -r  ${PROJECT_DIR}/out/SkyLinesTracker.apk
-adb -s emulator-5554 shell dumpsys batterystats --reset
-adb -s emulator-5554 shell dumpsys battery set ac 0
-adb -s emulator-5554 shell dumpsys battery set level 80
-adb -s emulator-5554 shell dumpsys battery
+#adb -s emulator-5554 shell dumpsys batterystats --reset
+#adb -s emulator-5554 shell dumpsys battery set ac 0
+#adb -s emulator-5554 shell dumpsys battery set level 80
+#adb -s emulator-5554 shell dumpsys battery
 
 sleep 15
 adb -s emulator-5554 shell am start -W -n ch.luethi.skylinestracker/ch.luethi.skylinestracker.MainActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -e ISTESTING true -e TESTING_IP ${IP}
@@ -61,8 +61,8 @@ pkill -f UDP-Receiver.jar
 pkill -f gps_simulator.py
 
 echo "#### $(date +"%T") Dumpsys batterystats and bugreport"
-adb -s emulator-5554 shell  dumpsys batterystats > batterystats.txt
-adb -s emulator-5554 shell  bugreport > bugreport.txt
+#adb -s emulator-5554 shell  dumpsys batterystats > batterystats.txt
+#adb -s emulator-5554 shell  bugreport > bugreport.txt
 
 
 echo "#### $(date +"%T") Shuting down everting....................."
