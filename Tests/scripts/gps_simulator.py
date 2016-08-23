@@ -12,6 +12,7 @@ LNG_SRC = 13.4105300
 LAT_DST = 53.5753200
 LNG_DST = 10.0153400
 
+HOST  = sys.argv[-3]
 SECONDS = int(sys.argv[-2])
 KEY = sys.argv[-1]
 
