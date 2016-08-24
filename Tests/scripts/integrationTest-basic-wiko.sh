@@ -4,9 +4,10 @@ EMULATOR_DIR="/home/andreas/opt/android-sdk-linux/tools"
 DEVICE="0123456789ABCDEF"
 PROJECT_DIR="/home/andreas/IdeaProjects/SkyLinesTracker"
 TEST_DIR="/home/andreas/IdeaProjects/SkyLinesTracker/Tests"
-IP=$(hostname -I | awk '{print $1}')
-INT=2
-KEY="ABCD1234"
+##IP=$(hostname -I | awk '{print $1}')
+IP="ubx.internet-box.ch"
+INT=5
+KEY="67FCFE73"
 
 cd ${TEST_DIR}/scripts
 rm -rf sim-test-*.out
@@ -18,9 +19,8 @@ trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
 python preference_file.py ${KEY} ${INT}  false  false ${IP} true 2048
 
 adb -s ${DEVICE} uninstall ch.luethi.skylinestracker
-##adb -s ${DEVICE} push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
-adb -s ${DEVICE} push ch.luethi.skylinestracker_preferences.xml /scratch
 adb -s ${DEVICE} install -r  ${PROJECT_DIR}/out/SkyLinesTracker.apk
+adb -s ${DEVICE} push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
 sleep 15
 
 adb -s ${DEVICE} shell am start -W -n ch.luethi.skylinestracker/ch.luethi.skylinestracker.MainActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -e ISTESTING true -e TESTING_IP ${IP}
