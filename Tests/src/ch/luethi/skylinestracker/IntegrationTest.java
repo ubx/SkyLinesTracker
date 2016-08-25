@@ -1,18 +1,15 @@
 package ch.luethi.skylinestracker;
 
-import org.jetbrains.annotations.NotNull;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.*;
-import java.lang.reflect.Field;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
-import java.util.concurrent.RecursiveAction;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.DoubleAccumulator;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertTrue;
@@ -113,7 +110,6 @@ public class IntegrationTest {
     }
 
 
-
     @Test
     public void testBasic() {
         runScript(TESTS_SCRIPTS + "integrationTest-basic.sh");
@@ -135,6 +131,21 @@ public class IntegrationTest {
         System.out.println("recsRcv=" + recsRcv.size());
         assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
     }
+
+    @Test
+    public void testStartWithDisconnected() {
+        runScript(TESTS_SCRIPTS + "integrationTest-start-with-disconnected.sh");
+
+        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 14400000);
+        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
+
+        System.out.println("recsSim=" + recsSim.size());
+        System.out.println("recsRcv=" + recsRcv.size());
+
+        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
+        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+    }
+
 
     @Test
     public void testQueue() {
