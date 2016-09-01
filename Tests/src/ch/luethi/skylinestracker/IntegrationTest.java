@@ -32,8 +32,8 @@ public class IntegrationTest {
         public boolean equals(Object o) {
             Rec r = (Rec) o;
             return secDay == r.secDay & key.equals(r.key)
-                    & Math.abs(lat - r.lat) < 0.00002
-                    & Math.abs(log - r.log) < 0.00002;
+                     & Math.abs(lat - r.lat) < 0.00002
+                     & Math.abs(log - r.log) < 0.00002;
         }
     }
 
@@ -134,6 +134,20 @@ public class IntegrationTest {
 
     @Test
     public void testStartWithDisconnected() {
+        runScript(TESTS_SCRIPTS + "integrationTest-start-with-disconnected.sh");
+
+        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 14400000);
+        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
+
+        System.out.println("recsSim=" + recsSim.size());
+        System.out.println("recsRcv=" + recsRcv.size());
+
+        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
+        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+    }
+
+    @Test
+    public void testStartWithDisconnected2() {
         runScript(TESTS_SCRIPTS + "integrationTest-start-with-disconnected.sh");
 
         readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 14400000);

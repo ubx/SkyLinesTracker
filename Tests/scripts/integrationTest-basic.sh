@@ -9,8 +9,8 @@ INT=2
 KEY="ABCD1234"
 
 cd ${TEST_DIR}/scripts
-rm -rf sim-test-*.out
-rm -rf rcv-test-*.out
+rm -rf sim-test*.out
+rm -rf rcv-test*.out
 pkill -f UDP-Receiver.jar
 
 trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
@@ -57,4 +57,3 @@ echo "#### $(date +"%T") Shuting down everting....................."
 adb -s ${DEVICE} shell am force-stop ch.luethi.skylinestracker
 adb -s ${DEVICE} emu kill
 pkill -f qemu-system-x86_64
-exit
