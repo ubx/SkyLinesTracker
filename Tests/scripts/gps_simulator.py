@@ -50,31 +50,15 @@ def write_sms(msg):
 def auth():
     tn.write("auth 1dzok1p9Lo5UaJ9M" + '\n')
 
-
 auth()
 
-
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
     lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-    write_geo(lng, lat, 456)
+    write_geo(lng, lat, 1000+i)
     sleep(1)
 
-
-for i in range(SECONDS):
-    lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
-    lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-    write_geo(lng, lat, 567)
-    sleep(1)
-
-
-for i in range(SECONDS):
-    lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
-    lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-    write_geo(lng, lat, 678)
-    sleep(1)
-
-write_geo(LNG_DST, LAT_DST, 789)
+write_geo(LNG_DST, LAT_DST, 100)
 
 tn.write("exit\n")
 

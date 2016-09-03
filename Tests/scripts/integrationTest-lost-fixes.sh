@@ -5,7 +5,7 @@ DEVICE="emulator-5554"
 PROJECT_DIR="/home/andreas/IdeaProjects/SkyLinesTracker"
 TEST_DIR="/home/andreas/IdeaProjects/SkyLinesTracker/Tests"
 IP=$(hostname -I | awk '{print $1}')
-INT=2
+INT=1
 KEY="ABCD1234"
 
 cd ${TEST_DIR}/scripts
@@ -18,7 +18,7 @@ trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
 ${EMULATOR_DIR}/emulator -avd Device -netspeed full -netdelay none -no-boot-anim &
 
 sleep 15
-python preference_file.py ${KEY} ${INT}  false  false ${IP} true 2048
+python preference_file.py ${KEY} ${INT}  false  false ${IP} true 50
 
 adb -s ${DEVICE} push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
 adb -s ${DEVICE} install -r  ${PROJECT_DIR}/out/SkyLinesTracker.apk
@@ -34,14 +34,15 @@ sleep 15
 
 echo "### $(date +"%T") GPS simmluation, LiveTracking checked, NO internet connection"
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test.out &
-python gps_simulator.py 127.0.0.1 200 ${KEY} > sim-test.out &
-sleep 60
+python gps_simulator.py 127.0.0.1 400 ${KEY} > sim-test.out &
+sleep 100
 
-echo "### $(date +"%T") Switch ON internet connection"
+echo "### $(date +"%T") Switch ON internet connection after 100 seconds"
 adb -s ${DEVICE} shell svc data enable
-sleep 300
+sleep 30
 
 pkill -f UDP-Receiver.jar
+sleep 400
 pkill -f gps_simulator.py
 sleep 30
 

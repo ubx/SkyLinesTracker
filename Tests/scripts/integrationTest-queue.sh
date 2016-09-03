@@ -9,8 +9,8 @@ INT=2
 KEY="ABCD1234"
 
 cd ${TEST_DIR}/scripts
-rm -rf sim-test-*.out
-rm -rf rcv-test-*.out
+rm -rf sim-test*.out
+rm -rf rcv-test*.out
 pkill -f UDP-Receiver.jar
 
 trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
@@ -36,8 +36,8 @@ adb -s ${DEVICE} shell ls -l  /data/data/ch.luethi.skylinestracker/shared_prefs/
 
 echo "### $(date +"%T") GPS simmluation, with Internet connection"
 adb -s ${DEVICE} shell svc data enable
-java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test-02.out &
-python gps_simulator.py 127.0.0.1 1200 ${KEY} > sim-test-02.out &
+java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test.out &
+python gps_simulator.py 127.0.0.1 1200 ${KEY} > sim-test.out &
 sleep 60
 
 echo "### $(date +"%T") Simulate PositionService restart"
@@ -57,11 +57,11 @@ adb -s ${DEVICE} shell am stopservice ch.luethi.skylinestracker/.PositionService
 adb -s ${DEVICE} shell am startservice ch.luethi.skylinestracker/.PositionService
 adb -s ${DEVICE} shell svc data enable
 
-sleep 3700
+sleep 1200
 pkill -f UDP-Receiver.jar
 pkill -f gps_simulator.py
 
-echo "#### $(date +"%T") Dumpsys batterystats and bugreport"
+#echo "#### $(date +"%T") Dumpsys batterystats and bugreport"
 #adb -s ${DEVICE} shell  dumpsys batterystats > batterystats.txt
 #adb -s ${DEVICE} shell  bugreport > bugreport.txt
 
@@ -70,4 +70,3 @@ echo "#### $(date +"%T") Shuting down everting....................."
 adb -s ${DEVICE} shell am force-stop ch.luethi.skylinestracker
 adb -s ${DEVICE} emu kill
 pkill -f qemu-system-x86_64
-exit

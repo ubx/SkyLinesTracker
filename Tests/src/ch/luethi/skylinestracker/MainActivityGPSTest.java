@@ -6,6 +6,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import org.jetbrains.annotations.NonNls;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
@@ -35,6 +36,7 @@ public class MainActivityGPSTest {
         skyLinesApp = new SkyLinesApp();
     }
 
+    @Ignore
     @Test
     public void shouldReturnTheLatestLocation() {
         LocationManager locationManager = (LocationManager)

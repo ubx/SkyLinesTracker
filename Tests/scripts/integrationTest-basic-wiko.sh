@@ -47,4 +47,3 @@ pkill -f UDP-Receiver.jar
 
 echo "#### $(date +"%T") Shuting down everting....................."
 adb -s ${DEVICE} shell am force-stop ch.luethi.skylinestracker
-exit

@@ -103,6 +103,12 @@ public class IntegrationTest {
         }
     }
 
+
+    private void printRecsSize() {
+        System.out.println("recsSim=" + recsSim.size());
+        System.out.println("recsRcv=" + recsRcv.size());
+    }
+
     @Before
     public void setUp() {
         recsSim.clear();
@@ -116,8 +122,7 @@ public class IntegrationTest {
 
         readOutFile(TESTS_SCRIPTS + "rcv-test-00.out", recsRcv, "Rcv: ", 14400000);  // todo -- why this offset?
         readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
-        System.out.println("recsSim=" + recsSim.size());
-        System.out.println("recsRcv=" + recsRcv.size());
+        printRecsSize();
         assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
 
         recsRcv.clear();
@@ -139,41 +144,37 @@ public class IntegrationTest {
         readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 14400000);
         readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
 
-        System.out.println("recsSim=" + recsSim.size());
-        System.out.println("recsRcv=" + recsRcv.size());
+        printRecsSize();
 
         assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
         assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
     }
-
-    @Test
-    public void testStartWithDisconnected2() {
-        runScript(TESTS_SCRIPTS + "integrationTest-start-with-disconnected.sh");
-
-        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 14400000);
-        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
-
-        System.out.println("recsSim=" + recsSim.size());
-        System.out.println("recsRcv=" + recsRcv.size());
-
-        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
-        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
-    }
-
 
     @Test
     public void testQueue() {
         runScript(TESTS_SCRIPTS + "integrationTest-queue.sh");
 
-        readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 14400000);
-        readOutFile(TESTS_SCRIPTS + "sim-test-02.out", recsSim, "Sim: ", 0);
+        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 14400000);
+        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
 
-        System.out.println("recsSim=" + recsSim.size());
-        System.out.println("recsRcv=" + recsRcv.size());
+        printRecsSize();
 
         assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
         assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
     }
 
+    @Test
+    public void testStartLostFixes() {
+        runScript(TESTS_SCRIPTS + "integrationTest-lost-fixes.sh");
+
+        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 14400000);
+        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
+
+        printRecsSize();
+
+        assertTrue("Rcv count not correct", recsRcv.size() == 80);
+        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
+        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+    }
 
 }
