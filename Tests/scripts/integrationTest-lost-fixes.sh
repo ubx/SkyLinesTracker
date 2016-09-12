@@ -17,12 +17,11 @@ trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
 
 ${EMULATOR_DIR}/emulator -avd Device -netspeed full -netdelay none -no-boot-anim &
 
-sleep 15
+sleep 30
 python preference_file.py ${KEY} ${INT}  false  false ${IP} true 50
 
 adb -s ${DEVICE} push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
 adb -s ${DEVICE} install -r  ${PROJECT_DIR}/out/SkyLinesTracker.apk
-sleep 15
 
 adb -s ${DEVICE} shell am start -W -n ch.luethi.skylinestracker/ch.luethi.skylinestracker.MainActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -e ISTESTING true -e TESTING_IP ${IP}
 adb -s ${DEVICE} shell svc data disable
