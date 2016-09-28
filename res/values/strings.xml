@@ -21,7 +21,12 @@
     <string name="msg_no_inet">No internet connection</string>
     <string name="ip_address_label">Server ip:</string>
     <string name="ip_address">Server address resolution</string>
-    <string name="ip_address_dns" translatable="false">skylines.aero</string>
+    <!--todo this is the real: string name="ip_address_dns" translatable="false">skylines.aero</string-->
+    <string name="ip_address_dns" translatable="false">luethi.dyndns.org</string>
     <string name="ip_address_fix" translatable="false">95.128.34.172</string>
+
+    <string name="queue">Queue:</string>
+    <string name="queue_values" translatable="false"></string>
+
 
 </resources>

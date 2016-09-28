@@ -21,5 +21,6 @@
     <string name="msg_no_inet">Keine Internetverbindung</string>
     <string name="ip_address_label">Server ip:</string>
     <string name="ip_address">Server Adressauflösung</string>
+    <string name="queue">Queue:</string>
 
 </resources>
