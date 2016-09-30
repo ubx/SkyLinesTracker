@@ -72,4 +72,9 @@ public class FixQueue implements FixQueueIF {
     public FixQueueIF load() {
         return this;
     }
+
+    @Override
+    public long getCapacity() {
+        return rb.getCapacity();
+    }
 }

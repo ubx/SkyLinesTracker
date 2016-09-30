@@ -59,7 +59,6 @@ public class MainActivity extends Activity {
     private String msgNoInet;
     private String msgWaitGps;
     private SkyLinesApp app;
-    private int queueFixesMax;
 
 
     @Override
@@ -78,7 +77,6 @@ public class MainActivity extends Activity {
             Mint.setFlushOnlyOverWiFi(true);
             Mint.initAndStartSession(this, "a9b9af2d");
         }
-        queueFixesMax = prefs.getQueueFixesMax();
         app = ((SkyLinesApp) getApplicationContext());
         app.doFixQueueing = prefs.isQueueFixes();
         positionService = new Intent(this, PositionService.class);
@@ -180,7 +178,7 @@ public class MainActivity extends Activity {
                     break;
             }
             if (app.doFixQueueing) {
-                queueValueText.setText((int) app.fixStack.size()+  " / " + queueFixesMax);
+                queueValueText.setText((int) app.fixStack.size()+  " / " + app.fixStack.getCapacity());
             }
         }
     };

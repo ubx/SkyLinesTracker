@@ -31,4 +31,6 @@ public interface FixQueueIF {
     boolean isEmpty();
 
     FixQueueIF load();
+
+    long getCapacity();
 }

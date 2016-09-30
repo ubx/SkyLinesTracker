@@ -53,4 +53,9 @@ public class FixQueueNop  implements FixQueueIF {
     public FixQueueIF load() {
         return this;
     }
+
+    @Override
+    public long getCapacity() {
+        return 0;
+    }
 }

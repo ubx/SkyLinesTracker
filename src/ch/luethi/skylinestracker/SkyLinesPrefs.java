@@ -34,7 +34,7 @@ class SkyLinesPrefs {
     private static final String AUTOSTART_TRACKING = "autostart_tracking";
     private static final String SMS_CONFIG = "sms_config";
     private static final String QUEUE_FIXES = "queue_fixes";
-    private static final String QUEUE_FIXES_MAX = "queue_fixes_max";
+    private static final String QUEUE_FIXES_MAX_SECONDS = "queue_fixes_max_seconds";
 
     private final SharedPreferences prefs;
 
@@ -101,11 +101,11 @@ class SkyLinesPrefs {
         prefs.edit().putBoolean(QUEUE_FIXES, val).commit();
     }
 
-    public int getQueueFixesMax() {
-        return prefs.getInt(QUEUE_FIXES_MAX, 200);
+    public int getQueueFixesMaxSeconds() {
+        return prefs.getInt(QUEUE_FIXES_MAX_SECONDS, 1800);
     }
 
-    public void setQueueFixesMax(int val) {
-        prefs.edit().putInt(QUEUE_FIXES_MAX, val).commit();
+    public void setQueueFixesMaxSeconds(int val) {
+        prefs.edit().putInt(QUEUE_FIXES_MAX_SECONDS, val).commit();
     }
 }
