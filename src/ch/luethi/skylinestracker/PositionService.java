@@ -148,7 +148,12 @@ public class PositionService extends Service implements LocationListener {
                 if (isOnline())
                     skyLinesTrackingWriter.dequeAndSendFix();
             }
+        } else {
+            if (app.guiActive) {
+                sendConnectionStatus();
+            }
         }
+
         Log.d("SkyLines", "onLocationChanged, isOnline()=" + isOnline());
         startTimer();
     }
