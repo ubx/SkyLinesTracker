@@ -94,7 +94,7 @@ class SkyLinesPrefs {
     }
 
     public boolean isQueueFixes() {
-        return prefs.getBoolean(QUEUE_FIXES, false);
+        return prefs.getBoolean(QUEUE_FIXES, true);
     }
 
     public void setQueueFixes(boolean val) {
@@ -102,7 +102,7 @@ class SkyLinesPrefs {
     }
 
     public int getQueueFixesMax() {
-        return prefs.getInt(QUEUE_FIXES_MAX, 2000);
+        return prefs.getInt(QUEUE_FIXES_MAX, 200);
     }
 
     public void setQueueFixesMax(int val) {

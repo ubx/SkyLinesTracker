@@ -84,7 +84,7 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         boolean init = intent != null && intent.getBooleanExtra("init", false);
-        if (prefs.isQueueFixes()) {
+        if (app.doFixQueueing) {
             if (init) {
                 app.fixStack = new FixQueue(getApplicationContext(), prefs.getQueueFixesMax());
             } else {

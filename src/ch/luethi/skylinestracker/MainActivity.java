@@ -52,12 +52,14 @@ public class MainActivity extends Activity {
 
     private static Intent positionService;
     private TextView statusText;
+    private TextView queueValueText;
     private CheckBox checkLiveTracking;
     private final IntentFilter brFilter = new IntentFilter(BROADCAST_STATUS);
     private String msgPosSent;
     private String msgNoInet;
     private String msgWaitGps;
     private SkyLinesApp app;
+    private int queueFixesMax;
 
 
     @Override
@@ -76,12 +78,19 @@ public class MainActivity extends Activity {
             Mint.setFlushOnlyOverWiFi(true);
             Mint.initAndStartSession(this, "a9b9af2d");
         }
+        queueFixesMax = prefs.getQueueFixesMax();
         app = ((SkyLinesApp) getApplicationContext());
+        app.doFixQueueing = prefs.isQueueFixes();
         positionService = new Intent(this, PositionService.class);
         positionService.putExtra("init",true);
 
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);
+
+        queueValueText = (TextView) findViewById(R.id.queueValueText);
+        TextView queueLabel = (TextView) findViewById(R.id.queueLabel);
+        queueLabel.setVisibility(app.doFixQueueing ? View.VISIBLE : View.GONE);
+
         checkLiveTracking = (CheckBox) findViewById(R.id.checkLiveTracking);
         msgPosSent = " " + getResources().getString(R.string.msg_pos_sent);
         msgNoInet = getResources().getString(R.string.msg_no_inet);
@@ -169,6 +178,9 @@ public class MainActivity extends Activity {
                 case MESSAGE_POS_WAIT_STATUS:
                     statusText.setText(msgWaitGps);
                     break;
+            }
+            if (app.doFixQueueing) {
+                queueValueText.setText((int) app.fixStack.size()+  " / " + queueFixesMax);
             }
         }
     };

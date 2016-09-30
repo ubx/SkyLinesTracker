@@ -26,6 +26,7 @@ public class SkyLinesApp extends Application {
     public double lastLat, lastLon;
     public PositionService positionService = null;
     public static FixQueueIF fixStack;
+    public boolean doFixQueueing;
 
     @Override
     public void onCreate() {
