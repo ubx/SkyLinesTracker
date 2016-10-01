@@ -20,7 +20,7 @@ def create(tracking_key, tracking_interval, sms_config, autostart_tracking, ip_a
     ET.SubElement(map, "boolean", name="autostart_tracking", value=autostart_tracking)
     ET.SubElement(map, "string", name="ip_address").text = ip_address
     ET.SubElement(map, "boolean", name="queue_fixes", value=queue_fixes)
-    ET.SubElement(map, "int", name="queue_fixes_max", value=queue_fixes_max)
+    ET.SubElement(map, "int", name="queue_fixes_max_seconds", value=queue_fixes_max)
 
     tree = ET.ElementTree(map)
     tree.write("ch.luethi.skylinestracker_preferences.xml", encoding='utf-8', xml_declaration=True)

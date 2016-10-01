@@ -75,7 +75,7 @@ public class SkyLinesPrefsTest {
     @Test
     public void testQueueFixesMaxDef() {
         int val = pref.getQueueFixesMaxSeconds();
-        assertThat("Wrong default QueueFixesMax", val, equalTo(2000));
+        assertThat("Wrong default QueueFixesMax", val, equalTo(1800));
     }
 
     @Test
