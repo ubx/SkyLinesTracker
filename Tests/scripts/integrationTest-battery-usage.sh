@@ -19,7 +19,7 @@ trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
 ${EMULATOR_DIR}/emulator -avd Device -netspeed full -netdelay none -no-boot-anim &
 sleep 30
 
-python preference_file.py ${KEY} ${INT}  false  true ${IP} ${QUEUE_FIXES} 2048
+python preference_file.py ${KEY} ${INT}  false  true ${IP} ${QUEUE_FIXES} 1800
 
 adb -s ${DEVICE} push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
 adb -s ${DEVICE} install -r  ${PROJECT_DIR}/out/SkyLinesTracker.apk
