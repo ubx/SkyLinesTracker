@@ -28,14 +28,15 @@ public class FixQueue implements FixQueueIF {
     private RingBuffer rb;
 
     public FixQueue(Context ctx) {
-        rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/" + RINGBUFFER_DATA);
-        rb.setRecLen(BUF_LEN); // todo - check for other solution!
-
+        rb = new RingBuffer(getData(ctx));
     }
 
     public FixQueue(Context ctx, int size) {
-        rb = new RingBuffer(ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/" + RINGBUFFER_DATA, size, BUF_LEN);
-        rb.setRecLen(BUF_LEN);
+        rb = new RingBuffer(getData(ctx), size, BUF_LEN);
+    }
+
+    private String getData(Context ctx) {
+        return ctx.getDir("data", Context.MODE_PRIVATE).getAbsolutePath() + "/" + RINGBUFFER_DATA;
     }
 
 
