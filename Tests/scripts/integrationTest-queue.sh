@@ -43,6 +43,15 @@ echo "### $(date +"%T") Simulate PositionService restart"
 adb -s ${DEVICE} shell am stopservice ch.luethi.skylinestracker/.PositionService
 adb -s ${DEVICE} shell am startservice ch.luethi.skylinestracker/.PositionService
 
+echo "### $(date +"%T") Simulate network connection loss with positionService restart"
+adb -s ${DEVICE} shell svc data disable
+sleep 60
+adb -s ${DEVICE} shell am stopservice ch.luethi.skylinestracker/.PositionService
+adb -s ${DEVICE} shell am startservice ch.luethi.skylinestracker/.PositionService
+sleep 30
+adb -s ${DEVICE} shell svc data enable
+sleep 30
+
 echo "### $(date +"%T") Simulate network connection loss"
 adb -s ${DEVICE} shell svc data disable
 sleep 180
