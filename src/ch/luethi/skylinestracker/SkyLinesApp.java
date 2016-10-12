@@ -28,9 +28,4 @@ public class SkyLinesApp extends Application {
     public static FixQueueIF fixStack;
     public boolean doFixQueueing;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-    }
-
 }
