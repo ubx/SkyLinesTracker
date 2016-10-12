@@ -15,7 +15,7 @@ pkill -f UDP-Receiver.jar
 
 trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
 
-${EMULATOR_DIR}/emulator -avd Device -netspeed full -netdelay none -no-boot-anim &
+${EMULATOR_DIR}/emulator -avd Device -netspeed full -netdelay none -no-boot-anim -gpu swiftshader &
 
 sleep 30
 python preference_file.py ${KEY} ${INT}  false  true ${IP} true 2048

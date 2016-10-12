@@ -16,7 +16,7 @@ pkill -f UDP-Receiver.jar
 
 trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
 
-${EMULATOR_DIR}/emulator -avd Device -netspeed full -netdelay none -no-boot-anim &
+${EMULATOR_DIR}/emulator -avd Device -netspeed full -netdelay none -no-boot-anim -gpu swiftshader &
 sleep 30
 
 python preference_file.py ${KEY} ${INT}  false  true ${IP} ${QUEUE_FIXES} 1800
@@ -61,12 +61,15 @@ sleep 1200
 pkill -f UDP-Receiver.jar
 pkill -f gps_simulator.py
 
-echo "#### $(date +"%T") Dumpsys batterystats and bugreport"
-adb -s ${DEVICE} shell  dumpsys batterystats > batterystats-${QUEUE_FIXES}.txt
-adb -s ${DEVICE} shell  bugreport > bugreport-${QUEUE_FIXES}.txt
+echo "#### $(date +"%T") Bugreport and dumpsys batterystats"
+adb -s ${DEVICE} shell bugreport > bugreport-${QUEUE_FIXES}.txt
+adb -s ${DEVICE} shell dumpsys batterystats > batterystats-${QUEUE_FIXES}.txt
 
 
 echo "#### $(date +"%T") Shuting down everting....................."
 adb -s ${DEVICE} shell am force-stop ch.luethi.skylinestracker
 adb -s ${DEVICE} emu kill
 pkill -f qemu-system-x86_64
+
+echo "#### $(date +"%T") Create batterystats-html"
+sh create-batterystats-html.sh ${QUEUE_FIXES}
