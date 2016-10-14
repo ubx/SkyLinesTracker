@@ -152,6 +152,7 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
             LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
+            positionService.putExtra("init",true);
             startService(positionService);
             statusText.setText(R.string.on);
         } else {
