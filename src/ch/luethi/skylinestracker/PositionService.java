@@ -86,14 +86,14 @@ public class PositionService extends Service implements LocationListener {
         boolean init = intent != null && intent.getBooleanExtra("init", false);
         if (app.doFixQueueing) {
             if (init) {
-                app.fixStack = new FixQueue(getApplicationContext(), prefs.getQueueFixesMaxSeconds() / prefs.getTrackingInterval());
+                SkyLinesApp.fixStack = new FixQueue(getApplicationContext(), prefs.getQueueFixesMaxSeconds() / prefs.getTrackingInterval());
             } else {
-                app.fixStack = new FixQueue(getApplicationContext());
+                SkyLinesApp.fixStack = new FixQueue(getApplicationContext());
             }
         } else {
-            app.fixStack = new FixQueueNop(getApplicationContext());
+            SkyLinesApp.fixStack = new FixQueueNop(getApplicationContext());
         }
-        Log.d("SkyLines", "SkyLinesApp, onStartCommand(), fixStack.size()=" + app.fixStack.size() + ", init=" + init + ", prefs.getQueueFixesMax()=" + prefs.getQueueFixesMaxSeconds());
+        Log.d("SkyLines", "SkyLinesApp, onStartCommand(), fixStack.size()=" + SkyLinesApp.fixStack.size() + ", init=" + init + ", prefs.getQueueFixesMax()=" + prefs.getQueueFixesMaxSeconds());
 
         skyLinesTrackingWriter = null;
         ipAddress = prefs.getIpAddress();
