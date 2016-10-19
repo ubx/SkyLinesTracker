@@ -1,4 +1,4 @@
-Version 1.2.1 - not yet released
+Version 1.2.2 - not yet released
 * queue fix if phone is not connected
 
 Version 1.1.0 - 25-mai-2015
