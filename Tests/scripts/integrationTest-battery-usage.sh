@@ -26,6 +26,7 @@ adb -s ${DEVICE} install -r  ${PROJECT_DIR}/out/SkyLinesTracker.apk
 adb -s ${DEVICE} shell dumpsys batterystats --reset
 adb -s ${DEVICE} shell dumpsys battery set ac 0
 adb -s ${DEVICE} shell dumpsys battery set level 80
+adb -s ${DEVICE} shell dumpsys power ac off
 adb -s ${DEVICE} shell dumpsys battery
 
 adb -s ${DEVICE} shell am start -W -n ch.luethi.skylinestracker/ch.luethi.skylinestracker.MainActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -e ISTESTING true -e TESTING_IP ${IP}
@@ -57,11 +58,13 @@ adb -s ${DEVICE} shell am stopservice ch.luethi.skylinestracker/.PositionService
 adb -s ${DEVICE} shell am startservice ch.luethi.skylinestracker/.PositionService
 adb -s ${DEVICE} shell svc data enable
 
-sleep 1200
+leep 1200
+
 pkill -f UDP-Receiver.jar
 pkill -f gps_simulator.py
 
 echo "#### $(date +"%T") Bugreport and dumpsys batterystats"
+adb -s ${DEVICE} shell dumpsys battery
 adb -s ${DEVICE} shell bugreport > bugreport-${QUEUE_FIXES}.txt
 adb -s ${DEVICE} shell dumpsys batterystats > batterystats-${QUEUE_FIXES}.txt
 

@@ -86,12 +86,12 @@ public class IntegrationTest {
     }
 
 
-    private void runScript(String scriptFile) {
-        ProcessBuilder pb = new ProcessBuilder(scriptFile);
+    private void runScript(String... scriptFileAndParams) {
+        ProcessBuilder pb = new ProcessBuilder(scriptFileAndParams);
         pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
         try {
             Process p = pb.start();
-            System.out.println("executing script " + scriptFile + " ...");
+            System.out.println("executing script " + scriptFileAndParams[0] + " ...");
             p.waitFor();
         } catch (Exception e) {
             e.printStackTrace();
@@ -175,6 +175,16 @@ public class IntegrationTest {
         assertTrue("Rcv count not correct", recsRcv.size() == 80);
         assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
         assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+    }
+
+    @Test
+    public void testBatteryUsageWithoutQueue() {
+        runScript(TESTS_SCRIPTS + "integrationTest-battery-usage.sh", "false");
+    }
+
+    @Test
+    public void testBatteryUsageWithQueue() {
+        runScript(TESTS_SCRIPTS + "integrationTest-battery-usage.sh", "true");
     }
 
 }
