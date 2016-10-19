@@ -85,11 +85,7 @@ public class PositionService extends Service implements LocationListener {
     public int onStartCommand(Intent intent, int flags, int startId) {
         boolean init = intent != null && intent.getBooleanExtra("init", false);
         if (app.doFixQueueing) {
-            if (init) {
-                SkyLinesApp.fixStack = new FixQueue(getApplicationContext(), prefs.getQueueFixesMaxSeconds() / prefs.getTrackingInterval());
-            } else {
-                SkyLinesApp.fixStack = new FixQueue(getApplicationContext());
-            }
+            SkyLinesApp.fixStack = new FixQueue(getApplicationContext(), prefs.getQueueFixesMaxSeconds() / prefs.getTrackingInterval(), init);
         } else {
             SkyLinesApp.fixStack = new FixQueueNop(getApplicationContext());
         }

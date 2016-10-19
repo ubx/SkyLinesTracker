@@ -27,12 +27,9 @@ public class FixQueue implements FixQueueIF {
     private static final byte BUF_LEN = 48;
     private RingBuffer rb;
 
-    public FixQueue(Context ctx) {
-        rb = new RingBuffer(getData(ctx));
-    }
 
-    public FixQueue(Context ctx, int size) {
-        rb = new RingBuffer(getData(ctx), size, BUF_LEN);
+    public FixQueue(Context ctx, int size, boolean init) {
+        rb = new RingBuffer(getData(ctx), size, BUF_LEN, init);
     }
 
     private String getData(Context ctx) {
