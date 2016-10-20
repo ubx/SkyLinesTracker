@@ -38,17 +38,17 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends Activity {
 
-    public static final String BROADCAST_STATUS = "SKYLINESTRACKER_BROADCAST_STATUS";
-    public static final String MESSAGE_STATUS_TYPE = "MESSAGE_STATUS_TYPE";
     public static final String ISTESTING = "ISTESTING";
-    public static final String TESTING_IP = "TESTING_IP";
-    public static final int MESSAGE_POS_STATUS = 0;
-    public static final int MESSAGE_POS_WAIT_STATUS = 1;
-    public static final int MESSAGE_CON_STATUS = 2;
+
+    protected static final String BROADCAST_STATUS = "SKYLINESTRACKER_BROADCAST_STATUS";
+    protected static final String MESSAGE_STATUS_TYPE = "MESSAGE_STATUS_TYPE";
+    protected static final String TESTING_IP = "TESTING_IP";
+    protected static final int MESSAGE_POS_STATUS = 0;
+    protected static final int MESSAGE_POS_WAIT_STATUS = 1;
+    protected static final int MESSAGE_CON_STATUS = 2;
 
     private static final DecimalFormat dfLat = new DecimalFormat("##.00000");
     private static final DecimalFormat dfLon = new DecimalFormat("###.00000");
-
 
     private static Intent positionService;
     private TextView statusText;
