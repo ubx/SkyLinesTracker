@@ -59,12 +59,15 @@ public class MainActivity extends Activity {
     private String msgNoInet;
     private String msgWaitGps;
     private SkyLinesApp app;
+    private boolean doFixQueueing;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SkyLinesPrefs prefs = new SkyLinesPrefs(this);
+        app = ((SkyLinesApp) getApplicationContext());
         Log.d("SkyLines", "MainActivity, ISTESTING=" + getIntent().hasExtra(ISTESTING));
         if (getIntent().hasExtra(ISTESTING)) {
             if (getIntent().hasExtra(TESTING_IP)) {
@@ -77,8 +80,7 @@ public class MainActivity extends Activity {
             Mint.setFlushOnlyOverWiFi(true);
             Mint.initAndStartSession(this, "a9b9af2d");
         }
-        app = ((SkyLinesApp) getApplicationContext());
-        app.doFixQueueing = prefs.isQueueFixes();
+        doFixQueueing = prefs.isQueueFixes();
         positionService = new Intent(this, PositionService.class);
         positionService.putExtra("init",true);
 
@@ -87,7 +89,7 @@ public class MainActivity extends Activity {
 
         queueValueText = (TextView) findViewById(R.id.queueValueText);
         TextView queueLabel = (TextView) findViewById(R.id.queueLabel);
-        queueLabel.setVisibility(app.doFixQueueing ? View.VISIBLE : View.GONE);
+        queueLabel.setVisibility(doFixQueueing ? View.VISIBLE : View.GONE);
 
         checkLiveTracking = (CheckBox) findViewById(R.id.checkLiveTracking);
         msgPosSent = " " + getResources().getString(R.string.msg_pos_sent);
@@ -178,7 +180,7 @@ public class MainActivity extends Activity {
                     statusText.setText(msgWaitGps);
                     break;
             }
-            if (app.doFixQueueing) {
+            if (doFixQueueing) {
                 queueValueText.setText((int) app.fixStack.size()+  " / " + app.fixStack.getCapacity());
             }
         }
