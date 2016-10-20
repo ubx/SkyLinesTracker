@@ -174,11 +174,7 @@ public class PositionService extends Service implements LocationListener {
 
     public static boolean isOnline() {
         NetworkInfo networkInfo = ((ConnectivityManager) app.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-        if (networkInfo != null) {
-            return networkInfo.isConnected();
-        } else {
-            return false;
-        }
+        return networkInfo != null && networkInfo.isConnected();
     }
 
     public void broadcastReceiver() {
@@ -191,9 +187,7 @@ public class PositionService extends Service implements LocationListener {
         if (skyLinesTrackingWriter == null) {
             try {
                 skyLinesTrackingWriter = new SkyLinesTrackingWriter(prefs.getTrackingKey(), ipAddress);
-            } catch (SocketException e) {
-                e.printStackTrace();
-            } catch (UnknownHostException e) {
+            } catch (SocketException | UnknownHostException e) {
                 e.printStackTrace();
             }
         }
