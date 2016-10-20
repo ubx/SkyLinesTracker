@@ -171,7 +171,7 @@ public class MainActivity extends Activity {
             int statusType = intent.getIntExtra(MESSAGE_STATUS_TYPE, 99);
             switch (statusType) {
                 case MESSAGE_POS_STATUS:
-                    statusText.setText(msgPosSent + " " + dfLon.format(app.lastLon) + " " + dfLat.format(app.lastLat));
+                    statusText.setText(String.format("%s %s %s", msgPosSent, dfLon.format(app.lastLon), dfLat.format(app.lastLat)));
                     break;
                 case MESSAGE_CON_STATUS:
                     statusText.setText(msgNoInet);
@@ -181,7 +181,7 @@ public class MainActivity extends Activity {
                     break;
             }
             if (doFixQueueing) {
-                queueValueText.setText((int) app.fixStack.size()+  " / " + app.fixStack.getCapacity());
+                queueValueText.setText(String.format("%d / %d", app.fixStack.size(), app.fixStack.getCapacity()));
             }
         }
     };
