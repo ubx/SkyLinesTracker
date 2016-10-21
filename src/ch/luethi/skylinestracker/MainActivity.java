@@ -34,6 +34,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.splunk.mint.Mint;
+
 import java.text.DecimalFormat;
 
 public class MainActivity extends Activity {
@@ -70,6 +71,7 @@ public class MainActivity extends Activity {
         app = ((SkyLinesApp) getApplicationContext());
         Log.d("SkyLines", "MainActivity, ISTESTING=" + getIntent().hasExtra(ISTESTING));
         if (getIntent().hasExtra(ISTESTING)) {
+            Mint.closeSession(this);
             if (getIntent().hasExtra(TESTING_IP)) {
                 prefs.setIpAddress(getIntent().getStringExtra(TESTING_IP));
             } else {
@@ -77,8 +79,6 @@ public class MainActivity extends Activity {
             }
         } else {
             prefs.setIpAddress(prefs.getIpAddress(getResources().getString(R.string.ip_address_dns)));
-            Mint.setFlushOnlyOverWiFi(true);
-            Mint.initAndStartSession(this, "a9b9af2d");
         }
         doFixQueueing = prefs.isQueueFixes();
         positionService = new Intent(this, PositionService.class);

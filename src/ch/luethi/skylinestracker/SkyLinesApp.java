@@ -19,6 +19,7 @@
 package ch.luethi.skylinestracker;
 
 import android.app.Application;
+import com.splunk.mint.Mint;
 
 public class SkyLinesApp extends Application {
 
@@ -27,4 +28,10 @@ public class SkyLinesApp extends Application {
     public PositionService positionService = null;
     public static FixQueueIF fixStack;
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Mint.setFlushOnlyOverWiFi(true);
+        Mint.initAndStartSession(this, "a9b9af2d");
+    }
 }
