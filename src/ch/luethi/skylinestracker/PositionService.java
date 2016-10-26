@@ -58,6 +58,7 @@ public class PositionService extends Service implements LocationListener {
                 Log.d("SkyLines", "timerRunnable, isOnline()=" + isOnline());
                 if (isOnline()) {
                     new DequeueTask().execute();
+                    sendPositionWaitStatus();
                 }
                 startTimer();
             }
@@ -77,7 +78,6 @@ public class PositionService extends Service implements LocationListener {
         intentWaitStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_POS_WAIT_STATUS);
         intentConStatus = new Intent(MainActivity.BROADCAST_STATUS);
         intentConStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_CON_STATUS);
-        delayHandler = new Handler();
     }
 
 
