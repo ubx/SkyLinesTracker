@@ -22,11 +22,6 @@ python preference_file.py ${KEY} ${INT}  false  true ${IP} true 2048
 
 adb -s ${DEVICE} push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
 adb -s ${DEVICE} install -r  ${PROJECT_DIR}/out/SkyLinesTracker.apk
-#adb -s ${DEVICE} shell dumpsys batterystats --reset
-#adb -s ${DEVICE} shell dumpsys battery set ac 0
-#adb -s ${DEVICE} shell dumpsys battery set level 80
-#adb -s ${DEVICE} shell dumpsys battery
-
 adb -s ${DEVICE} shell am start -W -n ch.luethi.skylinestracker/ch.luethi.skylinestracker.MainActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -e ISTESTING true -e TESTING_IP ${IP}
 
 sh clickLiveTracking.sh ${DEVICE}
@@ -68,11 +63,6 @@ adb -s ${DEVICE} shell svc data enable
 sleep 1200
 pkill -f UDP-Receiver.jar
 pkill -f gps_simulator.py
-
-#echo "#### $(date +"%T") Dumpsys batterystats and bugreport"
-#adb -s ${DEVICE} shell  dumpsys batterystats > batterystats.txt
-#adb -s ${DEVICE} shell  bugreport > bugreport.txt
-
 
 echo "#### $(date +"%T") Shuting down everting....................."
 adb -s ${DEVICE} shell am force-stop ch.luethi.skylinestracker
