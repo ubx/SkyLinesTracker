@@ -15,19 +15,11 @@ pkill -f UDP-Receiver.jar
 
 trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
 
-${EMULATOR_DIR}/emulator -avd Device -netspeed full -netdelay none -no-boot-anim -gpu swiftshader &
-
-sleep 30
 python preference_file.py ${KEY} ${INT}  false  true ${IP} true 2048
 
-adb -s ${DEVICE} push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
-adb -s ${DEVICE} install -r  ${PROJECT_DIR}/out/SkyLinesTracker.apk
-adb -s ${DEVICE} shell am start -W -n ch.luethi.skylinestracker/ch.luethi.skylinestracker.MainActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -e ISTESTING true -e TESTING_IP ${IP}
+sh startEmulator.sh ${PROJECT_DIR} ${DEVICE} ${IP}
 
 sh clickLiveTracking.sh ${DEVICE}
-
-adb -s ${DEVICE} shell ls -l  /data/data/ch.luethi.skylinestracker/shared_prefs/ch.luethi.skylinestracker_preferences.xml
-adb -s ${DEVICE} shell setprop persist.sys.timezone UTC
 
 echo "### $(date +"%T") GPS simmluation, with Internet connection"
 adb -s ${DEVICE} shell svc data enable

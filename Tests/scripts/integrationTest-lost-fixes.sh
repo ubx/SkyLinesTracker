@@ -15,24 +15,15 @@ pkill -f UDP-Receiver.jar
 
 trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
 
-${EMULATOR_DIR}/emulator -avd Device -netspeed full -netdelay none -no-boot-anim -gpu swiftshader &
-
-sleep 30
 python preference_file.py ${KEY} ${INT}  false  false ${IP} true 50
 
-adb -s ${DEVICE} push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
-adb -s ${DEVICE} install -r  ${PROJECT_DIR}/out/SkyLinesTracker.apk
+sh startEmulator.sh ${PROJECT_DIR} ${DEVICE} ${IP}
 
-adb -s ${DEVICE} shell am start -W -n ch.luethi.skylinestracker/ch.luethi.skylinestracker.MainActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -e ISTESTING true -e TESTING_IP ${IP}
-adb -s ${DEVICE} shell svc data disable
-adb -s ${DEVICE} shell ls -l  /data/data/ch.luethi.skylinestracker/shared_prefs/ch.luethi.skylinestracker_preferences.xml
-adb -s ${DEVICE} shell setprop persist.sys.timezone UTC
-
-sleep 15
 sh clickLiveTracking.sh ${DEVICE}
 sleep 15
 
 echo "### $(date +"%T") GPS simmluation, LiveTracking checked, NO internet connection"
+adb -s ${DEVICE} shell svc data disable
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test.out &
 python gps_simulator.py 127.0.0.1 400 ${KEY} > sim-test.out &
 sleep 100
