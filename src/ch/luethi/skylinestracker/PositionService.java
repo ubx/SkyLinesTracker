@@ -48,14 +48,11 @@ public class PositionService extends Service implements LocationListener {
     private static Intent intentPosStatus, intentWaitStatus, intentConStatus;
 
     private Handler delayHandler = new Handler();
-    private final ThreadLocal<Runnable> timerRunnable = new ThreadLocal<>();
+    private Runnable timerRunnable;
 
 
     public PositionService() {
-    }
-
-    private void initTimer() {
-        timerRunnable.set(new Runnable() {
+        timerRunnable = new Runnable() {
             @Override
             public void run() {
                 Log.d("SkyLines", "timerRunnable, isOnline()=" + isOnline());
@@ -65,7 +62,7 @@ public class PositionService extends Service implements LocationListener {
                 }
                 startTimer();
             }
-        });
+        };
     }
 
 
@@ -81,7 +78,6 @@ public class PositionService extends Service implements LocationListener {
         intentWaitStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_POS_WAIT_STATUS);
         intentConStatus = new Intent(MainActivity.BROADCAST_STATUS);
         intentConStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_CON_STATUS);
-        initTimer();
     }
 
 
@@ -211,11 +207,11 @@ public class PositionService extends Service implements LocationListener {
     }
 
     private void startTimer() {
-        delayHandler.postDelayed(timerRunnable.get(), 2 * (prefs.getTrackingInterval() * 1000));
+        delayHandler.postDelayed(timerRunnable, 2 * (prefs.getTrackingInterval() * 1000));
     }
 
     private void stopTimer() {
-        delayHandler.removeCallbacks(timerRunnable.get());
+        delayHandler.removeCallbacks(timerRunnable);
     }
 
     private class DequeueTask extends AsyncTask {
