@@ -26,6 +26,7 @@ adb -s ${DEVICE} install -r  ${PROJECT_DIR}/out/SkyLinesTracker.apk
 adb -s ${DEVICE} shell am start -W -n ch.luethi.skylinestracker/ch.luethi.skylinestracker.MainActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -e ISTESTING true -e TESTING_IP ${IP}
 adb -s ${DEVICE} shell svc data disable
 adb -s ${DEVICE} shell ls -l  /data/data/ch.luethi.skylinestracker/shared_prefs/ch.luethi.skylinestracker_preferences.xml
+adb -s ${DEVICE} shell setprop persist.sys.timezone UTC
 
 sleep 15
 sh clickLiveTracking.sh ${DEVICE}

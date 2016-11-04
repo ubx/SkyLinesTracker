@@ -27,6 +27,7 @@ adb -s ${DEVICE} shell am start -W -n ch.luethi.skylinestracker/ch.luethi.skylin
 sh clickLiveTracking.sh ${DEVICE}
 
 adb -s ${DEVICE} shell ls -l  /data/data/ch.luethi.skylinestracker/shared_prefs/ch.luethi.skylinestracker_preferences.xml
+adb -s ${DEVICE} shell setprop persist.sys.timezone UTC
 
 echo "### $(date +"%T") GPS simmluation, with Internet connection"
 adb -s ${DEVICE} shell svc data enable

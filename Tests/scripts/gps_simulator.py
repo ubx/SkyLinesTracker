@@ -37,7 +37,7 @@ def millies_of_day():
 def write_geo(lng, lat, alt):
     tn.write("geo fix {0} {1} {2}\n".format(lng, lat, alt))
     print("Sim: {0},{1},{2:.5f},{3:.5f},{4}".format(millies_of_day(), KEY, lng, lat, alt))
-
+    sys.stdout.flush()
 
 def write_gsm(mode):
     tn.write("gsm data " + mode + '\n')

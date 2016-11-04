@@ -1,6 +1,7 @@
 package ch.luethi.skylinestracker;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -47,11 +48,13 @@ public class IntegrationTest {
                     //System.out.println(str);
                     Rec r = new Rec();
                     String[] rs = str.split(",");
-                    r.secDay = Integer.decode(rs[0]) + tOffset;
-                    r.key = rs[1];
-                    r.lat = Double.parseDouble(rs[2]);
-                    r.log = Double.parseDouble(rs[3]);
-                    recs.add(r);
+                    if (rs.length == 5) {
+                        r.secDay = Integer.decode(rs[0]) + tOffset;
+                        r.key = rs[1];
+                        r.lat = Double.parseDouble(rs[2]);
+                        r.log = Double.parseDouble(rs[3]);
+                        recs.add(r);
+                    }
                 }
             });
         } catch (IOException ex) {
@@ -120,19 +123,19 @@ public class IntegrationTest {
     public void testBasic() {
         runScript(TESTS_SCRIPTS + "integrationTest-basic.sh");
 
-        readOutFile(TESTS_SCRIPTS + "rcv-test-00.out", recsRcv, "Rcv: ", 14400000);  // todo -- why this offset?
+        readOutFile(TESTS_SCRIPTS + "rcv-test-00.out", recsRcv, "Rcv: ", 0);
         readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
         printRecsSize();
         assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
 
         recsRcv.clear();
-        readOutFile(TESTS_SCRIPTS + "rcv-test-01.out", recsRcv, "Rcv: ", 14400000);
+        readOutFile(TESTS_SCRIPTS + "rcv-test-01.out", recsRcv, "Rcv: ", 0);
         System.out.println("recsRcv=" + recsRcv.size());
         assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
         assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
 
         recsRcv.clear();
-        readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 14400000);
+        readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 0);
         System.out.println("recsRcv=" + recsRcv.size());
         assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
     }
@@ -141,7 +144,7 @@ public class IntegrationTest {
     public void testStartWithDisconnected() {
         runScript(TESTS_SCRIPTS + "integrationTest-start-with-disconnected.sh");
 
-        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 14400000);
+        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 0);
         readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
 
         printRecsSize();
@@ -154,7 +157,7 @@ public class IntegrationTest {
     public void testQueue() {
         runScript(TESTS_SCRIPTS + "integrationTest-queue.sh");
 
-        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 14400000);
+        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 0);
         readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
 
         printRecsSize();
@@ -167,7 +170,7 @@ public class IntegrationTest {
     public void testStartLostFixes() {
         runScript(TESTS_SCRIPTS + "integrationTest-lost-fixes.sh");
 
-        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 14400000);
+        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 0);
         readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
 
         printRecsSize();
@@ -177,11 +180,13 @@ public class IntegrationTest {
         assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
     }
 
+    @Ignore
     @Test
     public void testBatteryUsageWithoutQueue() {
         runScript(TESTS_SCRIPTS + "integrationTest-battery-usage.sh", "false");
     }
 
+    @Ignore
     @Test
     public void testBatteryUsageWithQueue() {
         runScript(TESTS_SCRIPTS + "integrationTest-battery-usage.sh", "true");
