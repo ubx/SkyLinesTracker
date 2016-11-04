@@ -71,13 +71,12 @@ class CRC16CCITT {
             0x6e17, 0x7e36, 0x4e55, 0x5e74, 0x2e93, 0x3eb2, 0x0ed1, 0x1ef0
     };
 
-    static short update(byte octet, short crc) {
+    private static short update(byte octet, short crc) {
         return (short) ((crc << 8) ^ table[((crc >> 8) ^ octet) & 0xff]);
     }
 
     static short update(byte[] data, short crc) {
-        for (int i = 0; i < data.length; ++i)
-            crc = update(data[i], crc);
+        for (byte aData : data) crc = update(aData, crc);
         return crc;
     }
 }
@@ -188,7 +187,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
 
         if (PositionService.isOnline()) {
             sendDatagram(data);
-            dequeAndSendFix(); // todo - temp
+            dequeAndSendFix();
         } else {
             stack.push(data);
             Log.d("SkyLines", "fix queued(" + stack.size()+ ")");

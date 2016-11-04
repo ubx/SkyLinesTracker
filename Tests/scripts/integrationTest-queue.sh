@@ -53,7 +53,7 @@ adb -s ${DEVICE} shell am stopservice ch.luethi.skylinestracker/.PositionService
 adb -s ${DEVICE} shell am startservice ch.luethi.skylinestracker/.PositionService
 adb -s ${DEVICE} shell svc data enable
 
-sleep 1200
+sleep 600
 pkill -f UDP-Receiver.jar
 pkill -f gps_simulator.py
 
