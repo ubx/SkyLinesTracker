@@ -1,6 +1,5 @@
 #!/bin/bash
 #
-EMULATOR_DIR="/home/andreas/opt/android-sdk-linux/tools"
 DEVICE="emulator-5554"
 PROJECT_DIR="/home/andreas/IdeaProjects/SkyLinesTracker"
 TEST_DIR="/home/andreas/IdeaProjects/SkyLinesTracker/Tests"
