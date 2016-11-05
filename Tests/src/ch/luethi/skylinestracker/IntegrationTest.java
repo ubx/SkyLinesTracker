@@ -25,28 +25,33 @@ public class IntegrationTest {
     Set<Rec> recsSim = new HashSet<Rec>(200);
 
     private class Rec {
+
+        public Rec(boolean ignorSecDay) {
+            this.ignorSecDay = ignorSecDay;
+        }
+
         int secDay;
         String key;
         double lat, log;
+        boolean ignorSecDay;
 
         @Override
         public boolean equals(Object o) {
             Rec r = (Rec) o;
-            return secDay == r.secDay & key.equals(r.key)
-                     & Math.abs(lat - r.lat) < 0.00002
-                     & Math.abs(log - r.log) < 0.00002;
+            return (ignorSecDay || secDay == r.secDay) & key.equals(r.key)
+                    & Math.abs(lat - r.lat) < 0.00002
+                    & Math.abs(log - r.log) < 0.00002;
         }
     }
 
 
-    private void readOutFile(String fileName, Set<Rec> recs, String prefix, int tOffset) {
+    private void readOutFile(String fileName, Set<Rec> recs, String prefix, int tOffset, boolean ignorSecDay) {
         Path path = Paths.get(fileName);
         try (Stream<String> lines = Files.lines(path)) {
             lines.forEach(l -> {
                 if (l.startsWith(prefix)) {
                     String str = l.substring(prefix.length());
-                    //System.out.println(str);
-                    Rec r = new Rec();
+                    Rec r = new Rec(ignorSecDay);
                     String[] rs = str.split(",");
                     if (rs.length == 5) {
                         r.secDay = Integer.decode(rs[0]) + tOffset;
@@ -61,6 +66,12 @@ public class IntegrationTest {
 
         }
     }
+
+    private void readOutFile(String fileName, Set<Rec> recs, String prefix, int tOffset) {
+        readOutFile(fileName, recs, prefix, tOffset, false);
+
+    }
+
 
     private boolean containsAll(Set<Rec> s1, Set<Rec> s2) {
         boolean df = false;
@@ -130,6 +141,27 @@ public class IntegrationTest {
 
         recsRcv.clear();
         readOutFile(TESTS_SCRIPTS + "rcv-test-01.out", recsRcv, "Rcv: ", 0);
+        System.out.println("recsRcv=" + recsRcv.size());
+        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
+        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+
+        recsRcv.clear();
+        readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 0);
+        System.out.println("recsRcv=" + recsRcv.size());
+        assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
+    }
+
+    @Test
+    public void testBasicRealHW() {
+        runScript(TESTS_SCRIPTS + "integrationTest-basic-real-HW.sh");
+
+        readOutFile(TESTS_SCRIPTS + "rcv-test-00.out", recsRcv, "Rcv: ", 0);
+        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0, true);
+        printRecsSize();
+        assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
+
+        recsRcv.clear();
+        readOutFile(TESTS_SCRIPTS + "rcv-test-01.out", recsRcv, "Rcv: ", 0, true);
         System.out.println("recsRcv=" + recsRcv.size());
         assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
         assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
