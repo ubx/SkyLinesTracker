@@ -125,6 +125,7 @@ public class IntegrationTest {
 
     @Before
     public void setUp() {
+        //String env = System.getenv("testwith");
         recsSim.clear();
         recsRcv.clear();
     }

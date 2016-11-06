@@ -16,7 +16,7 @@ LNG_DST = 10.0153400
 HOST = sys.argv[-4]
 SECONDS = int(sys.argv[-3])
 KEY = sys.argv[-2]
-OUT = sys.argv[-1]
+TARGET = sys.argv[-1]
 
 LAT_MAX_STEP = ((max(LAT_DST, LAT_SRC) - min(LAT_DST, LAT_SRC)) / SECONDS) * 2
 LNG_MAX_STEP = ((max(LNG_DST, LNG_SRC) - min(LNG_DST, LNG_SRC)) / SECONDS) * 2
@@ -27,7 +27,7 @@ DIRECTION_LNG = 1 if LNG_DST - LNG_SRC > 0 else -1
 lat = LAT_SRC
 lng = LNG_SRC
 
-if OUT != "ADB":
+if TARGET != "ADV":
     tn = telnetlib.Telnet(HOST, PORT, TIMEOUT)
     tn.set_debuglevel(0)
     tn.read_until("OK", 5)
@@ -40,7 +40,7 @@ def millies_of_day():
 
 
 def write_geo(lng, lat, alt):
-    if OUT == "ADB":
+    if TARGET == "ADV":
         os.system ("adb shell am startservice --user 0 -a com.blogspot.newapphorizons.fakegps.UPDATE  -e longitude {0} -e latitude {1}".format(lng, lat))
     else:
         tn.write("geo fix {0} {1} {2}\n".format(lng, lat, alt))
@@ -58,7 +58,7 @@ def write_sms(msg):
 
 
 def auth():
-    if OUT != "ADB":
+    if TARGET != "ADV":
         tn.write("auth 1dzok1p9Lo5UaJ9M" + '\n')
 
 
@@ -72,6 +72,6 @@ for i in range(SECONDS):
 
 write_geo(LNG_DST, LAT_DST, 100)
 
-if OUT != "ADB":
+if TARGET != "ADV":
     tn.write("exit\n")
     print tn.read_all()
