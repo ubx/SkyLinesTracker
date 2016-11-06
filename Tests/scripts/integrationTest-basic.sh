@@ -20,7 +20,7 @@ sh startEmulator.sh ${PROJECT_DIR} ${DEVICE} ${IP}
 
 echo "### $(date +"%T") GPS simmluation, LiveTracking NOT checked"
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test-00.out &
-python gps_simulator.py 127.0.0.1 1200 ${KEY} > sim-test.out &
+python gps_simulator.py 127.0.0.1 1200 ${KEY} TEL > sim-test.out &
 sleep 60
 pkill -f UDP-Receiver.jar
 

@@ -22,7 +22,7 @@ sh clickLiveTracking.sh ${DEVICE}
 echo "### $(date +"%T") GPS simmluation, LiveTracking checked, NO internet connection"
 adb -s ${DEVICE} shell svc data disable
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test.out &
-python gps_simulator.py 127.0.0.1 9999 ${KEY} > sim-test-0.out &
+python gps_simulator.py 127.0.0.1 9999 ${KEY} TEL > sim-test-0.out &
 sleep 60
 
 echo "### $(date +"%T") Switch ON internet connection"
@@ -39,7 +39,7 @@ adb -s ${DEVICE} shell svc data enable
 sleep 100
 
 echo "### $(date +"%T") GPS simmluation, internet connection"
-python gps_simulator.py 127.0.0.1 9999 ${KEY} > sim-test-1.out &
+python gps_simulator.py 127.0.0.1 9999 ${KEY} TEL > sim-test-1.out &
 sleep 100
 
 pkill -f gps_simulator.py

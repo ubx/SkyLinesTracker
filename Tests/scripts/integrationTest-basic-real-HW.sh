@@ -6,7 +6,6 @@ DEVICE="4df0279066905fc7" # S7
 PROJECT_DIR="/home/andreas/IdeaProjects/SkyLinesTracker"
 TEST_DIR="/home/andreas/IdeaProjects/SkyLinesTracker/Tests"
 IP=$(hostname -I | awk '{print $1}')
-#IP="ubx.internet-box.ch"
 INT=5
 KEY="67FCFE73"
 
@@ -37,13 +36,13 @@ sleep 60
 pkill -f UDP-Receiver.jar
 
 echo "### $(date +"%T") GPS simmluation, LiveTracking checked"
-sh clickLiveTracking-S7.sh ${DEVICE}
+sh clickLiveTracking-S3.sh ${DEVICE}
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test-01.out &
 sleep 60
 pkill -f UDP-Receiver.jar
 
 echo "### $(date +"%T") GPS simmluation, LiveTracking NOT checked again"
-sh clickLiveTracking-S7.sh ${DEVICE}
+sh clickLiveTracking-S3.sh ${DEVICE}
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test-02.out &
 sleep 60
 pkill -f UDP-Receiver.jar

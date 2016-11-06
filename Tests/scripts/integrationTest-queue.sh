@@ -23,7 +23,7 @@ sh clickLiveTracking.sh ${DEVICE}
 echo "### $(date +"%T") GPS simmluation, with Internet connection"
 adb -s ${DEVICE} shell svc data enable
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test.out &
-python gps_simulator.py 127.0.0.1 1200 ${KEY} > sim-test.out &
+python gps_simulator.py 127.0.0.1 1200 ${KEY} TEL > sim-test.out &
 sleep 60
 
 echo "### $(date +"%T") Simulate PositionService restart"

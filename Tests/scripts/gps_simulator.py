@@ -27,7 +27,7 @@ DIRECTION_LNG = 1 if LNG_DST - LNG_SRC > 0 else -1
 lat = LAT_SRC
 lng = LNG_SRC
 
-if OUT == "":
+if OUT != "ADB":
     tn = telnetlib.Telnet(HOST, PORT, TIMEOUT)
     tn.set_debuglevel(0)
     tn.read_until("OK", 5)
@@ -58,7 +58,7 @@ def write_sms(msg):
 
 
 def auth():
-    if OUT == "":
+    if OUT != "ADB":
         tn.write("auth 1dzok1p9Lo5UaJ9M" + '\n')
 
 
@@ -72,6 +72,6 @@ for i in range(SECONDS):
 
 write_geo(LNG_DST, LAT_DST, 100)
 
-if OUT == "":
+if OUT != "ADB":
     tn.write("exit\n")
     print tn.read_all()
