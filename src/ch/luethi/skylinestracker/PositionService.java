@@ -21,6 +21,7 @@ package ch.luethi.skylinestracker;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -50,6 +51,8 @@ public class PositionService extends Service implements LocationListener {
     private Handler delayHandler = new Handler();
     private Runnable timerRunnable;
 
+    private SharedPreferences.OnSharedPreferenceChangeListener prefListener;
+
 
     public PositionService() {
         timerRunnable = new Runnable() {
@@ -63,6 +66,14 @@ public class PositionService extends Service implements LocationListener {
                 startTimer();
             }
         };
+
+        prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+                Log.d("SkyLines", "Settings key changed: " + key);
+                // TODO: 15.11.2016 -- implement
+            }
+        };
+
     }
 
 
