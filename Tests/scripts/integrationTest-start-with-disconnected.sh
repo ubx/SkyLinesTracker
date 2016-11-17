@@ -20,22 +20,22 @@ sh startEmulator.sh ${PROJECT_DIR} ${DEVICE} ${IP}
 sh clickLiveTracking.sh ${DEVICE}
 
 echo "### $(date +"%T") GPS simmluation, LiveTracking checked, NO internet connection"
-adb -s ${DEVICE} shell svc data disable
+sh setNetworkState.sh ${DEVICE} OFF
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test.out &
 python gps_simulator.py 127.0.0.1 9999 ${KEY} TEL > sim-test-0.out &
 sleep 60
 
 echo "### $(date +"%T") Switch ON internet connection"
-adb -s ${DEVICE} shell svc data enable
+sh setNetworkState.sh ${DEVICE} ON
 sleep 100
 
 echo "### $(date +"%T") GPS simmluation, NO internet connection"
-adb -s ${DEVICE} shell svc data disable
+sh setNetworkState.sh ${DEVICE} OFF
 sleep 100
 
 echo "### $(date +"%T") No GPS simmluation, internet connection"
 pkill -f gps_simulator.py
-adb -s ${DEVICE} shell svc data enable
+sh setNetworkState.sh ${DEVICE} ON
 sleep 100
 
 echo "### $(date +"%T") GPS simmluation, internet connection"

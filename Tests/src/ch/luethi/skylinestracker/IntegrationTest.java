@@ -187,6 +187,19 @@ public class IntegrationTest {
     }
 
     @Test
+    public void testStartWithDisconnectedHW() {
+        runScript(TESTS_SCRIPTS + "integrationTest-start-with-disconnected-HW.sh");
+
+        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 0, true);
+        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0, true);
+
+        printRecsSize();
+
+        //todo -- assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
+        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+    }
+
+    @Test
     public void testQueue() {
         runScript(TESTS_SCRIPTS + "integrationTest-queue.sh");
 
