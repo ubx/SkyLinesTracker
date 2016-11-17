@@ -33,4 +33,6 @@ public interface FixQueueIF {
     FixQueueIF load();
 
     long getCapacity();
+
+    void setCapacity(long newSize);
 }

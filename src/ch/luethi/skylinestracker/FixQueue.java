@@ -75,4 +75,9 @@ public class FixQueue implements FixQueueIF {
     public long getCapacity() {
         return rb.getCapacity();
     }
+
+    @Override
+    public void setCapacity(long newSize) {
+        // // TODO: 17.11.16 -- implement in rb !! 
+    }
 }

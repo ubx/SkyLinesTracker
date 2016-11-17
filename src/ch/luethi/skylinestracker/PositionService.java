@@ -29,6 +29,7 @@ import android.location.LocationProvider;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.*;
+import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import com.geeksville.location.SkyLinesTrackingWriter;
@@ -50,8 +51,7 @@ public class PositionService extends Service implements LocationListener {
 
     private Handler delayHandler = new Handler();
     private Runnable timerRunnable;
-
-    private SharedPreferences.OnSharedPreferenceChangeListener prefListener;
+    private SharedPreferences.OnSharedPreferenceChangeListener listener;
 
 
     public PositionService() {
@@ -67,13 +67,19 @@ public class PositionService extends Service implements LocationListener {
             }
         };
 
-        prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
-            public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
-                Log.d("SkyLines", "Settings key changed: " + key);
-                // TODO: 15.11.2016 -- implement
+
+        listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            public void onSharedPreferenceChanged(SharedPreferences xprefs, String key) {
+                if (key.equals(prefs.TRACKING_INTERVAL)) {
+                    // // TODO: 17.11.16 -- adjust fix queue size !!
+                    startLocationUpdates();
+                } else if (key.equals(prefs.TRACKING_KEY)) {
+                    if (skyLinesTrackingWriter != null) {
+                        skyLinesTrackingWriter.setKey(prefs.getTrackingKey());
+                    }
+                }
             }
         };
-
     }
 
 
@@ -89,6 +95,9 @@ public class PositionService extends Service implements LocationListener {
         intentWaitStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_POS_WAIT_STATUS);
         intentConStatus = new Intent(MainActivity.BROADCAST_STATUS);
         intentConStatus.putExtra(MainActivity.MESSAGE_STATUS_TYPE, MainActivity.MESSAGE_CON_STATUS);
+
+        SharedPreferences sprefs = PreferenceManager.getDefaultSharedPreferences(this);
+        sprefs.registerOnSharedPreferenceChangeListener(listener);
     }
 
 
@@ -106,8 +115,15 @@ public class PositionService extends Service implements LocationListener {
         ipAddress = prefs.getIpAddress();
         senderThread = new HandlerThread("SenderThread");
         senderThread.start();
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this, senderThread.getLooper());
+        startLocationUpdates();
         return START_STICKY;
+    }
+
+    private void startLocationUpdates() {
+        if (locationManager != null) {
+            locationManager.removeUpdates(this);
+        }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this, senderThread.getLooper());
     }
 
     @Override
@@ -132,7 +148,7 @@ public class PositionService extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         stopTimer();
-        SkyLinesTrackingWriter skyLinesTrackingWriter = getOrCreateSkyLinesTrackingWriter();
+        skyLinesTrackingWriter = getOrCreateSkyLinesTrackingWriter();
         if (skyLinesTrackingWriter != null) { // fix NPE #11
             if (location.getLatitude() != 0.0) {
                 app.lastLat = location.getLatitude();

@@ -33,6 +33,7 @@ import java.io.IOException;
 import java.net.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.StringTokenizer;
 import java.util.TimeZone;
 
 class CRC16CCITT {
@@ -102,7 +103,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     private static final int MAX_QUEUED = 1024;
     private static final int MAX_QUEUED_SEND = 20;
 
-    private final long key;
+    private static long key;
 
     private DatagramSocket socket;
     private SocketAddress serverAddress;
@@ -125,6 +126,10 @@ public class SkyLinesTrackingWriter implements PositionWriter {
 
         InetAddress serverIP = InetAddress.getByName(_ip_address);
         serverAddress = new InetSocketAddress(serverIP, 5597);
+    }
+
+    public void setKey(long _key) {
+        key = _key;
     }
 
     private void writeHeader(DataOutputStream dos, short type)
