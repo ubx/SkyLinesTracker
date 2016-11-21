@@ -78,6 +78,6 @@ public class FixQueue implements FixQueueIF {
 
     @Override
     public void setCapacity(long newSize) {
-        // // TODO: 17.11.16 -- implement in rb !! 
+        rb.changeCapacity(newSize);
     }
 }

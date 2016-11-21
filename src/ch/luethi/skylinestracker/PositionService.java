@@ -72,6 +72,9 @@ public class PositionService extends Service implements LocationListener {
             public void onSharedPreferenceChanged(SharedPreferences xprefs, String key) {
                 if (key.equals(prefs.TRACKING_INTERVAL)) {
                     // // TODO: 17.11.16 -- adjust fix queue size !!
+                    if ( SkyLinesApp.fixStack != null) {
+                        SkyLinesApp.fixStack.setCapacity(calculateFixQueueSize());
+                    }
                     startLocationUpdates();
                 } else if (key.equals(prefs.TRACKING_KEY)) {
                     if (skyLinesTrackingWriter != null) {
@@ -105,7 +108,7 @@ public class PositionService extends Service implements LocationListener {
     public int onStartCommand(Intent intent, int flags, int startId) {
         boolean init = intent != null && intent.getBooleanExtra("init", false);
         if (prefs.isQueueFixes()) {
-            SkyLinesApp.fixStack = new FixQueue(getApplicationContext(), prefs.getQueueFixesMaxSeconds() / prefs.getTrackingInterval(), init);
+            SkyLinesApp.fixStack = new FixQueue(getApplicationContext(), calculateFixQueueSize(), init);
         } else {
             SkyLinesApp.fixStack = new FixQueueNop(getApplicationContext());
         }
@@ -117,6 +120,10 @@ public class PositionService extends Service implements LocationListener {
         senderThread.start();
         startLocationUpdates();
         return START_STICKY;
+    }
+
+    private int calculateFixQueueSize() {
+        return prefs.getQueueFixesMaxSeconds() / prefs.getTrackingInterval();
     }
 
     private void startLocationUpdates() {
