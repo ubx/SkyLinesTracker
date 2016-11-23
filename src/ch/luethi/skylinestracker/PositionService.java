@@ -116,8 +116,6 @@ public class PositionService extends Service implements LocationListener {
 
         skyLinesTrackingWriter = null;
         ipAddress = prefs.getIpAddress();
-        senderThread = new HandlerThread("SenderThread");
-        senderThread.start();
         startLocationUpdates();
         return START_STICKY;
     }
@@ -130,6 +128,11 @@ public class PositionService extends Service implements LocationListener {
         if (locationManager != null) {
             locationManager.removeUpdates(this);
         }
+        if (senderThread != null) {
+            senderThread.quit();
+        }
+        senderThread = new HandlerThread("SenderThread");
+        senderThread.start();
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this, senderThread.getLooper());
     }
 
