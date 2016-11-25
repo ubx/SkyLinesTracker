@@ -52,6 +52,7 @@ public class PositionService extends Service implements LocationListener {
     private Handler delayHandler = new Handler();
     private Runnable timerRunnable;
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
+    private int currentTrackingInterval = 1000;
 
 
     public PositionService() {
@@ -71,7 +72,6 @@ public class PositionService extends Service implements LocationListener {
         listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             public void onSharedPreferenceChanged(SharedPreferences xprefs, String key) {
                 if (key.equals(prefs.TRACKING_INTERVAL)) {
-                    // // TODO: 17.11.16 -- adjust fix queue size !!
                     if ( SkyLinesApp.fixStack != null) {
                         SkyLinesApp.fixStack.setCapacity(calculateFixQueueSize());
                     }
@@ -121,7 +121,8 @@ public class PositionService extends Service implements LocationListener {
     }
 
     private int calculateFixQueueSize() {
-        return prefs.getQueueFixesMaxSeconds() / prefs.getTrackingInterval();
+        currentTrackingInterval = Math.min(currentTrackingInterval, prefs.getTrackingInterval()); // never increase tracking interval !
+        return prefs.getQueueFixesMaxSeconds() / currentTrackingInterval;
     }
 
     private void startLocationUpdates() {
