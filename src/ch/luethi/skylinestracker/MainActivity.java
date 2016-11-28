@@ -31,7 +31,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import com.splunk.mint.Mint;
 
@@ -54,7 +54,7 @@ public class MainActivity extends Activity {
     private static Intent positionService;
     private TextView statusText;
     private TextView queueValueText;
-    private CheckBox checkLiveTracking;
+    private CompoundButton checkLiveTracking;
     private final IntentFilter brFilter = new IntentFilter(BROADCAST_STATUS);
     private String msgPosSent;
     private String msgNoInet;
@@ -91,7 +91,7 @@ public class MainActivity extends Activity {
         TextView queueLabel = (TextView) findViewById(R.id.queueLabel);
         queueLabel.setVisibility(doFixQueueing ? View.VISIBLE : View.GONE);
 
-        checkLiveTracking = (CheckBox) findViewById(R.id.checkLiveTracking);
+        checkLiveTracking = (CompoundButton) findViewById(R.id.checkLiveTracking);
         msgPosSent = " " + getResources().getString(R.string.msg_pos_sent);
         msgNoInet = getResources().getString(R.string.msg_no_inet);
         msgWaitGps = getResources().getString(R.string.resume);
@@ -146,7 +146,7 @@ public class MainActivity extends Activity {
     }
 
     public void startStopTracking(View view) {
-        CheckBox cb = (CheckBox) view;
+        CompoundButton cb = (CompoundButton) view;
         if (cb.isChecked()) {
             String provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
             if (!provider.contains("gps")) {

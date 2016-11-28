@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context=".MainActivity">
+
+    <Switch
+            android:id="@+id/checkLiveTracking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:checked="false"
+            android:onClick="startStopTracking"
+            android:text="@string/live_tracking"/>
+
+    <TextView
+            android:id="@+id/statusLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/checkLiveTracking"
+            android:layout_below="@+id/checkLiveTracking"
+            android:text="@string/status"/>
+
+    <TextView
+            android:id="@+id/statusText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/statusLabel"
+            android:layout_alignBottom="@+id/statusLabel"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/statusLabel"
+            android:text="@string/empty"/>
+
+    <TextView
+            android:id="@+id/queueLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/checkLiveTracking"
+            android:layout_below="@+id/statusText"
+            android:text="@string/queue"
+            android:visibility="gone"/>
+
+    <TextView
+            android:id="@+id/queueValueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/queueLabel"
+            android:layout_alignBottom="@+id/queueLabel"
+            android:layout_marginLeft="16dp"
+            android:layout_toRightOf="@+id/queueLabel"
+            android:text="@string/queue_values"/>
+
+
+</RelativeLayout>
