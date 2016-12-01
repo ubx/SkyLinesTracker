@@ -14,7 +14,7 @@
     <string name="about_text">SkyLines Tracker</string>
     <string name="version_name_label">Version:</string>
     <string name="not_available">Pas disponible</string>
-    <string name="msg_pos_sent">Dernier fix</string>
+    <string name="msg_pos_sent">Fix</string>
     <string name="on">En attente du GPS</string>
     <string name="off">Off</string>
     <string name="resume">En attente du GPS</string>

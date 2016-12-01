@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/statusLabel"
             android:layout_alignBottom="@+id/statusLabel"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/statusLabel"
             android:text="@string/empty"/>
 
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/queueLabel"
             android:layout_alignBottom="@+id/queueLabel"
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="8dp"
             android:layout_toRightOf="@+id/queueLabel"
             android:text="@string/queue_values"/>
 

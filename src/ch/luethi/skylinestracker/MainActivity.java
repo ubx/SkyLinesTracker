@@ -36,6 +36,8 @@ import android.widget.TextView;
 import com.splunk.mint.Mint;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends Activity {
 
@@ -60,6 +62,7 @@ public class MainActivity extends Activity {
     private String msgNoInet;
     private String msgWaitGps;
     private SkyLinesApp app;
+    private SkyLinesPrefs prefs;
     private boolean doFixQueueing;
 
 
@@ -67,7 +70,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SkyLinesPrefs prefs = new SkyLinesPrefs(this);
+        prefs = new SkyLinesPrefs(this);
         app = ((SkyLinesApp) getApplicationContext());
         Log.d("SkyLines", "MainActivity, ISTESTING=" + getIntent().hasExtra(ISTESTING));
         if (getIntent().hasExtra(ISTESTING)) {
@@ -171,17 +174,18 @@ public class MainActivity extends Activity {
             int statusType = intent.getIntExtra(MESSAGE_STATUS_TYPE, 99);
             switch (statusType) {
                 case MESSAGE_POS_STATUS:
-                    statusText.setText(String.format("%s %s %s", msgPosSent, dfLon.format(app.lastLon), dfLat.format(app.lastLat)));
+                    statusText.setText(String.format("%s %s %s %s", getCurrentTimeStamp(), msgPosSent, dfLon.format(app.lastLon), dfLat.format(app.lastLat)));
                     break;
                 case MESSAGE_CON_STATUS:
-                    statusText.setText(msgNoInet);
+                    statusText.setText(String.format("%s %s", getCurrentTimeStamp(), msgNoInet));
                     break;
                 case MESSAGE_POS_WAIT_STATUS:
                     statusText.setText(msgWaitGps);
                     break;
             }
             if (doFixQueueing) {
-                queueValueText.setText(String.format("%d / %d", app.fixStack.size(), app.fixStack.getCapacity()));
+                int trackingInterval = prefs.getTrackingInterval();
+                queueValueText.setText(String.format("%d of %d sec", app.fixStack.size() * trackingInterval, app.fixStack.getCapacity() * trackingInterval));
             }
         }
     };
@@ -195,6 +199,10 @@ public class MainActivity extends Activity {
             }
         }
         return false;
+    }
+
+    public String getCurrentTimeStamp() {
+        return new SimpleDateFormat("HH:mm:ss").format(new Date());
     }
 
 }
