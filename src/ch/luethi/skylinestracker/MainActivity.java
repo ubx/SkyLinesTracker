@@ -185,7 +185,7 @@ public class MainActivity extends Activity {
             }
             if (doFixQueueing) {
                 int trackingInterval = prefs.getTrackingInterval();
-                queueValueText.setText(String.format("%d of %d sec", app.fixStack.size() * trackingInterval, app.fixStack.getCapacity() * trackingInterval));
+                queueValueText.setText(String.format("%d / %d sec", app.fixStack.size() * trackingInterval, app.fixStack.getCapacity() * trackingInterval));
             }
         }
     };
