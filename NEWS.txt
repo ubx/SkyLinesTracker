@@ -1,9 +1,12 @@
-Version 1.2.2 - not yet released
+Version 1.3.0 - not yet released
 * queue fix if phone is not connected (#10)
 * tracking interval and key change on the fly (#14)
 * bugfixes (#13)
 * upgrade to splunk mint 5.1
 * upgrade to roboelectric 3.0
+* update target SDK version 22
+* Change checkbox to switch button
+* Improved status line
 
 Version 1.1.0 - 25-mai-2015
 * update target SDK version 22
