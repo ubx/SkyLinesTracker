@@ -4,3 +4,9 @@
 /.idea
 /gen
 
+.navigation/
+Tests/out/
+
+captures/
+out/
+
