@@ -55,6 +55,7 @@ public class MainActivity extends Activity {
 
     private static Intent positionService;
     private TextView statusText;
+    private TextView positionText;
     private TextView queueValueText;
     private CompoundButton checkLiveTracking;
     private final IntentFilter brFilter = new IntentFilter(BROADCAST_STATUS);
@@ -89,7 +90,7 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);
-
+        positionText = (TextView) findViewById(R.id.positionValueText);
         queueValueText = (TextView) findViewById(R.id.queueValueText);
         TextView queueLabel = (TextView) findViewById(R.id.queueLabel);
         queueLabel.setVisibility(doFixQueueing ? View.VISIBLE : View.GONE);
@@ -115,6 +116,7 @@ public class MainActivity extends Activity {
         if (isPositionServiceRunning()) {
             checkLiveTracking.setChecked(true);
             statusText.setText(R.string.resume);
+            positionText.setText("");
             LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
 
         }
@@ -160,10 +162,12 @@ public class MainActivity extends Activity {
             positionService.putExtra("init",true);
             startService(positionService);
             statusText.setText(R.string.on);
+            positionText.setText("");
         } else {
             LocalBroadcastManager.getInstance(this).unregisterReceiver(onStatusChange);
             stopService(positionService);
             statusText.setText(R.string.off);
+            positionText.setText("");
         }
     }
 
@@ -174,13 +178,16 @@ public class MainActivity extends Activity {
             int statusType = intent.getIntExtra(MESSAGE_STATUS_TYPE, 99);
             switch (statusType) {
                 case MESSAGE_POS_STATUS:
-                    statusText.setText(String.format("%s %s %s %s", getCurrentTimeStamp(), msgPosSent, dfLon.format(app.lastLon), dfLat.format(app.lastLat)));
+                    statusText.setText(msgPosSent);
+                    positionText.setText(String.format("%s - %s° %s°", getCurrentTimeStamp(), dfLon.format(app.lastLon), dfLat.format(app.lastLat)));
                     break;
                 case MESSAGE_CON_STATUS:
-                    statusText.setText(String.format("%s %s", getCurrentTimeStamp(), msgNoInet));
+                    statusText.setText(msgNoInet);
+                    positionText.setText(String.format("%s - %s° %s°", getCurrentTimeStamp(), dfLon.format(app.lastLon), dfLat.format(app.lastLat)));
                     break;
                 case MESSAGE_POS_WAIT_STATUS:
                     statusText.setText(msgWaitGps);
+                    positionText.setText("");
                     break;
             }
             if (doFixQueueing) {

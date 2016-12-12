@@ -4,7 +4,6 @@
 
     <!-- Tracking settings -->
     <string name="pref_tracking_key">Clé</string>
-    <string name="pref_default_tracking_key"> </string>
     <string name="pref_tracking_interval">Intervalle</string>
 
     <string-array name="pref_tracking_interval_list_titles">

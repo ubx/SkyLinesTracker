@@ -14,7 +14,7 @@
     <string name="about_text">SkyLines Tracker</string>
     <string name="version_name_label">Version:</string>
     <string name="not_available">not available</string>
-    <string name="msg_pos_sent">Fix</string>
+    <string name="msg_pos_sent" translatable="false">GPS ok</string>
     <string name="on">Waiting for GPS</string>
     <string name="off">Off</string>
     <string name="resume">Waiting for GPS</string>
@@ -26,6 +26,7 @@
 
     <string name="queue">Queue:</string>
     <string name="queue_values" translatable="false"/>
+    <string name="position">Position:</string>
 
 
 </resources>

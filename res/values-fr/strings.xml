@@ -14,7 +14,6 @@
     <string name="about_text">SkyLines Tracker</string>
     <string name="version_name_label">Version:</string>
     <string name="not_available">Pas disponible</string>
-    <string name="msg_pos_sent">Fix</string>
     <string name="on">En attente du GPS</string>
     <string name="off">Off</string>
     <string name="resume">En attente du GPS</string>
@@ -22,5 +21,6 @@
     <string name="ip_address_label">Serveur ip:</string>
     <string name="ip_address">Serveur adresse résolution</string>
     <string name="queue">Queue:</string>
+    <string name="position">Position:</string>
 
 </resources>

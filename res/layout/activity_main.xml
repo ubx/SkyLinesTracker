@@ -6,7 +6,7 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context=".MainActivity">
+                tools:context=".MainActivity" android:layout_gravity="top">
 
     <CheckBox
             android:id="@+id/checkLiveTracking"
@@ -32,17 +32,35 @@
             android:layout_alignBaseline="@+id/statusLabel"
             android:layout_alignBottom="@+id/statusLabel"
             android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/statusLabel"
+            android:layout_toRightOf="@+id/positionLabel"
             android:text="@string/empty"/>
+
+    <TextView
+            android:id="@+id/positionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/checkLiveTracking"
+            android:layout_below="@+id/statusText"
+            android:text="@string/position"/>
+
+    <TextView
+            android:id="@+id/positionValueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/positionLabel"
+            android:layout_alignBottom="@+id/positionLabel"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/positionLabel"
+            android:text=""/>
+
 
     <TextView
             android:id="@+id/queueLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/checkLiveTracking"
-            android:layout_below="@+id/statusText"
-            android:text="@string/queue"
-            android:visibility="gone"/>
+            android:layout_below="@+id/positionLabel"
+            android:text="@string/queue"/>
 
     <TextView
             android:id="@+id/queueValueText"
@@ -51,7 +69,7 @@
             android:layout_alignBaseline="@+id/queueLabel"
             android:layout_alignBottom="@+id/queueLabel"
             android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/queueLabel"
+            android:layout_toRightOf="@+id/positionLabel"
             android:text="@string/queue_values"/>
 
 
