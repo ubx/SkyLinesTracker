@@ -6,71 +6,58 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context=".MainActivity" android:layout_gravity="top">
+                tools:context=".MainActivity">
 
     <CheckBox
             android:id="@+id/checkLiveTracking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="33dp"
             android:checked="false"
             android:onClick="startStopTracking"
             android:text="@string/live_tracking"/>
 
-    <TextView
-            android:id="@+id/statusLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/checkLiveTracking"
-            android:layout_below="@+id/checkLiveTracking"
-            android:text="@string/status"/>
+    <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:layout_below="@+id/checkLiveTracking"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
 
-    <TextView
-            android:id="@+id/statusText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/statusLabel"
-            android:layout_alignBottom="@+id/statusLabel"
-            android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/positionLabel"
-            android:text="@string/empty"/>
-
-    <TextView
-            android:id="@+id/positionLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/checkLiveTracking"
-            android:layout_below="@+id/statusText"
-            android:text="@string/position"/>
-
-    <TextView
-            android:id="@+id/positionValueText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/positionLabel"
-            android:layout_alignBottom="@+id/positionLabel"
-            android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/positionLabel"
-            android:text=""/>
-
-
-    <TextView
-            android:id="@+id/queueLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/checkLiveTracking"
-            android:layout_below="@+id/positionLabel"
-            android:text="@string/queue"/>
-
-    <TextView
-            android:id="@+id/queueValueText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/queueLabel"
-            android:layout_alignBottom="@+id/queueLabel"
-            android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/positionLabel"
-            android:text="@string/queue_values"/>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:id="@+id/statusLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/status"/>
+            <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/empty"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:id="@+id/positionLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/position"/>
+            <TextView
+                    android:id="@+id/positionValueText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:id="@+id/queueLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/queue"/>
+            <TextView
+                    android:id="@+id/queueValueText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/queue_values"/>
+        </TableRow>
+    </TableLayout>
 
 
 </RelativeLayout>
