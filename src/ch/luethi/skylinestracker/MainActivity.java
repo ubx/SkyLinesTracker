@@ -96,6 +96,12 @@ public class MainActivity extends Activity {
         queueLabel.setVisibility(doFixQueueing ? View.VISIBLE : View.GONE);
 
         checkLiveTracking = (CompoundButton) findViewById(R.id.checkLiveTracking);
+        checkLiveTracking.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton cb, boolean on) {
+                onOff(on);
+            }
+        });
         msgPosSent = " " + getResources().getString(R.string.msg_pos_sent);
         msgNoInet = getResources().getString(R.string.msg_no_inet);
         msgWaitGps = getResources().getString(R.string.resume);
@@ -152,7 +158,11 @@ public class MainActivity extends Activity {
 
     public void startStopTracking(View view) {
         CompoundButton cb = (CompoundButton) view;
-        if (cb.isChecked()) {
+        onOff(cb.isChecked());
+    }
+
+    private void onOff(boolean on) {
+        if (on) {
             String provider = Settings.Secure.getString(getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
             if (!provider.contains("gps")) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
