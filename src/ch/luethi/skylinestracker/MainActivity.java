@@ -156,10 +156,6 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void startStopTracking(View view) {
-        CompoundButton cb = (CompoundButton) view;
-        onOff(cb.isChecked());
-    }
 
     private void onOff(boolean on) {
         if (on) {
