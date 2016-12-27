@@ -21,6 +21,7 @@ package ch.luethi.skylinestracker;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
@@ -38,7 +39,7 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 
 
-public class PositionService extends Service implements LocationListener {
+public class PositionService extends Service implements LocationListener, NetworkStateReceiver.NetworkStateReceiverListener {
 
     private SkyLinesTrackingWriter skyLinesTrackingWriter = null;
     private LocationManager locationManager;
@@ -53,6 +54,7 @@ public class PositionService extends Service implements LocationListener {
     private Runnable timerRunnable;
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
     private int currentTrackingInterval = 1000;
+    private NetworkStateReceiver networkStateReceiver;
 
 
     public PositionService() {
@@ -101,7 +103,12 @@ public class PositionService extends Service implements LocationListener {
 
         SharedPreferences sprefs = PreferenceManager.getDefaultSharedPreferences(this);
         sprefs.registerOnSharedPreferenceChangeListener(listener);
-    }
+
+        networkStateReceiver = new NetworkStateReceiver();
+        networkStateReceiver.addListener(this);
+        this.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+
 
 
     @Override
@@ -215,12 +222,6 @@ public class PositionService extends Service implements LocationListener {
         return networkInfo != null && networkInfo.isConnected();
     }
 
-    public void broadcastReceiver() {
-        if (skyLinesTrackingWriter != null) {
-            skyLinesTrackingWriter.dequeAndSendFix();
-        }
-    }
-
     private SkyLinesTrackingWriter getOrCreateSkyLinesTrackingWriter() {
         if (skyLinesTrackingWriter == null) {
             try {
@@ -250,6 +251,16 @@ public class PositionService extends Service implements LocationListener {
 
     private void stopTimer() {
         delayHandler.removeCallbacks(timerRunnable);
+    }
+
+    @Override
+    public void networkAvailable() {
+        new DequeueTask().execute();
+        sendPositionWaitStatus();
+    }
+
+    @Override
+    public void networkUnavailable() {
     }
 
     private class DequeueTask extends AsyncTask {
