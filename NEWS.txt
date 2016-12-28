@@ -7,6 +7,7 @@ Version 1.3.0 - not yet released
 * update target SDK version 22
 * Change checkbox to switch button
 * Improved status line
+* Improve network state change
 
 Version 1.1.0 - 25-mai-2015
 * update target SDK version 22
