@@ -117,14 +117,13 @@ public class MainActivity extends Activity {
 
     @Override
     protected void onResume() {
-        app.guiActive = true;
         super.onResume();
+        app.guiActive = true;
         if (isPositionServiceRunning()) {
             checkLiveTracking.setChecked(true);
             statusText.setText(R.string.resume);
             positionText.setText("");
             LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
-
         }
     }
 
@@ -165,8 +164,10 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
             LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
-            positionService.putExtra("init",true);
-            startService(positionService);
+            if (!isPositionServiceRunning()) {
+                positionService.putExtra("init", true);
+                startService(positionService);
+            }
             statusText.setText(R.string.on);
             positionText.setText("");
         } else {
@@ -174,6 +175,7 @@ public class MainActivity extends Activity {
             stopService(positionService);
             statusText.setText(R.string.off);
             positionText.setText("");
+            queueValueText.setText("");
         }
     }
 
@@ -193,12 +195,13 @@ public class MainActivity extends Activity {
                     break;
                 case MESSAGE_POS_WAIT_STATUS:
                     statusText.setText(msgWaitGps);
-                    positionText.setText("");
+                    //positionText.setText("");
                     break;
             }
             if (doFixQueueing) {
                 int trackingInterval = prefs.getTrackingInterval();
-                queueValueText.setText(String.format("%d / %d sec", app.fixStack.size() * trackingInterval, app.fixStack.getCapacity() * trackingInterval));
+                //queueValueText.setText(String.format("%d / %d sec", app.fixStack.size() * trackingInterval, app.fixStack.getCapacity() * trackingInterval));
+                queueValueText.setText(String.format("%d sec", app.fixStack.size() * trackingInterval));
             }
         }
     };
