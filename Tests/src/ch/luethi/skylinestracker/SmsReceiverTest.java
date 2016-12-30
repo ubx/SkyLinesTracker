@@ -22,13 +22,12 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.telephony.PhoneNumberUtils;
-import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import com.android.internal.telephony.EncodeException;
 import com.android.internal.telephony.GsmAlphabet;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
@@ -99,7 +98,7 @@ public class SmsReceiverTest {
 
     @Test
     public void testSendSmsConfigurationLiveTracking() {
-        CheckBox cb = (CheckBox) mainActivity.findViewById(R.id.checkLiveTracking);
+        CompoundButton cb = (CompoundButton) mainActivity.findViewById(R.id.checkLiveTracking);
         setPreferences(12345, 2, true, true);
         smsReceiver.onReceive(context, createSms("09000000000", "SLT Live=On"));
         assertThat("Live checkbox should be checked", smsReceiver.getPositionServiceRunning(), equalTo(true));

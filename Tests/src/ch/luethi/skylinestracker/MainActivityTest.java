@@ -1,7 +1,7 @@
 package ch.luethi.skylinestracker;
 
 import android.content.Intent;
-import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,7 +34,7 @@ public class MainActivityTest {
 
     @Test
     public void testDefaultValue() {
-        CheckBox cb = (CheckBox) mainActivity.findViewById(R.id.checkLiveTracking);
+        CompoundButton cb = (CompoundButton) mainActivity.findViewById(R.id.checkLiveTracking);
         assertThat("Checkbox should be unchecked", cb.isChecked(), equalTo(false));
     }
 
