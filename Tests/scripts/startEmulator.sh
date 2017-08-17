@@ -6,7 +6,7 @@ EMULATOR_DIR="/home/andreas/opt/android-sdk-linux/tools"
 
 case $TARGET in
 AVD)
-    ${EMULATOR_DIR}/emulator -avd Device -netspeed full -netdelay none -no-boot-anim -gpu swiftshader &
+    ${EMULATOR_DIR}/emulator -avd Device -netspeed full -netdelay none -no-boot-anim -gpu off &
     sleep 30
     adb -s $2 push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
     ##adb -s $2 uninstall ch.luethi.skylinestracker
