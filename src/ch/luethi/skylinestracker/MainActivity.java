@@ -65,8 +65,7 @@ public class MainActivity extends Activity {
     private SkyLinesApp app;
     private SkyLinesPrefs prefs;
     private boolean doFixQueueing;
-
-
+    private BroadcastReceiver onStatusChange;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +85,7 @@ public class MainActivity extends Activity {
         }
         doFixQueueing = prefs.isQueueFixes();
         positionService = new Intent(this, PositionService.class);
-        positionService.putExtra("init",true);
+        positionService.putExtra("init", true);
 
         setContentView(R.layout.activity_main);
         statusText = (TextView) findViewById(R.id.statusText);
@@ -105,6 +104,8 @@ public class MainActivity extends Activity {
         msgPosSent = " " + getResources().getString(R.string.msg_pos_sent);
         msgNoInet = getResources().getString(R.string.msg_no_inet);
         msgWaitGps = getResources().getString(R.string.resume);
+
+        onStatusChange = new myBroadcastReceiver();
         LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
     }
 
@@ -179,7 +180,8 @@ public class MainActivity extends Activity {
         }
     }
 
-    private final BroadcastReceiver onStatusChange = new BroadcastReceiver() {
+
+    private class myBroadcastReceiver extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -204,7 +206,7 @@ public class MainActivity extends Activity {
                 queueValueText.setText(String.format("%d sec", app.fixStack.size() * trackingInterval));
             }
         }
-    };
+    }
 
 
     private boolean isPositionServiceRunning() {
