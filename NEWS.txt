@@ -1,4 +1,8 @@
-Version 1.3.0 - not yet released
+Version 1.3.1 - not yet released
+* update target SDK version 25
+* fix NPE (#18)
+
+Version 1.3.0 - 28-feb-2017
 * queue fix if phone is not connected (#10)
 * tracking interval and key change on the fly (#14)
 * bugfixes (#13)
