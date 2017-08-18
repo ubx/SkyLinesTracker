@@ -159,6 +159,8 @@ public class IntegrationTest {
         readOutFile(TESTS_SCRIPTS + "rcv-test-00.out", recsRcv, "Rcv: ", 0);
         readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0, true);
         printRecsSize();
+
+        // todo -- assertTrue(... recsRcv.size() > 0);
         assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
 
         recsRcv.clear();
