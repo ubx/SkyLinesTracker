@@ -16,10 +16,11 @@
             android:text="@string/live_tracking"/>
 
     <TableLayout
+            android:id="@+id/mainValues"
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:layout_below="@+id/checkLiveTracking"
-            android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
-
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+            tools:layout_height="wrap_content">
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
             <TextView
                     android:id="@+id/statusLabel"
@@ -56,7 +57,62 @@
                     android:layout_height="wrap_content"
                     android:text="@string/queue_values"/>
         </TableRow>
-    </TableLayout>
 
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:id="@+id/dummy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            />
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:id="@+id/gpsHighLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GPS Height [m]:"/>
+            <TextView
+                    android:id="@+id/gpsHeightValueText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="430"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:id="@+id/baroHighLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Baro Height [m]:"/>
+            <TextView
+                    android:id="@+id/baroHiegthValueText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="422"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:id="@+id/derivedHighLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Derived Height [m]:"/>
+            <TextView
+                    android:id="@+id/derivedHiegthValueText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="431"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:id="@+id/varioLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vario [m/s]:"/>
+            <TextView
+                    android:id="@+id/varioValueText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2.3"/>
+        </TableRow>
+    </TableLayout>
 
 </RelativeLayout>
