@@ -57,6 +57,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/queue_values"/>
         </TableRow>
+
+        <!-- todo - does NOT work !!!
     </TableLayout>
 
     <TableLayout
@@ -64,7 +66,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:layout_below="@+id/mainValues"
             android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
+            -->
+
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+
             <TextView
                     android:id="@+id/dummy"
                     android:layout_width="wrap_content"
