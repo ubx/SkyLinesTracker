@@ -59,4 +59,4 @@ pkill -f gps_simulator.py
 echo "#### $(date +"%T") Shuting down everting....................."
 adb -s ${DEVICE} shell am force-stop ch.luethi.skylinestracker
 adb -s ${DEVICE} emu kill
-pkill -f qemu-system-x86_64
+sh stopEmulator.sh
