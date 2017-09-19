@@ -67,10 +67,10 @@ auth()
 for i in range(SECONDS):
     lat += round(random.uniform(0, LAT_MAX_STEP), 7) * DIRECTION_LAT
     lng += round(random.uniform(0, LNG_MAX_STEP), 7) * DIRECTION_LNG
-    write_geo(lng, lat, 1000 + i)
+    write_geo(lng, lat, 1000.0 + i)
     sleep(1)
 
-write_geo(LNG_DST, LAT_DST, 100)
+write_geo(LNG_DST, LAT_DST, 100.0)
 
 if TARGET != "ADV":
     tn.write("exit\n")

@@ -107,6 +107,9 @@ public class PositionService extends Service implements LocationListener, Networ
         networkStateReceiver = new NetworkStateReceiver();
         networkStateReceiver.addListener(this);
         this.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+
+        PressureSensorListener pressureSensorListener = new PressureSensorListener(this);
+
         }
 
 
@@ -171,6 +174,7 @@ public class PositionService extends Service implements LocationListener, Networ
             if (location.getLatitude() != 0.0) {
                 app.lastLat = location.getLatitude();
                 app.lastLon = location.getLongitude();
+                app.gpsHeight = location.getAltitude();
                 // convert m/sec to km/hr
                 float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
                 float[] accelVals = null;

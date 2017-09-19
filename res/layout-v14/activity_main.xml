@@ -18,9 +18,9 @@
     <TableLayout
             android:id="@+id/mainValues"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:layout_below="@+id/checkLiveTracking"
+            android:layout_below="@+id/checkLiveTracking"
             android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
-            tools:layout_height="wrap_content">
+            tools:layout_height="wrap_content" android:layout_height="wrap_content">
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
             <TextView
                     android:id="@+id/statusLabel"
@@ -57,8 +57,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/queue_values"/>
         </TableRow>
-
-        <!-- todo - does NOT work !!!
     </TableLayout>
 
     <TableLayout
@@ -66,9 +64,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:layout_below="@+id/mainValues"
             android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
-            -->
 
-        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+        <TableRow android:layout_width="match_parent" android:layout_height="wrap_content">
 
             <TextView
                     android:id="@+id/dummy"
@@ -85,8 +82,7 @@
             <TextView
                     android:id="@+id/gpsHeightValueText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="430"/>
+                    android:layout_height="wrap_content"/>
         </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
             <TextView
@@ -97,8 +93,7 @@
             <TextView
                     android:id="@+id/baroHiegthValueText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="422"/>
+                    android:layout_height="wrap_content"/>
         </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
             <TextView
@@ -109,8 +104,7 @@
             <TextView
                     android:id="@+id/derivedHiegthValueText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="431"/>
+                    android:layout_height="wrap_content"/>
         </TableRow>
         <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
             <TextView
@@ -121,8 +115,7 @@
             <TextView
                     android:id="@+id/varioValueText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2.3"/>
+                    android:layout_height="wrap_content"/>
         </TableRow>
     </TableLayout>
 

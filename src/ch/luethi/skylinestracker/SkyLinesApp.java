@@ -25,8 +25,13 @@ public class SkyLinesApp extends Application {
 
     public boolean guiActive;
     public double lastLat, lastLon;
+    public double gpsHeight;
     public PositionService positionService = null;
     public static FixQueueIF fixStack;
+
+    public boolean hasPressureSesenor;
+    public float pressure;
+    public float baroHeight;
 
     @Override
     public void onCreate() {

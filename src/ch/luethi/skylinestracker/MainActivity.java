@@ -52,11 +52,14 @@ public class MainActivity extends Activity {
 
     private static final DecimalFormat dfLat = new DecimalFormat("##.00000");
     private static final DecimalFormat dfLon = new DecimalFormat("###.00000");
+    private static final DecimalFormat dfAlt = new DecimalFormat("#####.0");
 
     private static Intent positionService;
     private TextView statusText;
     private TextView positionText;
     private TextView queueValueText;
+    private TextView gpsHeighthText;
+    private TextView baroHeighthText;
     private CompoundButton checkLiveTracking;
     private final IntentFilter brFilter = new IntentFilter(BROADCAST_STATUS);
     private String msgPosSent;
@@ -94,6 +97,9 @@ public class MainActivity extends Activity {
         TextView queueLabel = (TextView) findViewById(R.id.queueLabel);
         queueLabel.setVisibility(doFixQueueing ? View.VISIBLE : View.GONE);
 
+        gpsHeighthText = (TextView) findViewById(R.id.gpsHeightValueText);
+        baroHeighthText = (TextView) findViewById(R.id.baroHiegthValueText);
+
         checkLiveTracking = (CompoundButton) findViewById(R.id.checkLiveTracking);
         checkLiveTracking.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -104,6 +110,8 @@ public class MainActivity extends Activity {
         msgPosSent = " " + getResources().getString(R.string.msg_pos_sent);
         msgNoInet = getResources().getString(R.string.msg_no_inet);
         msgWaitGps = getResources().getString(R.string.resume);
+
+        //findViewById(R.id.additionalValuesValues).setVisibility(View.GONE);
 
         onStatusChange = new myBroadcastReceiver();
         LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
@@ -190,6 +198,8 @@ public class MainActivity extends Activity {
                 case MESSAGE_POS_STATUS:
                     statusText.setText(msgPosSent);
                     positionText.setText(String.format("%s - %s° %s°", getCurrentTimeStamp(), dfLon.format(app.lastLon), dfLat.format(app.lastLat)));
+                    gpsHeighthText.setText(String.format("%s", dfAlt.format(app.gpsHeight)));
+                    baroHeighthText.setText(String.format("%s", dfAlt.format(app.baroHeight)));
                     break;
                 case MESSAGE_CON_STATUS:
                     statusText.setText(msgNoInet);
