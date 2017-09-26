@@ -46,6 +46,7 @@ public class MainActivity extends Activity {
     protected static final String BROADCAST_STATUS = "SKYLINESTRACKER_BROADCAST_STATUS";
     protected static final String MESSAGE_STATUS_TYPE = "MESSAGE_STATUS_TYPE";
     protected static final String TESTING_IP = "TESTING_IP";
+    protected static final String TESTING_TRACKING_KEY = "TESTING_TRACKING_KEY";
     protected static final int MESSAGE_POS_STATUS = 0;
     protected static final int MESSAGE_POS_WAIT_STATUS = 1;
     protected static final int MESSAGE_CON_STATUS = 2;
@@ -82,6 +83,9 @@ public class MainActivity extends Activity {
                 prefs.setIpAddress(getIntent().getStringExtra(TESTING_IP));
             } else {
                 prefs.setIpAddress("localhost");
+            }
+            if (getIntent().hasExtra(TESTING_TRACKING_KEY)) {
+                prefs.setTrackingKey(getIntent().getStringExtra(TESTING_TRACKING_KEY));
             }
         } else {
             prefs.setIpAddress(prefs.getIpAddress(getResources().getString(R.string.ip_address_dns)));
