@@ -223,7 +223,7 @@ public class IntegrationTest {
 
         printRecsSize();
 
-        assertTrue("Rcv count not correct", recsRcv.size() == 80);
+        assertTrue("Rcv count not correct", recsRcv.size() == recsSim.size() - 320); // 80 or 81
         assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
         assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
     }
