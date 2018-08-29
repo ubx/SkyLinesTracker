@@ -4,7 +4,11 @@
     <properties id="android-properties">
       <options>
         <option name="keyStoreUrl" value="file://" />
-        <option name="signingMode" value="DEBUG" />
+        <option name="proGuardCfgFiles">
+          <list>
+            <option value="file://%MODULE_SDK_HOME%/tools/proguard/proguard-android.txt" />
+          </list>
+        </option>
       </options>
     </properties>
     <root id="archive" name="SkyLinesTracker.apk">
