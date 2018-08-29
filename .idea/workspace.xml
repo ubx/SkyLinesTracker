@@ -33,15 +33,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="to-commit" comment="X">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/SkyLinesTracker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/SkyLinesTracker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/org_robolectric_robolectric_2_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="to-commit" comment="Misc new IDE configs.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SkyLinesTracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SkyLinesTracker.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Tests.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Tests.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/MainActivityGPSTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/MainActivityGPSTest.java" afterDir="false" />
     </list>
     <list id="416ba20d-3a11-4ecd-8cb2-983e572e6c3b" name="Workspace" comment="" />
     <ignored path="SkyLinesTracker.iws" />
@@ -176,11 +169,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="txt" value="103" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="PLAIN_TEXT" value="103" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
@@ -477,7 +472,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.WIDTH" value="436" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535550501731" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535550560568" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="device.picker.selection" value="Copy_of_Device" />
@@ -1212,27 +1207,6 @@
       <workItem from="1429863142094" duration="4959000" />
       <workItem from="1449323416211" duration="1333000" />
     </task>
-    <task id="LOCAL-00003" summary="Enable project with IntelliJ.&#10;">
-      <created>1388160854389</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1388160854389</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Enable project with IntelliJ.">
-      <created>1388402957799</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1388402957799</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Add robolectric test environment.&#10;">
-      <created>1388592800770</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1388592800770</updated>
-    </task>
     <task id="LOCAL-00006" summary="Issue 1: fixed. Add more testing.">
       <created>1388594584394</created>
       <option name="number" value="00006" />
@@ -1558,7 +1532,28 @@
       <option name="project" value="LOCAL" />
       <updated>1449323879123</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Set target version back to 22.">
+      <created>1535550477913</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1535550477914</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Remove unused imports.">
+      <created>1535550515175</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1535550515175</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Misc new IDE configs.">
+      <created>1535550617953</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1535550617953</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <option name="createBranch" value="false" />
     <option name="commitChanges" value="false" />
     <servers>
@@ -1583,7 +1578,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="698" y="53" width="1836" height="1318" extended-state="0" />
+    <frame x="566" y="70" width="1836" height="1318" extended-state="0" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
@@ -1605,7 +1600,7 @@
       <window_info anchor="bottom" id="FindBugs-IDEA" order="8" weight="0.32988048" />
       <window_info anchor="bottom" id="Application Servers" order="9" />
       <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49939469" visible="true" weight="0.3465765" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49939469" weight="0.32827005" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49939469" weight="0.3279797" />
       <window_info anchor="bottom" id="Android" order="12" sideWeight="0.49939469" weight="0.3258964" />
       <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49939469" weight="0.3465765" />
       <window_info anchor="bottom" id="Dependency Viewer" order="14" weight="0.32539684" />
@@ -1687,9 +1682,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add more unit test for preferences" />
-    <MESSAGE value="Refactoring" />
-    <MESSAGE value="Unit tests for sms configuration, part I" />
     <MESSAGE value="Prepare for 1.0.3" />
     <MESSAGE value="Unit tests for sms configuration, part 2" />
     <MESSAGE value="Remove unused code" />
@@ -1712,7 +1704,10 @@
     <MESSAGE value="Update to robolectric 2.4." />
     <MESSAGE value="95, 128, 34, 172" />
     <MESSAGE value="X" />
-    <option name="LAST_COMMIT_MESSAGE" value="X" />
+    <MESSAGE value="Set target version back to 22." />
+    <MESSAGE value="Remove unused imports." />
+    <MESSAGE value="Misc new IDE configs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Misc new IDE configs." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
