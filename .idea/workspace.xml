@@ -33,8 +33,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="to-commit" comment="Misc new IDE configs.">
+    <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="to-commit" comment="Version 1.3.2, target SDK 26.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEWS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NEWS.txt" afterDir="false" />
     </list>
     <list id="416ba20d-3a11-4ecd-8cb2-983e572e6c3b" name="Workspace" comment="" />
     <ignored path="SkyLinesTracker.iws" />
@@ -155,28 +156,36 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="1" />
-          <entry key="java" value="11" />
+          <entry key="class" value="2" />
+          <entry key="java" value="12" />
+          <entry key="md" value="1" />
+          <entry key="png" value="1" />
+          <entry key="txt" value="2" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="11" />
+          <entry key="CLASS" value="2" />
+          <entry key="Image" value="1" />
+          <entry key="JAVA" value="12" />
+          <entry key="Markdown" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="txt" value="103" />
-          <entry key="xml" value="1" />
+          <entry key="java" value="66" />
+          <entry key="txt" value="150" />
+          <entry key="xml" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="103" />
-          <entry key="XML" value="1" />
+          <entry key="JAVA" value="66" />
+          <entry key="PLAIN_TEXT" value="150" />
+          <entry key="XML" value="6" />
         </counts>
       </usages-collector>
     </session>
@@ -189,18 +198,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/MainActivityGPSTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="710">
-              <caret line="42" column="54" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch/luethi/skylinestracker/PositionService.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -210,13 +207,27 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/NEWS.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="8" column="27" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="68" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="68" />
+            <state relative-caret-position="54">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ic_launcher-web.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -261,11 +272,11 @@
         <option value="$PROJECT_DIR$/src/com/geeksville/location/SkyLinesTrackingWriter.java" />
         <option value="$PROJECT_DIR$/src/ch/luethi/skylinestracker/PositionService.java" />
         <option value="$PROJECT_DIR$/SkyLinesTracker.iml" />
-        <option value="$PROJECT_DIR$/NEWS.txt" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/MainActivityGPSTest.java" />
+        <option value="$PROJECT_DIR$/NEWS.txt" />
       </list>
     </option>
   </component>
@@ -274,8 +285,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="566" />
-    <option name="y" value="70" />
+    <option name="x" value="677" />
+    <option name="y" value="48" />
     <option name="width" value="1836" />
     <option name="height" value="1318" />
   </component>
@@ -382,51 +393,7 @@
             </path>
             <path>
               <item name="SkyLinesTracker2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkyLinesTracker2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkyLinesTracker2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="skylinestracker" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkyLinesTracker2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="skylinestracker" type="462c0819:PsiDirectoryNode" />
-              <item name="PositionService" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker2" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="org.robolectric:robolectric:3.0" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="org.robolectric:robolectric:3.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="robolectric-3.0.jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="org.robolectric:robolectric:3.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="robolectric-3.0.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="robolectric" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="org.robolectric:robolectric:3.0" type="70bed36:NamedLibraryElementNode" />
-              <item name="robolectric-3.0.jar" type="462c0819:PsiDirectoryNode" />
-              <item name="robolectric" type="462c0819:PsiDirectoryNode" />
-              <item name="RobolectricTestRunner" type="1a9f42e2:ClassTreeNode" />
             </path>
           </expand>
           <select />
@@ -472,7 +439,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.WIDTH" value="436" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535550560568" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535552131327" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="device.picker.selection" value="Copy_of_Device" />
@@ -1207,20 +1174,6 @@
       <workItem from="1429863142094" duration="4959000" />
       <workItem from="1449323416211" duration="1333000" />
     </task>
-    <task id="LOCAL-00006" summary="Issue 1: fixed. Add more testing.">
-      <created>1388594584394</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1388594584394</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Add more testing, use Maven.&#10;">
-      <created>1388747896003</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1388747896003</updated>
-    </task>
     <task id="LOCAL-00008" summary="Adjust versionCode.">
       <created>1389176129417</created>
       <option name="number" value="00008" />
@@ -1553,7 +1506,21 @@
       <option name="project" value="LOCAL" />
       <updated>1535550617953</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Misc new IDE configs.">
+      <created>1535550635979</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1535550635982</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Version 1.3.2, target SDK 26.">
+      <created>1535551949650</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1535551949650</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <option name="createBranch" value="false" />
     <option name="commitChanges" value="false" />
     <servers>
@@ -1578,7 +1545,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="566" y="70" width="1836" height="1318" extended-state="0" />
+    <frame x="648" y="43" width="1836" height="1318" extended-state="0" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
@@ -1608,7 +1575,7 @@
       <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.4460147" side_tool="true" weight="0.25396827" />
       <window_info anchor="bottom" id="Memory Monitor" order="17" sideWeight="0.47213525" side_tool="true" weight="0.27003205" />
       <window_info anchor="bottom" id="Android Profiler" order="18" />
-      <window_info anchor="bottom" id="Problems" order="19" />
+      <window_info anchor="bottom" id="Problems" order="19" weight="0.32967034" />
       <window_info anchor="bottom" id="Logcat" order="20" />
       <window_info anchor="right" id="Preview" order="0" weight="0.281491" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
@@ -1682,7 +1649,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Prepare for 1.0.3" />
     <MESSAGE value="Unit tests for sms configuration, part 2" />
     <MESSAGE value="Remove unused code" />
     <MESSAGE value="Minor text change" />
@@ -1707,7 +1673,8 @@
     <MESSAGE value="Set target version back to 22." />
     <MESSAGE value="Remove unused imports." />
     <MESSAGE value="Misc new IDE configs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Misc new IDE configs." />
+    <MESSAGE value="Version 1.3.2, target SDK 26." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 1.3.2, target SDK 26." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1743,13 +1710,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/robolectric/android-all/4.3_r2-robolectric-0/android-all-4.3_r2-robolectric-0.jar!/android/app/ActivityManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="224" column="13" selection-start-line="224" selection-start-column="13" selection-end-line="224" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/robolectric/android-all/4.3_r2-robolectric-0/android-all-4.3_r2-robolectric-0.jar!/android/content/Context.class">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1895,13 +1855,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="12" column="82" selection-start-line="12" selection-start-column="82" selection-end-line="12" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/proguard-project.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1915,13 +1868,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="7" column="10" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NEWS.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1984,10 +1930,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ic_launcher-web.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/robolectric/shadows-core/3.0/shadows-core-3.0.jar!/org/robolectric/Shadows.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="458" column="13" selection-start-line="458" selection-start-column="13" selection-end-line="458" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ideaLibSources/shadows-core-3.0-sources.jar!/org/robolectric/Shadows.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="458" column="13" selection-start-line="458" selection-start-column="13" selection-end-line="458" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/MainActivityGPSTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state>
+          <caret line="12" column="82" selection-start-line="12" selection-start-column="82" selection-end-line="12" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="68" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="68" />
+        <state relative-caret-position="54">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -1998,13 +1984,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/MainActivityGPSTest.java">
+    <entry file="file://$PROJECT_DIR$/NEWS.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
-          <caret line="42" column="54" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="144">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -2051,7 +2034,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>Android API 25 Platform</last-edited>
+          <last-edited>Android API 27 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -2075,7 +2058,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>mint-5.1.0</last-edited>
+          <last-edited>org.robolectric:android-all:9-robolectric-4799589</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
