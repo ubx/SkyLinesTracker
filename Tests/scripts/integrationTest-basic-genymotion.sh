@@ -1,10 +1,11 @@
 #!/bin/bash
 #
-##DEVICE="0123456789ABCDEF" # Weiko
-DEVICE="device" # S3
+adb=/home/andreas/opt/android-sdk-linux2/platform-tools/adb
 
-PROJECT_DIR="/home/andreas/IdeaProjects/SkyLinesTracker"
-TEST_DIR="/home/andreas/IdeaProjects/SkyLinesTracker/Tests"
+DEVICE="192.168.56.101:5555"
+
+PROJECT_DIR="/home/andreas/IdeaProjects/SkyLinesTracker3"
+TEST_DIR="/home/andreas/IdeaProjects/SkyLinesTracker3/Tests"
 IP=$(hostname -I | awk '{print $1}')
 INT=5
 KEY="67FCFE73"
@@ -19,7 +20,7 @@ trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
 
 python preference_file.py ${KEY} ${INT}  false  false ${IP} true 2048
 
-sh startEmulator.sh ${PROJECT_DIR} ${DEVICE} ${IP} S3
+sh startEmulator.sh ${PROJECT_DIR} ${DEVICE} ${IP} genymotion
 
 sleep 15
 
@@ -30,13 +31,13 @@ sleep 60
 pkill -f UDP-Receiver.jar
 
 echo "### $(date +"%T") GPS simmluation, LiveTracking checked"
-sh clickLiveTracking.sh ${DEVICE} S3
+sh clickLiveTracking.sh ${DEVICE} genymotion
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test-01.out &
 sleep 60
 pkill -f UDP-Receiver.jar
 
 echo "### $(date +"%T") GPS simmluation, LiveTracking NOT checked again"
-sh clickLiveTracking.sh ${DEVICE} S3
+sh clickLiveTracking.sh ${DEVICE} genymotion
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test-02.out &
 sleep 60
 pkill -f UDP-Receiver.jar
@@ -46,4 +47,4 @@ sleep 15
 pkill -f gps_simulator.py
 
 echo "#### $(date +"%T") Shuting down everting....................."
-adb -s ${DEVICE} shell am force-stop ch.luethi.skylinestracker
+$adb -s ${DEVICE} shell am force-stop ch.luethi.skylinestracker

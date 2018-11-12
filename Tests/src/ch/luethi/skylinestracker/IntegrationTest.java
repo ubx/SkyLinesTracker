@@ -38,7 +38,7 @@ public class IntegrationTest {
         @Override
         public boolean equals(Object o) {
             Rec r = (Rec) o;
-            return (ignorSecDay || secDay == r.secDay) & key.equals(r.key)
+            return (ignorSecDay || r.ignorSecDay || secDay == r.secDay) & key.equals(r.key)
                     & Math.abs(lat - r.lat) < 0.00002
                     & Math.abs(log - r.log) < 0.00002;
         }
@@ -119,8 +119,8 @@ public class IntegrationTest {
 
 
     private void printRecsSize() {
-        System.out.println("recsSim=" + recsSim.size());
-        System.out.println("recsRcv=" + recsRcv.size());
+        System.out.println("SimRecs=" + recsSim.size());
+        System.out.println("RcvRecs=" + recsRcv.size());
     }
 
     @Before
@@ -141,7 +141,7 @@ public class IntegrationTest {
         assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
 
         recsRcv.clear();
-        readOutFile(TESTS_SCRIPTS + "rcv-test-01.out", recsRcv, "Rcv: ", 0);
+        readOutFile(TESTS_SCRIPTS + "rcv-test-01.out", recsRcv, "Rcv: ", 0, true);
         System.out.println("recsRcv=" + recsRcv.size());
         assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
         assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
@@ -152,6 +152,7 @@ public class IntegrationTest {
         assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
     }
 
+    @Ignore
     @Test
     public void testBasicRealHW() {
         runScript(TESTS_SCRIPTS + "integrationTest-basic-real-HW.sh");
@@ -179,8 +180,8 @@ public class IntegrationTest {
     public void testStartWithDisconnected() {
         runScript(TESTS_SCRIPTS + "integrationTest-start-with-disconnected.sh");
 
-        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 0);
-        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
+        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 0, true);
+        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0, true);
 
         printRecsSize();
 
@@ -188,6 +189,7 @@ public class IntegrationTest {
         assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
     }
 
+    @Ignore
     @Test
     public void testStartWithDisconnectedHW() {
         runScript(TESTS_SCRIPTS + "integrationTest-start-with-disconnected-HW.sh");
@@ -205,8 +207,8 @@ public class IntegrationTest {
     public void testQueue() {
         runScript(TESTS_SCRIPTS + "integrationTest-queue.sh");
 
-        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 0);
-        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
+        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 0, true);
+        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0, true);
 
         printRecsSize();
 
@@ -218,7 +220,7 @@ public class IntegrationTest {
     public void testStartLostFixes() {
         runScript(TESTS_SCRIPTS + "integrationTest-lost-fixes.sh");
 
-        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 0);
+        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 0, true);
         readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
 
         printRecsSize();

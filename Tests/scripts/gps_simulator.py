@@ -41,7 +41,7 @@ def millies_of_day():
 
 def write_geo(lng, lat, alt):
     if TARGET == "ADV":
-        os.system ("adb shell am startservice --user 0 -a com.blogspot.newapphorizons.fakegps.UPDATE  -e longitude {0} -e latitude {1}".format(lng, lat))
+        os.system ("/home/andreas/opt/android-sdk-linux2/platform-tools/adb shell am startservice --user 0 -a com.blogspot.newapphorizons.fakegps.UPDATE  -e longitude {0} -e latitude {1}".format(lng, lat))
     else:
         tn.write("geo fix {0} {1} {2}\n".format(lng, lat, alt))
     print("Sim: {0},{1},{2:.5f},{3:.5f},{4}".format(millies_of_day(), KEY, lng, lat, alt))
