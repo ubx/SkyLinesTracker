@@ -18,11 +18,13 @@
 
 package ch.luethi.skylinestracker;
 
+import android.Manifest;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -74,7 +76,7 @@ public class PositionService extends Service implements LocationListener, Networ
         listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             public void onSharedPreferenceChanged(SharedPreferences xprefs, String key) {
                 if (key.equals(prefs.TRACKING_INTERVAL)) {
-                    if ( SkyLinesApp.fixStack != null) {
+                    if (SkyLinesApp.fixStack != null) {
                         SkyLinesApp.fixStack.setCapacity(calculateFixQueueSize());
                     }
                     startLocationUpdates();
@@ -107,8 +109,7 @@ public class PositionService extends Service implements LocationListener, Networ
         networkStateReceiver = new NetworkStateReceiver();
         networkStateReceiver.addListener(this);
         this.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
-        }
-
+    }
 
 
     @Override
@@ -141,11 +142,24 @@ public class PositionService extends Service implements LocationListener, Networ
         }
         senderThread = new HandlerThread("SenderThread");
         senderThread.start();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    Activity#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for Activity#requestPermissions for more details.
+                return;
+            }
+        }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this, senderThread.getLooper());
     }
 
     @Override
     public void onDestroy() {
+        this.unregisterReceiver(networkStateReceiver);
         locationManager.removeUpdates(this);
         skyLinesTrackingWriter = null;
         app.positionService = null;
