@@ -35,7 +35,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="to-commit" comment="Version 1.3.2, target SDK 26.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEWS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NEWS.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SkyLinesTracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SkyLinesTracker.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/project.properties" afterDir="false" />
     </list>
     <list id="416ba20d-3a11-4ecd-8cb2-983e572e6c3b" name="Workspace" comment="" />
     <ignored path="SkyLinesTracker.iws" />
@@ -140,56 +141,6 @@
     </exception_breakpoints>
     <breakpoint_rules converted="true" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-431922975">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="4" />
-          <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.17" value="1" />
-          <entry key="project.open.time.18" value="1" />
-          <entry key="project.open.time.25" value="1" />
-          <entry key="project.open.time.96" value="1" />
-          <entry key="project.opened" value="6" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="class" value="2" />
-          <entry key="java" value="12" />
-          <entry key="md" value="1" />
-          <entry key="png" value="1" />
-          <entry key="txt" value="2" />
-          <entry key="xml" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CLASS" value="2" />
-          <entry key="Image" value="1" />
-          <entry key="JAVA" value="12" />
-          <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="XML" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="66" />
-          <entry key="txt" value="150" />
-          <entry key="xml" value="6" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="66" />
-          <entry key="PLAIN_TEXT" value="150" />
-          <entry key="XML" value="6" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FavoritesManager">
     <favorites_list name="SkyLinesTracker">
       <favorite_root url="file://$PROJECT_DIR$/Testing/libs/junit-4.11.jar" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
@@ -201,8 +152,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch/luethi/skylinestracker/PositionService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="143" column="38" selection-start-line="143" selection-start-column="38" selection-end-line="143" selection-end-column="38" />
+            <state relative-caret-position="1926">
+              <caret line="143" column="29" selection-start-line="143" selection-start-column="29" selection-end-line="143" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -322,6 +273,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SkyLinesTracker4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SkyLinesTracker4" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Tests'; set:Tests; class com.intellij.psi.search.scope.TestsScope">
           <expand>
@@ -384,21 +346,6 @@
       </pane>
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="SkyLinesTracker2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkyLinesTracker2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -434,12 +381,13 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.WIDTH" value="436" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535552131327" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542186754205" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="device.picker.selection" value="Copy_of_Device" />
@@ -450,7 +398,7 @@
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.27733597" />
     <property name="recentsLimit" value="5" />
@@ -711,7 +659,7 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <configuration name="SkyLinesTracker" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+    <configuration name="SkyLinesTracker" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false" singleton="true">
       <module name="SkyLinesTracker" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
@@ -845,7 +793,7 @@
         </option>
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
+    <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -944,7 +892,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
+    <configuration default="true" type="TestNG">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
@@ -955,11 +903,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
+      <predefined_log_file enabled="true" id="idea.log" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -1545,11 +1493,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="648" y="43" width="1836" height="1318" extended-state="0" />
+    <frame x="677" y="48" width="1836" height="1318" extended-state="0" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.2360179" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.23575419" />
       <window_info id="Structure" order="3" weight="0.24968071" />
       <window_info id="Build Variants" order="4" side_tool="true" weight="0.27322406" />
       <window_info id="UI Designer" order="5" />
@@ -1566,7 +1514,7 @@
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32882503" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="8" weight="0.32988048" />
       <window_info anchor="bottom" id="Application Servers" order="9" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49939469" visible="true" weight="0.3465765" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49939469" visible="true" weight="0.34681582" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49939469" weight="0.3279797" />
       <window_info anchor="bottom" id="Android" order="12" sideWeight="0.49939469" weight="0.3258964" />
       <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49939469" weight="0.3465765" />
@@ -1574,9 +1522,10 @@
       <window_info anchor="bottom" id="Changes" order="15" sideWeight="0.52786475" weight="0.27029157" />
       <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.4460147" side_tool="true" weight="0.25396827" />
       <window_info anchor="bottom" id="Memory Monitor" order="17" sideWeight="0.47213525" side_tool="true" weight="0.27003205" />
-      <window_info anchor="bottom" id="Android Profiler" order="18" />
+      <window_info anchor="bottom" id="Android Profiler" order="18" show_stripe_button="false" />
       <window_info anchor="bottom" id="Problems" order="19" weight="0.32967034" />
       <window_info anchor="bottom" id="Logcat" order="20" />
+      <window_info anchor="right" id="Maven" />
       <window_info anchor="right" id="Preview" order="0" weight="0.281491" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1645,9 +1594,6 @@
       <collection />
     </option>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Unit tests for sms configuration, part 2" />
     <MESSAGE value="Remove unused code" />
@@ -1695,9 +1641,6 @@
           <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
-      <breakpoints-dialog>
-        <breakpoints-dialog />
-      </breakpoints-dialog>
     </breakpoint-manager>
   </component>
   <component name="XtextAutoBuilderState">
@@ -1930,9 +1873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ic_launcher-web.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/robolectric/shadows-core/3.0/shadows-core-3.0.jar!/org/robolectric/Shadows.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1958,15 +1898,22 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state>
+          <caret line="12" column="82" selection-start-line="12" selection-start-column="82" selection-end-line="12" selection-end-column="82" />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
           <second_editor />
         </state>
       </provider>
-      <provider editor-type-id="text-editor">
-        <state>
-          <caret line="12" column="82" selection-start-line="12" selection-start-column="82" selection-end-line="12" selection-end-column="82" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/luethi/skylinestracker/PositionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1926">
+          <caret line="143" column="29" selection-start-line="143" selection-start-column="29" selection-end-line="143" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1977,12 +1924,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/luethi/skylinestracker/PositionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="143" column="38" selection-start-line="143" selection-start-column="38" selection-end-line="143" selection-end-column="38" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/ic_launcher-web.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/NEWS.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -2058,7 +2001,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>org.robolectric:android-all:9-robolectric-4799589</last-edited>
+          <last-edited>org.robolectric:android-all:9-robolectric-4913185-2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
