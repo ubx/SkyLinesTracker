@@ -3,7 +3,16 @@
   <component name="FacetManager">
     <facet type="android" name="Android">
       <configuration>
+        <proGuardCfgFiles>
+          <file>file:///usr/lib/jvm/java-8-oracle/tools/proguard/proguard-android.txt</file>
+        </proGuardCfgFiles>
         <option name="UPDATE_PROPERTY_FILES" value="true" />
+        <option name="ENABLE_PRE_DEXING" value="false" />
+      </configuration>
+    </facet>
+    <facet type="android-gradle" name="Android-Gradle">
+      <configuration>
+        <option name="GRADLE_PROJECT_PATH" />
       </configuration>
     </facet>
   </component>
@@ -20,6 +29,6 @@
     <orderEntry type="library" name="android-support-v4" level="project" />
     <orderEntry type="library" name="mint-5.1.0" level="project" />
     <orderEntry type="library" name="Ringbuffer" level="project" />
-    <orderEntry type="library" name="org.robolectric:robolectric:3.0" level="project" />
+    <orderEntry type="library" name="org.robolectric:android-all:9-robolectric-4913185-2" level="project" />
   </component>
 </module>
