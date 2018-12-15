@@ -38,17 +38,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="to-commit" comment="Add misc. project files.">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/SkyLinesTracker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/SkyLinesTracker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/android_support_v4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SkyLinesTracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SkyLinesTracker.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Tests.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/Tests.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/project.properties" afterDir="false" />
-    </list>
+    <list default="true" id="c1883139-2d78-47d9-8c40-07a59dad7184" name="to-commit" comment="Add misc. project files." />
     <list id="416ba20d-3a11-4ecd-8cb2-983e572e6c3b" name="Workspace" comment="" />
     <ignored path="SkyLinesTracker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -208,9 +198,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="release-1.0.4" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="gragle" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -239,6 +242,7 @@
         <option value="$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/MainActivityGPSTest.java" />
         <option value="$PROJECT_DIR$/NEWS.txt" />
         <option value="$PROJECT_DIR$/skylinestracker4.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -424,7 +428,7 @@
     <property name="android.project.structure.last.selected" value="Project" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544890810705" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544890839418" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
     <property name="device.picker.selection" value="Copy_of_Device" />
@@ -1156,13 +1160,6 @@
       <workItem from="1429863142094" duration="4959000" />
       <workItem from="1449323416211" duration="1333000" />
     </task>
-    <task id="LOCAL-00009" summary="Fix type typo.">
-      <created>1389948625289</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1389948625289</updated>
-    </task>
     <task id="LOCAL-00010" summary="Fix type typo.&#10;">
       <created>1389948825085</created>
       <option name="number" value="00010" />
@@ -1502,7 +1499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542186814461</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Add misc. project files.">
+      <created>1544890821557</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1544890821558</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <option name="createBranch" value="false" />
     <option name="commitChanges" value="false" />
     <servers>
@@ -1527,11 +1531,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="547" y="27" width="1755" height="1413" extended-state="0" />
+    <frame x="547" y="27" width="2009" height="1413" extended-state="0" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="Capture Tool" order="1" />
-      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49757868" visible="true" weight="0.23112932" />
+      <window_info content_ui="combo" id="Project" order="2" sideWeight="0.49757868" visible="true" weight="0.20122261" />
       <window_info id="Structure" order="3" sideWeight="0.5024213" side_tool="true" weight="0.23113208" />
       <window_info id="Build Variants" order="4" sideWeight="0.5024213" side_tool="true" weight="0.23113208" />
       <window_info id="UI Designer" order="5" />
@@ -1548,13 +1552,13 @@
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32882503" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="8" weight="0.32988048" />
       <window_info anchor="bottom" id="Application Servers" order="9" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49853715" visible="true" weight="0.34824282" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="10" sideWeight="0.49872643" visible="true" weight="0.34824282" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49939469" weight="0.3279797" />
       <window_info anchor="bottom" id="Android" order="12" sideWeight="0.49939469" weight="0.3258964" />
       <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.5247642" weight="0.21300814" />
       <window_info anchor="bottom" id="Dependency Viewer" order="14" weight="0.32539684" />
       <window_info anchor="bottom" id="Changes" order="15" sideWeight="0.52786475" weight="0.27029157" />
-      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.5014628" side_tool="true" visible="true" weight="0.34824282" />
+      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.5012736" side_tool="true" visible="true" weight="0.34824282" />
       <window_info anchor="bottom" id="Memory Monitor" order="17" sideWeight="0.47213525" side_tool="true" weight="0.27003205" />
       <window_info anchor="bottom" id="Android Profiler" order="18" show_stripe_button="false" />
       <window_info anchor="bottom" id="Problems" order="19" weight="0.32967034" />
