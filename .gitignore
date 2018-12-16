@@ -1,12 +1,5 @@
-/.settings
-/.classpath
-/.project
+*.iml
+.gradle
+/local.properties
+/gradle
 /.idea
-/gen
-
-.navigation/
-Tests/out/
-
-captures/
-out/
-
