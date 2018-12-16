@@ -28,5 +28,7 @@
     </orderEntry>
     <orderEntry type="library" name="org.robolectric:robolectric:3.0" level="project" />
     <orderEntry type="library" name="org.robolectric:android-all:9-robolectric-4913185-2" level="project" />
+    <orderEntry type="library" name="android-support-v4" level="project" />
+    <orderEntry type="library" name="Python 2.7.8 (/usr/bin/python2.7) interpreter library" level="application" />
   </component>
 </module>
