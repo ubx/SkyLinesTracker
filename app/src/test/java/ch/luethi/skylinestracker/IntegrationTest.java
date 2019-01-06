@@ -20,7 +20,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class IntegrationTest {
 
-    private static final String TESTS_SCRIPTS = "scripts/";
+    private static final String TESTS_SCRIPTS = "/home/andreas/IdeaProjects/SkyLinesTracker4/app/src/test/scripts/";
     Set<Rec> recsRcv = new HashSet<Rec>(200);
     Set<Rec> recsSim = new HashSet<Rec>(200);
 
