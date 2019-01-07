@@ -2,11 +2,8 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        SkyLinesTracker {
-            keyAlias 'SkyLinesTracker'
+        config {
             storeFile file('/home/andreas/SkyLinesTracker/key')
-            keyPassword 'killerrabbit'
-            storePassword 'altavista'
         }
     }
     compileSdkVersion 28
