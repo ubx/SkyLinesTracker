@@ -3,12 +3,13 @@ adb=/home/andreas/opt/android-sdk-linux/platform-tools/adb
 
 TARGET=${4:-AVD}
 EMULATOR_DIR="/home/andreas/opt/android-sdk-linux/emulator"
-ADV_DEVICE="Device"
+ADV_DEVICE="Device-API-26"
 
 case $TARGET in
 AVD)
     ##${EMULATOR_DIR}/emulator -avd ${DEVICE} -netspeed full -netdelay none -no-boot-anim -gpu off &
-    ${EMULATOR_DIR}/emulator -avd ${ADV_DEVICE} -netspeed full -netdelay none  &
+###    ${EMULATOR_DIR}/emulator -avd ${ADV_DEVICE} -writable-system -netspeed full -netdelay none &
+    ${EMULATOR_DIR}/emulator -avd ${ADV_DEVICE}  -netspeed full -netdelay none -no-snapshot-load &
     sleep 60
     $adb -s $2 push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
     $adb -s $2 install -r  $1/out/SkyLinesTracker.apk

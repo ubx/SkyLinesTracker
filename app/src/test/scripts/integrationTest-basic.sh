@@ -21,13 +21,13 @@ sleep 60
 pkill -f UDP-Receiver.jar
 
 echo "### $(date +"%T") GPS simmluation, LiveTracking checked"
-sh clickLiveTracking.sh ${DEVICE} genymotion
+sh clickLiveTracking.sh ${DEVICE} ADV
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test-01.out &
 sleep 60
 pkill -f UDP-Receiver.jar
 
 echo "### $(date +"%T") GPS simmluation, LiveTracking NOT checked again"
-sh clickLiveTracking.sh ${DEVICE} genymotion
+sh clickLiveTracking.sh ${DEVICE} ADV
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test-02.out &
 sleep 60
 pkill -f UDP-Receiver.jar
