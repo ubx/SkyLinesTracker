@@ -18,6 +18,7 @@
 
 package ch.luethi.skylinestracker;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
@@ -26,18 +27,20 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.splunk.mint.Mint;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends Activity {
 
@@ -70,6 +73,9 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            checkPermissions();
+        }
         prefs = new SkyLinesPrefs(this);
         app = ((SkyLinesApp) getApplicationContext());
         Log.d("SkyLines", "MainActivity, ISTESTING=" + getIntent().hasExtra(ISTESTING));
@@ -217,6 +223,31 @@ public class MainActivity extends Activity {
             }
         }
         return false;
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void checkPermissions() {
+        List<String> permissionsList = new ArrayList<>();
+        addPermission(this, permissionsList, android.Manifest.permission.ACCESS_FINE_LOCATION);
+        if (permissionsList.size() > 0) {
+            requestPermissions(permissionsList.toArray(new String[permissionsList.size()]), 1);
+        }
+    }
+
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private static void addPermission(Context context, List<String> permissionsList, String permission) {
+        if (context.checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+            permissionsList.add(permission);
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (grantResults.length <= 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+            finish();
+        }
     }
 
     public String getCurrentTimeStamp() {
