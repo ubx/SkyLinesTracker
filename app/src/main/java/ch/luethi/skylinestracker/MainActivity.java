@@ -25,6 +25,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
@@ -173,7 +175,11 @@ public class MainActivity extends Activity {
             LocalBroadcastManager.getInstance(this).registerReceiver(onStatusChange, brFilter);
             if (!isPositionServiceRunning()) {
                 positionService.putExtra("init", true);
-                startService(positionService);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    startForegroundService(positionService);
+                } else {
+                    startService(positionService);
+                }
             }
             statusText.setText(R.string.on);
             positionText.setText("");
