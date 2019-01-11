@@ -1,7 +1,8 @@
-Version 1.3.3 - not yet released
+Version 1.3.3 - 11-jan-2019
 * update target SDK version 28
 * target min SDK 14
 * add Permissions handling
+* run service in foreground
 * change for gradle build infrastructure
 * rework tests WIP
 
