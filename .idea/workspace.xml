@@ -14,172 +14,21 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="792495f4-514a-4a1f-8955-fb67b9d29912" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/libs/Ringbuffer.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/libs/mint-5.1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/AboutActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/BootUpReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/FixQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/FixQueueIF.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/FixQueueNop.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/MainActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/NetworkStateReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/PositionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SettingsActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SkyLinesApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SkyLinesPrefs.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SmsReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/geeksville/location/PositionWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/geeksville/location/SkyLinesTrackingWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-v14/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_about.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-de/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-de/strings_activity_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-fr/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-fr/strings_activity_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-sw600dp/dimens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-sw720dp-land/dimens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-v11/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-v14/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/strings_activity_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/xml/pref_tracking.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/UDP-Receiver.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/com.blogspot.newapphorizons.fakegps_2018-09-27.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/ch/luethi/skylinestracker/IntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/rcv-test-00.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/rcv-test-01.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/rcv-test-02.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/ch.luethi.skylinestracker_preferences.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/clickLiveTracking.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/create-batterystats-html.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/gps_simulator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/helper.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/integrationTest-basic-genymotion.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/integrationTest-basic-real-HW.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/integrationTest-basic.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/integrationTest-battery-usage.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/integrationTest-lost-fixes.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/integrationTest-queue.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/integrationTest-start-with-disconnected.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/preference_file.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/rcv-test-00.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/run-battery-historian-server.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/setNetworkState.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/sim-test.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/startEmulator.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/stopEmulator.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/tracks-0.gpx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/scripts/tracks-1.gpx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/test/sim-test.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/SkyLinesTracker.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copyright/skylinestracker.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="792495f4-514a-4a1f-8955-fb67b9d29912" name="Default Changelist" comment="" />
+    <list id="1cda98b5-7580-436d-a0f5-754bb56268b3" name="Workspace" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AndroidManifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEWS.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NEWS.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SkyLinesTracker.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/Tests.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/UDP-Receiver.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/clickLiveTracking.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/create-batterystats-html.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/gps_simulator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/helper.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/integrationTest-basic-genymotion.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/integrationTest-basic-real-HW.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/integrationTest-basic.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/integrationTest-battery-usage.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/integrationTest-lost-fixes.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/integrationTest-queue.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/integrationTest-start-with-disconnected.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/preference_file.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/run-battery-historian-server.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/setNetworkState.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/startEmulator.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/scripts/stopEmulator.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/IntegrationTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/MainActivityGPSTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/MainActivityTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/ShadowDatagramSocket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/SkyLinesPrefsTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/src/ch/luethi/skylinestracker/SmsReceiverTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/tracks-wwli-gre-sort.gpx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/tracks-wwli-gre.gpx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/Ringbuffer.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/android-support-v4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/mint-5.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/proguard-project.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/drawable-mdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/drawable-xhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/drawable-xxhdpi/ic_launcher.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/layout-v14/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/layout/activity_about.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/layout/activity_main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/menu/main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/values-de/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/values-de/strings_activity_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/values-fr/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/values-fr/strings_activity_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/values-sw600dp/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/values-sw720dp-land/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/values-v11/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/values-v14/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/values/dimens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/values/strings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/values/strings_activity_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/values/styles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/xml/pref_tracking.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/AboutActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/BootUpReceiver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/FixQueue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/FixQueueIF.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/FixQueueNop.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/MainActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/NetworkStateReceiver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/PositionService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/SettingsActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/SkyLinesApp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/SkyLinesPrefs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ch/luethi/skylinestracker/SmsReceiver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/geeksville/location/PositionWriter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/geeksville/location/SkyLinesTrackingWriter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/scripts/sim-test.out" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
+    <ignored path="$PROJECT_DIR$/.idea/shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -202,6 +51,24 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="SkyLinesTracker4" type="f1a62948:ProjectNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SkyLinesTracker4" type="f1a62948:ProjectNode" />
+                <item name="SkyLinesTracker4" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SkyLinesTracker4" type="f1a62948:ProjectNode" />
+                <item name="SkyLinesTracker4" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="SkyLinesTracker4" type="f1a62948:ProjectNode" />
+                <item name="SkyLinesTracker4" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -214,34 +81,107 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="774">
+              <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-manifest" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/local.properties">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/BootUpReceiver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/test/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="180">
+                <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SmsReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="162">
-              <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+            <state relative-caret-position="394">
+              <caret line="233" column="37" selection-start-line="233" selection-start-column="37" selection-end-line="233" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/NEWS.txt">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SettingsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" lean-forward="true" selection-start-line="1" selection-end-line="4" />
+            <state relative-caret-position="918">
+              <caret line="76" column="52" selection-start-line="76" selection-start-column="52" selection-end-line="76" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SkyLinesPrefs.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+              <folding>
+                <element signature="e#2560#2561#0" expanded="true" />
+                <element signature="e#2618#2619#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/PositionService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -264,19 +204,22 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/gradle.properties" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/release/output.json" />
-        <option value="$PROJECT_DIR$/app/src/test/java/ch/luethi/skylinestracker/IntegrationTest.java" />
         <option value="$PROJECT_DIR$/app/src/test/scripts/clickLiveTracking.sh" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SettingsActivity.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app/src/test/java/ch/luethi/skylinestracker/IntegrationTest.java" />
         <option value="$PROJECT_DIR$/app/src/test/scripts/helper.sh" />
-        <option value="$PROJECT_DIR$/app/src/test/scripts/startEmulator.sh" />
         <option value="$PROJECT_DIR$/app/src/test/scripts/integrationTest-basic.sh" />
         <option value="$PROJECT_DIR$/app/src/test/scripts/gps_simulator.py" />
-        <option value="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SettingsActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/test/scripts/startEmulator.sh" />
+        <option value="$PROJECT_DIR$/gradle.properties" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/PositionService.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/test/README.md" />
+        <option value="$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/MainActivity.java" />
         <option value="$PROJECT_DIR$/NEWS.txt" />
       </list>
     </option>
@@ -288,10 +231,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="520" />
+    <option name="x" value="194" />
     <option name="y" value="27" />
-    <option name="width" value="2018" />
-    <option name="height" value="1393" />
+    <option name="width" value="2042" />
+    <option name="height" value="1413" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -300,26 +243,74 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SkyLinesTracker4" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="SkyLinesTracker4" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Tests'; set:Tests; class com.intellij.psi.search.scope.TestsScope">
           <expand>
             <path>
-              <item name="SkyLinesTracker-Gradle" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
             </path>
             <path>
-              <item name="SkyLinesTracker-Gradle" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="SkyLinesTracker-Gradle" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ch" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ch" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="luethi" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="SkyLinesTracker-Gradle" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
@@ -331,13 +322,43 @@
         <subPane subId="Scope 'Android Instrumented Tests'; set:test:*..*; class com.android.tools.idea.testartifacts.scopes.TestArtifactCustomScopeProvider$AndroidTestsScope">
           <expand>
             <path>
-              <item name="SkyLinesTracker-Gradle" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
             </path>
             <path>
-              <item name="SkyLinesTracker-Gradle" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ch" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="androidTest" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ch" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="luethi" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -345,43 +366,26 @@
         <subPane subId="Scope 'Local Unit Tests'; set:test:*..*; class com.android.tools.idea.testartifacts.scopes.TestArtifactCustomScopeProvider$UnitTestsScope">
           <expand>
             <path>
-              <item name="SkyLinesTracker-Gradle" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
             </path>
             <path>
-              <item name="SkyLinesTracker-Gradle" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker-Gradle" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="SkyLinesTracker-Gradle" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="SkyLinesTracker-Gradle" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ch" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker-Gradle" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="ch" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="luethi" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -440,6 +444,11 @@
             <path>
               <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="release" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -452,98 +461,46 @@
               <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
               <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="SkyLinesTracker4" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView">
-        <subPane>
-          <expand>
-            <path>
-              <item name="SkyLinesTracker4" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ch" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="SkyLinesTracker4" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ch" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="luethi" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="SkyLinesTracker4" type="1abcf292:AndroidViewProjectNode" />
-              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="SkyLinesTracker-Gradle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkyLinesTracker-Gradle" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ch" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="luethi" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="skylinestracker" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="SkyLinesTracker-Gradle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkyLinesTracker-Gradle" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker-Gradle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkyLinesTracker-Gradle" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker-Gradle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkyLinesTracker-Gradle" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker-Gradle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkyLinesTracker-Gradle" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker-Gradle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkyLinesTracker-Gradle" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="skylinestracker" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker-Gradle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkyLinesTracker-Gradle" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="skylinestracker" type="462c0819:PsiDirectoryNode" />
-              <item name="SettingsActivity" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="SkyLinesTracker-Gradle" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SkyLinesTracker-Gradle" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="skylinestracker" type="462c0819:PsiDirectoryNode" />
-              <item name="SkyLinesApp" type="1a9f42e2:ClassTreeNode" />
+              <item name="SkyLinesTracker4" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="app" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="ch" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="luethi" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="skylinestracker" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="MainActivity" type="1a9f42e2:ClassTreeNode" />
             </path>
           </expand>
           <select />
@@ -552,10 +509,14 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DEBUGGABLE_DEVICE" value="emulator-5554" />
+    <property name="DEBUGGABLE_PROCESS" value="ch.luethi.skylinestracker" />
+    <property name="DEBUGGER_ID" value="Java" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="ExportApk.ApkPath" value="$PROJECT_DIR$/app" />
     <property name="ExportApk.BuildType" value="release" />
     <property name="ExportApk.Flavors" value="" />
+    <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -566,13 +527,17 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="add_unversioned_files" value="true" />
     <property name="android.profiler.active" value="true" />
+    <property name="android.project.structure.last.selected" value="app" />
+    <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/opt/android-sdk-linux" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544975162875" />
-    <property name="device.picker.selection" value="Device" />
-    <property name="last_opened_file_path" value="/usr/lib/python2.7" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547626741468" />
+    <property name="device.picker.selection" value="Device-API-15" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/release/SkyLinesTracker-release.apk" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3359884" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -618,12 +583,13 @@
       <option name="METHOD_NAME" value="testBasic" />
       <option name="TEST_OBJECT" value="method" />
       <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/src/test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app/src/test/java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidJUnit">
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -638,15 +604,15 @@
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="false" />
+      <option name="FORCE_STOP_RUNNING_APP" value="false" />
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
       <option name="DEBUGGER_TYPE" value="Java" />
       <Java />
       <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="ADVANCED_PROFILING_ENABLED" value="true" />
       </Profilers>
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -763,6 +729,7 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -810,42 +777,149 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="792495f4-514a-4a1f-8955-fb67b9d29912" name="Default Changelist" comment="" />
+      <changelist id="1cda98b5-7580-436d-a0f5-754bb56268b3" name="Workspace" comment="" />
       <created>1542982808348</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1542982808348</updated>
     </task>
+    <task id="LOCAL-00001" summary="Update target SDK version 28&#10;Change for gradle build infrastructure&#10;Rework tests">
+      <created>1544975178365</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1544975178365</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Minor change.">
+      <created>1544976499031</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1544976499031</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add apk signing.">
+      <created>1546781251184</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1546781251184</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Rework tests.">
+      <created>1546781304729</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1546781304729</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add apk signing, change config..">
+      <created>1546861227485</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1546861227485</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Rework tests.">
+      <created>1547109182670</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1547109182670</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Rework tests again.">
+      <created>1547111414219</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1547111414219</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Minimize apk size for release.">
+      <created>1547208161199</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1547208161199</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Adapt testing notes.">
+      <created>1547208352487</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1547208352487</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add Permissions handling.">
+      <created>1547208561800</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1547208561801</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add Permissions handling.">
+      <created>1547208692845</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1547208692845</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add Permissions handling.">
+      <created>1547208729166</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1547208729166</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add Permissions handling.">
+      <created>1547208746891</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1547208746891</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Update change note.">
+      <created>1547212191558</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1547212191558</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Update change note.">
+      <created>1547215261411</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1547215261411</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="IntegrationTest_testBasic - 2018.11.26 at 10h 36m 16s.xml">
+    <history-entry file="IntegrationTest_testBasic - 2019.01.07 at 14h 54m 34s.xml">
       <configuration name="IntegrationTest.testBasic" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="IntegrationTest_testBasic - 2018.11.26 at 10h 39m 10s.xml">
+    <history-entry file="IntegrationTest_testBasic - 2019.01.07 at 14h 55m 48s.xml">
       <configuration name="IntegrationTest.testBasic" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="IntegrationTest_testBasic - 2018.11.26 at 10h 39m 59s.xml">
+    <history-entry file="IntegrationTest_testBasic - 2019.01.07 at 15h 14m 59s.xml">
       <configuration name="IntegrationTest.testBasic" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="IntegrationTest_testBasic - 2018.11.26 at 10h 44m 09s.xml">
+    <history-entry file="IntegrationTest_testBasic - 2019.01.07 at 15h 18m 48s.xml">
       <configuration name="IntegrationTest.testBasic" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="IntegrationTest_testBasic - 2018.11.26 at 16h 35m 16s.xml">
+    <history-entry file="IntegrationTest_testBasic - 2019.01.07 at 15h 19m 50s.xml">
       <configuration name="IntegrationTest.testBasic" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="IntegrationTest_testBasic - 2018.11.26 at 16h 36m 15s.xml">
+    <history-entry file="IntegrationTest_testBasic - 2019.01.07 at 15h 20m 09s.xml">
       <configuration name="IntegrationTest.testBasic" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="IntegrationTest_testBasic - 2018.11.26 at 16h 36m 47s.xml">
+    <history-entry file="IntegrationTest_testBasic - 2019.01.07 at 15h 24m 31s.xml">
       <configuration name="IntegrationTest.testBasic" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="IntegrationTest_testBasic - 2018.11.26 at 16h 40m 56s.xml">
+    <history-entry file="IntegrationTest_testBasic - 2019.01.07 at 15h 56m 39s.xml">
       <configuration name="IntegrationTest.testBasic" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="IntegrationTest_testBasic - 2018.11.26 at 16h 50m 00s.xml">
+    <history-entry file="IntegrationTest_testBasic - 2019.01.08 at 13h 44m 44s.xml">
       <configuration name="IntegrationTest.testBasic" configurationId="AndroidJUnit" />
     </history-entry>
-    <history-entry file="IntegrationTest_testBasic - 2018.11.26 at 23h 38m 29s.xml">
+    <history-entry file="IntegrationTest_testBasic - 2019.01.08 at 13h 46m 57s.xml">
       <configuration name="IntegrationTest.testBasic" configurationId="AndroidJUnit" />
     </history-entry>
   </component>
@@ -859,32 +933,33 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="520" y="27" width="2018" height="1393" extended-state="0" />
+    <frame x="194" y="27" width="2042" height="1413" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77951634" visible="true" weight="0.19168358" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7254509" visible="true" weight="0.17735471" />
       <window_info id="Structure" order="1" sideWeight="0.25766176" side_tool="true" weight="0.19162884" />
       <window_info id="Designer" order="2" />
-      <window_info id="Build Variants" order="3" sideWeight="0.22048365" side_tool="true" visible="true" weight="0.19168358" />
+      <window_info id="Build Variants" order="3" sideWeight="0.2745491" side_tool="true" visible="true" weight="0.17735471" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Favorites" order="5" sideWeight="0.5005917" side_tool="true" weight="0.178125" />
       <window_info id="Captures" order="6" sideWeight="0.49943247" weight="0.32980332" />
       <window_info id="Capture Tool" order="7" />
       <window_info id="UI Designer" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49895832" weight="0.32872254" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.706001" weight="0.26136363" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.62934947" weight="0.39935064" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" sideWeight="0.49599198" visible="true" weight="0.2028754" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.65650594" weight="0.26198083" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6364877" weight="0.3985623" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947917" weight="0.3293556" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49772522" weight="0.32667732" />
       <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" sideWeight="0.49947917" weight="0.32936507" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.34024268" side_tool="true" weight="0.26784283" />
-      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.6597573" weight="0.26704547" />
-      <window_info anchor="bottom" id="Logcat" order="10" sideWeight="0.49947917" weight="0.32936507" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="11" sideWeight="0.49621785" visible="true" weight="0.42938313" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.6234375" weight="0.3293556" />
-      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49635416" weight="0.32873377" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.504008" side_tool="true" visible="true" weight="0.2028754" />
+      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.5523203" weight="0.26517573" />
+      <window_info anchor="bottom" id="Logcat" order="10" sideWeight="0.7088262" weight="0.25638977" />
+      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.6923848" weight="0.32827476" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.6201092" weight="0.32827476" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.49590537" weight="0.32827476" />
       <window_info anchor="bottom" id="Inspection Results" order="14" weight="0.32924837" />
+      <window_info anchor="bottom" id="GitHub Pull Requests" order="15" sideWeight="0.4984552" weight="0.32954547" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24927029" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -892,47 +967,21 @@
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Preview" order="5" />
       <window_info anchor="right" id="Device File Explorer" order="6" side_tool="true" />
-      <window_info anchor="right" id="Gradle" order="7" visible="true" weight="0.16075051" />
+      <window_info anchor="right" id="Gradle" order="7" weight="0.13827655" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
       <window_info anchor="right" id="Capture Analysis" order="10" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49940827" visible="true" weight="0.178125" />
-      <window_info id="Structure" order="1" sideWeight="0.5005917" side_tool="true" weight="0.178125" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Build Variants" order="3" sideWeight="0.5005917" side_tool="true" weight="0.178125" />
-      <window_info id="Image Layers" order="4" />
-      <window_info id="Favorites" order="5" sideWeight="0.5005917" side_tool="true" weight="0.178125" />
-      <window_info id="Captures" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info id="UI Designer" order="8" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Android Profiler" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5033461" side_tool="true" visible="true" weight="0.32936507" />
-      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.82313573" weight="0.32936507" />
-      <window_info anchor="bottom" id="Logcat" order="10" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" />
-      <window_info active="true" anchor="bottom" id="Messages" order="13" sideWeight="0.4966539" visible="true" weight="0.32936507" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Preview" order="5" />
-      <window_info anchor="right" id="Device File Explorer" order="6" side_tool="true" />
-      <window_info anchor="right" id="Gradle" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
-      <window_info anchor="right" id="Capture Analysis" order="10" />
-    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -976,7 +1025,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Update target SDK version 28&#10;Change for gradle build infrastructure&#10;Rework tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update target SDK version 28&#10;Change for gradle build infrastructure&#10;Rework tests" />
+    <MESSAGE value="Minor change." />
+    <MESSAGE value="Add apk signing." />
+    <MESSAGE value="Add apk signing, change config.." />
+    <MESSAGE value="Rework tests." />
+    <MESSAGE value="Rework tests again." />
+    <MESSAGE value="Minimize apk size for release." />
+    <MESSAGE value="Adapt testing notes." />
+    <MESSAGE value="Add Permissions handling." />
+    <MESSAGE value="Update change note." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update change note." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -989,15 +1047,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/MainActivity.java</url>
-          <line>71</line>
+          <line>253</line>
           <properties />
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/MainActivity.java</url>
-          <line>138</line>
+          <line>245</line>
           <properties />
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1007,175 +1065,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/release/output.json" />
-    <entry file="file://$PROJECT_DIR$/app/src/test/rcv-test-00.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/rcv-test-01.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/rcv-test-02.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/clickLiveTracking.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="39" selection-start-line="1" selection-start-column="39" selection-end-line="1" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/create-batterystats-html.sh">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/helper.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/startEmulator.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3262" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/outputs/apk/debug/output.json" />
-    <entry file="file://$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" />
-    <entry file="file://$PROJECT_DIR$/app/release/app-release.apk" />
-    <entry file="file://$USER_HOME$/.gradle/wrapper/dists/gradle-4.6-all/bcst21l2brirad8k2ben1letg/gradle-4.6/src/core-api/org/gradle/api/initialization/dsl/ScriptHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="98" column="32" lean-forward="true" selection-start-line="98" selection-start-column="32" selection-end-line="98" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle/3.2.1/8730f18d0e7ac739324ea8a50c1e1ac2929a86f/gradle-3.2.1-sources.jar!/com/android/build/gradle/internal/CompileOptions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="78" column="16" selection-start-line="78" selection-start-column="16" selection-end-line="78" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/sim-test.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/rcv-test-01.out" />
-    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/rcv-test-00.out">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/ch.luethi.skylinestracker_preferences.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/java/ch/luethi/skylinestracker/IntegrationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/preference_file.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" selection-start-column="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/SkyLinesTracker.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/gps_simulator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/integrationTest-basic.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/app.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradlew.bat">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradlew">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="70" column="23" selection-start-line="70" selection-start-column="14" selection-end-line="70" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.gradle/wrapper/dists/gradle-4.6-all/bcst21l2brirad8k2ben1letg/gradle-4.6/src/core-api/org/gradle/api/Project.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1499" lean-forward="true" selection-start-line="1499" selection-end-line="1499" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle/3.2.1/8730f18d0e7ac739324ea8a50c1e1ac2929a86f/gradle-3.2.1-sources.jar!/com/android/build/gradle/internal/dsl/BaseFlavor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1692">
-          <caret line="141" column="16" selection-start-line="141" selection-start-column="16" selection-end-line="141" selection-end-column="16" />
-          <folding>
-            <element signature="e#4970#4971#0" expanded="true" />
-            <element signature="e#5023#5024#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/wrapper/dists/gradle-4.6-all/bcst21l2brirad8k2ben1letg/gradle-4.6/lib/groovy-all-2.4.12.jar!/groovy/lang/Closure.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3542">
-          <caret line="140" column="16" selection-start-line="140" selection-start-column="16" selection-end-line="140" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/FixQueue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-          <folding>
-            <element signature="e#1143#1144#0" expanded="true" />
-            <element signature="e#1213#1214#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SkyLinesApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SettingsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="106" column="17" selection-start-line="106" selection-start-column="17" selection-end-line="106" selection-end-column="17" />
-          <folding>
-            <element signature="e#5203#5204#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.tools.build/gradle/3.2.1/8730f18d0e7ac739324ea8a50c1e1ac2929a86f/gradle-3.2.1-sources.jar!/com/android/build/gradle/internal/dsl/BuildType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -1197,33 +1086,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/outputs/apk/debug/SkyLinesTracker-debug.apk">
-      <provider selected="true" editor-type-id="apk-viewer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/outputs/apk/release/SkyLinesTracker-release-unsigned.apk">
-      <provider selected="true" editor-type-id="apk-viewer" />
-    </entry>
-    <entry file="file://$USER_HOME$/opt/android-sdk-linux/sources/android-28/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="3203" selection-start-line="3203" selection-end-line="3203" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="11" selection-start-column="11" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradle.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/outputs/apk/debug/SkyLinesTracker-debug.apk" />
+    <entry file="file://$PROJECT_DIR$/app/build/outputs/apk/release/SkyLinesTracker-release-unsigned.apk" />
     <entry file="file://$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1231,45 +1095,262 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/proguard-rules.pro">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1890">
-          <caret line="142" selection-start-line="142" selection-end-line="142" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
-          <caret line="4" column="6" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/app/src/test/java/ch/luethi/skylinestracker/IntegrationTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+          <caret line="22" column="114" selection-start-line="22" selection-start-column="114" selection-end-line="22" selection-end-column="114" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="45" column="74" selection-start-line="45" selection-start-column="74" selection-end-line="45" selection-end-column="74" />
+    <entry file="file://$USER_HOME$/opt/android-sdk-linux/sources/android-28/android/content/ContextWrapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="667" column="47" selection-start-line="667" selection-start-column="25" selection-end-line="667" selection-end-column="47" />
+          <folding>
+            <element signature="e#19179#19180#0" expanded="true" />
+            <element signature="e#19229#19230#0" expanded="true" />
+          </folding>
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$USER_HOME$/opt/android-sdk-linux/sources/android-28/android/content/ComponentName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1674">
+          <caret line="114" column="11" selection-start-line="114" selection-start-column="11" selection-end-line="114" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/integrationTest-basic-genymotion.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/run-battery-historian-server.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/create-batterystats-html.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/setNetworkState.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/preference_file.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/opt/android-sdk-linux/platforms/android-28/android.jar!/android/Manifest.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="98" column="35" selection-start-line="98" selection-start-column="35" selection-end-line="98" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/opt/android-sdk-linux/sources/android-28/android/app/Service.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="783" column="29" selection-start-line="783" selection-start-column="29" selection-end-line="783" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/clickLiveTracking.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/opt/android-sdk-linux/sources/android-28/android/app/Notification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="1798" selection-start-line="1798" selection-end-line="1798" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/gps_simulator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="27" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/helper.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gradle.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="10" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/proguard-rules.pro">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/opt/android-sdk-linux/sources/android-28/android/location/LocationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9630">
+          <caret line="588" selection-start-line="588" selection-end-line="588" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/startEmulator.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/opt/android-sdk-linux/sources/android-28/com/android/internal/os/ZygoteInit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="806" selection-start-line="806" selection-end-line="806" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/opt/android-sdk-linux/sources/android-28/android/app/ActivityThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="3488" selection-start-line="3488" selection-end-line="3488" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/opt/android-sdk-linux/sources/android-28/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="237" column="12" selection-start-line="237" selection-start-column="12" selection-end-line="237" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/opt/android-sdk-linux/sources/android-28/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="5629" column="16" selection-start-line="5629" selection-start-column="16" selection-end-line="5629" selection-end-column="16" />
+          <folding>
+            <element signature="e#239888#239889#0" expanded="true" />
+            <element signature="e#239942#239943#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/opt/android-sdk-linux/sources/android-28/android/os/Build.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2142">
+          <caret line="311" column="24" selection-start-line="311" selection-start-column="24" selection-end-line="311" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/opt/android-sdk-linux/sources/android-28/android/content/Context.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="805">
+          <caret line="4293" column="29" selection-start-line="4293" selection-start-column="29" selection-end-line="4293" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/ch.luethi.skylinestracker_preferences.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SkyLinesApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/release/SkyLinesTracker-release.apk">
+      <provider selected="true" editor-type-id="apk-viewer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/scripts/integrationTest-basic.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="7" selection-start-line="18" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/java/sim-test.out" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/jshell/jshell_console.snippet">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NEWS.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="7" selection-start-line="4" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/BootUpReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/test/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="126">
-            <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <first_editor relative-caret-position="180">
+            <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SmsReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SettingsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="76" column="52" selection-start-line="76" selection-start-column="52" selection-end-line="76" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/SkyLinesPrefs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+          <folding>
+            <element signature="e#2560#2561#0" expanded="true" />
+            <element signature="e#2618#2619#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1281,22 +1362,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/PositionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/local.properties">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NEWS.txt">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/ch/luethi/skylinestracker/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" lean-forward="true" selection-start-line="1" selection-end-line="4" />
+        <state relative-caret-position="394">
+          <caret line="233" column="37" selection-start-line="233" selection-start-column="37" selection-end-line="233" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="774">
+          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
     </entry>
   </component>
   <component name="gradleExecuteTaskHistory">
@@ -1343,11 +1442,11 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>Android API 28 Platform</last-edited>
+          <last-edited>Android API 26 Platform</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.3852281" />
+                <option value="0.3359884" />
               </list>
             </option>
           </splitter-proportions>
@@ -1379,7 +1478,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Gradle: __local_aars__:/home/andreas/IdeaProjects/SkyLinesTracker-Gradle/app/libs/mint-5.1.0.jar:unspecified@jar</last-edited>
+          <last-edited>Gradle: __local_aars__:/home/andreas/IdeaProjects/SkyLinesTracker4/app/libs/mint-5.1.0.jar:unspecified@jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
