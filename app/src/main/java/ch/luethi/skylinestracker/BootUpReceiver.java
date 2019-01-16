@@ -31,7 +31,11 @@ public class BootUpReceiver extends BroadcastReceiver {
         SkyLinesPrefs prefs = new SkyLinesPrefs(context);
         if (prefs.isAutoStartTracking()) {
             Intent positionService = new Intent(context, PositionService.class);
-            context.startService(positionService);
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                context.startForegroundService(positionService);
+            } else {
+                context.startService(positionService);
+            }
         }
 
     }
