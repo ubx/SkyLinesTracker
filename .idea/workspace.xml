@@ -211,10 +211,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="794" />
+    <option name="x" value="595" />
     <option name="y" value="37" />
-    <option name="width" value="1925" />
-    <option name="height" value="1244" />
+    <option name="width" value="1965" />
+    <option name="height" value="1401" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -515,7 +515,7 @@
     <property name="android.project.structure.last.selected" value="app" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/opt/android-sdk-linux" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547805775297" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547806972549" />
     <property name="device.picker.selection" value="Device-API-27" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/release/SkyLinesTracker-release.apk" />
     <property name="project.structure.last.edited" value="SDKs" />
