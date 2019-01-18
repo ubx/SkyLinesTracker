@@ -32,11 +32,6 @@
                 android:key="autostart_tracking"
                 android:summary="@string/pref_description_title_autostart_tracking"
                 android:title="@string/pref_title_autostart_tracking"/>
-        <CheckBoxPreference
-                android:defaultValue="false"
-                android:key="sms_config"
-                android:summary="@string/pref_description_title_sms_config"
-                android:title="@string/pref_title_sms_config"/>
         <ListPreference
                 android:defaultValue="@string/ip_address_fix"
                 android:entries="@array/pref_ip_address_list_titles"

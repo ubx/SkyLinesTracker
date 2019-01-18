@@ -26,9 +26,6 @@
     
     <string name="pref_title_autostart_tracking">Auto Start Tracking</string>
     <string name="pref_description_title_autostart_tracking">Enable auto start tracking on phone boot complete</string>
-    
-    <string name="pref_title_sms_config">SMS Configuration</string>
-    <string name="pref_description_title_sms_config">Enable configuration through receiving SMS</string>
 
     <string-array name="pref_ip_address_list_titles">
         <item>DNS</item>

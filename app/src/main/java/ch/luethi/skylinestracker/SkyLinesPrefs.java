@@ -32,7 +32,6 @@ class SkyLinesPrefs {
     public static final String IP_ADDRESS = "ip_address";
 
     private static final String AUTOSTART_TRACKING = "autostart_tracking";
-    private static final String SMS_CONFIG = "sms_config";
     private static final String QUEUE_FIXES = "queue_fixes";
     private static final String QUEUE_FIXES_MAX_SECONDS = "queue_fixes_max_seconds";
 
@@ -73,13 +72,6 @@ class SkyLinesPrefs {
         prefs.edit().putBoolean(AUTOSTART_TRACKING, val).commit();
     }
 
-    public boolean isSmsConfig() {
-        return prefs.getBoolean(SMS_CONFIG, false);
-    }
-
-    public void setSmsConfig(boolean val) {
-        prefs.edit().putBoolean(SMS_CONFIG, val).commit();
-    }
 
     public String getIpAddress() {
         return prefs.getString(IP_ADDRESS, "");
