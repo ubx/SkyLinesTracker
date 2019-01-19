@@ -142,6 +142,7 @@ public class PositionService extends Service implements LocationListener, Networ
                 .setContentTitle("App is running in background")
                 .setPriority(NotificationManager.IMPORTANCE_DEFAULT)
                 .setCategory(Notification.CATEGORY_SERVICE)
+                .setShowWhen(true)
                 .build();
         startForeground(1, notification);
     }
