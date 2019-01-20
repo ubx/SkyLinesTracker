@@ -46,14 +46,14 @@ import java.util.List;
 
 public class MainActivity extends Activity {
 
-    public static final String ISTESTING = "ISTESTING";
+    private static final String ISTESTING = "ISTESTING";
 
-    protected static final String BROADCAST_STATUS = "SKYLINESTRACKER_BROADCAST_STATUS";
-    protected static final String MESSAGE_STATUS_TYPE = "MESSAGE_STATUS_TYPE";
-    protected static final String TESTING_IP = "TESTING_IP";
-    protected static final int MESSAGE_POS_STATUS = 0;
-    protected static final int MESSAGE_POS_WAIT_STATUS = 1;
-    protected static final int MESSAGE_CON_STATUS = 2;
+    static final String BROADCAST_STATUS = "SKYLINESTRACKER_BROADCAST_STATUS";
+    static final String MESSAGE_STATUS_TYPE = "MESSAGE_STATUS_TYPE";
+    private static final String TESTING_IP = "TESTING_IP";
+    static final int MESSAGE_POS_STATUS = 0;
+    static final int MESSAGE_POS_WAIT_STATUS = 1;
+    static final int MESSAGE_CON_STATUS = 2;
 
     private static final DecimalFormat dfLat = new DecimalFormat("##.00000");
     private static final DecimalFormat dfLon = new DecimalFormat("###.00000");
@@ -96,13 +96,13 @@ public class MainActivity extends Activity {
         positionService.putExtra("init", true);
 
         setContentView(R.layout.activity_main);
-        statusText = (TextView) findViewById(R.id.statusText);
-        positionText = (TextView) findViewById(R.id.positionValueText);
-        queueValueText = (TextView) findViewById(R.id.queueValueText);
-        TextView queueLabel = (TextView) findViewById(R.id.queueLabel);
+        statusText = findViewById(R.id.statusText);
+        positionText = findViewById(R.id.positionValueText);
+        queueValueText = findViewById(R.id.queueValueText);
+        TextView queueLabel = findViewById(R.id.queueLabel);
         queueLabel.setVisibility(doFixQueueing ? View.VISIBLE : View.GONE);
 
-        checkLiveTracking = (CompoundButton) findViewById(R.id.checkLiveTracking);
+        checkLiveTracking = findViewById(R.id.checkLiveTracking);
         checkLiveTracking.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton cb, boolean on) {
@@ -215,7 +215,7 @@ public class MainActivity extends Activity {
             if (doFixQueueing) {
                 int trackingInterval = prefs.getTrackingInterval();
                 //queueValueText.setText(String.format("%d / %d sec", app.fixStack.size() * trackingInterval, app.fixStack.getCapacity() * trackingInterval));
-                queueValueText.setText(String.format("%d sec", app.fixStack.size() * trackingInterval));
+                queueValueText.setText(String.format("%d sec", SkyLinesApp.fixStack.size() * trackingInterval));
             }
         }
     }
@@ -250,13 +250,13 @@ public class MainActivity extends Activity {
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (grantResults.length <= 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
             finish();
         }
     }
 
-    public String getCurrentTimeStamp() {
+    private String getCurrentTimeStamp() {
         return new SimpleDateFormat("HH:mm:ss").format(new Date());
     }
 

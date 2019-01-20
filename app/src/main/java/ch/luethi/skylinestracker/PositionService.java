@@ -45,6 +45,7 @@ import com.geeksville.location.SkyLinesTrackingWriter;
 
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import java.util.Objects;
 
 
 public class PositionService extends Service implements LocationListener, NetworkStateReceiver.NetworkStateReceiverListener {
@@ -63,6 +64,7 @@ public class PositionService extends Service implements LocationListener, Networ
     private SharedPreferences.OnSharedPreferenceChangeListener listener;
     private int currentTrackingInterval = 1000;
     private NetworkStateReceiver networkStateReceiver;
+    private static final int ONGOING_NOTIFICATION_ID = PositionService.class.hashCode();
 
 
     public PositionService() {
@@ -81,12 +83,12 @@ public class PositionService extends Service implements LocationListener, Networ
 
         listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
             public void onSharedPreferenceChanged(SharedPreferences xprefs, String key) {
-                if (key.equals(prefs.TRACKING_INTERVAL)) {
+                if (key.equals(SkyLinesPrefs.TRACKING_INTERVAL)) {
                     if (SkyLinesApp.fixStack != null) {
                         SkyLinesApp.fixStack.setCapacity(calculateFixQueueSize());
                     }
                     startLocationUpdates();
-                } else if (key.equals(prefs.TRACKING_KEY)) {
+                } else if (key.equals(SkyLinesPrefs.TRACKING_KEY)) {
                     if (skyLinesTrackingWriter != null) {
                         skyLinesTrackingWriter.setKey(prefs.getTrackingKey());
                     }
@@ -144,7 +146,7 @@ public class PositionService extends Service implements LocationListener, Networ
                 .setCategory(Notification.CATEGORY_SERVICE)
                 .setShowWhen(true)
                 .build();
-        startForeground(1, notification);
+        startForeground(ONGOING_NOTIFICATION_ID, notification);
     }
 
 
@@ -263,7 +265,7 @@ public class PositionService extends Service implements LocationListener, Networ
     }
 
     public static boolean isOnline() {
-        NetworkInfo networkInfo = ((ConnectivityManager) app.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        NetworkInfo networkInfo = ((ConnectivityManager) Objects.requireNonNull(app.getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE))).getActiveNetworkInfo();
         return networkInfo != null && networkInfo.isConnected();
     }
 

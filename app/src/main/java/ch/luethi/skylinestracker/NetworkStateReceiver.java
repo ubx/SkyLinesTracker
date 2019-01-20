@@ -11,8 +11,8 @@ import java.util.List;
 
 public class NetworkStateReceiver extends BroadcastReceiver {
 
-    protected List<NetworkStateReceiverListener> listeners;
-    protected Boolean connected;
+    private List<NetworkStateReceiverListener> listeners;
+    private Boolean connected;
 
     public NetworkStateReceiver() {
         listeners = new ArrayList<NetworkStateReceiverListener>();
@@ -24,6 +24,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
             return;
 
         ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert manager != null;
         NetworkInfo ni = manager.getActiveNetworkInfo();
 
         if (ni != null && ni.getState() == NetworkInfo.State.CONNECTED) {
@@ -41,10 +42,11 @@ public class NetworkStateReceiver extends BroadcastReceiver {
     }
 
     private void notifyState(NetworkStateReceiverListener listener) {
-        if (connected == null || listener == null)
+        if ((connected == null) || (listener == null)) {
             return;
+        }
 
-        if (connected == true)
+        if (connected)
             listener.networkAvailable();
         else
             listener.networkUnavailable();
