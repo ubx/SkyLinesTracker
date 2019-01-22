@@ -1,8 +1,8 @@
 package ch.luethi.skylinestracker;
 
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -13,7 +13,8 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 /**
  * Created by andreas on 02.08.16.
@@ -123,7 +124,7 @@ public class IntegrationTest {
         System.out.println("RcvRecs=" + recsRcv.size());
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
         //String env = System.getenv("testwith");
         recsSim.clear();
@@ -138,21 +139,21 @@ public class IntegrationTest {
         readOutFile(TESTS_SCRIPTS + "rcv-test-00.out", recsRcv, "Rcv: ", 0);
         readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
         printRecsSize();
-        assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
+        assertTrue(recsRcv.size() == 0, "Rcv shout nothing receive");
 
         recsRcv.clear();
         readOutFile(TESTS_SCRIPTS + "rcv-test-01.out", recsRcv, "Rcv: ", 0, true);
         System.out.println("recsRcv=" + recsRcv.size());
-        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
-        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+        assertTrue(recsSim.size() >= recsRcv.size(), "Sims not big enough...");
+        assertTrue(containsAll(recsSim, recsRcv), "Rcv not in Sim");
 
         recsRcv.clear();
         readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 0);
         System.out.println("recsRcv=" + recsRcv.size());
-        assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
+        assertTrue(recsRcv.size() == 0, "Rcv shout nothing receive");
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void testBasicRealHW() {
         runScript(TESTS_SCRIPTS + "integrationTest-basic-real-HW.sh");
@@ -162,18 +163,18 @@ public class IntegrationTest {
         printRecsSize();
 
         // todo -- assertTrue(... recsRcv.size() > 0);
-        assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
+        assertTrue(recsRcv.size() == 0, "Rcv shout nothing receive");
 
         recsRcv.clear();
         readOutFile(TESTS_SCRIPTS + "rcv-test-01.out", recsRcv, "Rcv: ", 0, true);
         System.out.println("recsRcv=" + recsRcv.size());
-        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
-        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+        assertTrue(recsSim.size() >= recsRcv.size(), "Sims not big enough...");
+        assertTrue(containsAll(recsSim, recsRcv), "Rcv not in Sim");
 
         recsRcv.clear();
         readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 0);
         System.out.println("recsRcv=" + recsRcv.size());
-        assertTrue("Rcv shout nothing receive", recsRcv.size() == 0);
+        assertTrue(recsRcv.size() == 0, "Rcv shout nothing receive");
     }
 
     @Test
@@ -185,11 +186,11 @@ public class IntegrationTest {
 
         printRecsSize();
 
-        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
-        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+        assertTrue(recsSim.size() >= recsRcv.size(), "Sims not big enough...");
+        assertTrue(containsAll(recsSim, recsRcv), "Rcv not in Sim");
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void testStartWithDisconnectedHW() {
         runScript(TESTS_SCRIPTS + "integrationTest-start-with-disconnected-HW.sh");
@@ -200,7 +201,7 @@ public class IntegrationTest {
         printRecsSize();
 
         //todo -- assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
-        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+        assertTrue(containsAll(recsSim, recsRcv), "Rcv not in Sim");
     }
 
     @Test
@@ -212,8 +213,8 @@ public class IntegrationTest {
 
         printRecsSize();
 
-        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
-        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+        assertTrue(recsSim.size() >= recsRcv.size(), "Sims not big enough...");
+        assertTrue(containsAll(recsSim, recsRcv), "Rcv not in Sim");
     }
 
     @Test
@@ -225,18 +226,18 @@ public class IntegrationTest {
 
         printRecsSize();
 
-        assertTrue("Rcv count not correct", recsRcv.size() == recsSim.size() - 320); // 80 or 81
-        assertTrue("Sims not big enough...", recsSim.size() >= recsRcv.size());
-        assertTrue("Rcv not in Sim", containsAll(recsSim, recsRcv));
+        assertTrue(recsRcv.size() == recsSim.size() - 320, "Rcv count not correct"); // 80 or 81
+        assertTrue(recsSim.size() >= recsRcv.size(), "Sims not big enough...");
+        assertTrue(containsAll(recsSim, recsRcv), "Rcv not in Sim");
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void testBatteryUsageWithoutQueue() {
         runScript(TESTS_SCRIPTS + "integrationTest-battery-usage.sh", "false");
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void testBatteryUsageWithQueue() {
         runScript(TESTS_SCRIPTS + "integrationTest-battery-usage.sh", "true");
