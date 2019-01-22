@@ -3,15 +3,15 @@
 adb=/home/andreas/opt/android-sdk-linux/platform-tools/adb
 
 ###DEVICE="192.168.58.101:5555"
-DEVICE="emulator-5554"
+export DEVICE="emulator-5554"
 
-PROJECT_DIR="/home/andreas/IdeaProjects/SkyLinesTracker4/"
+export PROJECT_DIR="/home/andreas/IdeaProjects/SkyLinesTracker4/"
 
 ##TEST_DIR="${PROJECT_DIR}/Tests"
-TEST_DIR="/home/andreas/IdeaProjects/SkyLinesTracker4/app/src/test/"
-IP=$(hostname -I | awk '{print $1}')
-INT=2
-KEY="ABCD1234"
+export TEST_DIR="/home/andreas/IdeaProjects/SkyLinesTracker4/app/src/test/"
+export IP=$(hostname -I | awk '{print $1}')
+export INT=2
+export KEY="ABCD1234"
 
 cd ${TEST_DIR}/scripts
 rm -rf sim-test*.out
