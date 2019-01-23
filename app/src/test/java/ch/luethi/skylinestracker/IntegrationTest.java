@@ -93,7 +93,7 @@ public class IntegrationTest {
             if (found != null) {
                 s2.remove(found);
                 if (foundCnt > 1) {
-                    System.out.println("foundCnt=" + foundCnt);
+                    System.out.println("multiple same records found=" + foundCnt);
                     df = true;
                 }
             }

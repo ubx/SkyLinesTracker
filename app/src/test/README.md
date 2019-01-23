@@ -9,3 +9,6 @@
 * adb -s emulator-5554 push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
 * Android Device (emulator): Developer options: ON ->  Allow mock location: ON
 * To record clicks: adb shell -> getevent
+
+##ToDos
+* Find a more elegant method for testing
