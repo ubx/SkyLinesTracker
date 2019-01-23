@@ -1,22 +1,23 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
+echo `pwd`
 
-source `pwd`/Tests/scripts/helper.sh
+source `pwd`/helper.sh
 
 trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
 
-python preference_file.py ${KEY} ${INT}  false  true ${IP} true 2048
+python preference_file.py ${KEY} ${INT} false ${IP} true 2048
 
-sh startEmulator.sh ${PROJECT_DIR} ${DEVICE} ${IP} genymotion
+sh startEmulator.sh ${PROJECT_DIR} ${DEVICE} ${IP} AVD
 
-sh clickLiveTracking.sh ${DEVICE} genymotion
+sh clickLiveTracking.sh ${DEVICE} AVD
 
 echo "### $(date +"%T") GPS simmluation, with Internet connection"
 set_internet_connection enable
 
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test.out &
-python gps_simulator.py 127.0.0.1 1200 ${KEY} ADV > sim-test.out &
-sleep 60
+python gps_simulator.py 127.0.0.1 1200 ${KEY} AVD > sim-test.out &
+sleep 30
 
 echo "### $(date +"%T") Simulate PositionService restart"
 $adb -s ${DEVICE} shell am stopservice ch.luethi.skylinestracker/.PositionService

@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -22,10 +23,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class IntegrationTest {
 
     private static final String TESTS_SCRIPTS = "/home/andreas/IdeaProjects/SkyLinesTracker4/app/src/test/scripts/";
-    Set<Rec> recsRcv = new HashSet<Rec>(200);
-    Set<Rec> recsSim = new HashSet<Rec>(200);
+    private Set<Rec> recsRcv = new HashSet<Rec>(200);
+    private Set<Rec> recsSim = new HashSet<Rec>(200);
+    private static int ONE_HOUR_MINUS = -3600000;
+
 
     private class Rec {
+
+        private static final double LAT_LON_TOLERANCE = 0.00010;
 
         public Rec(boolean ignorSecDay) {
             this.ignorSecDay = ignorSecDay;
@@ -40,8 +45,8 @@ public class IntegrationTest {
         public boolean equals(Object o) {
             Rec r = (Rec) o;
             return (ignorSecDay || r.ignorSecDay || secDay == r.secDay) & key.equals(r.key)
-                    & Math.abs(lat - r.lat) < 0.00002
-                    & Math.abs(log - r.log) < 0.00002;
+                    & Math.abs(lat - r.lat) < LAT_LON_TOLERANCE
+                    & Math.abs(log - r.log) < LAT_LON_TOLERANCE;
         }
     }
 
@@ -126,7 +131,6 @@ public class IntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        //String env = System.getenv("testwith");
         recsSim.clear();
         recsRcv.clear();
     }
@@ -139,7 +143,7 @@ public class IntegrationTest {
         readOutFile(TESTS_SCRIPTS + "rcv-test-00.out", recsRcv, "Rcv: ", 0);
         readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0);
         printRecsSize();
-        assertTrue(recsRcv.size() == 0, "Rcv shout nothing receive");
+        assertEquals(0, recsRcv.size(), "Rcv shout nothing receive");
 
         recsRcv.clear();
         readOutFile(TESTS_SCRIPTS + "rcv-test-01.out", recsRcv, "Rcv: ", 0, true);
@@ -150,7 +154,7 @@ public class IntegrationTest {
         recsRcv.clear();
         readOutFile(TESTS_SCRIPTS + "rcv-test-02.out", recsRcv, "Rcv: ", 0);
         System.out.println("recsRcv=" + recsRcv.size());
-        assertTrue(recsRcv.size() == 0, "Rcv shout nothing receive");
+        assertEquals(0, recsRcv.size(), "Rcv shout nothing receive");
     }
 
     @Disabled
@@ -195,8 +199,8 @@ public class IntegrationTest {
     public void testStartWithDisconnectedHW() {
         runScript(TESTS_SCRIPTS + "integrationTest-start-with-disconnected-HW.sh");
 
-        readOutFile(TESTS_SCRIPTS + "rcv-test.out", recsRcv, "Rcv: ", 0, true);
-        readOutFile(TESTS_SCRIPTS + "sim-test.out", recsSim, "Sim: ", 0, true);
+        readOutFile(TESTS_SCRIPTS  + "rcv-test.out", recsRcv, "Rcv: ", 0, true);
+        readOutFile(TESTS_SCRIPTS  + "sim-test.out", recsSim, "Sim: ", 0, true);
 
         printRecsSize();
 

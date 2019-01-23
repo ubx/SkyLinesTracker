@@ -1,19 +1,21 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
+echo `pwd`
 
-source `pwd`/Tests/scripts/helper.sh
+source `pwd`/helper.sh
 
 trap "pkill -f UDP-Receiver.jar; exit" INT TERM EXIT
-python preference_file.py ${KEY} ${INT}  false  false ${IP} true 2048
 
-sh startEmulator.sh ${PROJECT_DIR} ${DEVICE} ${IP}
+python preference_file.py ${KEY} ${INT} false ${IP} true 2048
 
-sh clickLiveTracking.sh ${DEVICE} genymotion
+sh startEmulator.sh ${PROJECT_DIR} ${DEVICE} ${IP} AVD
+
+sh clickLiveTracking.sh ${DEVICE} AVD
 
 echo "### $(date +"%T") GPS simmluation, LiveTracking checked, NO internet connection"
 set_internet_connection disable
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test.out &
-python gps_simulator.py 127.0.0.1 9999 ${KEY} ADV > sim-test-0.out &
+python gps_simulator.py 127.0.0.1 9999 ${KEY} AVD > sim-test-0.out &
 sleep 60
 
 echo "### $(date +"%T") Switch ON internet connection"
@@ -30,7 +32,7 @@ set_internet_connection enable
 sleep 100
 
 echo "### $(date +"%T") GPS simmluation, internet connection"
-python gps_simulator.py 127.0.0.1 9999 ${KEY} ADV > sim-test-1.out &
+python gps_simulator.py 127.0.0.1 9999 ${KEY} AVD > sim-test-1.out &
 sleep 100
 
 pkill -f gps_simulator.py
