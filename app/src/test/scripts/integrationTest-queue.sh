@@ -55,5 +55,5 @@ sleep 600
 pkill -f UDP-Receiver.jar
 pkill -f gps_simulator.py
 
-echo "#### $(date +"%T") Shuting down everting....................."
+echo "#### $(date +"%T") Shutting down everything....................."
 shutdown

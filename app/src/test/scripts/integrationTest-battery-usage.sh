@@ -70,7 +70,7 @@ adb -s ${DEVICE} shell bugreport > bugreport-${QUEUE_FIXES}.txt
 adb -s ${DEVICE} shell dumpsys batterystats > batterystats-${QUEUE_FIXES}.txt
 
 
-echo "#### $(date +"%T") Shuting down everting....................."
+echo "#### $(date +"%T") Shutting down everything....................."
 adb -s ${DEVICE} shell am force-stop ch.luethi.skylinestracker
 adb -s ${DEVICE} emu kill
 sh stopEmulator.sh

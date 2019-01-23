@@ -29,7 +29,7 @@ sleep 400
 pkill -f gps_simulator.py
 sleep 30
 
-echo "#### $(date +"%T") Shuting down everting....................."
+echo "#### $(date +"%T") Shutting down everything....................."
 $adb -s ${DEVICE} shell am force-stop ch.luethi.skylinestracker
 $adb -s ${DEVICE} emu kill
 sh stopEmulator.sh

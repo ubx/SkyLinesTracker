@@ -46,5 +46,5 @@ pkill -f UDP-Receiver.jar
 sleep 15
 pkill -f gps_simulator.py
 
-echo "#### $(date +"%T") Shuting down everting....................."
+echo "#### $(date +"%T") Shutting down everything....................."
 $adb -s ${DEVICE} shell am force-stop ch.luethi.skylinestracker

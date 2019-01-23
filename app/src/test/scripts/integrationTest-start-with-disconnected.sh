@@ -43,5 +43,5 @@ sleep 20
 
 cat sim-test-0.out sim-test-1.out > sim-test.out
 
-echo "#### $(date +"%T") Shuting down everting....................."
+echo "#### $(date +"%T") Shutting down everything....................."
 shutdown
