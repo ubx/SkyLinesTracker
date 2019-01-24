@@ -30,7 +30,7 @@ lng = LNG_SRC
 if TARGET != "ADV":
     tn = telnetlib.Telnet(HOST, PORT, TIMEOUT)
     tn.set_debuglevel(0)
-    tn.read_until("OK", 5)
+    tn.read_until(b"OK", 5)
 
 
 def millies_of_day():
@@ -43,14 +43,14 @@ def write_geo(lng, lat, alt):
     if TARGET == "ADV":
         os.system ("/home/andreas/opt/android-sdk-linux/platform-tools/adb shell am startservice --user 0 -a com.blogspot.newapphorizons.fakegps.UPDATE  -e longitude {0} -e latitude {1}".format(lng, lat))
     else:
-        tn.write("geo fix {0} {1} {2}\n".format(lng, lat, alt))
-    print("Sim: {0},{1},{2:.5f},{3:.5f},{4}".format(millies_of_day(), KEY, lng, lat, alt))
+        tn.write("geo fix {0} {1} {2}\n".format(lng, lat, alt).encode('ascii'))
+    print(("Sim: {0},{1},{2:.5f},{3:.5f},{4}".format(millies_of_day(), KEY, lng, lat, alt)))
     sys.stdout.flush()
 
 
 def write_gsm(mode):
     tn.write("gsm data " + mode + '\n')
-    print("Sim: gsm data " + mode + '\n')
+    print(("Sim: gsm data " + mode + '\n'))
 
 
 def write_sms(msg):
@@ -59,7 +59,7 @@ def write_sms(msg):
 
 def auth():
     if TARGET != "ADV":
-        tn.write("auth 1dzok1p9Lo5UaJ9M" + '\n')
+        tn.write(b"auth 1dzok1p9Lo5UaJ9M" + b'\n')
 
 
 auth()
@@ -70,9 +70,7 @@ for i in range(SECONDS):
     write_geo(lng, lat, 1000 + i)
     sleep(1)
 
-# write_geo(LNG_DST, LAT_DST, 100)
-
 if TARGET == "ADV":
     tn.write("exit\n")
-    print tn.read_all()
+    print(tn.read_all())
 
