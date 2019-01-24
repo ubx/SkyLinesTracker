@@ -16,7 +16,7 @@ echo "### $(date +"%T") GPS simmluation, with Internet connection"
 set_internet_connection enable
 
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test.out &
-python gps_simulator.py 127.0.0.1 1200 ${KEY} AVD > sim-test.out &
+python gps_simulator.py 127.0.0.1 1200 ${KEY} xxx > sim-test.out &
 sleep 30
 
 echo "### $(date +"%T") Simulate PositionService restart"

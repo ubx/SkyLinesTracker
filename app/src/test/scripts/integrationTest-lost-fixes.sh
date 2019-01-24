@@ -16,7 +16,7 @@ echo "### $(date +"%T") GPS simmluation, LiveTracking checked, NO internet conne
 $adb -s ${DEVICE} shell svc data disable
 $adb -s ${DEVICE} shell svc wifi disable
 java -jar ${TEST_DIR}/UDP-Receiver.jar -br > rcv-test.out &
-python gps_simulator.py 127.0.0.1 400 ${KEY} AVD > sim-test.out &
+python gps_simulator.py 127.0.0.1 400 ${KEY} xxx > sim-test.out &
 sleep 100
 
 echo "### $(date +"%T") Switch ON internet connection after 100 seconds"

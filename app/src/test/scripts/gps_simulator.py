@@ -18,8 +18,8 @@ SECONDS = int(sys.argv[-3])
 KEY = sys.argv[-2]
 TARGET = sys.argv[-1]
 
-LAT_MAX_STEP = ((max(LAT_DST, LAT_SRC) - min(LAT_DST, LAT_SRC)) / SECONDS) * 2
-LNG_MAX_STEP = ((max(LNG_DST, LNG_SRC) - min(LNG_DST, LNG_SRC)) / SECONDS) * 2
+LAT_MAX_STEP = ((max(LAT_DST, LAT_SRC) - min(LAT_DST, LAT_SRC)) / SECONDS)
+LNG_MAX_STEP = ((max(LNG_DST, LNG_SRC) - min(LNG_DST, LNG_SRC)) / SECONDS)
 
 DIRECTION_LAT = 1 if LAT_DST - LAT_SRC > 0 else -1
 DIRECTION_LNG = 1 if LNG_DST - LNG_SRC > 0 else -1
@@ -70,8 +70,9 @@ for i in range(SECONDS):
     write_geo(lng, lat, 1000 + i)
     sleep(1)
 
-write_geo(LNG_DST, LAT_DST, 100)
+# write_geo(LNG_DST, LAT_DST, 100)
 
-if TARGET != "ADV":
+if TARGET == "ADV":
     tn.write("exit\n")
     print tn.read_all()
+
