@@ -10,7 +10,6 @@ AVD)
     ${EMULATOR_DIR}/emulator -avd ${ADV_DEVICE}  -netspeed full -netdelay none &
     sleep 30
     $adb -s $2 root
-    $adb -s $2 install -r com.blogspot.newapphorizons.fakegps_2018-12-04.apk
     $adb -s $2 push ch.luethi.skylinestracker_preferences.xml /data/data/ch.luethi.skylinestracker/shared_prefs/
     $adb -s $2 install -r  $1/app/build/outputs/apk/debug/SkyLinesTracker-debug.apk
     $adb -s $2 shell am start -W -n ch.luethi.skylinestracker/ch.luethi.skylinestracker.MainActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER -e ISTESTING true -e TESTING_IP $3
