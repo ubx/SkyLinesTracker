@@ -12,6 +12,7 @@ export TEST_DIR="/home/andreas/IdeaProjects/SkyLinesTracker4/app/src/test/"
 export IP=$(hostname -I | awk '{print $1}')
 export INT=2
 export KEY="ABCD1234"
+export KEY2="EF567890"
 
 cd ${TEST_DIR}/scripts
 rm -rf sim-test*.out

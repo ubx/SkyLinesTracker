@@ -247,4 +247,22 @@ public class IntegrationTest {
         runScript(TESTS_SCRIPTS + "integrationTest-battery-usage.sh", "true");
     }
 
+    @Test
+    public void testIssue16() {
+        runScript(TESTS_SCRIPTS + "integrationTest-issue16.sh");
+
+        readOutFile(TESTS_SCRIPTS + "rcv-test-1.out", recsRcv, "Rcv: ", 0, true);
+        readOutFile(TESTS_SCRIPTS + "sim-test-1.out", recsSim, "Sim: ", 0, true);
+        printRecsSize();
+        assertTrue(recsSim.size() >= recsRcv.size(), "Sims not big enough...");
+        assertTrue(containsAll(recsSim, recsRcv), "Rcv not in Sim");
+
+        readOutFile(TESTS_SCRIPTS + "rcv-test-2.out", recsRcv, "Rcv: ", 0, true);
+        readOutFile(TESTS_SCRIPTS + "sim-test-2.out", recsSim, "Sim: ", 0, true);
+        printRecsSize();
+        assertTrue(recsSim.size() >= recsRcv.size(), "Sims not big enough...");
+        assertTrue(containsAll(recsSim, recsRcv), "Rcv not in Sim");
+    }
+
+
 }

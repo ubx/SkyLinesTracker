@@ -1,2 +1,2 @@
 <?xml version='1.0' encoding='utf-8'?>
-<map><string name="tracking_key">ABCD1234</string><string name="tracking_interval">2</string><boolean name="autostart_tracking" value="false" /><string name="ip_address">192.168.1.104</string><boolean name="queue_fixes" value="true" /><int name="queue_fixes_max_seconds" value="2048" /></map>
+<map><string name="tracking_key">EF567890</string><string name="tracking_interval">2</string><boolean name="autostart_tracking" value="false" /><string name="ip_address">192.168.1.104</string><boolean name="queue_fixes" value="true" /><int name="queue_fixes_max_seconds" value="2048" /></map>
