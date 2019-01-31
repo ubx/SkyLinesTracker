@@ -138,7 +138,7 @@ public class PositionService extends Service implements LocationListener, Networ
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
         Notification notification = notificationBuilder.setOngoing(true)
                 .setSmallIcon(R.drawable.ic_stat)
-                .setContentTitle("App is running in background") // todo - localize !
+                .setContentTitle(getString(R.string.run_in_background))
                 .setPriority(NotificationManager.IMPORTANCE_DEFAULT)
                 .setCategory(Notification.CATEGORY_SERVICE)
                 .setShowWhen(true)

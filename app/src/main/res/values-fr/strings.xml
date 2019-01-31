@@ -22,5 +22,7 @@
     <string name="ip_address">Serveur adresse résolution</string>
     <string name="queue">Queue:</string>
     <string name="position">Position:</string>
+    <string name="run_in_background">en cours en arrière-plan</string>
+
 
 </resources>

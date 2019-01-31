@@ -27,6 +27,7 @@
     <string name="queue">Queue:</string>
     <string name="queue_values" translatable="false"/>
     <string name="position">Position:</string>
+    <string name="run_in_background">running in background</string>
 
 
 </resources>

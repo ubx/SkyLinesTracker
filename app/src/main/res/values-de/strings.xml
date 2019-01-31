@@ -22,5 +22,7 @@
     <string name="ip_address">Server Adressauflösung</string>
     <string name="queue">Queue:</string>
     <string name="position">Position:</string>
+    <string name="run_in_background">läuft im Hintergrund</string>
+
 
 </resources>
