@@ -20,10 +20,7 @@ package ch.luethi.skylinestracker;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.Service;
+import android.app.*;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -137,14 +134,15 @@ public class PositionService extends Service implements LocationListener, Networ
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         assert manager != null;
         manager.createNotificationChannel(chan);
-
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
         Notification notification = notificationBuilder.setOngoing(true)
-                .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle("App is running in background")
+                .setSmallIcon(R.drawable.ic_stat)
+                .setContentTitle("App is running in background") // todo - localize !
                 .setPriority(NotificationManager.IMPORTANCE_DEFAULT)
                 .setCategory(Notification.CATEGORY_SERVICE)
                 .setShowWhen(true)
+                .setContentIntent(contentIntent)
                 .build();
         startForeground(ONGOING_NOTIFICATION_ID, notification);
     }
