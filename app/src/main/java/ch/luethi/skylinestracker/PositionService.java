@@ -36,13 +36,14 @@ import android.net.NetworkInfo;
 import android.os.*;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.geeksville.location.SkyLinesTrackingWriter;
 
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Objects;
+
+import static androidx.core.app.NotificationCompat.Builder;
 
 
 public class PositionService extends Service implements LocationListener, NetworkStateReceiver.NetworkStateReceiverListener {
@@ -99,9 +100,9 @@ public class PositionService extends Service implements LocationListener, Networ
     public void onCreate() {
         super.onCreate();
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            startMyOwnForeground();
+            startForeground(ONGOING_NOTIFICATION_ID, createNotification());
         } else {
-            startForeground(1, new Notification());
+            startForeground(ONGOING_NOTIFICATION_ID, new Notification());
         }
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         prefs = new SkyLinesPrefs(this);
@@ -122,29 +123,39 @@ public class PositionService extends Service implements LocationListener, Networ
         this.registerReceiver(networkStateReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
 
-
+    @TargetApi(26)
+    private static void prepareChannel(Context context, String id) {
+        final String appName = context.getString(R.string.app_name);
+        String description = context.getString(R.string.app_name);
+        final NotificationManager nm = (NotificationManager) context.getSystemService(Activity.NOTIFICATION_SERVICE);
+        assert nm != null;
+        NotificationChannel notificationChannel = nm.getNotificationChannel(id);
+        assert notificationChannel != null;
+        notificationChannel = new NotificationChannel(id, appName, NotificationManager.IMPORTANCE_LOW);
+        notificationChannel.setDescription(description);
+        nm.createNotificationChannel(notificationChannel);
+    }
 
     @TargetApi(26)
-    private void startMyOwnForeground() {
-        String NOTIFICATION_CHANNEL_ID = "ch.luethi.skylinestracker.SkyLinesApp";
-        String channelName = "SkyLinesApp Background Service";
-        NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
-        chan.setLightColor(Color.BLUE);
-        chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+    private Notification createNotification() {
+        final NotificationChannel notificationChannel = new NotificationChannel(getString(R.string.app_name), getString(R.string.app_name), NotificationManager.IMPORTANCE_MIN);
+        notificationChannel.setLightColor(Color.BLUE);
+        notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        final NotificationManager manager = (NotificationManager) getSystemService(Activity.NOTIFICATION_SERVICE);
         assert manager != null;
-        manager.createNotificationChannel(chan);
+        manager.createNotificationChannel(notificationChannel);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
-        Notification notification = notificationBuilder.setOngoing(true)
+        String channelId = getString(R.string.app_name);
+        prepareChannel(this, channelId);
+        Builder notificationBuilder = new Builder(this, channelId);
+        return notificationBuilder.setOngoing(true)
                 .setSmallIcon(R.drawable.ic_stat)
                 .setContentTitle(getString(R.string.run_in_background))
-                .setPriority(NotificationManager.IMPORTANCE_DEFAULT)
+                .setPriority(NotificationManager.IMPORTANCE_LOW)
                 .setCategory(Notification.CATEGORY_SERVICE)
-                .setShowWhen(true)
+                .setUsesChronometer(true)
                 .setContentIntent(contentIntent)
                 .build();
-        startForeground(ONGOING_NOTIFICATION_ID, notification);
     }
 
 
