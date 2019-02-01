@@ -123,31 +123,20 @@ public class PositionService extends Service implements LocationListener, Networ
         this.registerReceiver(networkStateReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
     }
 
-    @TargetApi(26)
-    private static void prepareChannel(Context context, String id) {
-        final String appName = context.getString(R.string.app_name);
-        String description = context.getString(R.string.app_name);
-        final NotificationManager nm = (NotificationManager) context.getSystemService(Activity.NOTIFICATION_SERVICE);
-        assert nm != null;
-        NotificationChannel notificationChannel = nm.getNotificationChannel(id);
-        assert notificationChannel != null;
-        notificationChannel = new NotificationChannel(id, appName, NotificationManager.IMPORTANCE_LOW);
-        notificationChannel.setDescription(description);
-        nm.createNotificationChannel(notificationChannel);
-    }
+
 
     @TargetApi(26)
     private Notification createNotification() {
-        final NotificationChannel notificationChannel = new NotificationChannel(getString(R.string.app_name), getString(R.string.app_name), NotificationManager.IMPORTANCE_MIN);
+        final NotificationChannel notificationChannel = new NotificationChannel(getString(R.string.app_name), getString(R.string.app_name), NotificationManager.IMPORTANCE_LOW);
         notificationChannel.setLightColor(Color.BLUE);
         notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        notificationChannel.setDescription(getString(R.string.app_name));
+
         final NotificationManager manager = (NotificationManager) getSystemService(Activity.NOTIFICATION_SERVICE);
         assert manager != null;
         manager.createNotificationChannel(notificationChannel);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
-        String channelId = getString(R.string.app_name);
-        prepareChannel(this, channelId);
-        Builder notificationBuilder = new Builder(this, channelId);
+        Builder notificationBuilder = new Builder(this, getString(R.string.app_name));
         return notificationBuilder.setOngoing(true)
                 .setSmallIcon(R.drawable.ic_stat)
                 .setContentTitle(getString(R.string.run_in_background))
