@@ -3,7 +3,6 @@ package ch.luethi.skylinestracker;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.filters.SdkSuppress;
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.uiautomator.UiDevice;
 import ch.luethi.skylinestracker.utils.UiAutomatorUtils;
@@ -15,9 +14,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.*;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static ch.luethi.skylinestracker.utils.UiAutomatorUtils.*;
 
 @RunWith(AndroidJUnit4.class)
@@ -35,7 +35,7 @@ public class MainActivityTest {
 
     @Before
     public void setUp() {
-        this.device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+        this.device = UiDevice.getInstance(getInstrumentation());
     }
 
 
@@ -58,15 +58,29 @@ public class MainActivityTest {
 
     @Test
     public void cTestStart() throws Exception {
-        // todo -- click on ALLOW
         allowCurrentPermission(device);
         onView(withId(R.id.checkLiveTracking)).perform(click());
     }
 
     @Test
-    public void dTestExit() throws Exception {
+    public void dTestSettings() throws Exception {
         allowCurrentPermission(device);
-        onView(withContentDescription(R.string.action_exit)).perform(click());
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+        onView(withText(R.string.action_settings)).perform(click());
+    }
+
+    @Test
+    public void eTestAbout() throws Exception {
+        allowCurrentPermission(device);
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+        onView(withText(R.string.action_about)).perform(click());
+    }
+
+    @Test
+    public void fTestExit() throws Exception {
+        allowCurrentPermission(device);
+        openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
+        onView(withText(R.string.action_exit)).perform(click());
     }
 
 
