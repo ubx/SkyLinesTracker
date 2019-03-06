@@ -1,10 +1,10 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <string name="title_activity_settings">Settings</string>
 
     <!-- Tracking settings -->
     <string name="pref_tracking_key">Key</string>
-    <string name="pref_default_tracking_key" translatable="false"> </string>
+    <string name="pref_default_tracking_key" translatable="false"/>
     <string name="pref_tracking_interval">Interval</string>
 
     <string-array name="pref_tracking_interval_list_titles">
