@@ -38,6 +38,8 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.geeksville.location.SkyLinesTrackingWriter;
+import com.quaap.audiometer.LevelMethod;
+import com.quaap.audiometer.MicLevelReader;
 
 import java.net.SocketException;
 import java.net.UnknownHostException;
@@ -46,7 +48,7 @@ import java.util.Objects;
 import static androidx.core.app.NotificationCompat.Builder;
 
 
-public class PositionService extends Service implements LocationListener, NetworkStateReceiver.NetworkStateReceiverListener {
+public class PositionService extends Service implements LocationListener, NetworkStateReceiver.NetworkStateReceiverListener, MicLevelReader.MicLevelReaderValueListener {
 
     private SkyLinesTrackingWriter skyLinesTrackingWriter = null;
     private LocationManager locationManager;
@@ -63,6 +65,8 @@ public class PositionService extends Service implements LocationListener, Networ
     private int currentTrackingInterval = 1000;
     private NetworkStateReceiver networkStateReceiver;
     private static final int ONGOING_NOTIFICATION_ID = PositionService.class.hashCode();
+
+    private MicLevelReader mMicLevelReader;
 
 
     public PositionService() {
@@ -99,13 +103,13 @@ public class PositionService extends Service implements LocationListener, Networ
     @Override
     public void onCreate() {
         super.onCreate();
+        prefs = new SkyLinesPrefs(this);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             startForeground(ONGOING_NOTIFICATION_ID, createNotification());
         } else {
             startForeground(ONGOING_NOTIFICATION_ID, new Notification());
         }
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        prefs = new SkyLinesPrefs(this);
         app = ((SkyLinesApp) getApplicationContext());
         app.positionService = this;
         intentPosStatus = new Intent(MainActivity.BROADCAST_STATUS);
@@ -121,6 +125,9 @@ public class PositionService extends Service implements LocationListener, Networ
         networkStateReceiver = new NetworkStateReceiver();
         networkStateReceiver.addListener(this);
         this.registerReceiver(networkStateReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+
+        mMicLevelReader = new MicLevelReader(this, LevelMethod.Avg); // todo -- maybe an other method ?
+        mMicLevelReader.setScale(0.8); // todo -- adjust value, experimenting
     }
 
 
@@ -162,6 +169,10 @@ public class PositionService extends Service implements LocationListener, Networ
         skyLinesTrackingWriter = null;
         ipAddress = prefs.getIpAddress();
         startLocationUpdates();
+        if (prefs.isEnlSend()) {
+            Thread mRecorderThread = new Thread(mMicLevelReader, "AudioListener Thread");
+            mRecorderThread.start();
+        }
         return START_STICKY;
     }
 
@@ -200,6 +211,9 @@ public class PositionService extends Service implements LocationListener, Networ
         }
         stopTimer();
         Log.d("SkyLines", "PositionService, onDestroy()");
+        if (mMicLevelReader.isRunning()) {
+            mMicLevelReader.stop();
+        }
         stopSelf();
     }
 
@@ -220,12 +234,9 @@ public class PositionService extends Service implements LocationListener, Networ
                 float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
                 float[] accelVals = null;
                 float vspd = Float.NaN;
-                //int enl = 10; // todo -- get ENL
-                double r =  Math.random() * 999.0;
-                int enl = (int) Math.max(r, 10.0);
                 skyLinesTrackingWriter.emitPosition(location.getTime(), app.lastLat, app.lastLon,
                         location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
-                        (int) location.getBearing(), kmPerHr, accelVals, vspd, enl);
+                        (int) location.getBearing(), kmPerHr, accelVals, vspd, SkyLinesApp.enl);
                 if (app.guiActive) {
                     if (isOnline()) {
                         sendPositionStatus();
@@ -242,7 +253,6 @@ public class PositionService extends Service implements LocationListener, Networ
                 sendConnectionStatus();
             }
         }
-
         Log.d("SkyLines", "onLocationChanged, isOnline()=" + isOnline());
         startTimer();
     }
@@ -311,6 +321,7 @@ public class PositionService extends Service implements LocationListener, Networ
     public void networkUnavailable() {
     }
 
+
     private class DequeueTask extends AsyncTask {
 
         @Override
@@ -320,6 +331,12 @@ public class PositionService extends Service implements LocationListener, Networ
             }
             return null;
         }
+    }
+
+    @Override
+    public void valueCalculated(double level) {
+        SkyLinesApp.enl = (int) Math.max(10.0, Math.min(999.0, level));
+        Log.d("SkyLines", "PositionService, valueCalculated, SkyLinesApp.enl=" + SkyLinesApp.enl);
     }
 
 }
