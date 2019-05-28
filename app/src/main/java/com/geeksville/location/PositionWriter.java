@@ -48,7 +48,7 @@ public interface PositionWriter {
      * @param vspd TODO
      */
     void emitPosition(long time, double latitude, double longitude, float altitude, int bearing,
-                      float groundSpeed, float[] accel, float vspd);
+                      float groundSpeed, float[] accel, float vspd, int enl);
 
     /**
      * Add standard end of file stuff

@@ -220,9 +220,12 @@ public class PositionService extends Service implements LocationListener, Networ
                 float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
                 float[] accelVals = null;
                 float vspd = Float.NaN;
+                //int enl = 10; // todo -- get ENL
+                double r =  Math.random() * 999.0;
+                int enl = (int) Math.max(r, 10.0);
                 skyLinesTrackingWriter.emitPosition(location.getTime(), app.lastLat, app.lastLon,
                         location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
-                        (int) location.getBearing(), kmPerHr, accelVals, vspd);
+                        (int) location.getBearing(), kmPerHr, accelVals, vspd, enl);
                 if (app.guiActive) {
                     if (isOnline()) {
                         sendPositionStatus();

@@ -75,10 +75,10 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        prefs = new SkyLinesPrefs(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkPermissions();
         }
-        prefs = new SkyLinesPrefs(this);
         app = ((SkyLinesApp) getApplicationContext());
         Log.d("SkyLines", "MainActivity, ISTESTING=" + getIntent().hasExtra(ISTESTING));
         if (getIntent().hasExtra(ISTESTING)) {
@@ -235,6 +235,9 @@ public class MainActivity extends Activity {
     private void checkPermissions() {
         List<String> permissionsList = new ArrayList<>();
         addPermission(this, permissionsList, android.Manifest.permission.ACCESS_FINE_LOCATION);
+        if (prefs.isEnlSend()) {
+            addPermission(this, permissionsList, android.Manifest.permission.RECORD_AUDIO);
+        }
         if (permissionsList.size() > 0) {
             requestPermissions(permissionsList.toArray(new String[permissionsList.size()]), 1);
         }

@@ -1,3 +1,6 @@
+Version 1.5.0 - not yet released
+* implement ENL
+
 Version 1.4.2 - 01-feb-2019
 * rework notification (#25)
 

@@ -33,7 +33,6 @@ import java.io.IOException;
 import java.net.*;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.StringTokenizer;
 import java.util.TimeZone;
 
 class CRC16CCITT {
@@ -160,11 +159,11 @@ public class SkyLinesTrackingWriter implements PositionWriter {
 
     private void writeFix(DataOutputStream dos,
                           int time, double latitude, double longitude,
-                          int altitude, int track, int groundSpeed)
+                          int altitude, int track, int groundSpeed, int enl)
             throws IOException {
         writeHeader(dos, TYPE_FIX);
         dos.writeInt(FLAG_LOCATION | FLAG_TRACK | FLAG_GROUND_SPEED |
-                FLAG_ALTITUDE);
+                FLAG_ALTITUDE | FLAG_ENL);
         dos.writeInt(time);
         writeGeoPoint(dos, latitude, longitude);
         dos.writeInt(0); // reserved
@@ -173,17 +172,17 @@ public class SkyLinesTrackingWriter implements PositionWriter {
         dos.writeShort(0); // airspeed (unavailable)
         dos.writeShort(altitude);
         dos.writeShort(0); // vario (unavailable)
-        dos.writeShort(0); // engine noise level (unavailable)
+        dos.writeShort(enl); // engine noise level (unavailable)
     }
 
     private void sendFix(int time, double latitude, double longitude,
-                         int altitude, int track, int groundSpeed)
+                         int altitude, int track, int groundSpeed, int enl)
             throws IOException {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream(48);
         DataOutputStream dos = new DataOutputStream(baos);
         writeFix(dos, time, latitude, longitude, altitude,
-                track, groundSpeed);
+                track, groundSpeed, enl);
 
         byte[] data = baos.toByteArray();
         if(BuildConfig.DEBUG && !(data.length == 48)) throw new RuntimeException();
@@ -230,7 +229,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
     public void emitPosition(long time, double latitude, double longitude,
                              float altitude, int bearing,
                              float groundSpeed, float[] accel,
-                             float vspd) {
+                             float vspd, int enl) {
         try {
             calendar.setTimeInMillis(time);
             int second_of_day =
@@ -241,7 +240,7 @@ public class SkyLinesTrackingWriter implements PositionWriter {
                     + calendar.get(Calendar.MILLISECOND);
             sendFix(ms_of_day, latitude, longitude,
                     (int) altitude, bearing,
-                    (int) (groundSpeed / 3.6));
+                    (int) (groundSpeed / 3.6), enl);
 
         } catch (IOException ex) {
             Log.e("SkyLines", "Error", ex);
