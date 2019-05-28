@@ -9,7 +9,7 @@ android {
     compileSdkVersion 28
     
     defaultConfig {
-        applicationId 'ch.luethi.skylinestracker'
+        setApplicationId 'ch.luethi.skylinestracker'
         minSdkVersion 14
         targetSdkVersion 28
         setProperty('archivesBaseName', 'SkyLinesTracker')
