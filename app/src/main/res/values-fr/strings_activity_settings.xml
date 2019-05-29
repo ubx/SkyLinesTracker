@@ -22,7 +22,10 @@
         <item>30</item>
         <item>60</item>
     </string-array>
-    
+
+    <string name="pref_title_send_enl">Envoyer ENL</string>
+    <string name="pref_description_title_send_enl">"Transmission de l'ENL (10..999) avec le microphone du téléphone."</string>
+
     <string name="pref_title_autostart_tracking">Démarrage automatique</string>
     <string name="pref_description_title_autostart_tracking">Activer le traqueur automatique au démarrage complet du téléphone</string>
     

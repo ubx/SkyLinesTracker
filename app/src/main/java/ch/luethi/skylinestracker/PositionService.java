@@ -234,9 +234,10 @@ public class PositionService extends Service implements LocationListener, Networ
                 float kmPerHr = location.hasSpeed() ? location.getSpeed() * 3.6F : Float.NaN;
                 float[] accelVals = null;
                 float vspd = Float.NaN;
+                int enl = prefs.isEnlSend() ? (int) Math.max(10.0, Math.min(999.0, SkyLinesApp.micLevel)) : 0;
                 skyLinesTrackingWriter.emitPosition(location.getTime(), app.lastLat, app.lastLon,
                         location.hasAltitude() ? (float) location.getAltitude() : Float.NaN,
-                        (int) location.getBearing(), kmPerHr, accelVals, vspd, SkyLinesApp.enl);
+                        (int) location.getBearing(), kmPerHr, accelVals, vspd, enl);
                 if (app.guiActive) {
                     if (isOnline()) {
                         sendPositionStatus();
@@ -335,8 +336,8 @@ public class PositionService extends Service implements LocationListener, Networ
 
     @Override
     public void valueCalculated(double level) {
-        SkyLinesApp.enl = (int) Math.max(10.0, Math.min(999.0, level));
-        Log.d("SkyLines", "PositionService, valueCalculated, SkyLinesApp.enl=" + SkyLinesApp.enl);
+        SkyLinesApp.micLevel = level;
+        Log.d("SkyLines", "PositionService, valueCalculated, level=" + level);
     }
 
 }

@@ -22,7 +22,10 @@
         <item>30</item>
         <item>60</item>
     </string-array>
-    
+
+    <string name="pref_title_send_enl">Sende ENL</string>
+    <string name="pref_description_title_send_enl">"Senden von ENL (10..999) mit dem Mikrophon des Telefons."</string>
+
     <string name="pref_title_autostart_tracking">Auto Start Tracking</string>
     <string name="pref_description_title_autostart_tracking">Start das Tracking bei Telefonstart</string>
 

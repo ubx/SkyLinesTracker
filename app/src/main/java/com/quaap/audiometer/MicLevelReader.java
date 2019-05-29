@@ -25,12 +25,10 @@ import android.media.MediaRecorder;
 
 
 public class MicLevelReader implements Runnable {
-    private static final int RECORDER_SAMPLERATE = 16000;
+    private static final int RECORDER_SAMPLERATE = 8000; // 16000
     private static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
     private static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
-    private static final int RECORDER_BUFFER_SIZE = RECORDER_SAMPLERATE/40;
-
-    private static final int BASENOISE=200;
+    private static final int RECORDER_BUFFER_SIZE = RECORDER_SAMPLERATE/20;
 
     private boolean mIsRunning = false;
     private LevelMethod mLevelMethod = LevelMethod.RMS;

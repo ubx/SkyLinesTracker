@@ -27,7 +27,7 @@ public class SkyLinesApp extends Application {
     public double lastLat, lastLon;
     public PositionService positionService = null;
     public static FixQueueIF fixStack;
-    public static int enl = 0; // the default value if enl is disabled
+    public static double micLevel = 0.0;
 
     @Override
     public void onCreate() {

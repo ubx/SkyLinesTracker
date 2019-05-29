@@ -25,7 +25,7 @@
     </string-array>
 
     <string name="pref_title_send_enl">Send ENL</string>
-    <string name="pref_description_title_send_enl">Send ENL (10..999) using phones micro</string>
+    <string name="pref_description_title_send_enl">"Send ENL data (10..999) using the phone's microphone"</string>
 
     <string name="pref_title_autostart_tracking">Auto Start Tracking</string>
     <string name="pref_description_title_autostart_tracking">Enable auto start tracking on phone boot complete</string>
