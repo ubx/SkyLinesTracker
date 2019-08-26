@@ -38,9 +38,5 @@ public class AboutActivity extends Activity {
         }
         TextView tvVersionName = (TextView) findViewById(R.id.version_name);
         tvVersionName.setText(versionName);
-
-        TextView ipAddress = (TextView) findViewById(R.id.ip_address);
-        ipAddress.setText(new SkyLinesPrefs(this).getIpAddress());
     }
-
 }
