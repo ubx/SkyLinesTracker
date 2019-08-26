@@ -29,7 +29,6 @@ class SkyLinesPrefs {
 
     public static final String TRACKING_KEY = "tracking_key";
     public static final String TRACKING_INTERVAL = "tracking_interval";
-    public static final String IP_ADDRESS = "ip_address";
 
     private static final String AUTOSTART_TRACKING = "autostart_tracking";
     private static final String QUEUE_FIXES = "queue_fixes";
@@ -71,19 +70,6 @@ class SkyLinesPrefs {
 
     public void setAutoStartTracking(boolean val) {
         prefs.edit().putBoolean(AUTOSTART_TRACKING, val).commit();
-    }
-
-
-    public String getIpAddress() {
-        return prefs.getString(IP_ADDRESS, "");
-    }
-
-    public String getIpAddress(String def) {
-        return prefs.getString(IP_ADDRESS, def);
-    }
-
-    public void  setIpAddress(String ipAddress) {
-        prefs.edit().putString(IP_ADDRESS, ipAddress).commit();
     }
 
     public boolean isQueueFixes() {

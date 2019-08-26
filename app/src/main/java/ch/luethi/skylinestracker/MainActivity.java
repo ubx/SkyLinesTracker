@@ -83,13 +83,6 @@ public class MainActivity extends Activity {
         Log.d("SkyLines", "MainActivity, ISTESTING=" + getIntent().hasExtra(ISTESTING));
         if (getIntent().hasExtra(ISTESTING)) {
             Mint.closeSession(this);
-            if (getIntent().hasExtra(TESTING_IP)) {
-                prefs.setIpAddress(getIntent().getStringExtra(TESTING_IP));
-            } else {
-                prefs.setIpAddress("localhost");
-            }
-        } else {
-            prefs.setIpAddress(prefs.getIpAddress(getResources().getString(R.string.ip_address_dns)));
         }
         doFixQueueing = prefs.isQueueFixes();
         positionService = new Intent(this, PositionService.class);

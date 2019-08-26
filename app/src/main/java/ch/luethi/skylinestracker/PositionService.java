@@ -54,7 +54,7 @@ public class PositionService extends Service implements LocationListener, Networ
     private LocationManager locationManager;
     private SkyLinesPrefs prefs;
     private HandlerThread senderThread;
-    private String ipAddress;
+    private static String ipAddress = "skylines.aero";
 
     private static SkyLinesApp app;
     private static Intent intentPosStatus, intentWaitStatus, intentConStatus;
@@ -167,7 +167,6 @@ public class PositionService extends Service implements LocationListener, Networ
         Log.d("SkyLines", "SkyLinesApp, onStartCommand(), fixStack.size()=" + SkyLinesApp.fixStack.size() + ", init=" + init + ", prefs.getQueueFixesMax()=" + prefs.getQueueFixesMaxSeconds());
 
         skyLinesTrackingWriter = null;
-        ipAddress = prefs.getIpAddress();
         startLocationUpdates();
         if (prefs.isEnlSend()) {
             Thread mRecorderThread = new Thread(mMicLevelReader, "AudioListener Thread");

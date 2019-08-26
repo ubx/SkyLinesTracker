@@ -39,14 +39,6 @@
                 android:key="autostart_tracking"
                 android:summary="@string/pref_description_title_autostart_tracking"
                 android:title="@string/pref_title_autostart_tracking"/>
-        <ListPreference
-                android:defaultValue="@string/ip_address_fix"
-                android:entries="@array/pref_ip_address_list_titles"
-                android:entryValues="@array/pref_ip_address_list_values"
-                android:key="ip_address"
-                android:negativeButtonText="@null"
-                android:positiveButtonText="@null"
-                android:title="@string/ip_address"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

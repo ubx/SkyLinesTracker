@@ -67,7 +67,6 @@ public class SettingsActivity extends PreferenceActivity {
 		// to reflect the new value, per the Android Design guidelines.
 		bindPreferenceSummaryToValue(findPreference(SkyLinesPrefs.TRACKING_KEY));
         bindPreferenceSummaryToValue(findPreference(SkyLinesPrefs.TRACKING_INTERVAL));
-        bindPreferenceSummaryToValue(findPreference(SkyLinesPrefs.IP_ADDRESS));
 	}
 
 	/** {@inheritDoc} */
