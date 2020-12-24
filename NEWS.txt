@@ -1,5 +1,5 @@
 Version 1.4.4 - not yet released
-* update target SDK version 29
+* update target SDK version 30
 
 Version 1.4.3 - 27-aug-2019
 * remove fix ip address (#26)
