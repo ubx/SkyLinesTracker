@@ -1,4 +1,4 @@
-Version 1.4.4 - not yet released
+Version 1.4.4 - 09-dec-2021
 * update target SDK version 30
 
 Version 1.4.3 - 27-aug-2019
