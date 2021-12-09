@@ -43,6 +43,8 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Objects;
 
+import static android.app.PendingIntent.*;
+import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static androidx.core.app.NotificationCompat.Builder;
 
 
@@ -135,7 +137,7 @@ public class PositionService extends Service implements LocationListener, Networ
         final NotificationManager manager = (NotificationManager) getSystemService(Activity.NOTIFICATION_SERVICE);
         assert manager != null;
         manager.createNotificationChannel(notificationChannel);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
+        PendingIntent contentIntent = getActivity(this, 0, new Intent(this, MainActivity.class), FLAG_IMMUTABLE);
         Builder notificationBuilder = new Builder(this, getString(R.string.app_name));
         return notificationBuilder.setOngoing(true)
                 .setSmallIcon(R.drawable.ic_stat)
