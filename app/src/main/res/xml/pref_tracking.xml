@@ -4,7 +4,6 @@
             android:key="pref_key_live_tracking"
             android:title="@string/pref_live_tracking_title">
         <EditTextPreference
-                android:capitalize="words"
                 android:defaultValue="@string/pref_default_tracking_key"
                 android:digits="0123456789ABCDEF"
                 android:inputType="textCapCharacters"

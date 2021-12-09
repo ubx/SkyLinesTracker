@@ -8,24 +8,29 @@
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context=".MainActivity">
 
-    <CheckBox
+<CheckBox
             android:id="@+id/checkLiveTracking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="@string/live_tracking"/>
+            android:text="@string/live_tracking"
+            android:minHeight="48dp"/>
 
     <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" android:layout_below="@+id/checkLiveTracking"
-            android:layout_alignParentLeft="true" android:layout_alignParentStart="true">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/checkLiveTracking"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
-        <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+        <TableRow android:layout_width="match_parent"
+                  android:layout_height="match_parent">
             <TextView
                     android:id="@+id/statusLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/status"/>
+                    android:text="@string/status"
+                    tools:ignore="TextContrastCheck"/>
             <TextView
                     android:id="@+id/statusText"
                     android:layout_width="wrap_content"
