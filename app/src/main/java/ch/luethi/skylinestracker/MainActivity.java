@@ -18,13 +18,12 @@
 
 package ch.luethi.skylinestracker;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.app.AlertDialog;
+import android.content.*;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Build;
@@ -36,14 +35,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import androidx.annotation.RequiresApi;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.splunk.mint.Mint;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 public class MainActivity extends Activity {
 
@@ -76,9 +76,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            checkPermissions();
-        }
+        requestAllPermissions();
         prefs = new SkyLinesPrefs(this);
         app = ((SkyLinesApp) getApplicationContext());
         Log.d("SkyLines", "MainActivity, ISTESTING=" + getIntent().hasExtra(ISTESTING));
@@ -199,7 +197,6 @@ public class MainActivity extends Activity {
 
 
     private class myBroadcastReceiver extends BroadcastReceiver {
-
         @Override
         public void onReceive(Context context, Intent intent) {
             int statusType = intent.getIntExtra(MESSAGE_STATUS_TYPE, 99);
@@ -236,22 +233,51 @@ public class MainActivity extends Activity {
         return false;
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
-    private void checkPermissions() {
-        List<String> permissionsList = new ArrayList<>();
-        addPermission(this, permissionsList, android.Manifest.permission.ACCESS_FINE_LOCATION);
-        if (permissionsList.size() > 0) {
-            requestPermissions(permissionsList.toArray(new String[permissionsList.size()]), 1);
+    // permission related code below was copied from https://github.com/XCSoar/XCSoar/blob/master/android/src/XCSoar.java
+    private static final String[] NEEDED_PERMISSIONS = new String[]{
+            Manifest.permission.ACCESS_FINE_LOCATION
+    };
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private boolean hasAllPermissions() {
+        for (String p : NEEDED_PERMISSIONS) {
+            if (checkSelfPermission(p) != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private void requestAllPermissions() {
+        if (android.os.Build.VERSION.SDK_INT <  Build.VERSION_CODES.M) {
+            /* we don't need to request permissions on this old Android version */
+            return;
+        }
+
+        /* starting with Android 6.0, we need to explicitly request all permissions before using them; mentioning them in the manifest
+        is not enough
+        */
+        if (!hasAllPermissions()) {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.location_permission_title)
+                    .setMessage(R.string.needs_to_collect_location_data)
+                    .setPositiveButton(R.string.continue_dialog, new DialogInterface.OnClickListener() {
+                        @RequiresApi(api = Build.VERSION_CODES.M)
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            try {
+                                MainActivity.this.requestPermissions(NEEDED_PERMISSIONS, 0);
+                            } catch (IllegalArgumentException e) {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    Log.e(TAG, "could not request permissions: " + String.join(", ", NEEDED_PERMISSIONS), e);
+                                }
+                            }
+                        }
+                    }).show();
         }
     }
 
-
-    @TargetApi(Build.VERSION_CODES.M)
-    private static void addPermission(Context context, List<String> permissionsList, String permission) {
-        if (context.checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-            permissionsList.add(permission);
-        }
-    }
 
     @TargetApi(Build.VERSION_CODES.M)
     @Override

@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="ch.luethi.skylinestracker"
-          android:versionCode="40"
-          android:versionName="1.4.4">
+          android:versionCode="41"
+          android:versionName="1.4.5">
+
+    <!-- required since Android 10 / targetSdkVersion 29 -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- required since Android 9 / targetSdkVersion 28 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <uses-feature android:name="android.hardware.location.gps" />
-
 
     <application
             android:name="ch.luethi.skylinestracker.SkyLinesApp"
@@ -36,7 +42,8 @@
 
         <service
                 android:enabled="true"
-                android:name=".PositionService"/>
+                android:name=".PositionService"
+                android:foregroundServiceType="location"/>
 
         <receiver
                 android:enabled="true"
@@ -49,7 +56,6 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </receiver>
-
 
     </application>
 

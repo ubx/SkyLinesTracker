@@ -21,6 +21,11 @@
     <string name="queue">Queue:</string>
     <string name="position">Position:</string>
     <string name="run_in_background">en cours en arrière-plan</string>
+    <string name="location_permission_title">Location Permission</string>
+    <string name="continue_dialog">Continuer</string>
+    <string name="needs_to_collect_location_data">SkyLines Tracker a besoin de données de localisation pour permettre
+        l\'envoi de la position, même si l\'application s\'exécute en arrière-plan
+    </string>
 
 
 </resources>
