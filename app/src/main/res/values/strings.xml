@@ -24,9 +24,7 @@
     <string name="position">Position:</string>
     <string name="run_in_background">running in background</string>
     <string name="location_permission_title">Location Permission</string>
-    <string name="needs_to_collect_location_data">"SkyLines Tracker needs to collect location data to enable sending
-        position, even when the app is in the background "
-    </string>
+    <string name="needs_to_collect_location_data">"SkyLines Tracker needs to collect location data to enable sending position, even when the app is in the background"</string>
     <string name="continue_dialog">Continue</string>
 
 

@@ -45,6 +45,7 @@ import java.util.Objects;
 
 import static android.app.PendingIntent.*;
 import static android.app.PendingIntent.FLAG_IMMUTABLE;
+import static android.content.SharedPreferences.*;
 import static androidx.core.app.NotificationCompat.Builder;
 
 
@@ -54,14 +55,14 @@ public class PositionService extends Service implements LocationListener, Networ
     private LocationManager locationManager;
     private SkyLinesPrefs prefs;
     private HandlerThread senderThread;
-    private static String ipAddress = "skylines.aero";
+    private static final String ipAddress = "skylines.aero";
 
     private static SkyLinesApp app;
     private static Intent intentPosStatus, intentWaitStatus, intentConStatus;
 
-    private Handler delayHandler = new Handler();
-    private Runnable timerRunnable;
-    private SharedPreferences.OnSharedPreferenceChangeListener listener;
+    private final Handler delayHandler = new Handler();
+    private final Runnable timerRunnable;
+    private final OnSharedPreferenceChangeListener listener;
     private int currentTrackingInterval = 1000;
     private NetworkStateReceiver networkStateReceiver;
     private static final int ONGOING_NOTIFICATION_ID = PositionService.class.hashCode();
@@ -81,7 +82,7 @@ public class PositionService extends Service implements LocationListener, Networ
         };
 
 
-        listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        listener = new OnSharedPreferenceChangeListener() {
             public void onSharedPreferenceChanged(SharedPreferences xprefs, String key) {
                 if (key.equals(SkyLinesPrefs.TRACKING_INTERVAL)) {
                     if (SkyLinesApp.fixStack != null) {
@@ -186,7 +187,7 @@ public class PositionService extends Service implements LocationListener, Networ
                 return;
             }
         }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000, 0, this, senderThread.getLooper());
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, prefs.getTrackingInterval() * 1000L, 0, this, senderThread.getLooper());
     }
 
     @Override
@@ -292,7 +293,7 @@ public class PositionService extends Service implements LocationListener, Networ
     }
 
     private void startTimer() {
-        delayHandler.postDelayed(timerRunnable, 2 * (prefs.getTrackingInterval() * 1000));
+        delayHandler.postDelayed(timerRunnable, 2 * (prefs.getTrackingInterval() * 1000L));
     }
 
     private void stopTimer() {

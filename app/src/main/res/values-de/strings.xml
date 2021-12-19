@@ -23,8 +23,7 @@
     <string name="run_in_background">läuft im Hintergrund</string>
     <string name="location_permission_title">Location Permission</string>
     <string name="continue_dialog">"Fortsetzen "</string>
-    <string name="needs_to_collect_location_data">"SkyLines Tracker braucht die Standortdaten, um das Senden der Position zu
-        ermöglichen, auch wenn die App im Hintergrund läuft "
+    <string name="needs_to_collect_location_data">"SkyLines Tracker braucht die Standortdaten, um das Senden der Position zu ermöglichen, auch wenn die App im Hintergrund läuft "
     </string>
 
 

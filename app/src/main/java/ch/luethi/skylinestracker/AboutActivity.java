@@ -36,7 +36,7 @@ public class AboutActivity extends Activity {
         } catch (NameNotFoundException e) {
             e.printStackTrace();
         }
-        TextView tvVersionName = (TextView) findViewById(R.id.version_name);
+        TextView tvVersionName = findViewById(R.id.version_name);
         tvVersionName.setText(versionName);
     }
 }

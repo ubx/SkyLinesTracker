@@ -1,36 +1,36 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-            android:key="pref_key_live_tracking"
-            android:title="@string/pref_live_tracking_title">
+        android:key="pref_key_live_tracking"
+        android:title="@string/pref_live_tracking_title">
         <EditTextPreference
-                android:defaultValue="@string/pref_default_tracking_key"
-                android:digits="0123456789ABCDEF"
-                android:inputType="textCapCharacters"
-                android:key="tracking_key"
-                android:maxLines="1"
-                android:selectAllOnFocus="true"
-                android:singleLine="true"
-                android:title="@string/pref_tracking_key"/>
+            android:defaultValue="@string/pref_default_tracking_key"
+            android:digits="0123456789ABCDEF"
+            android:inputType="textCapCharacters"
+            android:key="tracking_key"
+            android:maxLines="1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="@string/pref_tracking_key" />
 
         <ListPreference
-                android:defaultValue="10"
-                android:entries="@array/pref_tracking_interval_list_titles"
-                android:entryValues="@array/pref_tracking_interval_list_values"
-                android:key="tracking_interval"
-                android:negativeButtonText="@null"
-                android:positiveButtonText="@null"
-                android:title="@string/pref_tracking_interval"/>
+            android:defaultValue="10"
+            android:entries="@array/pref_tracking_interval_list_titles"
+            android:entryValues="@array/pref_tracking_interval_list_values"
+            android:key="tracking_interval"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:title="@string/pref_tracking_interval" />
     </PreferenceCategory>
 
     <PreferenceCategory
-            android:key="pref_system_settings"
-            android:title="@string/pref_system_settings_title">
+        android:key="pref_system_settings"
+        android:title="@string/pref_system_settings_title">
         <CheckBoxPreference
-                android:defaultValue="false"
-                android:key="autostart_tracking"
-                android:summary="@string/pref_description_title_autostart_tracking"
-                android:title="@string/pref_title_autostart_tracking"/>
+            android:defaultValue="false"
+            android:key="autostart_tracking"
+            android:summary="@string/pref_description_title_autostart_tracking"
+            android:title="@string/pref_title_autostart_tracking" />
     </PreferenceCategory>
 
 </PreferenceScreen>
