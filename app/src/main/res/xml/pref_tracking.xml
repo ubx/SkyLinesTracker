@@ -2,7 +2,8 @@
 
     <PreferenceCategory
         android:key="pref_key_live_tracking"
-        android:title="@string/pref_live_tracking_title">
+        android:title="@string/pref_live_tracking_title"
+        android:textColor="#F5F5F5">
         <EditTextPreference
             android:defaultValue="@string/pref_default_tracking_key"
             android:digits="0123456789ABCDEF"
@@ -11,7 +12,9 @@
             android:maxLines="1"
             android:selectAllOnFocus="true"
             android:singleLine="true"
-            android:title="@string/pref_tracking_key" />
+            android:title="@string/pref_tracking_key"
+            android:minHeight="48dp"
+            android:contentDescription="@null"/>
 
         <ListPreference
             android:defaultValue="10"
