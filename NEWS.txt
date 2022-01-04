@@ -1,5 +1,6 @@
-Version 1.4.6 - not yet released
+Version 1.4.6 - 04-jan-2022
 * update target SDK version 32
+* fix creating a new background service each time the app is reopened (#30)
 
 Version 1.4.5 - 16-dec-2021
 * request the ACCESS_BACKGROUND_LOCATION permission

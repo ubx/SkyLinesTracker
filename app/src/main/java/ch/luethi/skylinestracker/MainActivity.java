@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
     private static final DecimalFormat dfLat = new DecimalFormat("##.00000");
     private static final DecimalFormat dfLon = new DecimalFormat("###.00000");
 
-    private static Intent positionService;
+    private static Intent positionService = null;
     private TextView statusText;
     private TextView positionText;
     private TextView queueValueText;
@@ -84,8 +84,12 @@ public class MainActivity extends Activity {
             Mint.closeSession(this);
         }
         doFixQueueing = prefs.isQueueFixes();
-        positionService = new Intent(this, PositionService.class);
-        positionService.putExtra("init", true);
+
+        // Start PositionService if not already running
+        if (positionService == null) {
+            positionService = new Intent(this, PositionService.class);
+            positionService.putExtra("init", true);
+        }
 
         setContentView(R.layout.activity_main);
         statusText = findViewById(R.id.statusText);
@@ -129,6 +133,11 @@ public class MainActivity extends Activity {
     }
 
     @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -149,7 +158,11 @@ public class MainActivity extends Activity {
 
             case R.id.action_exit:
                 stopService(positionService);
-                finish();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    finishAffinity();
+                } else {
+                    finish();
+                }
 
             default:
                 return super.onOptionsItemSelected(item);
