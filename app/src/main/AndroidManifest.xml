@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="ch.luethi.skylinestracker"
-    android:versionCode="44"
-    android:versionName="1.4.6">
+    android:versionCode="45"
+    android:versionName="1.4.7">
 
     <!-- required since Android 10 / targetSdkVersion 29 -->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
