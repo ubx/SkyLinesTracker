@@ -6,12 +6,12 @@ android {
             storeFile file('/home/andreas/SkyLinesTracker/key')
         }
     }
-    compileSdkVersion 32
+    compileSdkVersion 33
     
     defaultConfig {
         applicationId 'ch.luethi.skylinestracker'
         minSdkVersion 14
-        targetSdkVersion 32
+        targetSdkVersion 33
         setProperty('archivesBaseName', 'SkyLinesTracker')
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         testInstrumentationRunnerArguments clearPackageData: 'true'
@@ -37,8 +37,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:32'
-    implementation 'com.android.support:design:32'
+    implementation 'com.android.support:appcompat-v7:33'
+    implementation 'com.android.support:design:33'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
 
     // Core library

@@ -1,4 +1,5 @@
 Version 1.4.7 - not yet released
+* update target SDK version 33
 
 Version 1.4.6 - 04-jan-2022
 * update target SDK version 32
