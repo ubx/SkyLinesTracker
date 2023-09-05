@@ -20,15 +20,14 @@
     <uses-feature android:name="android.hardware.location.gps" />
 
     <application
-        android:name="ch.luethi.skylinestracker.SkyLinesApp"
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:fullBackupContent="true">
+            android:name="ch.luethi.skylinestracker.SkyLinesApp"
+            android:allowBackup="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme"
+            android:fullBackupContent="true" android:dataExtractionRules="@xml/data_extraction_rules">
         <activity
             android:name="ch.luethi.skylinestracker.MainActivity"
-            android:label="@string/app_name"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
