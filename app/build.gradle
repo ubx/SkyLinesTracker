@@ -8,7 +8,7 @@ android {
     }
 
     defaultConfig {
-        compileSdk 33
+        compileSdk 34
         applicationId 'ch.luethi.skylinestracker'
         minSdkVersion 14
         targetSdkVersion 34
