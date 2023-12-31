@@ -4,6 +4,9 @@
           android:versionCode="46"
     android:versionName="1.4.8">
 
+    <!-- required since Android 14 / targetSdkVersion 34 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+
     <!-- required since Android 10 / targetSdkVersion 29 -->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
