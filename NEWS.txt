@@ -1,3 +1,5 @@
+Version 1.4.9 - not yet released
+
 Version 1.4.8 - 31-dec-2023
 * fix crash on Android 14, add FOREGROUND_SERVICE_LOCATION permission (#31)
 
