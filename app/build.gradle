@@ -32,6 +32,9 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+    buildFeatures {
+        buildConfig = true
+    }
     namespace 'ch.luethi.skylinestracker'
     testNamespace 'ch.luethi.test.skylinestracker'
 }
