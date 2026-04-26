@@ -247,9 +247,20 @@ public class MainActivity extends Activity {
     }
 
     // permission related code below was copied from https://github.com/XCSoar/XCSoar/blob/master/android/src/XCSoar.java
-    private static final String[] NEEDED_PERMISSIONS = new String[]{
-            Manifest.permission.ACCESS_FINE_LOCATION
-    };
+    private static final String[] NEEDED_PERMISSIONS = Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE ?
+            new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.FOREGROUND_SERVICE_LOCATION
+            } :
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ?
+                    new String[]{
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                    } :
+                    new String[]{
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                    };
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private boolean hasAllPermissions() {
@@ -258,12 +269,18 @@ public class MainActivity extends Activity {
                 return false;
             }
         }
+        // Also check background location on Android 10+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                return false;
+            }
+        }
 
         return true;
     }
 
     private void requestAllPermissions() {
-        if (android.os.Build.VERSION.SDK_INT <  Build.VERSION_CODES.M) {
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             /* we don't need to request permissions on this old Android version */
             return;
         }
@@ -283,7 +300,7 @@ public class MainActivity extends Activity {
                                 MainActivity.this.requestPermissions(NEEDED_PERMISSIONS, 0);
                             } catch (IllegalArgumentException e) {
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    Log.e(TAG, "could not request permissions: " + String.join(", ", NEEDED_PERMISSIONS), e);
+                                    Log.e(TAG, "could not request permissions", e);
                                 }
                             }
                         }
@@ -291,13 +308,48 @@ public class MainActivity extends Activity {
         }
     }
 
-
     @TargetApi(Build.VERSION_CODES.M)
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        if (grantResults.length <= 0 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-            finish();
+        for (int result : grantResults) {
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                // If it's FOREGROUND_SERVICE_LOCATION, it might be okay if it fails (though it shouldn't as it's normal)
+                // But for location, we really need it.
+                // However, if we just got foreground, we might need to request background separately on Android 11+
+                finish();
+                return;
+            }
         }
+
+        // On Android 11+, if we just got foreground location, we need to request background location separately
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                requestBackgroundLocationPermission();
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // On Android 10, we can request them together, but since we didn't include it in NEEDED_PERMISSIONS to avoid API 30+ issues,
+            // we request it now if missing.
+            if (checkSelfPermission(Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION}, 1);
+            }
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    private void requestBackgroundLocationPermission() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.location_permission_title)
+                .setMessage("This app needs 'Allow all the time' location permission to work reliably in the background and on boot.")
+                .setPositiveButton(R.string.continue_dialog, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            MainActivity.this.requestPermissions(new String[]{Manifest.permission.ACCESS_BACKGROUND_LOCATION}, 1);
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
     }
 
     private String getCurrentTimeStamp() {

@@ -47,11 +47,12 @@
         <service
             android:enabled="true"
             android:name=".PositionService"
+            android:directBootAware="true"
             android:foregroundServiceType="location" />
 
         <receiver
             android:enabled="true"
-            android:directBootAware="false"
+            android:directBootAware="true"
             android:exported="false"
             android:name=".BootUpReceiver"
             tools:targetApi="n">

@@ -1,4 +1,5 @@
-Version 1.4.9 - not yet released
+Version 1.4.9 - 27-apr-2026
+* fix foreground service behavior for Android 10+ and update permissions
 
 Version 1.4.8 - 31-dec-2023
 * fix crash on Android 14, add FOREGROUND_SERVICE_LOCATION permission (#31)

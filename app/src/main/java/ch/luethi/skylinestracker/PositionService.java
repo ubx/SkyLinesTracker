@@ -102,11 +102,6 @@ public class PositionService extends Service implements LocationListener, Networ
     @Override
     public void onCreate() {
         super.onCreate();
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            startForeground(ONGOING_NOTIFICATION_ID, createNotification());
-        } else {
-            startForeground(ONGOING_NOTIFICATION_ID, new Notification());
-        }
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         prefs = new SkyLinesPrefs(this);
         app = ((SkyLinesApp) getApplicationContext());
@@ -154,6 +149,38 @@ public class PositionService extends Service implements LocationListener, Networ
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            try {
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                    // On Android 14+, we must check if we have the required permissions before calling startForeground with TYPE_LOCATION
+                    // If we are in background and only have "while-in-use" permission, this will throw SecurityException
+                    boolean hasLocation = checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+                                          checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+                    boolean hasFgsLocation = checkSelfPermission(Manifest.permission.FOREGROUND_SERVICE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+
+                    if (hasLocation && hasFgsLocation) {
+                        startForeground(ONGOING_NOTIFICATION_ID, createNotification(), android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION);
+                    } else {
+                        Log.e("SkyLines", "Location permissions not granted for foreground service: hasLocation=" + hasLocation + ", hasFgsLocation=" + hasFgsLocation);
+                        // We can't start as location type. Try starting without type as fallback, 
+                        // though it will likely still fail if declared as location in manifest.
+                        startForeground(ONGOING_NOTIFICATION_ID, createNotification());
+                    }
+                } else {
+                    startForeground(ONGOING_NOTIFICATION_ID, createNotification());
+                }
+            } catch (SecurityException e) {
+                Log.e("SkyLines", "SecurityException starting foreground service. App might be in background without background location permission.", e);
+                // If we can't start foreground, we must stop the service to avoid ANR/Crash
+                stopSelf();
+                return START_NOT_STICKY;
+            } catch (Exception e) {
+                Log.e("SkyLines", "Failed to start foreground service", e);
+            }
+        } else {
+            startForeground(ONGOING_NOTIFICATION_ID, new Notification());
+        }
+
         boolean init = intent != null && intent.getBooleanExtra("init", false);
         if (prefs.isQueueFixes()) {
             SkyLinesApp.fixStack = new FixQueue(getApplicationContext(), calculateFixQueueSize(), init);
