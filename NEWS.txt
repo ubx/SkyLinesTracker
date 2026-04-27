@@ -1,3 +1,5 @@
+Version 1.5.0 - not yet released
+
 Version 1.4.9 - 27-apr-2026
 * fix foreground service behavior for Android 10+ and update permissions
 
